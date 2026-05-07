@@ -239,7 +239,10 @@
           opacity 0.2s ease,
           transform 0.4s ease;
       }
-
+      #mCrossCadre{
+        margin-top : 0.5em;
+        margin-right : 0.5em;
+      }
       .mCadreDrapeau {
         display: flex;
         justify-content: center;
@@ -252,8 +255,8 @@
         letter-spacing: 1px;
         border-radius: 8px;
         width: 100%;
-        height: 3em; /* hauteur fixe */
-        max-height: 5em;
+        height: 1.5em; /* hauteur fixe */
+        max-height: 2.2em;
       }
 
       .mDrapeauBox {
@@ -818,8 +821,7 @@
         background: rgba(255, 255, 255, 0.1);
       }
 
-      .cross {
-        
+      .cross {        
         all: unset;              /* enlève TOUT le style natif */
         box-sizing: border-box;  /* indispensable après all: unset */
         cursor: pointer;
@@ -3688,7 +3690,7 @@
 
       <!----------------------LittleCadre------------------------------->
       <div id="mCadre">
-        <button class="cross" id="mCadreCross" onclick="toggleC(false)">
+        <button class="cross" id="mCrossCadre" onclick="toggleC(false)">
            <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Outline"
