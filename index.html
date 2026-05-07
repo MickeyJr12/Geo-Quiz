@@ -317,16 +317,13 @@
           transform 0.4s ease,
           opacity 0.3s ease;
       }
-      #cadre h2 {
-        margin: -1.8em;
-      }
       #cadreDrapeau {
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         flex-shrink: 0;
-        margin-bottom: 1.8em;
+        margin-bottom : 0.2em;
         font-size: 2em;
         font-weight: 620;
         letter-spacing: 1px;
@@ -3684,7 +3681,8 @@
             <div class="loadingCadre" style="height: 90%"></div>
           </div>
         </div>
-        <div class="titleCadre" id="mTitleCadre">Russie (RU)</div>
+
+        <div class="titleCadre" id="mTitleCadre"></div>
         <div class="txtCapitaleCadre" id="mCapitale">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -6313,8 +6311,11 @@
       cadre.appendChild(cadreCross);
       cadreCross.addEventListener("click", () => {
         currentCountry = null;
-        toggleC(false);
-        return;
+        cadre.style.opacity = "0";
+        cadre.style.transform = "scale(0.9)";
+        cadre.style.pointerEvents = "none";        
+
+        toggleC(true);
       });
 
       const vuesBox = document.querySelector(".vuesBox");
@@ -13034,9 +13035,7 @@
             if (currentCountry != null) {
               if (C.textContent === currentCountry.getAttribute("title")) {
                 currentCountry = null;
-                cadre.style.transform = "translateX(-20%)";
-                cadre.style.opacity = "0";
-                cadre.style.pointerEvents = "none";
+                toggleC(false)
                 return;
               }
             }
@@ -13066,15 +13065,7 @@
             animateViewBox(svgMonde, targetViewBox, 700);
             //*************
 
-            cadre.style.transition = "all 0s";
-
-            cadre.style.transform = "translateX(-20%)";
-            cadre.style.opacity = "0";
-            setTimeout(() => {
-              cadre.style.transition = "";
-              cadre.style.transform = "translateX(0%)";
-              cadre.style.opacity = "1";
-            }, 10);
+            toggleC(true)
             const id = country.id;
             const name = country.getAttribute("title");
 
