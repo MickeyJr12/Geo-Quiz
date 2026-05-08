@@ -82,6 +82,7 @@
 
       svg.monde path {
         transition:
+          stroke-width 0.2s ease,
           transform 0.1s ease,
           fill 0.5s ease,
           background 0.4s ease,
@@ -6136,6 +6137,9 @@
 
       function zoomCountry(p_id){
         if(!viewMaps){return}
+        currentCountry = document.getElementById(p_id)
+        currentCountry.style.stroke = "rgba(255, 210, 50, 1)"
+        document.querySelector('svg.monde').appendChild(currentCountry)
         const svgMonde = document.getElementById("svgMonde");
 
             const b = getId(p_id).getBBox();
@@ -6454,6 +6458,7 @@
       });
 
       map.addEventListener("click", () => {
+        animateViewBox(document.getElementById("svgMonde"), initialViewBox, 700);          
         Maps.appendChild(globe);
         phoneHome.style.display = "none";
         Maps.style.visibility = "visible";
@@ -6463,6 +6468,7 @@
       const backMaps = document.getElementById("backMaps");
       backMaps.addEventListener("click", () => {
         if(viewMaps){return}
+        currentCountry = null;
         phoneHome.style.display = "flex";
         Maps.style.visibility = "";
         Maps.style.opacity = "";
@@ -12851,12 +12857,16 @@
       function colorCurrentCountry() {
         globe.querySelectorAll("path").forEach((p) => {
           if (p === currentCountry && currentCountry != null) {
+            p.style.stroke = "rgba(255, 210, 50, 1)";
             highlightCountry(p);
           } else if (p !== currentCountryHover) {
             const status = idVisible_m.get(p.id);
             const visible = status && Object.values(status).every(Boolean);
             p.style.fill = visible ? pColor_m.get(p).current : "";
-            if (p !== currentCountry) p.removeAttribute("filter");
+
+            if (p !== currentCountry) {p.removeAttribute("filter");
+            p.style.stroke = "";
+          }
           }
         });
         requestAnimationFrame(colorCurrentCountry);
