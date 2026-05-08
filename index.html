@@ -6139,7 +6139,6 @@
       function zoomCountry(p_id){
         if(!viewMaps){return}
         currentCountry = document.getElementById(p_id)
-        currentCountry.style.stroke = "rgba(255, 210, 50, 1)"
         document.querySelector('svg.monde').appendChild(currentCountry)
         const svgMonde = document.getElementById("svgMonde");
 
