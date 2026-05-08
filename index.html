@@ -82,6 +82,7 @@
 
       svg.monde path {
         transition:
+          stroke 0.2s ease,
           stroke-width 0.2s ease,
           transform 0.1s ease,
           fill 0.5s ease,
@@ -12857,7 +12858,7 @@
       function colorCurrentCountry() {
         globe.querySelectorAll("path").forEach((p) => {
           if (p === currentCountry && currentCountry != null) {
-            p.style.stroke = "rgba(255, 210, 50, 1)";
+            if(viewMaps){p.style.stroke = "white"}
             highlightCountry(p);
           } else if (p !== currentCountryHover) {
             const status = idVisible_m.get(p.id);
