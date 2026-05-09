@@ -376,7 +376,7 @@
         font-weight: 620;
         border-radius: 8px;
         width: 60%;
-        height: 4em; /* hauteur fixe */
+        height: 5em; /* hauteur fixe */
         max-height: 5em;
       }
 
@@ -427,6 +427,67 @@
         margin: 0.5em 0;
       }
 
+      .menuCadre {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        user-select: none;
+        gap: 0.2em;
+        width: 100%;
+        max-height: 2em;
+        padding: 1em;
+        background: rgba(18, 117, 174, 0.3);
+        padding: 0.5em 0.5em;
+        fill: white;
+        color: white;
+      }
+      .boxMenuCadre {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex: 1;
+        cursor: pointer;
+        border-radius: 0.2em;
+        padding: 0.6em 0.2em;
+        gap: 0.6em;
+        height: auto;
+        transition: background 0.4s ease;
+      }
+      .boxMenuCadre.active {
+        background: rgba(11, 15, 40, 0.4);
+      }
+      .boxMenuCadre::after {
+        content: "";
+        position: absolute;
+        bottom: 0em;
+        left: 50%;
+        width: 0%;
+        height: 0.1em;
+        background: white;
+        border-radius: 2px;
+        transform: translateX(-50%);
+        transform-origin: center top;
+        transition: width 0.4s ease;
+      }
+      .boxMenuCadre.active::after {
+        width: 100%;
+      }
+      .iconMenuCadre {
+        height: 1.5em;
+      }
+      .txtMenuCadre {
+        overflow: hidden;
+        font-size: 1.05em;
+        font-weight: 400;
+        width: auto;
+        max-width: 0px;
+        height: auto;
+        padding-left: 0.2em;
+        transition: max-width 0.4s ease;
+      }
+
       #cadreOrga {
         display: flex;
         justify-content: center;
@@ -436,14 +497,7 @@
         width: 80%;
         gap: 0.6em;
       }
-      .appartenance-title {
-        text-align: center;
-        font-size: 1.1em;
-        font-weight: 600;
-        letter-spacing: 0.01em;
-        text-transform: uppercase;
-        margin: 0 0 0.1em 0;
-      }
+
       .itemOrga {
         display: flex;
         justify-content: center;
@@ -545,7 +599,9 @@
         z-index: 5;
         width: 100vw;
         height: 100vh;
-        transition: transform 0.3s ease, opacity 0.4s ease;
+        transition:
+          transform 0.3s ease,
+          opacity 0.4s ease;
       }
       .sBox {
         display: flex;
@@ -1356,8 +1412,8 @@
       .back:active {
         background: rgba(255, 255, 255, 0.2);
       }
-      #backMaps{
-        left : 0.75em;
+      #backMaps {
+        left: 0.75em;
       }
       #configTitle {
         display: flex;
@@ -1993,7 +2049,7 @@
         align-items: center;
         justify-content: center;
         position: fixed;
-        pointer-events:none;
+        pointer-events: none;
         z-index: 60;
         opacity: 0;
         top: calc(2.2em + env(safe-area-inset-top));
@@ -2046,7 +2102,7 @@
 
       /* État cliquable */
       .btn-carte.cliquable {
-        pointer-events : all;
+        pointer-events: all;
         gap: 0.5em;
         opacity: 1;
         padding: 0.4em 0.8em;
@@ -2211,8 +2267,8 @@
         border: 1px solid rgba(80, 230, 140, 0.4);
         box-shadow: 0 4px 15px rgba(30, 180, 100, 0.4);
       }
-      .btn4Choix.goodMaps{
-         background: rgba(37, 168, 98, 0.35);
+      .btn4Choix.goodMaps {
+        background: rgba(37, 168, 98, 0.35);
         border: 1px solid rgba(80, 230, 140, 0.4);
         box-shadow: 0 4px 15px rgba(30, 180, 100, 0.4);
       }
@@ -2227,7 +2283,6 @@
         border: 1px solid rgba(255, 100, 100, 0.4);
         box-shadow: 0 4px 15px rgba(200, 50, 50, 0.4);
       }
-     
 
       .btn4Choix.none {
         filter: brightness(70%) saturate(50%);
@@ -3862,14 +3917,75 @@
           </div>
 
           <div class="ligneInCadre"></div>
-          <p class="appartenance-title">Appartenances</p>
+          <!--Menu Cadre-->
+          <div class="menuCadre">
+            <div
+              class="boxMenuCadre active"
+              id="orgaMenu"
+              onclick="selectMenuCadre('orgaMenu')"
+            >
+              <svg
+                class="iconMenuCadre"
+                xmlns="http://www.w3.org/2000/svg"
+                id="Outline"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.647,7H17.426a19.676,19.676,0,0,0-2.821-4.644A10.031,10.031,0,0,1,20.647,7ZM16.5,12a10.211,10.211,0,0,1-.476,3H7.976A10.211,10.211,0,0,1,7.5,12a10.211,10.211,0,0,1,.476-3h8.048A10.211,10.211,0,0,1,16.5,12ZM8.778,17h6.444A19.614,19.614,0,0,1,12,21.588,19.57,19.57,0,0,1,8.778,17Zm0-10A19.614,19.614,0,0,1,12,2.412,19.57,19.57,0,0,1,15.222,7ZM9.4,2.356A19.676,19.676,0,0,0,6.574,7H3.353A10.031,10.031,0,0,1,9.4,2.356ZM2.461,9H5.9a12.016,12.016,0,0,0-.4,3,12.016,12.016,0,0,0,.4,3H2.461a9.992,9.992,0,0,1,0-6Zm.892,8H6.574A19.676,19.676,0,0,0,9.4,21.644,10.031,10.031,0,0,1,3.353,17Zm11.252,4.644A19.676,19.676,0,0,0,17.426,17h3.221A10.031,10.031,0,0,1,14.605,21.644ZM21.539,15H18.1a12.016,12.016,0,0,0,.4-3,12.016,12.016,0,0,0-.4-3h3.437a9.992,9.992,0,0,1,0,6Z"
+                />
+              </svg>
 
-          <div id="cadreOrga">
-            <div class="itemOrga">UE</div>
-            <div class="itemOrga">OPEP</div>
-            <div class="itemOrga">OPEP</div>
-            <div class="itemOrga">OPEP</div>
+              <div class="txtMenuCadre" id="txtOrgaMenu">Appartenance</div>
+            </div>
+
+            <div
+              class="boxMenuCadre"
+              id="contoursMenu"
+              onclick="selectMenuCadre('contoursMenu')"
+            >
+              <svg
+                class="iconMenuCadre"
+                viewBox="0 0 141 141"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_166_29)">
+                  <path
+                    d="M123.375 35.25C115.585 29.4102 106.96 24.7749 97.7894 21.5143L85.1405 17.014L85.164 13.395C85.1816 10.5339 83.7599 7.86075 81.3805 6.2745C78.3842 4.277 74.4539 4.38275 71.5692 6.54475L64.6309 11.75H58.7559L53.3509 3.94213C51.606 1.41588 48.7625 1.0255e-06 45.825 1.0255e-06C44.0155 -0.093999 41.8241 0.887126 40.138 1.5275C36.6306 2.867 34.2689 6.22163 34.263 9.97575C34.263 12.7253 35.3029 17.4135 34.122 17.8483C33.981 17.9011 33.8341 17.9246 33.6814 17.9246C32.4711 17.9246 31.0141 16.3443 29.7216 14.4995C28.4174 12.6313 26.3317 11.609 24.2167 11.609C22.9654 11.609 21.7022 11.9674 20.5742 12.7135C18.7295 13.9414 17.625 16.0094 17.625 18.2243V32.3008L10.0815 37.9584C7.43775 39.9441 5.875 43.0579 5.875 46.3655C5.875 50.3488 8.12512 53.9854 11.6854 55.7655C14.1352 56.964 17.2842 58.9028 20.1042 58.7383H35.25V64.6133C35.25 67.8563 37.882 70.4883 41.125 70.4883H47V76.3633C47 79.3008 49.9375 82.2383 52.875 82.2383V89.6231C52.875 94.2996 54.7315 98.7822 58.0391 102.084L64.625 108.67V114.545C64.625 114.545 58.9791 117.988 55.8125 120.42C52.3697 123.064 51.8586 128.146 54.7844 131.347C56.8641 133.627 61.2057 136.87 63.6086 138.815C67.2981 141.805 72.7149 141.74 76.1811 138.403C80.746 134.003 87.2144 124.209 89.8229 113.963C91.9731 106.238 94.8519 100.85 102.818 99.8574C105.063 99.5754 117.506 91.7322 117.506 73.4199V70.4824C119.509 68.479 126.254 63.9024 130.836 60.1541C133.562 57.9216 135.137 54.5905 135.137 51.0596V46.9824C135.137 40.4905 129.873 35.2324 123.387 35.2324L123.375 35.25ZM116.924 56.0123C113.188 58.7853 110.82 60.5654 109.187 62.1928C106.102 65.0656 105.491 69.4249 105.744 73.4375C105.744 82.8962 101.009 87.2908 99.358 88.5304C83.8656 91.5266 79.9822 105.462 78.4195 111.085C77.7674 113.64 76.798 116.172 75.6759 118.534C76.1282 117.277 76.3691 115.937 76.3691 114.557V108.682C76.3691 105.568 75.1295 102.577 72.9264 100.374L66.3405 93.7885C65.2301 92.6781 64.6191 91.2035 64.6191 89.6349V82.25C64.6191 77.9025 62.2574 74.1014 58.7441 72.0745V70.5C58.7441 64.0081 53.486 58.75 46.9941 58.75C46.9941 52.2581 41.736 47 35.2441 47H20.398L18.7354 46.1657L24.675 41.7125C27.636 39.4917 29.375 36.0079 29.375 32.3125V28.9755C30.6734 29.4161 32.1069 29.6805 33.6755 29.6805C35.203 29.6805 36.7011 29.4161 38.1346 28.8991C45.7016 26.1496 46.5006 18.9469 46.3537 14.4995L49.0856 18.4475C51.2829 21.62 54.8901 23.5117 58.7441 23.5117H64.6191C67.163 23.5117 69.6364 22.6893 71.6691 21.1618L73.6784 19.6519C74.5596 23.5059 77.3561 26.7254 81.1925 28.0943L93.8414 32.5945C101.908 35.4615 109.469 39.5211 116.319 44.6618C118.352 46.1893 120.825 47.0117 123.369 47.0117V51.089C121.524 52.6048 119.186 54.3438 116.918 56.024L116.924 56.0123Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_166_29">
+                    <rect width="141" height="141" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <div class="txtMenuCadre">Contours</div>
+            </div>
+
+            <div
+              class="boxMenuCadre"
+              id="blasonMenu"
+              onclick="selectMenuCadre('blasonMenu')"
+            >
+              <svg
+                class="iconMenuCadre"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <g id="_01_align_center" data-name="01 align center">
+                  <path
+                    d="M19.949,2.644,12,.009,4.051,2.644A2.982,2.982,0,0,0,2,5.476V12c0,7.524,9.2,11.679,9.594,11.852l.354.157.368-.122C12.711,23.755,22,20.577,22,12V5.476A2.983,2.983,0,0,0,19.949,2.644ZM20,12c0,6.263-6.349,9.216-7.953,9.861C10.44,21.058,4,17.494,4,12V5.476a.994.994,0,0,1,.684-.944L12,2.106l7.316,2.426A.992.992,0,0,1,20,5.476Z"
+                  />
+                </g>
+              </svg>
+
+              <div class="txtMenuCadre">Blason</div>
+            </div>
           </div>
+
+          <div id="cadreOrga"></div>
 
           <div class="ligneInCadre"></div>
           <div id="gridCadre">
@@ -5724,28 +5840,28 @@
                   if (c === cBoxHasard) {
                     c.innerHTML = ` <img class="drapeau4Choix"  src="https://flagcdn.com/${idBonneReponse.toLowerCase()}.svg" draggable="false" alt="">`;
                   }
-                  L_reponse.push(c===cBoxHasard? idBonneReponse: p_id);
+                  L_reponse.push(c === cBoxHasard ? idBonneReponse : p_id);
                   reponseFound = true;
                 } else if (L_config.r === "nomR") {
                   c.textContent = L_q[p_id].n;
                   if (c === cBoxHasard) {
                     c.textContent = L_q[idBonneReponse].n;
                   }
-                  L_reponse.push(c===cBoxHasard? idBonneReponse: p_id);
+                  L_reponse.push(c === cBoxHasard ? idBonneReponse : p_id);
                   reponseFound = true;
                 } else if (L_config.r === "capitaleR" && L_q[p_id].c != null) {
                   c.textContent = L_q[p_id].c;
                   if (c === cBoxHasard) {
                     c.textContent = L_q[idBonneReponse].c;
                   }
-                  L_reponse.push(c===cBoxHasard? idBonneReponse: p_id);
+                  L_reponse.push(c === cBoxHasard ? idBonneReponse : p_id);
                   reponseFound = true;
                 } else if (L_config.r === "contourR") {
                   c.innerHTML = ` <img class="drapeau4Choix"  src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${p_id.toLowerCase()}/vector.svg" draggable="false" alt="">`;
                   if (c === cBoxHasard) {
                     c.innerHTML = ` <img class="drapeau4Choix"  src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${idBonneReponse.toLowerCase()}/vector.svg" draggable="false" alt="">`;
                   }
-                  L_reponse.push(c===cBoxHasard? idBonneReponse: p_id);
+                  L_reponse.push(c === cBoxHasard ? idBonneReponse : p_id);
                   reponseFound = true;
                 }
 
@@ -6060,10 +6176,11 @@
           btn.style.filter = "";
         });
 
-
         btn.addEventListener("click", () => {
-          zoomCountry(idProps_m.get(btn))
-          if(viewMaps){return}
+          zoomCountry(idProps_m.get(btn));
+          if (viewMaps) {
+            return;
+          }
           pauseChrono();
           fillContentPm(idProps_m.get(btn), idBonneReponse);
           activerCarte();
@@ -6129,41 +6246,44 @@
         getC(".globe"),
         getId("mCadre"),
         getId("backMaps"),
-        getId("cadre")
+        getId("cadre"),
       ];
-      getId("backMaps").addEventListener('click',()=>{cacherMaps();activerCarte() })
+      getId("backMaps").addEventListener("click", () => {
+        cacherMaps();
+        activerCarte();
+      });
       //z-index des éléments de maps dans 4 choix
-     
-
 
       let classBtnNext; // Class du cadre de btnNext
       let viewMaps = false;
 
-      function zoomCountry(p_id){
-        if(!viewMaps){return}
-        currentCountry = document.getElementById(p_id)
-        document.querySelector('svg.monde').appendChild(currentCountry)
+      function zoomCountry(p_id) {
+        if (!viewMaps) {
+          return;
+        }
+        currentCountry = document.getElementById(p_id);
+        document.querySelector("svg.monde").appendChild(currentCountry);
         const svgMonde = document.getElementById("svgMonde");
 
-            const b = getId(p_id).getBBox();
-            const pad = Math.max(b.width, b.height) * 1.3;
+        const b = getId(p_id).getBBox();
+        const pad = Math.max(b.width, b.height) * 1.3;
 
-            // Limites de zoom (en unités viewBox)
-            const MIN_SIZE = 50; // zoom max : pas plus petit que ça
-            const MAX_SIZE = initialViewBox[2]; // zoom min : pas plus grand que le SVG initial
+        // Limites de zoom (en unités viewBox)
+        const MIN_SIZE = 50; // zoom max : pas plus petit que ça
+        const MAX_SIZE = initialViewBox[2]; // zoom min : pas plus grand que le SVG initial
 
-            const cx = b.x + b.width / 2;
-            const cy = b.y + b.height / 2;
+        const cx = b.x + b.width / 2;
+        const cy = b.y + b.height / 2;
 
-            let w = Math.min(Math.max(b.width + 2 * pad, MIN_SIZE), MAX_SIZE);
-            let h = Math.min(Math.max(b.height + 2 * pad, MIN_SIZE), MAX_SIZE);
+        let w = Math.min(Math.max(b.width + 2 * pad, MIN_SIZE), MAX_SIZE);
+        let h = Math.min(Math.max(b.height + 2 * pad, MIN_SIZE), MAX_SIZE);
 
-            const targetViewBox = [cx - w / 2, cy - h / 2, w, h];
+        const targetViewBox = [cx - w / 2, cy - h / 2, w, h];
 
-            animateViewBox(svgMonde, targetViewBox, 700);
-            setTimeout(() => {
-            countryClick(p_id,getId(p_id).getAttribute('title'),getId(p_id))              
-            }, 10);
+        animateViewBox(svgMonde, targetViewBox, 700);
+        setTimeout(() => {
+          countryClick(p_id, getId(p_id).getAttribute("title"), getId(p_id));
+        }, 10);
       }
       function afficherMaps() {
         viewMaps = true;
@@ -6174,17 +6294,17 @@
           b.style.pointerEvents = "none";
         });
         //Afficher maps
-        document.querySelector('.globe').style.opacity = "0"
+        document.querySelector(".globe").style.opacity = "0";
         setTimeout(() => {
-        document.querySelector('.globe').style.opacity = "1"
+          document.querySelector(".globe").style.opacity = "1";
         }, 10);
-        L_addMaps.forEach((m) => {          
+        L_addMaps.forEach((m) => {
           document.getElementById("phone4Choix").appendChild(m);
         });
-        L_addMaps[0].style.zIndex="10";
-        L_addMaps[1].style.zIndex="20";
-        L_addMaps[2].style.zIndex="30";
-        L_addMaps[3].style.zIndex="50";
+        L_addMaps[0].style.zIndex = "10";
+        L_addMaps[1].style.zIndex = "20";
+        L_addMaps[2].style.zIndex = "30";
+        L_addMaps[3].style.zIndex = "50";
         paths.forEach((p) => {
           if (L_reponse.includes(p.id)) {
             if (p.id === idBonneReponse) {
@@ -6201,9 +6321,8 @@
               });
             }
           } else {
-            idVisible_m.get(p.id).continent = false
+            idVisible_m.get(p.id).continent = false;
           }
-
         });
 
         classBtnNext = document.querySelector(".cadreNext").className;
@@ -6212,37 +6331,49 @@
         //afficher les classes normales des btn4Choix
 
         btns4Choix.forEach((btn) => {
-          if(btn.classList.contains("good")){btn.classList.add('goodMaps')}
-          else if(btn.classList.contains("bad")){btn.classList.add('badMaps')}
+          if (btn.classList.contains("good")) {
+            btn.classList.add("goodMaps");
+          } else if (btn.classList.contains("bad")) {
+            btn.classList.add("badMaps");
+          }
 
-          btn.classList.remove("good", "bad", "none");          
+          btn.classList.remove("good", "bad", "none");
         });
 
-        //Dézoomer 
+        //Dézoomer
         setTimeout(() => {
-        animateViewBox(document.getElementById("svgMonde"), initialViewBox, 700);          
+          animateViewBox(
+            document.getElementById("svgMonde"),
+            initialViewBox,
+            700,
+          );
         }, 10);
-
       }
 
-      function cacherMaps(){
-        if (!viewMaps){return}
-        toggleC(false)
+      function cacherMaps() {
+        if (!viewMaps) {
+          return;
+        }
+        toggleC(false);
         viewMaps = false;
-        btns4Choix.forEach(b=>{
-          b.classList.remove("goodMaps","badMaps")
-          b.classList.add(D_classBtn4Choix[b.id])
-        })
-        L_addMaps.forEach(p=>{Maps.appendChild(p)})
-        L_replace.forEach(p=>{
-          p.style.opacity = "1";  
+        btns4Choix.forEach((b) => {
+          b.classList.remove("goodMaps", "badMaps");
+          b.classList.add(D_classBtn4Choix[b.id]);
+        });
+        L_addMaps.forEach((p) => {
+          Maps.appendChild(p);
+        });
+        L_replace.forEach((p) => {
+          p.style.opacity = "1";
           p.style.pointerEvents = "all";
           p.style.zIndex = "";
-        })
-        paths.forEach(p=>{idVisible_m.get(p.id).continent = true; pColor_m.get(p).current = colorPath})
-        activerCarte()
-        cadreNext.className = classBtnNext 
-        
+        });
+        paths.forEach((p) => {
+          idVisible_m.get(p.id).continent = true;
+          pColor_m.get(p).current = colorPath;
+        });
+        activerCarte();
+        cadreNext.className = classBtnNext;
       }
       //Remplir contentPm
 
@@ -6463,7 +6594,11 @@
       });
 
       map.addEventListener("click", () => {
-        animateViewBox(document.getElementById("svgMonde"), initialViewBox, 700);          
+        animateViewBox(
+          document.getElementById("svgMonde"),
+          initialViewBox,
+          700,
+        );
         Maps.appendChild(globe);
         phoneHome.style.display = "none";
         Maps.style.visibility = "visible";
@@ -6472,7 +6607,9 @@
 
       const backMaps = document.getElementById("backMaps");
       backMaps.addEventListener("click", () => {
-        if(viewMaps){return}
+        if (viewMaps) {
+          return;
+        }
         currentCountry = null;
         phoneHome.style.display = "flex";
         Maps.style.visibility = "";
@@ -6496,8 +6633,14 @@
       const titleCadre = document.getElementById("titleCadre");
       const capitales = document.querySelectorAll(".capitaleLabel");
 
-      const titlesCadre = document.querySelectorAll(".titleCadre");
+      const orgaMenu = document.getElementById("orgaMenu");
+      const contoursMenu = document.getElementById("contoursMenu");
+      const blasonMenu = document.getElementById("blasonMenu");
+      const menusCadre = document.querySelectorAll(".boxMenuCadre");
+      const txtsMenuCadre = document.querySelectorAll(".txtMenuCadre");
+      document.getElementById('txtOrgaMenu').style.maxWidth = document.getElementById('txtOrgaMenu').scrollWidth +"px";
 
+      const titlesCadre = document.querySelectorAll(".titleCadre");
       const txtsCelCadre = document.querySelectorAll(".txtCelCadre");
       const population = document.getElementById("population");
       const superficie = document.getElementById("superficie");
@@ -6514,11 +6657,22 @@
       const religion = document.getElementById("religion");
       const fuseaux = document.getElementById("fuseaux");
 
-      //const iconInfoCadre = document.querySelectorAll(".infoCadre");
-
-      /*iconInfoCadre.forEach((i) => {
-        i.querySelector("svg").style.flexShrink = "0";
-      });*/
+      function selectMenuCadre(m_id) {
+        menusCadre.forEach((m) => {
+          if (m.id === m_id) {
+            m.classList.add("active");
+          } else {
+            m.classList.remove("active");
+          }
+        });
+        txtsMenuCadre.forEach((t) => {
+          if (t.parentNode.id === m_id) {
+            t.style.maxWidth = t.scrollWidth + "px";
+          } else {
+            t.style.maxWidth = "0px";
+          }
+        });
+      }
 
       function scalemCadre(scale) {
         if (scale) {
@@ -12698,7 +12852,7 @@
           return;
         }
         currentCountry = country;
-        document.querySelector('svg.monde').appendChild(country)
+        document.querySelector("svg.monde").appendChild(country);
 
         toggleC(true);
         const id = country.id;
@@ -12861,18 +13015,22 @@
 
       function colorCurrentCountry() {
         globe.querySelectorAll("path").forEach((p) => {
-          if (p === currentCountry && currentCountry != null) {            
-            if(viewMaps){p.style.stroke = "white"}
-            else{p.style.stroke="rgba(255,210,50,1)"}
+          if (p === currentCountry && currentCountry != null) {
+            if (viewMaps) {
+              p.style.stroke = "white";
+            } else {
+              p.style.stroke = "rgba(255,210,50,1)";
+            }
             highlightCountry(p);
           } else if (p !== currentCountryHover) {
             const status = idVisible_m.get(p.id);
             const visible = status && Object.values(status).every(Boolean);
             p.style.fill = visible ? pColor_m.get(p).current : "";
 
-            if (p !== currentCountry) {p.removeAttribute("filter");
-            p.style.stroke = "";
-          }
+            if (p !== currentCountry) {
+              p.removeAttribute("filter");
+              p.style.stroke = "";
+            }
           }
         });
         requestAnimationFrame(colorCurrentCountry);
@@ -12880,8 +13038,47 @@
       colorCurrentCountry();
 
       //abcd
-      function countryClick(id, name, element) {        
-        toggleC(element.id===currentCountry.id);
+
+      function fillCadreOrga(p_id) {
+        const p = document.getElementById(p_id);
+        let L_orga = [
+          "onu",
+          "moyenOrient",
+          "g7",
+          "opepplus",
+          "exURSS",
+          "ligueArabe",
+          "unesco",
+          "banqueMondiale",
+          "unionAfricaine",
+          "fmi",
+        ];
+
+        let D_orga = {
+          onu: "ONU",
+          moyenOrient: "Moyent Orient",
+          g7: "G7",
+          opepplus: "OPEP+",
+          exURSS: "Ex-URSS",
+          ligueArabe: "Ligue arabe",
+          unesco: "UNESCO",
+          banqueMondiale: "Banque mondiale",
+          unionAfricaine: "Union africaine",
+          fmi: "FMI",
+        };
+
+        L_orga.forEach((o) => {
+
+          if (P_info[p.id][o]) {
+            const orga = document.createElement("div");
+            orga.className = "itemOrga";
+            orga.textContent = D_orga[o]
+            document.getElementById('cadreOrga').appendChild(orga)
+          }
+        });
+      }
+      function countryClick(id, name, element) {
+        toggleC(element.id === currentCountry.id);
         //Élément déjà là : region, subregion, independant, population,pib,co2e,gouvernement,religion,fuseaux,dateInde
         // On construit l'URL de l'API avec le nom du pays
         const url = `https://restcountries.com/v3.1/alpha/${id}`;
@@ -12890,7 +13087,8 @@
 
         mDrapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
         drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
-
+        document.getElementById('cadreOrga').innerHTML=``
+        fillCadreOrga(id)
         Promise.all([
           new Promise((res) => {
             if (mDrapeauCadre.complete) res();
@@ -13350,7 +13548,7 @@
 
             cadre.style.pointerEvents = "";
             const country = svg.querySelector(`path[title="${r.t}"]`);
-            document.querySelector('svg.monde').appendChild(country)
+            document.querySelector("svg.monde").appendChild(country);
             currentCountry = country;
 
             // Zoom sur country
