@@ -362,9 +362,7 @@
         width: 100%;
 
         padding-top: calc(env(safe-area-inset-top) + 0.6em);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-left: calc(env(safe-area-inset-left) + 0.6em);
-        padding-right: calc(env(safe-area-inset-right) + 0.6em);
+        padding-bottom: env(safe-area-inset-bottom);       
       }
       #cadreDrapeau {
         display: flex;
@@ -429,11 +427,12 @@
 
       .menuCadre {
         display: flex;
-        position : relative;
+        position: relative;
         justify-content: space-around;
         align-items: center;
         user-select: none;
-        box-sizing:border-box;
+        box-sizing: border-box;
+        margin : 0em -10em;
         flex-shrink: 0;
         gap: 0.2em;
         width: 100%;
@@ -443,33 +442,19 @@
         fill: white;
         color: white;
       }
-      .menuCadre::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-}
 
       .boxMenuCadre {
         display: flex;
         position: relative;
         justify-content: center;
-        align-items:center;
+        align-items: center;
         flex-wrap: nowrap;
         flex: 1;
         cursor: pointer;
         border-radius: 0.2em;
         padding: 0em 0.2em;
         gap: 0.6em;
-        height : 100%;
+        height: 100%;
         transition: background 0.4s ease;
       }
       .boxMenuCadre.active {
@@ -526,35 +511,33 @@
         background: rgba(26, 74, 138, 1);
       }
 
-          #cadreContours{
+      #cadreContours {
         display: none;
         justify-content: center;
         align-items: center;
-        min-height : 4em;
+        min-height: 4em;
         height: auto;
         width: 100%;
       }
-      .itemContours svg{
-        min-height : 10em;
-        max-height : 12em;
-         fill: white;
-      }    
+      .itemContours svg {
+        min-height: 10em;
+        max-height: 12em;
+        fill: white;
+      }
 
-      #cadreBlason{
+      #cadreBlason {
         display: none;
         justify-content: center;
         align-items: center;
         height: auto;
-        min-height : 4em;
+        min-height: 4em;
         width: 100%;
         gap: 0.6em;
         padding: 1em;
       }
-      .itemBlason{        
-        max-height : 5em;
+      .itemBlason {
+        max-height: 5em;
       }
-
-
 
       #gridCadre {
         display: grid;
@@ -575,6 +558,7 @@
       }
       .celCadre {
         display: flex;
+        margin-left : 0.6em;
         padding-top: 0.2em;
         flex-wrap: nowrap;
         height: 100%;
@@ -4033,13 +4017,11 @@
           </div>
 
           <div id="cadreOrga"></div>
-          <div id="cadreContours">
-          </div>
-          
-          <div id="cadreBlason">
-          <img src="" class="itemBlason" alt="">
-          </div>
+          <div id="cadreContours"></div>
 
+          <div id="cadreBlason">
+            <img src="" class="itemBlason" alt="" />
+          </div>
 
           <div class="ligneInCadre"></div>
           <div id="gridCadre">
@@ -6686,15 +6668,16 @@
       const drapeauCadre = document.getElementById("drapeauCadre");
       const titleCadre = document.getElementById("titleCadre");
       const capitales = document.querySelectorAll(".capitaleLabel");
-      const itemBlason = document.querySelector('.itemBlason')
-      const cadreContours = document.getElementById('cadreContours')
+      const itemBlason = document.querySelector(".itemBlason");
+      const cadreContours = document.getElementById("cadreContours");
 
       const orgaMenu = document.getElementById("orgaMenu");
       const contoursMenu = document.getElementById("contoursMenu");
       const blasonMenu = document.getElementById("blasonMenu");
       const menusCadre = document.querySelectorAll(".boxMenuCadre");
       const txtsMenuCadre = document.querySelectorAll(".txtMenuCadre");
-      document.getElementById('txtOrgaMenu').style.maxWidth = document.getElementById('txtOrgaMenu').scrollWidth +"px";
+      document.getElementById("txtOrgaMenu").style.maxWidth =
+        document.getElementById("txtOrgaMenu").scrollWidth + "px";
 
       const titlesCadre = document.querySelectorAll(".titleCadre");
       const txtsCelCadre = document.querySelectorAll(".txtCelCadre");
@@ -6714,20 +6697,19 @@
       const fuseaux = document.getElementById("fuseaux");
 
       function selectMenuCadre(m_id) {
-      let D_cadreMenu = {
-                orgaMenu : "cadreOrga",
-                contoursMenu : "cadreContours",
-                blasonMenu : "cadreBlason"
-              }
-        document.getElementById(D_cadreMenu[m_id]).style.display = "flex"
+        let D_cadreMenu = {
+          orgaMenu: "cadreOrga",
+          contoursMenu: "cadreContours",
+          blasonMenu: "cadreBlason",
+        };
+        document.getElementById(D_cadreMenu[m_id]).style.display = "flex";
 
         menusCadre.forEach((m) => {
           if (m.id === m_id) {
-
             m.classList.add("active");
           } else {
-            document.getElementById(D_cadreMenu[m.id]).style.display = "none"
-            m.classList.remove("active");            
+            document.getElementById(D_cadreMenu[m.id]).style.display = "none";
+            m.classList.remove("active");
           }
         });
         txtsMenuCadre.forEach((t) => {
@@ -6737,10 +6719,6 @@
             t.style.maxWidth = "0px";
           }
         });
-
-       
-
-
       }
 
       function scalemCadre(scale) {
@@ -13137,12 +13115,11 @@
         };
 
         L_orga.forEach((o) => {
-
           if (P_info[p.id][o]) {
             const orga = document.createElement("div");
             orga.className = "itemOrga";
-            orga.textContent = D_orga[o]
-            document.getElementById('cadreOrga').appendChild(orga)
+            orga.textContent = D_orga[o];
+            document.getElementById("cadreOrga").appendChild(orga);
           }
         });
       }
@@ -13153,22 +13130,30 @@
         const url = `https://restcountries.com/v3.1/alpha/${id}`;
         mDrapeauCadre.src = ``;
         drapeauCadre.src = ``;
-        itemBlason.src = ``,
-        cadreContours.innerHTML =``
+        ((itemBlason.src = ``), (cadreContours.innerHTML = ``));
 
         mDrapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
         drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
-       fetch(`https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`)
-  .then(r => r.text())
-  .then(svg => {
-    const div = document.createElement('div');
-    div.className = "itemContours";
-    div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
-    cadreContours.appendChild(div);
-  });
 
-        document.getElementById('cadreOrga').innerHTML=``
-        fillCadreOrga(id)
+        fetch(
+          `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`,
+        )
+          .then((r) => r.text())
+          .then((svg) => {
+            const div = document.createElement("div");
+            div.className = "itemContours";
+            div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
+            cadreContours.appendChild(div);
+            const svgEl = div.querySelector("svg");
+            const bbox = svgEl.getBBox();
+            svgEl.setAttribute(
+              "viewBox",
+              `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`,
+            );
+          });
+
+        document.getElementById("cadreOrga").innerHTML = ``;
+        fillCadreOrga(id);
         Promise.all([
           new Promise((res) => {
             if (mDrapeauCadre.complete) res();
@@ -13210,7 +13195,6 @@
 
             const info = data[0]; // L'API renvoie un tableau, on prend le 1er résultat
             itemBlason.src = info.coatOfArms.svg || info.coatOfArms.png || "";
-
 
             devise.textContent =
               Object.values(info.currencies)[0].name +
