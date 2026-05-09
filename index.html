@@ -13138,7 +13138,10 @@
         drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
 
        fetch(`https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`)
-  .then((r) => r.text())
+  .then((r) => {
+    if (!r.ok) throw new Error();
+    return r.text();
+  })
   .then((svg) => {
     const div = document.createElement("div");
     div.className = "itemContours";
@@ -13154,6 +13157,9 @@
       svgEl.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
       if (wasHidden) cadreContours.style.display = '';
     }, 0);
+  })
+  .catch(() => {
+    cadreContours.innerHTML = '<p style="color:white;opacity:0.6">Non disponible</p>';
   });
 
         document.getElementById("cadreOrga").innerHTML = ``;
