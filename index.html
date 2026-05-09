@@ -488,7 +488,7 @@
       }
 
       #cadreOrga {
-        display: none;
+        display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
@@ -513,6 +513,7 @@
         display: none;
         justify-content: center;
         align-items: center;
+        min-height : 4em;
         height: auto;
         width: 100%;
         gap: 0.6em;
@@ -521,12 +522,12 @@
       .itemContours{
         max-height : 5em;
       }         
-      .itemBlason path {fill: rgb(255, 255, 255);}
       #cadreBlason{
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         height: auto;
+        min-height : 4em;
         width: 100%;
         gap: 0.6em;
         padding: 1em;
@@ -534,6 +535,7 @@
       .itemBlason{        
         max-height : 5em;
       }
+
 
 
       #gridCadre {
@@ -4015,11 +4017,11 @@
 
           <div id="cadreOrga"></div>
           <div id="cadreContours">
-          <img src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/mq/vector.svg" class="itemContours" alt="">
+          <img src="" class="itemContours" alt="">
           </div>
           
           <div id="cadreBlason">
-          <img src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/mq/vector.svg" class="itemBlason" alt="">
+          <img src="" class="itemBlason" alt="">
           </div>
 
 
@@ -6668,6 +6670,8 @@
       const drapeauCadre = document.getElementById("drapeauCadre");
       const titleCadre = document.getElementById("titleCadre");
       const capitales = document.querySelectorAll(".capitaleLabel");
+      const itemBlason = document.querySelector('.itemBlason')
+      const itemContours = document.querySelector('.itemContours')
 
       const orgaMenu = document.getElementById("orgaMenu");
       const contoursMenu = document.getElementById("contoursMenu");
@@ -6694,11 +6698,20 @@
       const fuseaux = document.getElementById("fuseaux");
 
       function selectMenuCadre(m_id) {
+      let D_cadreMenu = {
+                orgaMenu : "cadreOrga",
+                contoursMenu : "cadreContours",
+                blasonMenu : "cadreBlason"
+              }
+        document.getElementById(D_cadreMenu[m_id]).style.display = "flex"
+
         menusCadre.forEach((m) => {
           if (m.id === m_id) {
+
             m.classList.add("active");
           } else {
-            m.classList.remove("active");
+            document.getElementById(D_cadreMenu[m.id]).style.display = "none"
+            m.classList.remove("active");            
           }
         });
         txtsMenuCadre.forEach((t) => {
@@ -6708,6 +6721,10 @@
             t.style.maxWidth = "0px";
           }
         });
+
+       
+
+
       }
 
       function scalemCadre(scale) {
@@ -13120,9 +13137,12 @@
         const url = `https://restcountries.com/v3.1/alpha/${id}`;
         mDrapeauCadre.src = ``;
         drapeauCadre.src = ``;
+        itemBlason.src = ``,
+        itemContours.src = ``,
 
         mDrapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
         drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
+        itemContours.src = `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`
         document.getElementById('cadreOrga').innerHTML=``
         fillCadreOrga(id)
         Promise.all([
@@ -13165,6 +13185,8 @@
             /*Faire descendre le nom (car pour le Niger, ça dépasse)*/
 
             const info = data[0]; // L'API renvoie un tableau, on prend le 1er résultat
+            itemBlason.src = info.coatOfArms.svg || info.coatOfArms.png || "";
+
 
             devise.textContent =
               Object.values(info.currencies)[0].name +
