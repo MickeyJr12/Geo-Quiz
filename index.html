@@ -517,11 +517,12 @@
         height: auto;
         width: 100%;
         gap: 0.6em;
-        padding: 1em;
       }
-      .itemContours{
+      .itemContours svg{
         max-height : 5em;
-      }         
+         fill: white;
+      }    
+
       #cadreBlason{
         display: none;
         justify-content: center;
@@ -4017,7 +4018,6 @@
 
           <div id="cadreOrga"></div>
           <div id="cadreContours">
-          <img src="" class="itemContours" alt="">
           </div>
           
           <div id="cadreBlason">
@@ -6671,7 +6671,7 @@
       const titleCadre = document.getElementById("titleCadre");
       const capitales = document.querySelectorAll(".capitaleLabel");
       const itemBlason = document.querySelector('.itemBlason')
-      const itemContours = document.querySelector('.itemContours')
+      const cadreContours = document.getElementById('cadreContours')
 
       const orgaMenu = document.getElementById("orgaMenu");
       const contoursMenu = document.getElementById("contoursMenu");
@@ -13138,11 +13138,19 @@
         mDrapeauCadre.src = ``;
         drapeauCadre.src = ``;
         itemBlason.src = ``,
-        itemContours.src = ``,
+        cadreContours.innerHTML =``
 
         mDrapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
         drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
-        itemContours.src = `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`
+       fetch(`https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`)
+  .then(r => r.text())
+  .then(svg => {
+    const div = document.createElement('div');
+    div.className = "itemContours";
+    div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
+    cadreContours.appendChild(div);
+  });
+
         document.getElementById('cadreOrga').innerHTML=``
         fillCadreOrga(id)
         Promise.all([
