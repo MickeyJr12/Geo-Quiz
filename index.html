@@ -13123,6 +13123,7 @@
           }
         });
       }
+
       function countryClick(id, name, element) {
         toggleC(element.id === currentCountry.id);
         //Élément déjà là : region, subregion, independant, population,pib,co2e,gouvernement,religion,fuseaux,dateInde
@@ -13135,22 +13136,24 @@
         mDrapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
         drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
 
-        fetch(
-          `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`,
-        )
-          .then((r) => r.text())
-          .then((svg) => {
-            const div = document.createElement("div");
-            div.className = "itemContours";
-            div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
-            cadreContours.appendChild(div);
-            const svgEl = div.querySelector("svg");
-            const bbox = svgEl.getBBox();
-            svgEl.setAttribute(
-              "viewBox",
-              `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`,
-            );
-          });
+       fetch(`https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`)
+  .then((r) => r.text())
+  .then((svg) => {
+    const div = document.createElement("div");
+    div.className = "itemContours";
+    div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
+    cadreContours.appendChild(div);
+    const svgEl = div.querySelector("svg");
+    
+    const wasHidden = cadreContours.style.display === 'none' || getComputedStyle(cadreContours).display === 'none';
+    if (wasHidden) cadreContours.style.display = 'flex';
+    
+    setTimeout(() => {
+      const bbox = svgEl.getBBox();
+      svgEl.setAttribute("viewBox", `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`);
+      if (wasHidden) cadreContours.style.display = '';
+    }, 0);
+  });
 
         document.getElementById("cadreOrga").innerHTML = ``;
         fillCadreOrga(id);
