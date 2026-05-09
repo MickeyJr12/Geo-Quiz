@@ -376,7 +376,7 @@
         font-weight: 620;
         border-radius: 8px;
         width: 60%;
-        height: 5em; /* hauteur fixe */
+        height: 5.5em; /* hauteur fixe */
         max-height: 5em;
       }
 
@@ -433,9 +433,10 @@
         align-items: center;
         user-select: none;
         box-sizing:border-box;
+        flex-shrink: 0;
         gap: 0.2em;
         width: 100%;
-        height: 2.2em;
+        height: 2.5em;
         background: rgba(18, 117, 174, 0.3);
         fill: white;
         color: white;
@@ -487,13 +488,14 @@
       }
 
       #cadreOrga {
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         height: auto;
-        width: 80%;
+        width: 100%;
         gap: 0.6em;
+        padding-top: 0.6em;
       }
 
       .itemOrga {
@@ -506,6 +508,34 @@
         border-radius: 100px;
         background: rgba(26, 74, 138, 1);
       }
+
+          #cadreContours{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 100%;
+        gap: 0.6em;
+        padding: 1em;
+      }
+      .itemContours{
+        max-height : 5em;
+      }         
+      .itemBlason path {fill: rgb(255, 255, 255);}
+      #cadreBlason{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 100%;
+        gap: 0.6em;
+        padding: 1em;
+      }
+      .itemBlason{        
+        max-height : 5em;
+      }
+
+
       #gridCadre {
         display: grid;
         overflow-y: auto;
@@ -3984,6 +4014,14 @@
           </div>
 
           <div id="cadreOrga"></div>
+          <div id="cadreContours">
+          <img src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/mq/vector.svg" class="itemContours" alt="">
+          </div>
+          
+          <div id="cadreBlason">
+          <img src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/mq/vector.svg" class="itemBlason" alt="">
+          </div>
+
 
           <div class="ligneInCadre"></div>
           <div id="gridCadre">
