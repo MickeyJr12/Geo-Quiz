@@ -88,9 +88,9 @@
       display : flex;
       position : absolute;
       opacity : 0.5;
-      right : 0.5;
+      right : 0.5em;
       transform : rotate(8deg);
-      top : calc(4em + env(safe-area-inset-top));
+      top : calc(0.5em + env(safe-area-inset-top));
       width : auto;
       height : 4em; 
       animation : moonRotate 6s linear infinite;
@@ -130,8 +130,8 @@
     }
     #phoneRotate{
       position : absolute;
-      left : 5em;
-      bottom:5em;
+      left : calc(0.5em + env(safe-area-inset-top)) ;
+      bottom:1em;
       height : 4em;
       animation : opaPhone 2s linear infinite;
     }
@@ -6839,7 +6839,7 @@ media.addEventListener("change", (e) => {
     night ()
     intervSleep = setInterval(() => {
   sleep()
-}, 600);
+}, 900);
 
 
   } else {
