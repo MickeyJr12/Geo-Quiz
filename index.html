@@ -1422,9 +1422,9 @@
         margin-bottom: 0.2em;
         font-weight: 620;
         border-radius: 8px;
-        width: 60%;
-        height: 5.5em; /* hauteur fixe */
-        max-height: 5em;
+        width: 75%;
+        height: 7em; /* hauteur fixe */
+        max-height: 8em;
       }
 
       #drapeauBox {
@@ -15189,9 +15189,10 @@
         drapeauCadre.src = ``;
         ((itemBlason.src = ``), (cadreContours.innerHTML = ``));
 
-        mDrapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
-        drapeauCadre.src = `https://flagcdn.com/w320/${id.toLowerCase()}.png`;
-
+        mDrapeauCadre.src = `https://flagcdn.com/${id.toLowerCase()}.svg`;
+        
+        drapeauCadre.src = `https://flagcdn.com/${id.toLowerCase()}.svg`;
+        
         fetch(
           `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`,
         )
