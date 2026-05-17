@@ -673,34 +673,42 @@
       }
       .alphabet {
         display: flex;
-        flex-direction: column;
         position: fixed;
-        touch-action: none;
-        right: 0em;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-end;
+        align-items: center;
         box-sizing : border-box;
+        touch-action: none;
+        font-size: 0.8em;
+        right: 0em;
         top : 55%;
         transform: translateY(-50%);
         height: fit-content;
         width: 3em;
         padding: 1em 0em;
-        font-size: 0.8em;
         transition:
           gap 0.2s ease,
           font-size 0.2s ease;
       }
 
       .letter {
+        display : flex;
         cursor: pointer;
         box-sizing : border-box;
         justify-content : flex-end;
-        text-align : right;
-        padding-right : 0.6em;
-        width : 100%;
+        width : inherit;
         transform : scale(1);
         flex-shrink: 0;
-        transition : transform 0.2s ease;
+      }
+      .caseLetter{
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+         color: rgba(255, 255, 255, 0.35);
+        width : 3em;
+        height : auto;
+        transition : transform 0.2s ease, color 0.2s ease;
       }
       .arrowC {
         display: flex;
@@ -5060,32 +5068,32 @@
       </div>
       <div id="contentC">
         <div class="alphabet">
-  <div class="letter">A</div>
-  <div class="letter">B</div>
-  <div class="letter">C</div>
-  <div class="letter">D</div>
-  <div class="letter">E</div>
-  <div class="letter">F</div>
-  <div class="letter">G</div>
-  <div class="letter">H</div>
-  <div class="letter">I</div>
-  <div class="letter">J</div>
-  <div class="letter">K</div>
-  <div class="letter">L</div>
-  <div class="letter">M</div>
-  <div class="letter">N</div>
-  <div class="letter">O</div>
-  <div class="letter">P</div>
-  <div class="letter">Q</div>
-  <div class="letter">R</div>
-  <div class="letter">S</div>
-  <div class="letter">T</div>
-  <div class="letter">U</div>
-  <div class="letter">V</div>
-  <div class="letter">W</div>
-  <div class="letter">X</div>
-  <div class="letter">Y</div>
-  <div class="letter">Z</div>
+  <div class="letter"><div class="caseLetter">A</div></div>
+<div class="letter"><div class="caseLetter">B</div></div>
+<div class="letter"><div class="caseLetter">C</div></div>
+<div class="letter"><div class="caseLetter">D</div></div>
+<div class="letter"><div class="caseLetter">E</div></div>
+<div class="letter"><div class="caseLetter">F</div></div>
+<div class="letter"><div class="caseLetter">G</div></div>
+<div class="letter"><div class="caseLetter">H</div></div>
+<div class="letter"><div class="caseLetter">I</div></div>
+<div class="letter"><div class="caseLetter">J</div></div>
+<div class="letter"><div class="caseLetter">K</div></div>
+<div class="letter"><div class="caseLetter">L</div></div>
+<div class="letter"><div class="caseLetter">M</div></div>
+<div class="letter"><div class="caseLetter">N</div></div>
+<div class="letter"><div class="caseLetter">O</div></div>
+<div class="letter"><div class="caseLetter">P</div></div>
+<div class="letter"><div class="caseLetter">Q</div></div>
+<div class="letter"><div class="caseLetter">R</div></div>
+<div class="letter"><div class="caseLetter">S</div></div>
+<div class="letter"><div class="caseLetter">T</div></div>
+<div class="letter"><div class="caseLetter">U</div></div>
+<div class="letter"><div class="caseLetter">V</div></div>
+<div class="letter"><div class="caseLetter">W</div></div>
+<div class="letter"><div class="caseLetter">X</div></div>
+<div class="letter"><div class="caseLetter">Y</div></div>
+<div class="letter"><div class="caseLetter">Z</div></div>
 </div>
 
         <div class="itemC">
@@ -18005,37 +18013,44 @@ function sleep(){
       //Content Drapeaux
        
 
-      function scrollToLetter(el) {
-        if (!el || !el.classList.contains("letter")) return;
-        const target = document.getElementById(
-          "letter" + el.textContent.toUpperCase(),
-        );
-        if (target) target.scrollIntoView({ block: "start" });
-      }
+     function scrollToLetter(el) {
+  const letter = el?.closest(".letter");
+  if (!letter) return;
+  const target = document.getElementById("letter" + letter.textContent.trim().toUpperCase());
+  if (target) target.scrollIntoView({ block: "start" });
+}
 
-      alphabet.addEventListener("pointerdown", (e) => {
-        dragging = true;
-        alphabet.setPointerCapture(e.pointerId);
-        scrollToLetter(e.target);
-      });
+alphabet.addEventListener("pointerdown", (e) => {
+  alphabet.style.width ="100%"
+  dragging = true;
+  alphabet.setPointerCapture(e.pointerId);
+  scrollToLetter(e.target);
+});
 
-    alphabet.addEventListener("pointermove", (e) => {
+alphabet.addEventListener("pointermove", (e) => {
   if (!dragging) return;
   const el = document.elementFromPoint(e.clientX, e.clientY);
+  const letter = el?.closest(".letter");
 
-  if (el && el.classList.contains("letter")) {
-    letters.forEach(L => { L.style.transform = ""; });
-    el.style.transform = "scale(1.2) translateX(-0.6em)";
+  if (letter) {
+    letters.forEach(L => { L.querySelector(".caseLetter").style.transform = ""; });
+    letter.querySelector(".caseLetter").style.transform = "scale(1.2) translateX(-0.6em)";
+    letters.forEach(L => { L.querySelector(".caseLetter").style.color = "white"; });
+
   }
 
   scrollToLetter(el);
 });
       alphabet.addEventListener("pointerup", () => {
-        letters.forEach(L => { L.style.transform = ""; });
+        alphabet.style.width =""    
+        letters.forEach(L => { L.querySelector(".caseLetter").style.transform = ""; });
+        letters.forEach(L => { L.querySelector(".caseLetter").style.color = ""; });
         dragging = false;
       });
       alphabet.addEventListener("pointercancel", () => {
-        letters.forEach(L => { L.style.transform = ""; });
+        alphabet.style.width =""
+        letters.forEach(L => { L.querySelector(".caseLetter").style.transform = ""; });
+        letters.forEach(L => { L.querySelector(".caseLetter").style.color = ""; });
         dragging = false;
       });
 
