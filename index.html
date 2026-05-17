@@ -676,17 +676,15 @@
         flex-direction: column;
         position: fixed;
         touch-action: none;
-
         right: 0.1em;
         justify-content: center;
         align-items: center;
         top : 55%;
         transform: translateY(-50%);
-        height: 80%;
-        max-height: 50%;
-        width: 2em;
+        height: fit-content;
+        width: 6em;
         gap: 1px;
-        padding: 1em 1em;
+        padding: 1em 0em;
         font-size: 0.8em;
         transition:
           gap 0.2s ease,
@@ -695,6 +693,9 @@
 
       .letter {
         cursor: pointer;
+        justify-content:center;
+        text-align : center;
+        width : 100%;
         transform : scale(1);
         flex-shrink: 0;
         transition : transform 0.2s ease;
@@ -18028,9 +18029,11 @@ function sleep(){
   scrollToLetter(el);
 });
       alphabet.addEventListener("pointerup", () => {
+        letters.forEach(L => { L.style.transform = ""; });
         dragging = false;
       });
       alphabet.addEventListener("pointercancel", () => {
+        letters.forEach(L => { L.style.transform = ""; });
         dragging = false;
       });
 
