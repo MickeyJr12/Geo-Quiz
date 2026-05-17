@@ -676,13 +676,14 @@
         flex-direction: column;
         position: fixed;
         touch-action: none;
-        right: 0.1em;
+        right: 0em;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
+        box-sizing : border-box;
         top : 55%;
         transform: translateY(-50%);
         height: fit-content;
-        width: 6em;
+        width: 3em;
         gap: 1px;
         padding: 1em 0em;
         font-size: 0.8em;
@@ -693,8 +694,10 @@
 
       .letter {
         cursor: pointer;
-        justify-content:center;
-        text-align : center;
+        box-sizing : border-box;
+        justify-content : flex-end;
+        text-align : right;
+        padding-right : 0.4em;
         width : 100%;
         transform : scale(1);
         flex-shrink: 0;
