@@ -15681,7 +15681,9 @@
 
           itemC.append(boxSvgItem, boxItemC);
           contentC.append(itemC, ligneInContent);
+          setTimeout(() => {            
           if(inputC.value.length===0){contentC.appendChild(alphabet)}
+          }, 20);
 
           itemC.style.transform = "translateY(-1em)";
           itemC.style.opacity = "0";
