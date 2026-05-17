@@ -15699,7 +15699,6 @@
         }
       }
 
-      let LsInit = [];
       const D_alphabet = {
   A: ["A", "À", "Â", "Á", "Ã", "Ä", "Å"],
   B: ["B"],
@@ -15728,6 +15727,7 @@
   Y: ["Y", "Ÿ"],
   Z: ["Z"],
 };
+      let LsInit = [];
      setTimeout(() => {
   paths.forEach((p) => {
     if (L_q[p.id]) {
@@ -15772,14 +15772,19 @@
         Ls.sort()
         
         if (Ls.length === 0 && inputC.value.length === 0) {
+          let L_empty = []
           paths.forEach((p) => {
-            if (L_q[p.id]) {
-              Ls.push({ id: p.id, t: L_q[p.id.toUpperCase()].n });
-            }
-          });
+    if (L_q[p.id]) {
+      const nom = L_q[p.id.toUpperCase()].n;
+      const init = nom.normalize("NFD").replace(/[\u0300-\u036f]/g, "").slice(0, 1).toUpperCase();
+      L_empty.push({ id: p.id, t: nom, init });
+    }
+  });
+
+  L_empty.sort((a, b) => a.init.localeCompare(b.init));
+  fillContentC(L_empty);
         }
-   
-        fillContentC(Ls);
+   else{fillContentC(Ls)}
       });
 
       //Fin script searching
