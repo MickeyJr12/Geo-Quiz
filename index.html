@@ -250,6 +250,8 @@
         min-height: 100%;
       }
 
+      
+
       /*CSS cadreSearch*/
 
       #cadreS {
@@ -895,13 +897,13 @@
         padding: 0.5em 1em;
         width: 100%;
         height: auto;
-        gap: 0.2em;
+        gap: 0.1em;
         transition : transform 0.3s ease;
       }
       .svgPopulation svg{
         fill: rgb(255, 89, 89);
         opacity: 0.6;
-        height: 1em;
+        height: 0.5em;
       }
 
 .boxSvgItem {
@@ -942,7 +944,7 @@
       .capItemC {
         display: flex;
         width: auto;
-        gap: 0.6em;
+        gap: 0.2em;
         flex-wrap: nowrap;
         color: rgba(186, 204, 244, 0.6);
       }
@@ -1705,7 +1707,7 @@
           opacity 0.4s ease;
       }
       .sBox {
-        display: flex;
+        display: none;
         pointer-events: all;
         margin-right: 0px;
         height: 100px;
@@ -4932,7 +4934,7 @@
             </div>
 
             <div id="cadreFilterS">
-              <div class="itemFilter" data-region="Africa">
+              <div class="itemFilter" data-region="world">
                 <span style="opacity: 1">✓</span>
                 Monde
                 <svg
@@ -15636,7 +15638,7 @@
     
       // Scirpt searching
       function fillContentC(Ls) {
-
+        contentC.scrollTop = 0;
          if (currentClass==="name"){
           Ls.sort((a, b) => 
   a.t.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -15651,13 +15653,17 @@
         Ls.sort((a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s);
       }
 
+      const paysDispo = Ls.filter (el=> P_info[el.id.toUpperCase()].region ===currentWorldFilter|| currentWorldFilter==="world")
+      Ls = paysDispo
 
         contentC.style.scrollbarWidth = "none"
         contentC.innerHTML = ``;
         let index = 0;
         let indexPop = 0;
         const D_clone = structuredClone(D_alphabet);
+
         for (const r of Ls) {
+
           const firstChar = r.t.slice(0, 1).toUpperCase();
 
     if (currentClass === "name"){
@@ -15797,7 +15803,7 @@
 
             const pop  = P_info[r.id].population
 
-            const n = Math.floor(pop / 1000000);
+            const n = Math.floor(pop / 2000000);
             if (n<1) {
                cadrePopulation.append(svgPopulation)
             }
@@ -17061,8 +17067,8 @@ LsPop.forEach((item, index) => {
       
       const footerCadreName = document.getElementById("footerCadreName")
       setTimeout(() => {
-        contentC.style.paddingBottom =  footerCadreName.getBoundingClientRect().height + "px";
-        contentFlagS.style.paddingBottom = footerCadreName.getBoundingClientRect().height + "px";
+        contentC.style.paddingBottom =  footerCadreName.getBoundingClientRect().height  + "px";
+        contentFlagS.style.paddingBottom = footerCadreName.getBoundingClientRect().height  + "px";
 
       }, 20);
 
@@ -17076,6 +17082,7 @@ LsPop.forEach((item, index) => {
       const classer = document.querySelector(".classer");
       const itemsClasser = document.querySelectorAll(".itemClasser");
       let currentClass = "name"
+      let currentWorldFilter = "world"
 
       const arrowC = document.querySelector(".arrowC");
 
@@ -17143,6 +17150,8 @@ LsPop.forEach((item, index) => {
 
       itemsFilter.forEach((item) => {
         item.addEventListener("click", () => {
+          currentWorldFilter = item.dataset.region
+          fillContentC(Ls)
           // Retire le ✓ de tous
           itemsFilter.forEach(
             (i) => (i.querySelector("span").style.opacity = "0"),
