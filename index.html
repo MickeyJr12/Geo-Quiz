@@ -4995,7 +4995,7 @@
               </div>
               <div class="ligneInGrid"></div>
 
-              <div class="itemFilter" data-region="Oceania">
+              <div class="itemFilter" data-region="Europe">
                 <span style="opacity: 0">✓</span>
                 Europe
                 <svg
@@ -15076,7 +15076,7 @@
       globe.addEventListener("mousemove", (e) => {
         const country = e.target.closest("path");
         if (country != null) {
-          infoName.textContent = country.getAttribute("title");
+          infoName.textContent = L_q[country.id].n;
           infoName.style.left =
             e.clientX - infoName.getBoundingClientRect().width / 2 + "px";
           infoName.style.top =
@@ -17152,11 +17152,9 @@ LsPop.forEach((item, index) => {
         item.addEventListener("click", () => {
           currentWorldFilter = item.dataset.region
           fillContentC(Ls)
-          // Retire le ✓ de tous
           itemsFilter.forEach(
             (i) => (i.querySelector("span").style.opacity = "0"),
           );
-          // Affiche le ✓ du sélectionné
           item.querySelector("span").style.opacity = "1";
 
           // Met à jour le texte de worldFilter
