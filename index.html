@@ -744,7 +744,7 @@
           color 0.2s ease;
       }
       .arrowC {
-        display: flex;
+        display: none;
         position: absolute;
         right: 1em;
         justify-content: center;
@@ -15638,7 +15638,11 @@
     
       // Scirpt searching
       function fillContentC(Ls) {
+        if (inputC.value.length === 0 ){Ls = LsInit}
         contentC.scrollTop = 0;
+        arrowC.style.display = "none";
+        if (currentClass!="name"){arrowC.style.display = "flex";}
+
          if (currentClass==="name"){
           Ls.sort((a, b) => 
   a.t.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -15647,14 +15651,18 @@
       }
 
       else if (currentClass==="population"){
-        Ls.sort((a, b) => L_q[b.id.toUpperCase()].p - L_q[a.id.toUpperCase()].p);
+
+        if(decroissant){Ls.sort((a, b) => L_q[b.id.toUpperCase()].p - L_q[a.id.toUpperCase()].p)}
+        else {Ls.sort((a, b) => L_q[a.id.toUpperCase()].p-L_q[b.id.toUpperCase()].p)}
       }
        else if (currentClass==="superficie"){
-        Ls.sort((a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s);
+        if(decroissant){Ls.sort((a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s)}
+        else {Ls.sort((a, b) => L_q[a.id.toUpperCase()].s - L_q[b.id.toUpperCase()].s)}
       }
 
       const paysDispo = Ls.filter (el=> P_info[el.id.toUpperCase()].region ===currentWorldFilter|| currentWorldFilter==="world")
       Ls = paysDispo
+
 
         contentC.style.scrollbarWidth = "none"
         contentC.innerHTML = ``;
@@ -17083,6 +17091,7 @@ LsPop.forEach((item, index) => {
       const itemsClasser = document.querySelectorAll(".itemClasser");
       let currentClass = "name"
       let currentWorldFilter = "world"
+      let decroissant = true;
 
       const arrowC = document.querySelector(".arrowC");
 
@@ -17260,7 +17269,9 @@ LsPop.forEach((item, index) => {
       ///
 
       arrowC.addEventListener("click", () => {
+        decroissant = !decroissant
         arrowC.classList.toggle("dec");
+        fillContentC(Ls)
       });
 
       //Classer par...*********************************************************
