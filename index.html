@@ -15900,10 +15900,12 @@
         );
         Lf = paysDispo;
         
+        
 
         let sautPays = false;
 
         for (const r of Lf) {
+          if (r.id==="GO"){continue}
           sautPays = false;
           for (const [color, value] of Object.entries(D_colorChoice)) {
           if (r.id === "GO")continue             
