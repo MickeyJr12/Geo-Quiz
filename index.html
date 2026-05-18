@@ -17100,6 +17100,10 @@ LsPop.forEach((item, index) => {
       });
 
       backSearch.addEventListener("click", () => {
+        setTimeout(() => {
+        inputC.value = ""          
+        fillContentC(LsInit)
+        }, 100);
         cadreS.classList.remove("active");
       });
 
