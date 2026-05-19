@@ -17650,16 +17650,14 @@ LsPop.forEach((item, index) => {
         });
       });
 
-      const L_propagation = []
-      document.addEventListener('click',()=>{
+      document.addEventListener('pointerdown',()=>{
         cadreFilterS.classList.remove('active')
         cadreClasser.classList.remove('active')
         cadreModeS.classList.remove('active')
         gridChoice.classList.remove('active')
       })
 //abc
-      L_propagation.forEach(p=>{p.addEventListener('click',(e)=>{e.stopPropagation()})})
-
+      
 
 
       // Fin script Maps
