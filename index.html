@@ -8155,10 +8155,11 @@
         });
 
         btn.addEventListener("click", () => {
-          zoomCountry(idProps_m.get(btn));
           if (viewMaps) {
-            return;
+            zoomCountry(idProps_m.get(btn));
+             return
           }
+            
           pauseChrono();
           fillContentPm(idProps_m.get(btn), idBonneReponse);
           activerCarte();
@@ -8236,9 +8237,7 @@
       let viewMaps = false;
 
       function zoomCountry(p_id) {
-        if (!viewMaps) {
-          return;
-        }
+       
         currentCountry = document.getElementById(p_id);
         document.querySelector("svg.monde").appendChild(currentCountry);
         const svgMonde = document.getElementById("svgMonde");
@@ -8657,6 +8656,7 @@
       //Fin script flemme
 
       map.addEventListener("click", () => {
+        animeColorC = requestAnimationFrame(colorCurrentCountry)
         animateViewBox(
           document.getElementById("svgMonde"),
           initialViewBox,
@@ -8674,6 +8674,7 @@
         if (viewMaps) {
           return;
         }
+        cancelAnimationFrame(animeColorC)
         currentCountry = null;
         phoneHome.style.display = "flex";
         currentPhone = phoneHome;
@@ -15393,11 +15394,13 @@
             }
           }
         });
-        requestAnimationFrame(colorCurrentCountry);
+        let animeColorC = requestAnimationFrame(colorCurrentCountry);
       }
       colorCurrentCountry();
+      setTimeout(() => {
+        cancelAnimationFrame(animeColorC)
+      }, 500);
 
-      //abcd
 
       function fillCadreOrga(p_id) {
         const p = document.getElementById(p_id);
@@ -17431,7 +17434,10 @@ LsPop.forEach((item, index) => {
       //Rechercher drapeaux,pays
 
       //Header
-      titleCadreS.addEventListener("click", () => {
+      titleCadreS.addEventListener("click", (e) => {
+        e.stopPropagation()
+        cadreClasser.classList.remove('active')
+        cadreFilterS.classList.remove('active')
         cadreModeS.classList.toggle("active");
         document.getElementById("arrowTitle").classList.toggle("active");
       });
@@ -17482,6 +17488,9 @@ LsPop.forEach((item, index) => {
         cadreFilterS.classList.toggle("active");
       });
       worldFilter.addEventListener("click", (e) => {
+        e.stopPropagation()
+        cadreClasser.classList.remove('active')
+        cadreModeS.classList.remove('active')
         if (e.target.closest("label")) return; // le label gère déjà via change
         burgerInput.click();
       });
@@ -17577,7 +17586,8 @@ LsPop.forEach((item, index) => {
         });
       });
 
-      wrapperMenuGrid.addEventListener("click", () => {
+      wrapperMenuGrid.addEventListener("click", (e) => {
+        e.stopPropagation()
         gridChoice.classList.toggle("active");
       });
 
@@ -17609,7 +17619,12 @@ LsPop.forEach((item, index) => {
 
       //Classer par...*********************************************************
 
-      classer.addEventListener("click", () => {
+      classer.addEventListener("click", (e) => {
+        e.stopPropagation()
+        cadreModeS.classList.remove('active')
+        cadreFilterS.classList.remove('active')
+        
+
         cadreClasser.classList.toggle("active");
       });
 
@@ -17634,6 +17649,19 @@ LsPop.forEach((item, index) => {
           cadreClasser.classList.remove("active");
         });
       });
+
+      const L_propagation = []
+      document.addEventListener('click',()=>{
+        cadreFilterS.classList.remove('active')
+        cadreClasser.classList.remove('active')
+        cadreModeS.classList.remove('active')
+        gridChoice.classList.remove('active')
+      })
+//abc
+      L_propagation.forEach(p=>{p.addEventListener('click',(e)=>{e.stopPropagation()})})
+
+
+
       // Fin script Maps
     </script>
 
