@@ -240,15 +240,15 @@
       /* CSS Tools*/
 .wrapperTool {
         display: flex;
-        pointer-events : none;
+        position: fixed;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
+        pointer-events : none;
         z-index: 10;
         box-sizing: border-box;
-        position: fixed;
         border-radius: 0.6em;
-        right: 3em;
+        right: 1em;
         bottom: 3em;
         width: 2.6em;
         height: fit-content;
@@ -1320,14 +1320,14 @@
       .Opensearch {
         display: flex;
         position : absolute;
-        right : 2em;
-        top : 5em;
+        right : 1em;
+        top : 8em;
         pointer-events: all;
         justify-content: center;
         align-items: center;
         z-index: 10;
         cursor: pointer;
-        width: 1em;
+        width: 1.4em;
         aspect-ratio: 1/1;
         background: rgba(112, 198, 255, 0.8);
         backdrop-filter: blur(10px);
@@ -8685,11 +8685,6 @@
         cadreVue.style.height = "";
       });
       //Tools
-      //const only = document.querySelector(".only");
-      //const vueP = document.querySelector(".vueP");
-      //const vueS = document.querySelector(".vueS");
-      //const vueCo2e = document.querySelector(".vueCo2e");
-      //const vuePib = document.querySelector(".vuePib");
       
       const wrapperTool = document.querySelector('.wrapperTool')
       const openTool = document.getElementById("openTool");
@@ -15413,6 +15408,13 @@
 
       //Script tools
 
+      centerBtn.addEventListener('click',()=>{
+         animateViewBox(
+          document.getElementById("svgMonde"),
+          initialViewBox,
+          700,
+        );
+      })
        openTool.addEventListener("click", () => {
         let delay = 0;
         openTool.querySelector("svg").classList.toggle("rotate");
@@ -15488,9 +15490,9 @@
         }
         cadreVueTF = !cadreVueTF;
       }
-      /*only.addEventListener("click", () => {
+      only.addEventListener("click", () => {
         afficheVue();
-      });*/
+      });
 
       //Déplacer cadreVue
       let moveCV;
