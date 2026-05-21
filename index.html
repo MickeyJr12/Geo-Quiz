@@ -235,16 +235,16 @@
         stroke-linejoin: miter;
         pointer-events: none;
         will-change: transform; /* hint GPU */
-      }    
+      }
 
       /* CSS Tools*/
-.wrapperTool {
+      .wrapperTool {
         display: flex;
         position: fixed;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-        pointer-events : none;
+        pointer-events: none;
         z-index: 10;
         box-sizing: border-box;
         border-radius: 0.6em;
@@ -276,7 +276,7 @@
         transition:
           transform 0.35s ease,
           opacity 0.35s ease,
-          filter 0.30s ease;
+          filter 0.3s ease;
       }
       #zP,
       #zM {
@@ -291,7 +291,7 @@
           transform 0.35s ease,
           opacity 0.35s ease,
           outline 0.2s ease,
-          filter 0.30s ease;
+          filter 0.3s ease;
       }
       #zM:active,
       #zP:active {
@@ -323,7 +323,7 @@
         backdrop-filter: blur(10px);
         cursor: pointer;
       }
-      #calque.active{
+      #calque.active {
         background: rgba(91, 175, 253, 0.8);
         outline: 0.1em solid rgba(255, 255, 255, 0.5);
       }
@@ -333,7 +333,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        position: relative; 
+        position: relative;
       }
 
       .boxCalques {
@@ -345,7 +345,7 @@
         position: absolute;
         right: calc(100% + 0.6em); /* s'affiche à gauche du bouton */
       }
-      .boxCalques >div{
+      .boxCalques > div {
         background: rgba(56, 140, 223, 0.674);
         outline: 0.1em solid rgba(255, 255, 255, 0.3);
         box-shadow: 0px 0px 5px rgba(12, 50, 88, 0.674);
@@ -362,13 +362,13 @@
 
         opacity: 0;
         transform: scale(0.75) translateY(1em) translateX(0.5em);
-         transition:
+        transition:
           background 0.2s ease,
           transform 0.35s ease,
           opacity 0.35s ease,
           outline 0.2s ease;
       }
-      .calqueChoice.active{
+      .calqueChoice.active {
         background: rgba(84, 149, 209, 0.8);
         outline: 0.1em solid rgba(255, 255, 255, 0.5);
       }
@@ -377,10 +377,8 @@
         fill: white;
         transform-origin: center center; /* ← explicite */
         transition: transform 0.35s ease;
-      
       }
-    
-     
+
       .toolCarre {
         display: flex;
         justify-content: center;
@@ -400,7 +398,9 @@
         background: rgba(92, 146, 200, 0.674);
         transform: scale(0.9);
       }
-      #openTool{pointer-events: all;}
+      #openTool {
+        pointer-events: all;
+      }
       #openTool.active {
         background: rgba(91, 175, 253, 0.8);
         outline: 0.1em solid rgba(255, 255, 255, 0.5);
@@ -572,7 +572,7 @@
       .ligneInV {
         position: absolute;
         left: 50%;
-        top : 50%;
+        top: 50%;
         transform: translateX(-50%) translateY(-50%);
         margin: auto;
         width: 0px;
@@ -1038,7 +1038,7 @@
 
       .itemC {
         display: flex;
-        position : relative;
+        position: relative;
         justify-content: flex-start;
         align-items: center;
         box-sizing: border-box;
@@ -1051,42 +1051,42 @@
         transition: transform 0.3s ease;
       }
       .rank {
-        position : absolute;
-        width : auto;
-        height : auto;
-        right : 2em;
+        position: absolute;
+        width: auto;
+        height: auto;
+        right: 2em;
         color: rgba(186, 204, 244, 0.6);
-        font-size : 1.2em;
+        font-size: 1.2em;
       }
       .cadrePopulation {
         display: flex;
-        opacity : 0;
+        opacity: 0;
         box-sizing: border-box;
         flex-wrap: wrap;
         padding: 0.5em 1em;
         width: 100%;
         height: auto;
         gap: 0.1em;
-        transition : transform 0.3s ease;
+        transition: transform 0.3s ease;
       }
-      .svgPopulation svg{
+      .svgPopulation svg {
         fill: rgb(255, 89, 89);
         opacity: 0.6;
         height: 0.5em;
       }
 
-.boxSvgItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 3em;
-}
-.itemC img {
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%;
-  object-fit: cover;
-}
+      .boxSvgItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 3em;
+      }
+      .itemC img {
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        object-fit: cover;
+      }
       .itemC:active {
         filter: brightness(1.2);
       }
@@ -1183,7 +1183,7 @@
         align-items: center;
         box-sizing: border-box;
         padding: 0.2em;
-        padding-bottom:  calc(0.2em + env(safe-area-inset-bottom));
+        padding-bottom: calc(0.2em + env(safe-area-inset-bottom));
         width: 100%;
         height: auto;
         backdrop-filter: blur(15px);
@@ -1321,9 +1321,9 @@
 
       .Opensearch {
         display: flex;
-        position : absolute;
-        right : 1em;
-        top : 8em;
+        position: absolute;
+        right: 1em;
+        top: 8em;
         pointer-events: all;
         justify-content: center;
         align-items: center;
@@ -1800,10 +1800,6 @@
           transform 0.3s ease,
           opacity 0.4s ease;
       }
-      
-
-
-
 
       @keyframes appear {
         from {
@@ -2203,7 +2199,6 @@
       }
 
       @media (max-width: 768px) {
-
         .cadreVue {
           width: clamp(220px, 75vw, 320px);
           top: 7.5em;
@@ -3844,7 +3839,7 @@
               <div class="titleQR">Réponses</div>
               <div class="ligneQR"></div>
 
-              <div class="qr r" id="drapeauR"  style="display: none">
+              <div class="qr r" id="drapeauR" style="display: none">
                 Drapeaux
               </div>
               <div class="qr r" id="capitaleR" style="display: none">
@@ -4711,19 +4706,18 @@
     <!--HTML Maps-->
 
     <div class="Maps">
-
-       <div class="Opensearch">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            id="Layer_1"
-            data-name="Layer 1"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M24,3.5c0,.83-.67,1.5-1.5,1.5H1.5c-.83,0-1.5-.67-1.5-1.5s.67-1.5,1.5-1.5H22.5c.83,0,1.5,.67,1.5,1.5ZM6.5,20H1.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H6.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5ZM14.5,11H1.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H14.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5Z"
-            />
-          </svg>
-        </div> 
+      <div class="Opensearch">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="Layer_1"
+          data-name="Layer 1"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M24,3.5c0,.83-.67,1.5-1.5,1.5H1.5c-.83,0-1.5-.67-1.5-1.5s.67-1.5,1.5-1.5H22.5c.83,0,1.5,.67,1.5,1.5ZM6.5,20H1.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H6.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5ZM14.5,11H1.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H14.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5Z"
+          />
+        </svg>
+      </div>
 
       <div id="cadreS">
         <div id="headerCadre">
@@ -4742,7 +4736,7 @@
           </button>
 
           <div class="wrapperTitleS">
-            <div class="titleCadreS" >
+            <div class="titleCadreS">
               <svg
                 width="1.2em"
                 fill="white"
@@ -4775,7 +4769,11 @@
 
             <div class="cadreModeS">
               <div class="ligneInV"></div>
-              <div class="optionModeS active" data-searching="pays" id="countryS">
+              <div
+                class="optionModeS active"
+                data-searching="pays"
+                id="countryS"
+              >
                 <svg
                   width="1.2em"
                   fill="white"
@@ -4953,8 +4951,8 @@
             placeholder="Recherche"
             required=""
             autocomplete="off"
-            autocorrect="off" 
-            autocapitalize="off" 
+            autocorrect="off"
+            autocapitalize="off"
             spellcheck="false"
             type="text"
           />
@@ -5131,7 +5129,7 @@
 
           <div class="itemC">
             <div class="boxSvgItem">
-              <img  src="https://flagcdn.com/w40/fr.png" alt="" />
+              <img src="https://flagcdn.com/w40/fr.png" alt="" />
             </div>
             <div class="boxItemC">
               <div class="titleItemC">France</div>
@@ -5139,9 +5137,7 @@
             </div>
           </div>
           <div class="cadrePopulation">
-            <div class="svgPopulation">
-            
-           </div> 
+            <div class="svgPopulation"></div>
           </div>
 
           <div class="ligneInContent"></div>
@@ -5506,54 +5502,29 @@
         </div>
       </div>
 
-    <div class="wrapperTool">
-      <div class="tool zBox">
-        <div id="zP">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            id="Outline"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M23,11H13V1a1,1,0,0,0-1-1h0a1,1,0,0,0-1,1V11H1a1,1,0,0,0-1,1H0a1,1,0,0,0,1,1H11V23a1,1,0,0,0,1,1h0a1,1,0,0,0,1-1V13H23a1,1,0,0,0,1-1h0A1,1,0,0,0,23,11Z"
-            />
-          </svg>
+      <div class="wrapperTool">
+        <div class="tool zBox">
+          <div id="zP">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              id="Outline"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23,11H13V1a1,1,0,0,0-1-1h0a1,1,0,0,0-1,1V11H1a1,1,0,0,0-1,1H0a1,1,0,0,0,1,1H11V23a1,1,0,0,0,1,1h0a1,1,0,0,0,1-1V13H23a1,1,0,0,0,1-1h0A1,1,0,0,0,23,11Z"
+              />
+            </svg>
+          </div>
+          <div class="ligneZbox"></div>
+          <div id="zM">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M1,12H23c.55,0,1,.45,1,1s-.45,1-1,1H1c-.55,0-1-.45-1-1s.45-1,1-1Z"
+              />
+            </svg>
+          </div>
         </div>
-        <div class="ligneZbox"></div>
-        <div id="zM">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              d="M1,12H23c.55,0,1,.45,1,1s-.45,1-1,1H1c-.55,0-1-.45-1-1s.45-1,1-1Z"
-            />
-          </svg>
-        </div>
-      </div>
-      <div class="toolCarre tool" id="centerBtn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Layer_1"
-          data-name="Layer 1"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12,7c-2.757,0-5,2.243-5,5s2.243,5,5,5,5-2.243,5-5-2.243-5-5-5Zm0,8c-1.654,0-3-1.346-3-3s1.346-3,3-3,3,1.346,3,3-1.346,3-3,3Zm11-4h-1.05c-.471-4.717-4.233-8.48-8.95-8.95V1c0-.553-.448-1-1-1s-1,.447-1,1v1.05C6.283,2.52,2.52,6.283,2.05,11H1c-.552,0-1,.447-1,1s.448,1,1,1h1.05c.471,4.717,4.233,8.48,8.95,8.95v1.05c0,.553,.448,1,1,1s1-.447,1-1v-1.05c4.717-.471,8.48-4.233,8.95-8.95h1.05c.552,0,1-.447,1-1s-.448-1-1-1Zm-11,9c-4.411,0-8-3.589-8-8S7.589,4,12,4s8,3.589,8,8-3.589,8-8,8Z"
-          />
-        </svg>
-      </div>
-      <div class="toolCarre tool" id="only">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Layer_1"
-          data-name="Layer 1"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M0,7v-2C0,2.243,2.243,0,5,0h2c.552,0,1,.448,1,1s-.448,1-1,1h-2c-1.654,0-3,1.346-3,3v2c0,.552-.448,1-1,1s-1-.448-1-1Zm12,3c-1.105,0-2,.895-2,2s.895,2,2,2,2-.895,2-2-.895-2-2-2Zm-5,12h-2c-1.654,0-3-1.346-3-3v-2c0-.552-.448-1-1-1s-1,.448-1,1v2c0,2.757,2.243,5,5,5h2c.552,0,1-.448,1-1s-.448-1-1-1ZM19,0h-2c-.552,0-1,.448-1,1s.448,1,1,1h2c1.654,0,3,1.346,3,3v2c0,.552,.448,1,1,1s1-.448,1-1v-2c0-2.757-2.243-5-5-5Zm-7,18c-4.577,0-7.521-4.021-8.059-5.097-.287-.573-.287-1.23,0-1.805,.537-1.077,3.48-5.098,8.059-5.098s7.522,4.021,8.059,5.098t0,0c.285,.572,.285,1.229,0,1.802-.538,1.078-3.481,5.099-8.06,5.099Zm6.27-6.008c-.328-.657-2.736-3.992-6.27-3.992s-5.942,3.335-6.27,3.992c.328,.674,2.737,4.008,6.27,4.008s5.942-3.352,6.27-4.008Zm4.73,4.008c-.552,0-1,.448-1,1v2c0,1.654-1.346,3-3,3h-2c-.552,0-1,.448-1,1s.448,1,1,1h2c2.757,0,5-2.243,5-5v-2c0-.552-.448-1-1-1Z"
-          />
-        </svg>
-      </div>
-      <div class="wrapperCalque">
-        <div class="toolCarre" id="calque">
+        <div class="toolCarre tool" id="centerBtn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1"
@@ -5561,51 +5532,91 @@
             viewBox="0 0 24 24"
           >
             <path
-              d="m12,18.838c-.572,0-1.143-.153-1.653-.459L.485,12.462c-.474-.284-.627-.898-.343-1.372.283-.475.897-.627,1.372-.343l9.861,5.917c.385.23.864.23,1.249,0l9.861-5.917c.474-.284,1.088-.131,1.372.343s.131,1.088-.343,1.372l-9.861,5.917c-.51.306-1.082.459-1.653.459Zm1.653,3.836l9.861-5.917c.474-.284.627-.898.343-1.372s-.898-.627-1.372-.343l-9.862,5.917c-.384.23-.863.23-1.248,0L1.515,15.042c-.475-.285-1.089-.131-1.372.343-.284.474-.131,1.088.343,1.372l9.861,5.917c.51.307,1.082.459,1.654.459s1.144-.152,1.653-.459Zm-1.653-16.84l5.308-3.185L13.653.456c-1.02-.612-2.287-.612-3.307,0l-3.655,2.193,5.308,3.185Zm11.515.539l-4.263-2.558-5.308,3.185,5.692,3.415,3.879-2.327c.301-.181.485-.506.485-.857s-.184-.677-.485-.857Zm-13.459.627l-5.308-3.185L.485,6.373c-.301.181-.485.506-.485.857s.184.677.485.857l3.879,2.327,5.692-3.415Zm1.944,1.166l-5.692,3.415,4.039,2.423c.51.306,1.081.459,1.653.459s1.143-.153,1.653-.459l4.039-2.423-5.692-3.415Z"
+              d="M12,7c-2.757,0-5,2.243-5,5s2.243,5,5,5,5-2.243,5-5-2.243-5-5-5Zm0,8c-1.654,0-3-1.346-3-3s1.346-3,3-3,3,1.346,3,3-1.346,3-3,3Zm11-4h-1.05c-.471-4.717-4.233-8.48-8.95-8.95V1c0-.553-.448-1-1-1s-1,.447-1,1v1.05C6.283,2.52,2.52,6.283,2.05,11H1c-.552,0-1,.447-1,1s.448,1,1,1h1.05c.471,4.717,4.233,8.48,8.95,8.95v1.05c0,.553,.448,1,1,1s1-.447,1-1v-1.05c4.717-.471,8.48-4.233,8.95-8.95h1.05c.552,0,1-.447,1-1s-.448-1-1-1Zm-11,9c-4.411,0-8-3.589-8-8S7.589,4,12,4s8,3.589,8,8-3.589,8-8,8Z"
             />
           </svg>
         </div>
-
-        <div class="boxCalques tool">
-          <div class="calqueChoice" id="vueCo2e">
-            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M20.68,1.167l-.021-.007-2.715-.9a5.017,5.017,0,0,0-2.9-.079L9.468,1.8A3.025,3.025,0,0,1,7.42,1.62l-.5-.232A5,5,0,0,0,0,6V18.075a5.013,5.013,0,0,0,3.6,4.8l2.869.9A4.991,4.991,0,0,0,7.964,24,4.592,4.592,0,0,0,9.3,23.819l5.8-1.6a3,3,0,0,1,1.617.013l2.343.676A4,4,0,0,0,24,19.021V5.876A5.01,5.01,0,0,0,20.68,1.167ZM4.176,20.959A3.013,3.013,0,0,1,2,18.075V6a2.953,2.953,0,0,1,1.336-2.5A3,3,0,0,1,5,3a2.9,2.9,0,0,1,1.112.222s.745.319.887.37V21.842ZM9,21.827V3.879a5.105,5.105,0,0,0,1.006-.155L15,2.273V20.2Zm13-2.806a2,2,0,0,1-2.433,1.954L17,20.252V2.075l3.018.979A3.006,3.006,0,0,1,22,5.876Z"/></svg>
-          </div>
-          <div class="calqueChoice" id="vuePib">
-            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-  <path d="m11,0c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S14.309,0,11,0Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4-1.794,4-4,4Zm2.969,5.501c-.138.536-.687.857-1.218.719-.568-.146-1.158-.22-1.751-.22-3.859,0-7,3.14-7,7,0,.552-.447,1-1,1s-1-.448-1-1c0-4.962,4.037-9,9-9,.761,0,1.518.095,2.249.284.535.137.857.683.72,1.217Zm10.031,3.499c0,1.654-1.346,3-3,3v1c0,.552-.447,1-1,1s-1-.448-1-1v-1.002h-.27c-1.066,0-2.061-.574-2.596-1.496-.277-.478-.114-1.09.364-1.367.478-.276,1.09-.114,1.366.364.179.308.51.499.866.499l2.27.002c.551,0,.999-.449.999-1,0-.378-.271-.698-.644-.76l-3.041-.507c-1.342-.223-2.315-1.373-2.315-2.733,0-1.654,1.346-3,3-3v-1c0-.552.447-1,1-1s1,.448,1,1v1.003h.271c1.063,0,2.058.573,2.594,1.495.278.477.116,1.089-.361,1.367-.478.278-1.091.115-1.367-.362-.183-.312-.506-.5-.866-.5l-2.271-.003c-.551,0-.999.449-.999,1,0,.378.271.698.644.76l3.041.507c1.342.223,2.315,1.373,2.315,2.733Z"/>
-</svg>
-          </div>
-          <div class="calqueChoice" id="vueP">
+        <div class="toolCarre tool" id="only">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="Layer_1"
+            data-name="Layer 1"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0,7v-2C0,2.243,2.243,0,5,0h2c.552,0,1,.448,1,1s-.448,1-1,1h-2c-1.654,0-3,1.346-3,3v2c0,.552-.448,1-1,1s-1-.448-1-1Zm12,3c-1.105,0-2,.895-2,2s.895,2,2,2,2-.895,2-2-.895-2-2-2Zm-5,12h-2c-1.654,0-3-1.346-3-3v-2c0-.552-.448-1-1-1s-1,.448-1,1v2c0,2.757,2.243,5,5,5h2c.552,0,1-.448,1-1s-.448-1-1-1ZM19,0h-2c-.552,0-1,.448-1,1s.448,1,1,1h2c1.654,0,3,1.346,3,3v2c0,.552,.448,1,1,1s1-.448,1-1v-2c0-2.757-2.243-5-5-5Zm-7,18c-4.577,0-7.521-4.021-8.059-5.097-.287-.573-.287-1.23,0-1.805,.537-1.077,3.48-5.098,8.059-5.098s7.522,4.021,8.059,5.098t0,0c.285,.572,.285,1.229,0,1.802-.538,1.078-3.481,5.099-8.06,5.099Zm6.27-6.008c-.328-.657-2.736-3.992-6.27-3.992s-5.942,3.335-6.27,3.992c.328,.674,2.737,4.008,6.27,4.008s5.942-3.352,6.27-4.008Zm4.73,4.008c-.552,0-1,.448-1,1v2c0,1.654-1.346,3-3,3h-2c-.552,0-1,.448-1,1s.448,1,1,1h2c2.757,0,5-2.243,5-5v-2c0-.552-.448-1-1-1Z"
+            />
+          </svg>
+        </div>
+        <div class="wrapperCalque">
+          <div class="toolCarre" id="calque">
             <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="Layer_1"
-                    data-name="Layer 1"
-                    viewBox="0 0 24 24"
-                    width="32"
-                    height="32"
-                  >
-                    <path
-                      fill="white"
-                      d="m20.5,6h-2c-1.93,0-3.5,1.57-3.5,3.5v4c0,1.391.822,2.585,2,3.149v6.351c0,.552.448,1,1,1s1-.448,1-1v-6h1v6c0,.552.448,1,1,1s1-.448,1-1v-6.351c1.178-.564,2-1.758,2-3.149v-4c0-1.93-1.57-3.5-3.5-3.5Zm1.5,7.5c0,.827-.673,1.5-1.5,1.5h-2c-.827,0-1.5-.673-1.5-1.5v-4c0-.827.673-1.5,1.5-1.5h2c.827,0,1.5.673,1.5,1.5v4Zm-8.02-6.649c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v4c0,.477.219.914.601,1.2.251.189.399.485.399.8v6.5c0,.552-.448,1-1,1s-1-.448-1-1v-6.051c-.633-.649-1-1.532-1-2.449v-4c0-1.658,1.178-3.1,2.801-3.43.541-.113,1.069.239,1.179.781Zm-5,0c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v3c0,.477.219.914.601,1.2.251.189.399.485.399.8v5.5c0,.552-.448,1-1,1s-1-.448-1-1v-5.051c-.633-.649-1-1.532-1-2.449v-3c0-1.658,1.178-3.1,2.801-3.43.542-.113,1.069.239,1.179.781Zm-5,0c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v2c0,.477.219.914.601,1.2.251.189.399.485.399.8v4.5c0,.552-.448,1-1,1s-1-.448-1-1v-4.051c-.633-.649-1-1.532-1-2.449v-2c0-1.658,1.178-3.1,2.801-3.43.544-.113,1.069.239,1.179.781Zm13.02-4.351c0-1.381,1.119-2.5,2.5-2.5s2.5,1.119,2.5,2.5-1.119,2.5-2.5,2.5-2.5-1.119-2.5-2.5Zm-1.385,2.227c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Zm-5,0c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Zm-5,0c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5S3.119,0,4.5,0c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Z"
-                    />
-                  </svg>
+              xmlns="http://www.w3.org/2000/svg"
+              id="Layer_1"
+              data-name="Layer 1"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m12,18.838c-.572,0-1.143-.153-1.653-.459L.485,12.462c-.474-.284-.627-.898-.343-1.372.283-.475.897-.627,1.372-.343l9.861,5.917c.385.23.864.23,1.249,0l9.861-5.917c.474-.284,1.088-.131,1.372.343s.131,1.088-.343,1.372l-9.861,5.917c-.51.306-1.082.459-1.653.459Zm1.653,3.836l9.861-5.917c.474-.284.627-.898.343-1.372s-.898-.627-1.372-.343l-9.862,5.917c-.384.23-.863.23-1.248,0L1.515,15.042c-.475-.285-1.089-.131-1.372.343-.284.474-.131,1.088.343,1.372l9.861,5.917c.51.307,1.082.459,1.654.459s1.144-.152,1.653-.459Zm-1.653-16.84l5.308-3.185L13.653.456c-1.02-.612-2.287-.612-3.307,0l-3.655,2.193,5.308,3.185Zm11.515.539l-4.263-2.558-5.308,3.185,5.692,3.415,3.879-2.327c.301-.181.485-.506.485-.857s-.184-.677-.485-.857Zm-13.459.627l-5.308-3.185L.485,6.373c-.301.181-.485.506-.485.857s.184.677.485.857l3.879,2.327,5.692-3.415Zm1.944,1.166l-5.692,3.415,4.039,2.423c.51.306,1.081.459,1.653.459s1.143-.153,1.653-.459l4.039-2.423-5.692-3.415Z"
+              />
+            </svg>
           </div>
 
+          <div class="boxCalques tool">
+            <div class="calqueChoice" id="vueCo2e">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Layer_1"
+                data-name="Layer 1"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20.68,1.167l-.021-.007-2.715-.9a5.017,5.017,0,0,0-2.9-.079L9.468,1.8A3.025,3.025,0,0,1,7.42,1.62l-.5-.232A5,5,0,0,0,0,6V18.075a5.013,5.013,0,0,0,3.6,4.8l2.869.9A4.991,4.991,0,0,0,7.964,24,4.592,4.592,0,0,0,9.3,23.819l5.8-1.6a3,3,0,0,1,1.617.013l2.343.676A4,4,0,0,0,24,19.021V5.876A5.01,5.01,0,0,0,20.68,1.167ZM4.176,20.959A3.013,3.013,0,0,1,2,18.075V6a2.953,2.953,0,0,1,1.336-2.5A3,3,0,0,1,5,3a2.9,2.9,0,0,1,1.112.222s.745.319.887.37V21.842ZM9,21.827V3.879a5.105,5.105,0,0,0,1.006-.155L15,2.273V20.2Zm13-2.806a2,2,0,0,1-2.433,1.954L17,20.252V2.075l3.018.979A3.006,3.006,0,0,1,22,5.876Z"
+                />
+              </svg>
+            </div>
+            <div class="calqueChoice" id="vuePib">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Layer_1"
+                data-name="Layer 1"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m11,0c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S14.309,0,11,0Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4-1.794,4-4,4Zm2.969,5.501c-.138.536-.687.857-1.218.719-.568-.146-1.158-.22-1.751-.22-3.859,0-7,3.14-7,7,0,.552-.447,1-1,1s-1-.448-1-1c0-4.962,4.037-9,9-9,.761,0,1.518.095,2.249.284.535.137.857.683.72,1.217Zm10.031,3.499c0,1.654-1.346,3-3,3v1c0,.552-.447,1-1,1s-1-.448-1-1v-1.002h-.27c-1.066,0-2.061-.574-2.596-1.496-.277-.478-.114-1.09.364-1.367.478-.276,1.09-.114,1.366.364.179.308.51.499.866.499l2.27.002c.551,0,.999-.449.999-1,0-.378-.271-.698-.644-.76l-3.041-.507c-1.342-.223-2.315-1.373-2.315-2.733,0-1.654,1.346-3,3-3v-1c0-.552.447-1,1-1s1,.448,1,1v1.003h.271c1.063,0,2.058.573,2.594,1.495.278.477.116,1.089-.361,1.367-.478.278-1.091.115-1.367-.362-.183-.312-.506-.5-.866-.5l-2.271-.003c-.551,0-.999.449-.999,1,0,.378.271.698.644.76l3.041.507c1.342.223,2.315,1.373,2.315,2.733Z"
+                />
+              </svg>
+            </div>
+            <div class="calqueChoice" id="vueP">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="Layer_1"
+                data-name="Layer 1"
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+              >
+                <path
+                  fill="white"
+                  d="m20.5,6h-2c-1.93,0-3.5,1.57-3.5,3.5v4c0,1.391.822,2.585,2,3.149v6.351c0,.552.448,1,1,1s1-.448,1-1v-6h1v6c0,.552.448,1,1,1s1-.448,1-1v-6.351c1.178-.564,2-1.758,2-3.149v-4c0-1.93-1.57-3.5-3.5-3.5Zm1.5,7.5c0,.827-.673,1.5-1.5,1.5h-2c-.827,0-1.5-.673-1.5-1.5v-4c0-.827.673-1.5,1.5-1.5h2c.827,0,1.5.673,1.5,1.5v4Zm-8.02-6.649c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v4c0,.477.219.914.601,1.2.251.189.399.485.399.8v6.5c0,.552-.448,1-1,1s-1-.448-1-1v-6.051c-.633-.649-1-1.532-1-2.449v-4c0-1.658,1.178-3.1,2.801-3.43.541-.113,1.069.239,1.179.781Zm-5,0c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v3c0,.477.219.914.601,1.2.251.189.399.485.399.8v5.5c0,.552-.448,1-1,1s-1-.448-1-1v-5.051c-.633-.649-1-1.532-1-2.449v-3c0-1.658,1.178-3.1,2.801-3.43.542-.113,1.069.239,1.179.781Zm-5,0c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v2c0,.477.219.914.601,1.2.251.189.399.485.399.8v4.5c0,.552-.448,1-1,1s-1-.448-1-1v-4.051c-.633-.649-1-1.532-1-2.449v-2c0-1.658,1.178-3.1,2.801-3.43.544-.113,1.069.239,1.179.781Zm13.02-4.351c0-1.381,1.119-2.5,2.5-2.5s2.5,1.119,2.5,2.5-1.119,2.5-2.5,2.5-2.5-1.119-2.5-2.5Zm-1.385,2.227c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Zm-5,0c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Zm-5,0c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5S3.119,0,4.5,0c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolCarre" id="openTool">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="Outline"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18,6h0a1,1,0,0,0-1.414,0L12,10.586,7.414,6A1,1,0,0,0,6,6H6A1,1,0,0,0,6,7.414L10.586,12,6,16.586A1,1,0,0,0,6,18H6a1,1,0,0,0,1.414,0L12,13.414,16.586,18A1,1,0,0,0,18,18h0a1,1,0,0,0,0-1.414L13.414,12,18,7.414A1,1,0,0,0,18,6Z"
+            />
+          </svg>
         </div>
       </div>
-
-      <div class="toolCarre" id="openTool">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="Outline"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M18,6h0a1,1,0,0,0-1.414,0L12,10.586,7.414,6A1,1,0,0,0,6,6H6A1,1,0,0,0,6,7.414L10.586,12,6,16.586A1,1,0,0,0,6,18H6a1,1,0,0,0,1.414,0L12,13.414,16.586,18A1,1,0,0,0,18,18h0a1,1,0,0,0,0-1.414L13.414,12,18,7.414A1,1,0,0,0,18,6Z"
-          />
-        </svg>
-      </div>
-    </div>
 
       <div class="infoName"></div>
       <div class="choiceBox"></div>
@@ -7984,9 +7995,9 @@
         btn.addEventListener("click", () => {
           if (viewMaps) {
             zoomCountry(idProps_m.get(btn));
-             return
+            return;
           }
-            
+
           pauseChrono();
           fillContentPm(idProps_m.get(btn), idBonneReponse);
           activerCarte();
@@ -8064,7 +8075,6 @@
       let viewMaps = false;
 
       function zoomCountry(p_id) {
-       
         currentCountry = document.getElementById(p_id);
         document.querySelector("svg.monde").appendChild(currentCountry);
         const svgMonde = document.getElementById("svgMonde");
@@ -8483,7 +8493,7 @@
       //Fin script flemme
 
       map.addEventListener("click", () => {
-        animeColorC = requestAnimationFrame(colorCurrentCountry)
+        animeColorC = requestAnimationFrame(colorCurrentCountry);
         animateViewBox(
           document.getElementById("svgMonde"),
           initialViewBox,
@@ -8501,7 +8511,7 @@
         if (viewMaps) {
           return;
         }
-        cancelAnimationFrame(animeColorC)
+        cancelAnimationFrame(animeColorC);
         currentCountry = null;
         phoneHome.style.display = "flex";
         currentPhone = phoneHome;
@@ -8687,28 +8697,23 @@
         cadreVue.style.height = "";
       });
       //Tools
-      
-      const wrapperTool = document.querySelector('.wrapperTool')
+
+      const wrapperTool = document.querySelector(".wrapperTool");
       const openTool = document.getElementById("openTool");
       const centerBtn = document.getElementById("centerBtn");
       const calque = document.getElementById("calque");
       const zBox = document.querySelector(".zBox");
       const only = document.getElementById("only");
-      const boxCalques = document.querySelector('.boxCalques')
-      
-      const vueCo2e = document.getElementById('vueCo2e')
-      const vueP = document.getElementById('vueP')
-      const vuePib = document.getElementById('vuePib')
-      const calques = document.querySelectorAll('.calqueChoice')
-      const tools = [centerBtn,zBox,only]
+      const boxCalques = document.querySelector(".boxCalques");
 
-
-
-
+      const vueCo2e = document.getElementById("vueCo2e");
+      const vueP = document.getElementById("vueP");
+      const vuePib = document.getElementById("vuePib");
+      const calques = document.querySelectorAll(".calqueChoice");
+      const tools = [centerBtn, zBox, only];
 
       let vue = false;
       let cadreVueTF = false;
-
 
       const inputC = document.querySelector(".inputC");
       const reset = document.querySelector(".reset");
@@ -8719,258 +8724,2170 @@
 
       //Listes informations
       const D_color = {
-  AD: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, jaune, rouge
-  AE: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // vert, blanc, noir, rouge
-  AF: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // noir, rouge, vert + emblème blanc
-  AG: { r: true,  w: true,  b: true,  g: false, y: true,  k: true,  o: false }, // noir, bleu, blanc, jaune, rouge
-  AI: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  AL: { r: true,  w: false, b: false, g: false, y: false, k: true,  o: false }, // rouge, noir (aigle)
-  AM: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: true  }, // rouge, bleu, orange
-  AO: { r: true,  w: false, b: false, g: false, y: true,  k: true,  o: false }, // rouge, noir, jaune
-  AQ: { r: false, w: false, b: false, g: false, y: false, k: false, o: false }, // pas de drapeau
-  AR: { r: false, w: true,  b: true,  g: false, y: true,  k: false, o: false }, // bleu, blanc, jaune (soleil)
-  AS: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  AT: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  AU: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  AW: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, jaune
-  AX: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, jaune
-  AZ: { r: true,  w: true,  b: true,  g: true,  y: false, k: false, o: false }, // bleu, rouge, vert, blanc (croissant)
-  BA: { r: false, w: true,  b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune, blanc (étoiles)
-  BB: { r: false, w: false, b: true,  g: false, y: true,  k: true,  o: false }, // bleu, jaune, noir
-  BD: { r: true,  w: false, b: false, g: true,  y: false, k: false, o: false }, // vert, rouge
-  BE: { r: true,  w: false, b: false, g: false, y: true,  k: true,  o: false }, // noir, jaune, rouge
-  BF: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // rouge, vert, jaune (étoile)
-  BG: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // blanc, vert, rouge
-  BH: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  BI: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // rouge, blanc, vert
-  BJ: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, jaune, rouge
-  BL: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge (comme France)
-  BM: { r: true,  w: false, b: false, g: false, y: false, k: false, o: false }, // rouge + Union Jack
-  BN: { r: false, w: true,  b: false, g: false, y: true,  k: true,  o: false }, // jaune, blanc, noir
-  BO: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // rouge, jaune, vert
-  BQ: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  BR: { r: false, w: true,  b: true,  g: true,  y: true,  k: false, o: false }, // vert, jaune, bleu, blanc
-  BS: { r: false, w: false, b: true,  g: false, y: true,  k: true,  o: false }, // bleu, noir, jaune
-  BT: { r: true,  w: true, b: false, g: false, y: true,  k: false, o: true  }, // orange, jaune, rouge (dragon)
-  BV: { r: false, w: false, b: false, g: false, y: false, k: false, o: false }, // pas de drapeau
-  BW: { r: false, w: true,  b: true,  g: false, y: false, k: true,  o: false }, // bleu, blanc, noir
-  BY: { r: true,  w: false, b: false, g: true,  y: false, k: false, o: false }, // rouge, vert, blanc (motif)
-  BZ: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  CA: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  CC: { r: false, w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, jaune
-  CD: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, jaune
-  CF: { r: true,  w: true,  b: true,  g: true,  y: true,  k: false, o: false }, // bleu, blanc, vert, jaune, rouge
-  CG: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, rouge, jaune
-  CH: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  CI: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: true  }, // orange, blanc, vert (mais orange = fond)
-  CK: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  CL: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  CM: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, rouge, jaune
-  CN: { r: true,  w: false, b: false, g: false, y: true,  k: false, o: false }, // rouge, jaune
-  CO: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // jaune, bleu, rouge
-  CR: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  CU: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  CV: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, jaune, blanc (étoiles)
-  CW: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, jaune, blanc
-  CX: { r: false, w: false, b: true,  g: true,  y: true,  k: false, o: false }, // bleu, vert, jaune
-  CY: { r: true,  w: true,  b: false, g: true,  y: true,  k: false, o: true  }, // blanc, orange/cuivre, vert, rouge (carte)
-  CZ: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, rouge, bleu
-  DE: { r: true,  w: false, b: false, g: false, y: true,  k: true,  o: false }, // noir, rouge, jaune
-  DJ: { r: true,  w: true,  b: true,  g: true,  y: false, k: false, o: false }, // bleu, vert, blanc, rouge
-  DK: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  DM: { r: true,  w: false, b: true,  g: true,  y: true,  k: true,  o: false }, // vert, croix (jaune, noir, blanc, rouge), bleu (perroquet)
-  DO: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  DZ: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, rouge
-  EC: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // jaune, bleu, rouge (+ emblème mais fond seul)
-  EE: { r: true,  w: true,  b: true,  g: false, y: false, k: true,  o: false }, // bleu, noir, blanc
-  EG: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc, noir (aigle) — fond : rouge blanc noir
-  EH: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // noir, vert, blanc, rouge
-  ER: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // vert, bleu, rouge, jaune
-  ES: { r: true,  w: false, b: false, g: false, y: true,  k: false, o: false }, // rouge, jaune
-  ET: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // vert, jaune, rouge, bleu (étoile)
-  FI: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu
-  FJ: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge (Union Jack)
-  FK: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  FM: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  FO: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu, rouge
-  FR: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  GA: { r: false, w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, jaune, bleu
-  GB: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  GD: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // rouge, vert, jaune
-  GE: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // blanc, rouge
-  GF: { r: true, w: false, b: false, g: true, y: true, k: false, o: false }, // pas de drapeau distinct
-  GG: { r: true,  w: true,  b: false, g: false, y: true,  k: false, o: false }, // blanc, rouge, jaune
-  GH: { r: true,  w: false, b: false, g: true,  y: true,  k: true,  o: false }, // rouge, or, vert, noir (étoile)
-  GI: { r: true,  w: true,  b: false, g: false, y: true,  k: false, o: false }, // blanc, rouge, jaune
-  GL: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // blanc, rouge
-  GM: { r: true,  w: false, b: true,  g: true,  y: false, k: false, o: false }, // bleu, rouge, vert, blanc
-  GN: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // rouge, jaune, vert
-  GO: { r: false,  w: false, b: false, g: false,  y: false,  k: false, o: false },
-  GP: { r: false, w: false, b: true, g: true, y: true, k: false, o: false }, // pas de drapeau distinct
-  GQ: { r: true,  w: true,  b: true,  g: true,  y: false, k: false, o: false }, // vert, bleu, blanc, rouge
-  GR: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  GS: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  GT: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  GU: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge
-  GW: { r: true,  w: false, b: false, g: true,  y: true,  k: true,  o: false }, // rouge, jaune, vert, noir (étoile)
-  GY: { r: true,  w: false, b: false, g: true,  y: true,  k: true,  o: false }, // vert, rouge, jaune, noir, blanc
-  HK: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  HM: { r: false, w: false, b: false, g: false, y: false, k: false, o: false }, // pas de drapeau distinct
-  HN: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, bleu
-  HR: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  HT: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge
-  HU: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // rouge, blanc, vert
-  ID: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  IE: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: true  }, // vert, blanc, orange
-  IL: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu, rouge
-  IM: { r: true,  w: true,  b: false, g: false, y: true,  k: false, o: false }, // rouge, or, blanc
-  IN: { r: true,  w: true,  b: true,  g: true,  y: false, k: false, o: true  }, // orange, blanc, vert, bleu (roue)
-  IO: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge (Union Jack)
-  IQ: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // rouge, blanc, noir, vert
-  IR: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, rouge
-  IS: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  IT: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, rouge
-  JE: { r: true,  w: true,  b: false, g: false, y: true,  k: false, o: false }, // blanc, rouge, jaune
-  JM: { r: false, w: false, b: false, g: true,  y: true,  k: true,  o: false }, // noir, or, vert
-  JO: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // noir, blanc, vert, rouge
-  JP: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // blanc, rouge
-  KE: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // noir, rouge, vert, blanc
-  KG: { r: true,  w: false, b: false, g: false, y: true,  k: false, o: false }, // rouge, jaune
-  KH: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  KI: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // rouge, bleu, jaune
-  KM: { r: true,  w: true,  b: true,  g: true,  y: true,  k: false, o: false }, // vert, bleu, blanc, rouge, jaune
-  KN: { r: true,  w: false, b: false, g: true,  y: true,  k: true,  o: false }, // vert, rouge, noir, jaune, blanc
-  KP: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  KR: { r: true,  w: false, b: true,  g: false, y: false, k: true,  o: false }, // blanc, rouge, bleu, noir
-  KW: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // vert, blanc, rouge, noir
-  KY: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  KZ: { r: false, w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu clair, jaune
-  LA: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, bleu, blanc
-  LB: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // rouge, blanc, vert
-  LC: { r: false, w: true,  b: true,  g: true,  y: true,  k: true,  o: false }, // bleu, noir, blanc, or, vert
-  LI: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, or (couronne)
-  LK: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // rouge, or, vert, orange
-  LR: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  LS: { r: true,  w: true,  b: true,  g: true,  y: false, k: true,  o: false }, // bleu, blanc, vert, noir (chapeau)
-  LT: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // jaune, vert, rouge
-  LU: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu clair
-  LV: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge foncé, blanc
-  LY: { r: false, w: true,  b: false, g: true,  y: false, k: true,  o: false }, // noir, rouge, vert, blanc (emblème)
-  MA: { r: true,  w: false, b: false, g: true,  y: false, k: false, o: false }, // rouge, vert (étoile)
-  MC: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  MD: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // bleu, jaune, rouge (+ emblème)
-  ME: { r: true,  w: false, b: false, g: false, y: true,  k: false, o: false }, // rouge, or
-  MF: { r: false, w: false, b: false, g: false, y: false, k: false, o: false }, // pas de drapeau distinct
-  MG: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // blanc, rouge, vert
-  MH: { r: true,  w: true,  b: true,  g: false, y: true,  k: false, o: false }, // bleu, orange, blanc, jaune
-  MK: { r: true,  w: false, b: false, g: false, y: true,  k: false, o: false }, // rouge, jaune (soleil)
-  ML: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, or, rouge
-  MM: { r: true,  w: true,  b: false, g: true,  y: true,  k: false, o: false }, // jaune, vert, rouge, blanc (étoile)
-  MN: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // rouge, bleu, jaune (emblème)
-  MO: { r: false, w: true,  b: false, g: true,  y: true,  k: false, o: false }, // vert, blanc, jaune
-  MP: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge (gris aussi)
-  MQ: { r: true, w: false, b: false, g: true, y: false,   k: true, o: false }, // pas de drapeau distinct
-  MR: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, or, rouge
-  MS: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  MT: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // blanc, rouge
-  MU: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // rouge, bleu, jaune, vert
-  MV: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // rouge, vert, blanc (croissant)
-  MW: { r: true,  w: false, b: false, g: true,  y: false, k: true,  o: false }, // noir, rouge, vert
-  MX: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, rouge
-  MY: { r: true,  w: true,  b: true,  g: false, y: true,  k: false, o: false }, // rouge, blanc, bleu, jaune
-  MZ: { r: true,  w: true,  b: false, g: true,  y: true,  k: true,  o: false }, // vert, noir, jaune, rouge, blanc
-  NA: { r: false, w: false, b: true,  g: true,  y: false, k: false, o: false }, // bleu, rouge, vert, or, blanc
-  NC: { r: false, w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge (comme France)
-  NE: { r: true,  w: true,  b: false, g: false, y: true,  k: false, o: true  }, // orange, blanc, vert (mais orange = fond)
-  NF: { r: false, w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc
-  NG: { r: false, w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc
-  NI: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  NL: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  NO: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  NP: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, bleu, blanc
-  NR: { r: false, w: true,  b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune, blanc
-  NU: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // jaune, bleu, rouge (Union Jack)
-  NZ: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  OM: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // rouge, blanc, vert
-  PA: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  PE: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  PF: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  PG: { r: true,  w: false, b: false, g: false, y: true,  k: true,  o: false }, // rouge, noir, jaune (étoiles)
-  PH: { r: true,  w: true,  b: true,  g: false, y: true,  k: false, o: false }, // bleu, rouge, blanc, jaune
-  PK: { r: false, w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc
-  PL: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // blanc, rouge
-  PM: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge (comme France)
-  PN: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // bleu, vert, rouge, jaune
-  PR: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  PS: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // noir, blanc, vert, rouge
-  PT: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, rouge, jaune
-  PW: { r: false, w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu clair, jaune
-  PY: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  QA: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // bordeaux/rouge, blanc
-  RE: { r: true, w: false, b: true, g: false, y: true, k: false, o: false }, // pas de drapeau distinct
-  RO: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune, rouge
-  RS: { r: true,  w: true,  b: true,  g: false, y: true,  k: false, o: false }, // rouge, bleu, blanc, or
-  RU: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu, rouge
-  RW: { r: false, w: false, b: true,  g: true,  y: true,  k: false, o: false }, // bleu, jaune, vert
-  SA: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, rouge
-  SB: { r: false, w: false, b: true,  g: true,  y: true,  k: false, o: false }, // bleu, vert, jaune
-  SC: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // bleu, jaune, rouge, vert, blanc
-  SD: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // rouge, blanc, noir, vert
-  SE: { r: false, w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune
-  SG: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  SH: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc, rouge
-  SI: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu, rouge
-  SJ: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu (Norvège)
-  SK: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu, rouge
-  SL: { r: false, w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, bleu
-  SM: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  SN: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, jaune, rouge
-  SO: { r: false, w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  SR: { r: true,  w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, blanc, rouge, jaune
-  SS: { r: true,  w: false, b: true,  g: true,  y: true,  k: true,  o: false }, // noir, rouge, vert, bleu, jaune, blanc
-  ST: { r: false, w: false, b: false, g: true,  y: true,  k: true,  o: false }, // vert, jaune, noir
-  SV: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // bleu, blanc
-  SX: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: true  }, // rouge, bleu, blanc, orange
-  SY: { r: true,  w: true,  b: false, g: true,  y: false, k: true,  o: false }, // rouge, blanc, noir, vert
-  SZ: { r: true,  w: false, b: true,  g: false, y: true,  k: true,  o: false }, // bleu, jaune, rouge, noir
-  TC: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  TD: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune, rouge
-  TF: { r: false, w: false, b: false, g: false, y: false, k: false, o: false }, // pas de drapeau distinct
-  TG: { r: true,  w: true,  b: false, g: true,  y: true,  k: false, o: false }, // vert, jaune, rouge, blanc
-  TH: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  TJ: { r: true,  w: true,  b: false, g: true,  y: false, k: false, o: false }, // rouge, blanc, vert
-  TK: { r: false, w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune, blanc
-  TL: { r: true,  w: false, b: false, g: false, y: true,  k: true,  o: false }, // rouge, noir, jaune
-  TM: { r: false, w: true,  b: false, g: true,  y: false, k: false, o: false }, // vert, blanc, rouge (motif)
-  TN: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  TO: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  TR: { r: true,  w: true,  b: false, g: false, y: false, k: false, o: false }, // rouge, blanc
-  TT: { r: true,  w: false, b: false, g: false, y: false, k: true,  o: false }, // rouge, noir, blanc
-  TV: { r: false, w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu clair, jaune
-  TW: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, bleu, blanc
-  TZ: { r: true,  w: false, b: true,  g: true,  y: true,  k: false, o: false }, // vert, or, bleu, noir, rouge
-  UA: { r: false, w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune
-  UG: { r: true,  w: false, b: false, g: false, y: false, k: true,  o: false }, // noir, jaune, rouge (+ grue)
-  UM: { r: false, w: false, b: false, g: false, y: false, k: false, o: false }, // pas de drapeau distinct
-  US: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu
-  UY: { r: false, w: true,  b: true,  g: false, y: true,  k: false, o: false }, // bleu, blanc, jaune
-  UZ: { r: true,  w: true,  b: true,  g: true,  y: false, k: false, o: false }, // bleu, blanc, vert, rouge
-  VA: { r: true,  w: true,  b: false, g: false, y: true,  k: false, o: false }, // jaune, blanc, rouge
-  VC: { r: false, w: false, b: false, g: true,  y: true,  k: false, o: false }, // vert, jaune, bleu
-  VE: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // jaune, bleu, rouge
-  VG: { r: true,  w: false, b: true,  g: false, y: false, k: false, o: false }, // bleu, rouge, blanc
-  VI: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // blanc, bleu, rouge
-  VN: { r: true,  w: false, b: false, g: false, y: true,  k: false, o: false }, // rouge, jaune
-  VU: { r: true,  w: false, b: false, g: true,  y: true,  k: true,  o: false }, // vert, rouge, noir, jaune
-  WF: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, blanc, bleu (France)
-  WS: { r: true,  w: true,  b: true,  g: false, y: false, k: false, o: false }, // rouge, bleu, blanc
-  XK: { r: true,  w: false, b: true,  g: false, y: true,  k: false, o: false }, // bleu, jaune, blanc
-  YE: { r: true,  w: true,  b: false, g: false, y: false, k: true,  o: false }, // rouge, blanc, noir
-  YT: { r: true, w: true, b: true, g: false, y: true, k: false, o: false }, // pas de drapeau distinct
-  ZA: { r: true,  w: true,  b: true,  g: true,  y: true,  k: true,  o: false }, // noir, or, vert, blanc, rouge, bleu
-  ZM: { r: true,  w: false, b: false, g: true,  y: false, k: true,  o: true  }, // vert, rouge, noir, orange
-  ZW: { r: true,  w: true,  b: false, g: true,  y: true,  k: true,  o: false }, // vert, jaune, rouge, noir, blanc
-};
+        AD: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, jaune, rouge
+        AE: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // vert, blanc, noir, rouge
+        AF: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, rouge, vert + emblème blanc
+        AG: { r: true, w: true, b: true, g: false, y: true, k: true, o: false }, // noir, bleu, blanc, jaune, rouge
+        AI: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        AL: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // rouge, noir (aigle)
+        AM: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: true,
+        }, // rouge, bleu, orange
+        AO: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // rouge, noir, jaune
+        AQ: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // pas de drapeau
+        AR: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, blanc, jaune (soleil)
+        AS: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        AT: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        AU: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        AW: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, jaune
+        AX: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, jaune
+        AZ: {
+          r: true,
+          w: true,
+          b: true,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, vert, blanc (croissant)
+        BA: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, blanc (étoiles)
+        BB: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // bleu, jaune, noir
+        BD: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, rouge
+        BE: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // noir, jaune, rouge
+        BF: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, vert, jaune (étoile)
+        BG: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, vert, rouge
+        BH: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        BI: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, vert
+        BJ: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, rouge
+        BL: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge (comme France)
+        BM: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge + Union Jack
+        BN: {
+          r: false,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // jaune, blanc, noir
+        BO: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune, vert
+        BQ: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        BR: {
+          r: false,
+          w: true,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, bleu, blanc
+        BS: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // bleu, noir, jaune
+        BT: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: true,
+        }, // orange, jaune, rouge (dragon)
+        BV: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // pas de drapeau
+        BW: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // bleu, blanc, noir
+        BY: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, vert, blanc (motif)
+        BZ: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        CA: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        CC: {
+          r: false,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune
+        CD: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, jaune
+        CF: { r: true, w: true, b: true, g: true, y: true, k: false, o: false }, // bleu, blanc, vert, jaune, rouge
+        CG: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, rouge, jaune
+        CH: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        CI: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: true,
+        }, // orange, blanc, vert (mais orange = fond)
+        CK: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        CL: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        CM: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, rouge, jaune
+        CN: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune
+        CO: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, bleu, rouge
+        CR: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        CU: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        CV: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, jaune, blanc (étoiles)
+        CW: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, jaune, blanc
+        CX: {
+          r: false,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, vert, jaune
+        CY: { r: true, w: true, b: false, g: true, y: true, k: false, o: true }, // blanc, orange/cuivre, vert, rouge (carte)
+        CZ: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge, bleu
+        DE: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // noir, rouge, jaune
+        DJ: {
+          r: true,
+          w: true,
+          b: true,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, vert, blanc, rouge
+        DK: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        DM: { r: true, w: false, b: true, g: true, y: true, k: true, o: false }, // vert, croix (jaune, noir, blanc, rouge), bleu (perroquet)
+        DO: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        DZ: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge
+        EC: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, bleu, rouge (+ emblème mais fond seul)
+        EE: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // bleu, noir, blanc
+        EG: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, noir (aigle) — fond : rouge blanc noir
+        EH: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, vert, blanc, rouge
+        ER: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, bleu, rouge, jaune
+        ES: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune
+        ET: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, rouge, bleu (étoile)
+        FI: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu
+        FJ: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge (Union Jack)
+        FK: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        FM: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        FO: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu, rouge
+        FR: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        GA: {
+          r: false,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, bleu
+        GB: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        GD: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, vert, jaune
+        GE: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge
+        GF: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        GG: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // blanc, rouge, jaune
+        GH: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // rouge, or, vert, noir (étoile)
+        GI: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // blanc, rouge, jaune
+        GL: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge
+        GM: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, vert, blanc
+        GN: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune, vert
+        GO: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        },
+        GP: {
+          r: false,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        GQ: {
+          r: true,
+          w: true,
+          b: true,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, bleu, blanc, rouge
+        GR: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        GS: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        GT: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        GU: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge
+        GW: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // rouge, jaune, vert, noir (étoile)
+        GY: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // vert, rouge, jaune, noir, blanc
+        HK: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        HM: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        HN: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, bleu
+        HR: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        HT: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge
+        HU: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, vert
+        ID: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        IE: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: true,
+        }, // vert, blanc, orange
+        IL: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu, rouge
+        IM: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, or, blanc
+        IN: { r: true, w: true, b: true, g: true, y: false, k: false, o: true }, // orange, blanc, vert, bleu (roue)
+        IO: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge (Union Jack)
+        IQ: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // rouge, blanc, noir, vert
+        IR: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge
+        IS: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        IT: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge
+        JE: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // blanc, rouge, jaune
+        JM: {
+          r: false,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // noir, or, vert
+        JO: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, blanc, vert, rouge
+        JP: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge
+        KE: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, rouge, vert, blanc
+        KG: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune
+        KH: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        KI: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, bleu, jaune
+        KM: { r: true, w: true, b: true, g: true, y: true, k: false, o: false }, // vert, bleu, blanc, rouge, jaune
+        KN: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // vert, rouge, noir, jaune, blanc
+        KP: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        KR: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // blanc, rouge, bleu, noir
+        KW: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // vert, blanc, rouge, noir
+        KY: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        KZ: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu clair, jaune
+        LA: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, bleu, blanc
+        LB: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, vert
+        LC: { r: false, w: true, b: true, g: true, y: true, k: true, o: false }, // bleu, noir, blanc, or, vert
+        LI: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, or (couronne)
+        LK: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, or, vert, orange
+        LR: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        LS: { r: true, w: true, b: true, g: true, y: false, k: true, o: false }, // bleu, blanc, vert, noir (chapeau)
+        LT: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, vert, rouge
+        LU: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu clair
+        LV: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge foncé, blanc
+        LY: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, rouge, vert, blanc (emblème)
+        MA: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, vert (étoile)
+        MC: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        MD: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, rouge (+ emblème)
+        ME: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, or
+        MF: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        MG: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge, vert
+        MH: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, orange, blanc, jaune
+        MK: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune (soleil)
+        ML: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, or, rouge
+        MM: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, vert, rouge, blanc (étoile)
+        MN: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, bleu, jaune (emblème)
+        MO: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, blanc, jaune
+        MP: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge (gris aussi)
+        MQ: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // pas de drapeau distinct
+        MR: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, or, rouge
+        MS: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        MT: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge
+        MU: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, bleu, jaune, vert
+        MV: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, vert, blanc (croissant)
+        MW: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, rouge, vert
+        MX: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge
+        MY: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu, jaune
+        MZ: { r: true, w: true, b: false, g: true, y: true, k: true, o: false }, // vert, noir, jaune, rouge, blanc
+        NA: {
+          r: false,
+          w: false,
+          b: true,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, vert, or, blanc
+        NC: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge (comme France)
+        NE: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: true,
+        }, // orange, blanc, vert (mais orange = fond)
+        NF: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc
+        NG: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc
+        NI: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        NL: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        NO: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        NP: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, bleu, blanc
+        NR: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, blanc
+        NU: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, bleu, rouge (Union Jack)
+        NZ: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        OM: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, vert
+        PA: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        PE: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        PF: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        PG: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // rouge, noir, jaune (étoiles)
+        PH: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc, jaune
+        PK: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc
+        PL: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, rouge
+        PM: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge (comme France)
+        PN: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, vert, rouge, jaune
+        PR: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        PS: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, blanc, vert, rouge
+        PT: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, rouge, jaune
+        PW: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu clair, jaune
+        PY: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        QA: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bordeaux/rouge, blanc
+        RE: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        RO: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, rouge
+        RS: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, bleu, blanc, or
+        RU: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu, rouge
+        RW: {
+          r: false,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, vert
+        SA: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge
+        SB: {
+          r: false,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, vert, jaune
+        SC: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, rouge, vert, blanc
+        SD: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // rouge, blanc, noir, vert
+        SE: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune
+        SG: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        SH: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, rouge
+        SI: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu, rouge
+        SJ: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu (Norvège)
+        SK: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu, rouge
+        SL: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, bleu
+        SM: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        SN: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, rouge
+        SO: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        SR: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge, jaune
+        SS: { r: true, w: false, b: true, g: true, y: true, k: true, o: false }, // noir, rouge, vert, bleu, jaune, blanc
+        ST: {
+          r: false,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // vert, jaune, noir
+        SV: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc
+        SX: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: true,
+        }, // rouge, bleu, blanc, orange
+        SY: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: false,
+        }, // rouge, blanc, noir, vert
+        SZ: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // bleu, jaune, rouge, noir
+        TC: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        TD: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, rouge
+        TF: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        TG: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, rouge, blanc
+        TH: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        TJ: {
+          r: true,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, vert
+        TK: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, blanc
+        TL: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: true,
+          o: false,
+        }, // rouge, noir, jaune
+        TM: {
+          r: false,
+          w: true,
+          b: false,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // vert, blanc, rouge (motif)
+        TN: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        TO: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        TR: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc
+        TT: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // rouge, noir, blanc
+        TV: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu clair, jaune
+        TW: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, bleu, blanc
+        TZ: {
+          r: true,
+          w: false,
+          b: true,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, or, bleu, noir, rouge
+        UA: {
+          r: false,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune
+        UG: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // noir, jaune, rouge (+ grue)
+        UM: {
+          r: false,
+          w: false,
+          b: false,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        US: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu
+        UY: {
+          r: false,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, blanc, jaune
+        UZ: {
+          r: true,
+          w: true,
+          b: true,
+          g: true,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, blanc, vert, rouge
+        VA: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, blanc, rouge
+        VC: {
+          r: false,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: false,
+          o: false,
+        }, // vert, jaune, bleu
+        VE: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // jaune, bleu, rouge
+        VG: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // bleu, rouge, blanc
+        VI: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // blanc, bleu, rouge
+        VN: {
+          r: true,
+          w: false,
+          b: false,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // rouge, jaune
+        VU: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: true,
+          k: true,
+          o: false,
+        }, // vert, rouge, noir, jaune
+        WF: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, blanc, bleu (France)
+        WS: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: false,
+          k: false,
+          o: false,
+        }, // rouge, bleu, blanc
+        XK: {
+          r: true,
+          w: false,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // bleu, jaune, blanc
+        YE: {
+          r: true,
+          w: true,
+          b: false,
+          g: false,
+          y: false,
+          k: true,
+          o: false,
+        }, // rouge, blanc, noir
+        YT: {
+          r: true,
+          w: true,
+          b: true,
+          g: false,
+          y: true,
+          k: false,
+          o: false,
+        }, // pas de drapeau distinct
+        ZA: { r: true, w: true, b: true, g: true, y: true, k: true, o: false }, // noir, or, vert, blanc, rouge, bleu
+        ZM: {
+          r: true,
+          w: false,
+          b: false,
+          g: true,
+          y: false,
+          k: true,
+          o: true,
+        }, // vert, rouge, noir, orange
+        ZW: { r: true, w: true, b: false, g: true, y: true, k: true, o: false }, // vert, jaune, rouge, noir, blanc
+      };
 
       const P_info = {
         AD: {
@@ -15226,12 +17143,8 @@
           }
         });
         let animeColorC = requestAnimationFrame(colorCurrentCountry);
-
       }
       colorCurrentCountry();
-      setTimeout(() => {
-      }, 500);
-
 
       function fillCadreOrga(p_id) {
         const p = document.getElementById(p_id);
@@ -15281,9 +17194,9 @@
         ((itemBlason.src = ``), (cadreContours.innerHTML = ``));
 
         mDrapeauCadre.src = `https://flagcdn.com/${id.toLowerCase()}.svg`;
-        
+
         drapeauCadre.src = `https://flagcdn.com/${id.toLowerCase()}.svg`;
-        
+
         fetch(
           `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`,
         )
@@ -15408,18 +17321,16 @@
           });
       }
 
-
-
       //Script tools
 
-      centerBtn.addEventListener('click',()=>{
-         animateViewBox(
+      centerBtn.addEventListener("click", () => {
+        animateViewBox(
           document.getElementById("svgMonde"),
           initialViewBox,
           700,
         );
-      })
-       openTool.addEventListener("click", () => {
+      });
+      openTool.addEventListener("click", () => {
         let delay = 0;
         openTool.querySelector("svg").classList.toggle("rotate");
         openTool.classList.toggle("active");
@@ -15434,7 +17345,8 @@
                 el.style.transform = "scale(1)";
               }, delay);
               delay += 50;
-            }),wrapperTool.style.pointerEvents = "all")
+            }),
+            (wrapperTool.style.pointerEvents = "all"))
           : (L_toolReverse.forEach((el) => {
               setTimeout(() => {
                 el.style.opacity = "0";
@@ -15442,46 +17354,47 @@
               }, delay);
               delay += 50;
             }),
-            delay = 0,
-           L_calque.forEach((el) => {
+            (delay = 0),
+            L_calque.forEach((el) => {
               setTimeout(() => {
                 el.style.opacity = "0";
                 el.style.transform = "";
               }, delay);
               delay += 50;
-            }),only.style.marginBottom  = ""
-          ,
-          wrapperTool.style.pointerEvents = "",
-          calque.classList.remove('active')
-        )
+            }),
+            (only.style.marginBottom = ""),
+            (wrapperTool.style.pointerEvents = ""),
+            calque.classList.remove("active"));
       });
 
-      calque.addEventListener('click',()=>{
+      calque.addEventListener("click", () => {
         let delay = 0;
         let L_calque = [vueCo2e, vuePib, vueP];
         let L_calqueReverse = [...L_calque].reverse();
-        calque.classList.toggle('active')
+        calque.classList.toggle("active");
         calque.classList.contains("active")
           ? (L_calqueReverse.forEach((el) => {
               setTimeout(() => {
                 el.style.opacity = "1";
+                el.style.pointerEvents  = "all";
                 el.style.transform = "scale(1)";
               }, delay);
               delay += 50;
-            }) , only.style.marginBottom  = boxCalques.getBoundingClientRect().height/3 + "px"
-          ,
-          boxCalques.style.pointerEvents = "all"
-          )
-          :( L_calque.forEach((el) => {
+            }),
+            (only.style.marginBottom =
+              boxCalques.getBoundingClientRect().height / 3 + "px"),
+            (boxCalques.style.pointerEvents = "all"))
+          : (L_calque.forEach((el) => {
               setTimeout(() => {
                 el.style.opacity = "0";
+                el.style.pointerEvents  = "none";
                 el.style.transform = "";
               }, delay);
               delay += 50;
-            }),only.style.marginBottom  = "",boxCalques.style.pointerEvents = "")
-      
-      })
-
+            }),
+            (only.style.marginBottom = ""),
+            (boxCalques.style.pointerEvents = ""));
+      });
 
       function afficheVue() {
         if (!cadreVueTF) {
@@ -15528,7 +17441,6 @@
         e.preventDefault();
       });
 
-
       /* info.addEventListener("click", () => {
         const str = currentCountry.getAttribute("title").replace(" ", "_");
         window.open(`https://en.wikipedia.org/wiki/${str}`, "_blank");
@@ -15555,12 +17467,12 @@
       }
 
       let vP = false;
-     vueP.addEventListener("click", () => {
-        calques.forEach(c=>c.classList.remove('active'))
+      vueP.addEventListener("click", () => {
+        calques.forEach((c) => c.classList.remove("active"));
         vCo2e = false;
         vPib = false;
         if (!vP) {
-        vueP.classList.add('active')
+          vueP.classList.add("active");
           vueP.style.boxShadow = "0px 0px 1em white";
           vP = true;
           globe.querySelectorAll("path").forEach((p) => {
@@ -15606,7 +17518,7 @@
           globe.querySelectorAll("path").forEach((p) => {
             pColor_m.set(p, {
               hovered: "rgb(29, 204, 90)",
-              current: `${colorPath}`, //Remplace aquamarine,
+              current: `${colorPath}`,
             });
           });
         }
@@ -15617,12 +17529,11 @@
       let vPib = false;
 
       vuePib.addEventListener("click", () => {
-        
-        calques.forEach(c=>c.classList.remove('active'))
+        calques.forEach((c) => c.classList.remove("active"));
         vP = false;
         vCo2e = false;
         if (!vPib) {
-        vuePib.classList.add('active')
+          vuePib.classList.add("active");
           vPib = true;
           globe.querySelectorAll("path").forEach((p) => {
             if (!P_info[p.id] || typeof P_info[p.id].pib !== "number") {
@@ -15663,13 +17574,13 @@
       let vCo2e = false;
 
       vueCo2e.addEventListener("click", () => {
-  calques.forEach(c=>c.classList.remove('active'))
-        
+        calques.forEach((c) => c.classList.remove("active"));
+
         vPib = false;
         vP = false;
 
         if (!vCo2e) {
-          vueCo2e.classList.add('active')
+          vueCo2e.classList.add("active");
 
           vCo2e = true;
 
@@ -15734,11 +17645,9 @@
         }
       });
 
-
-    
       //Script searching flag
-      function fillContentFlag (Lf) {
-        contentFlagS.innerHTML = ``
+      function fillContentFlag(Lf) {
+        contentFlagS.innerHTML = ``;
         contentFlagS.scrollTop = 0;
         const paysDispo = Lf.filter(
           (el) =>
@@ -15746,19 +17655,23 @@
             currentWorldFilter === "world",
         );
         Lf = paysDispo;
-        
-        
 
         let sautPays = false;
 
         for (const r of Lf) {
-          if (r.id==="GO"){continue}
+          if (r.id === "GO") {
+            continue;
+          }
           sautPays = false;
           for (const [color, value] of Object.entries(D_colorChoice)) {
-          if (r.id === "GO")continue             
-  if (value && !D_color[r.id.toUpperCase()][color]) {sautPays = true}
-}
-          if (sautPays){continue}
+            if (r.id === "GO") continue;
+            if (value && !D_color[r.id.toUpperCase()][color]) {
+              sautPays = true;
+            }
+          }
+          if (sautPays) {
+            continue;
+          }
 
           const celDrapeau = document.createElement("div");
           celDrapeau.className = "celDrapeau";
@@ -15790,60 +17703,79 @@
             zoomCountry(r.id);
           });
         }
-      }     
-
+      }
 
       // Scirpt searching
       function fillContentC(Ls) {
-        if (inputC.value.length === 0 ){Ls = LsInit}
+        if (inputC.value.length === 0) {
+          Ls = LsInit;
+        }
         contentC.scrollTop = 0;
         arrowC.style.display = "none";
-        if (currentClass!="name"){arrowC.style.display = "flex";}
+        if (currentClass != "name") {
+          arrowC.style.display = "flex";
+        }
 
-         if (currentClass==="name"){
-          Ls.sort((a, b) => 
-  a.t.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .localeCompare(b.t.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
-);
-      }
+        if (currentClass === "name") {
+          Ls.sort((a, b) =>
+            a.t
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .localeCompare(
+                b.t.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
+              ),
+          );
+        } else if (currentClass === "population") {
+          if (decroissant) {
+            Ls.sort(
+              (a, b) => L_q[b.id.toUpperCase()].p - L_q[a.id.toUpperCase()].p,
+            );
+          } else {
+            Ls.sort(
+              (a, b) => L_q[a.id.toUpperCase()].p - L_q[b.id.toUpperCase()].p,
+            );
+          }
+        } else if (currentClass === "superficie") {
+          if (decroissant) {
+            Ls.sort(
+              (a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s,
+            );
+          } else {
+            Ls.sort(
+              (a, b) => L_q[a.id.toUpperCase()].s - L_q[b.id.toUpperCase()].s,
+            );
+          }
+        }
 
-      else if (currentClass==="population"){
+        const paysDispo = Ls.filter(
+          (el) =>
+            P_info[el.id.toUpperCase()].region === currentWorldFilter ||
+            currentWorldFilter === "world",
+        );
+        Ls = paysDispo;
 
-        if(decroissant){Ls.sort((a, b) => L_q[b.id.toUpperCase()].p - L_q[a.id.toUpperCase()].p)}
-        else {Ls.sort((a, b) => L_q[a.id.toUpperCase()].p-L_q[b.id.toUpperCase()].p)}
-      }
-       else if (currentClass==="superficie"){
-        if(decroissant){Ls.sort((a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s)}
-        else {Ls.sort((a, b) => L_q[a.id.toUpperCase()].s - L_q[b.id.toUpperCase()].s)}
-      }
-
-      const paysDispo = Ls.filter (el=> P_info[el.id.toUpperCase()].region ===currentWorldFilter|| currentWorldFilter==="world")
-      Ls = paysDispo
-
-
-        contentC.style.scrollbarWidth = "none"
+        contentC.style.scrollbarWidth = "none";
         contentC.innerHTML = ``;
         let index = 0;
         let indexPop = 0;
         const D_clone = structuredClone(D_alphabet);
 
         for (const r of Ls) {
-
           const firstChar = r.t.slice(0, 1).toUpperCase();
 
-    if (currentClass === "name"){
-    for (const [baseLetter, accents] of Object.entries(D_clone)) {
-      if (accents.includes(firstChar)) {
-        const bandeLetter = document.createElement("div");
-        bandeLetter.className = "bandeLetter";
-        bandeLetter.id = "letter" + baseLetter;
-        bandeLetter.textContent = baseLetter;
-        contentC.append(bandeLetter);
-        delete D_clone[baseLetter];
-        break;
-      }
-    }
-  }
+          if (currentClass === "name") {
+            for (const [baseLetter, accents] of Object.entries(D_clone)) {
+              if (accents.includes(firstChar)) {
+                const bandeLetter = document.createElement("div");
+                bandeLetter.className = "bandeLetter";
+                bandeLetter.id = "letter" + baseLetter;
+                bandeLetter.textContent = baseLetter;
+                contentC.append(bandeLetter);
+                delete D_clone[baseLetter];
+                break;
+              }
+            }
+          }
           const itemC = document.createElement("div");
           itemC.className = "itemC";
           const boxSvgItem = document.createElement("div");
@@ -15859,8 +17791,8 @@
 
           boxSvgItem.innerHTML = ` <img  src="https://flagcdn.com/${r.id.toLowerCase()}.svg" alt="" />`;
           titleItemC.textContent = L_q[r.id.toUpperCase()].n;
-          if(currentClass === "name"){
-          capItemC.innerHTML = `
+          if (currentClass === "name") {
+            capItemC.innerHTML = `
           <svg
                 xmlns="http://www.w3.org/2000/svg"
                 id="Layer_1"
@@ -15873,15 +17805,13 @@
               </svg>
               ${L_q[r.id.toUpperCase()].c}
           `;
-            }
+          } else if (currentClass === "population") {
+            const rank = document.createElement("div");
+            rank.className = "rank";
+            rank.textContent = `#${rankPop[r.id.toUpperCase()]}`;
+            itemC.append(rank);
 
-          else if (currentClass==="population"){
-            const rank = document.createElement('div')
-            rank.className = "rank"
-            rank.textContent = `#${rankPop[r.id.toUpperCase()]}`
-            itemC.append(rank)
-
-        contentC.style.scrollbarWidth = "thin"
+            contentC.style.scrollbarWidth = "thin";
             capItemC.innerHTML = `
           <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -15893,18 +17823,15 @@
                       d="m20.5,6h-2c-1.93,0-3.5,1.57-3.5,3.5v4c0,1.391.822,2.585,2,3.149v6.351c0,.552.448,1,1,1s1-.448,1-1v-6h1v6c0,.552.448,1,1,1s1-.448,1-1v-6.351c1.178-.564,2-1.758,2-3.149v-4c0-1.93-1.57-3.5-3.5-3.5Zm1.5,7.5c0,.827-.673,1.5-1.5,1.5h-2c-.827,0-1.5-.673-1.5-1.5v-4c0-.827.673-1.5,1.5-1.5h2c.827,0,1.5.673,1.5,1.5v4Zm-8.02-6.649c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v4c0,.477.219.914.601,1.2.251.189.399.485.399.8v6.5c0,.552-.448,1-1,1s-1-.448-1-1v-6.051c-.633-.649-1-1.532-1-2.449v-4c0-1.658,1.178-3.1,2.801-3.43.541-.113,1.069.239,1.179.781Zm-5,0c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v3c0,.477.219.914.601,1.2.251.189.399.485.399.8v5.5c0,.552-.448,1-1,1s-1-.448-1-1v-5.051c-.633-.649-1-1.532-1-2.449v-3c0-1.658,1.178-3.1,2.801-3.43.542-.113,1.069.239,1.179.781Zm-5,0c.11.541-.24,1.069-.781,1.179-.695.141-1.199.76-1.199,1.47v2c0,.477.219.914.601,1.2.251.189.399.485.399.8v4.5c0,.552-.448,1-1,1s-1-.448-1-1v-4.051c-.633-.649-1-1.532-1-2.449v-2c0-1.658,1.178-3.1,2.801-3.43.544-.113,1.069.239,1.179.781Zm13.02-4.351c0-1.381,1.119-2.5,2.5-2.5s2.5,1.119,2.5,2.5-1.119,2.5-2.5,2.5-2.5-1.119-2.5-2.5Zm-1.385,2.227c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Zm-5,0c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Zm-5,0c-.337.169-.712.273-1.115.273-1.381,0-2.5-1.119-2.5-2.5S3.119,0,4.5,0c.402,0,.777.104,1.114.273-.38.659-.614,1.413-.614,2.227s.234,1.568.615,2.227Z"
                     />
                   </svg>
-              Population : ${L_q[r.id.toUpperCase()].p.toLocaleString('fr-FR')}
+              Population : ${L_q[r.id.toUpperCase()].p.toLocaleString("fr-FR")}
           `;
+          } else if (currentClass === "superficie") {
+            const rank = document.createElement("div");
+            rank.className = "rank";
+            rank.textContent = `#${rankS[r.id.toUpperCase()]}`;
+            itemC.append(rank);
 
-          }
-
-          else if (currentClass === "superficie"){
-              const rank = document.createElement('div')
-            rank.className = "rank"
-            rank.textContent = `#${rankS[r.id.toUpperCase()]}`
-            itemC.append(rank)
-
-        contentC.style.scrollbarWidth = "thin"
+            contentC.style.scrollbarWidth = "thin";
             capItemC.innerHTML = `
          <svg
                     transition="transform 0.4s ease"
@@ -15930,25 +17857,21 @@
                     </defs>
                   </svg>
 
-              Superficie : ${L_q[r.id.toUpperCase()].s.toLocaleString('fr-FR')}km²
+              Superficie : ${L_q[r.id.toUpperCase()].s.toLocaleString("fr-FR")}km²
           `;
-
           }
           boxItemC.appendChild(titleItemC);
           boxItemC.appendChild(capItemC);
 
           itemC.append(boxSvgItem, boxItemC);
           contentC.append(itemC);
-          if (currentClass!="population"){
-          contentC.append(ligneInContent);            
-          }
-           
-          else{
-            const cadrePopulation = document.createElement('div')
-            cadrePopulation.className = "cadrePopulation"
-            const svgPopulation = document.createElement('div')
-            svgPopulation.className = "svgPopulation"
-
+          if (currentClass != "population") {
+            contentC.append(ligneInContent);
+          } else {
+            const cadrePopulation = document.createElement("div");
+            cadrePopulation.className = "cadrePopulation";
+            const svgPopulation = document.createElement("div");
+            svgPopulation.className = "svgPopulation";
 
             svgPopulation.innerHTML = `
             <svg
@@ -15964,35 +17887,34 @@
                 d="M11.994,13.661c-5.328,.034-8.195,2.911-8.291,8.322-.004,.268,.099,.527,.287,.718s.445,.299,.713,.299h14.595c.268,0,.525-.108,.713-.299,.188-.191,.291-.45,.287-.718-.092-5.333-3.036-8.288-8.304-8.322Z"
               />
             </svg>
-            `           
+            `;
 
-            const pop  = P_info[r.id].population
+            const pop = P_info[r.id].population;
 
             const n = Math.floor(pop / 2000000);
-            if (n<1) {
-               cadrePopulation.append(svgPopulation)
+            if (n < 1) {
+              cadrePopulation.append(svgPopulation);
             }
             for (let i = 0; i < n; i++) {
-              const svgClone = svgPopulation.cloneNode(true)
-              cadrePopulation.append(svgClone)
+              const svgClone = svgPopulation.cloneNode(true);
+              cadrePopulation.append(svgClone);
             }
-              contentC.append(cadrePopulation)
-          contentC.append(ligneInContent);   
+            contentC.append(cadrePopulation);
+            contentC.append(ligneInContent);
 
-           cadrePopulation.style.transform = "translateY(-1em)";
+            cadrePopulation.style.transform = "translateY(-1em)";
 
-          setTimeout(() => {
-            cadrePopulation.style.opacity = "1";
-            cadrePopulation.style.transform = "";
-          }, indexPop * 10);
-          indexPop += 1;         
-
+            setTimeout(() => {
+              cadrePopulation.style.opacity = "1";
+              cadrePopulation.style.transform = "";
+            }, indexPop * 10);
+            indexPop += 1;
           }
 
-
-
-          setTimeout(() => {            
-            if(inputC.value.length===0 && currentClass==="name" ){contentC.appendChild(alphabet)}
+          setTimeout(() => {
+            if (inputC.value.length === 0 && currentClass === "name") {
+              contentC.appendChild(alphabet);
+            }
           }, 20);
 
           itemC.style.transform = "translateY(-0.8em)";
@@ -16001,7 +17923,7 @@
           setTimeout(() => {
             itemC.style.opacity = "1";
             itemC.style.transform = "";
-          },10);
+          }, 10);
 
           itemC.addEventListener("click", () => {
             cadreS.classList.remove("active");
@@ -16011,94 +17933,97 @@
       }
 
       const D_alphabet = {
-  A: ["A", "À", "Â", "Á", "Ã", "Ä", "Å"],
-  B: ["B"],
-  C: ["C", "Ç"],
-  D: ["D"],
-  E: ["E", "È", "É", "Ê", "Ë"],
-  F: ["F"],
-  G: ["G"],
-  H: ["H"],
-  I: ["I", "Î", "Ï", "Í", "Ì"],
-  J: ["J"],
-  K: ["K"],
-  L: ["L"],
-  M: ["M"],
-  N: ["N", "Ñ"],
-  O: ["O", "Ô", "Ö", "Ó", "Ò", "Õ", "Ø"],
-  P: ["P"],
-  Q: ["Q"],
-  R: ["R"],
-  S: ["S"],
-  T: ["T"],
-  U: ["U", "Û", "Ù", "Ú", "Ü"],
-  V: ["V"],
-  W: ["W"],
-  X: ["X"],
-  Y: ["Y", "Ÿ"],
-  Z: ["Z"],
-};
+        A: ["A", "À", "Â", "Á", "Ã", "Ä", "Å"],
+        B: ["B"],
+        C: ["C", "Ç"],
+        D: ["D"],
+        E: ["E", "È", "É", "Ê", "Ë"],
+        F: ["F"],
+        G: ["G"],
+        H: ["H"],
+        I: ["I", "Î", "Ï", "Í", "Ì"],
+        J: ["J"],
+        K: ["K"],
+        L: ["L"],
+        M: ["M"],
+        N: ["N", "Ñ"],
+        O: ["O", "Ô", "Ö", "Ó", "Ò", "Õ", "Ø"],
+        P: ["P"],
+        Q: ["Q"],
+        R: ["R"],
+        S: ["S"],
+        T: ["T"],
+        U: ["U", "Û", "Ù", "Ú", "Ü"],
+        V: ["V"],
+        W: ["W"],
+        X: ["X"],
+        Y: ["Y", "Ÿ"],
+        Z: ["Z"],
+      };
 
+      let Ls = [];
+      let LsInit = [];
+      let LsPop = [];
+      let rankPop = {};
 
-     let Ls = [];
-let LsInit = [];
-let LsPop = [];
-let rankPop = {};
+      let LsS = [];
+      let rankS = {};
 
-let LsS = []
-let rankS = {};
+      let Lf = [];
+      let LfInit = [];
 
-let Lf = []
-let LfInit = []
+      setTimeout(() => {
+        paths.forEach((p) => {
+          if (L_q[p.id]) {
+            const nom = L_q[p.id.toUpperCase()].n;
+            const init = nom
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .slice(0, 1)
+              .toUpperCase();
+            Ls.push({ id: p.id, t: nom, init });
+          }
+        });
 
+        Ls.sort((a, b) =>
+          a.t
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .localeCompare(
+              b.t.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
+            ),
+        );
 
-setTimeout(() => {
-  paths.forEach((p) => {
-    if (L_q[p.id]) {
-      const nom = L_q[p.id.toUpperCase()].n;
-      const init = nom.normalize("NFD").replace(/[\u0300-\u036f]/g, "").slice(0, 1).toUpperCase();
-      Ls.push({ id: p.id, t: nom, init });
-    }
-  });
+        LsInit = [...Ls];
+        Lf = [...Ls];
+        LfInit = [...Ls];
 
-  Ls.sort((a, b) => 
-    a.t.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .localeCompare(b.t.normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
-  );
+        LsPop = [...Ls].sort(
+          (a, b) => L_q[b.id.toUpperCase()].p - L_q[a.id.toUpperCase()].p,
+        );
+        LsPop.forEach((item, index) => {
+          item.rank = index + 1;
+        });
 
-  LsInit = [...Ls];
-  Lf = [...Ls]
-  LfInit = [...Ls]
+        LsPop.forEach((item, index) => {
+          item.rank = index + 1;
+          rankPop[item.id.toUpperCase()] = index + 1;
+        });
 
-  LsPop = [...Ls].sort((a, b) => L_q[b.id.toUpperCase()].p - L_q[a.id.toUpperCase()].p);
-  LsPop.forEach((item, index) => { item.rank = index + 1; });
+        LsS = [...Ls].sort(
+          (a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s,
+        );
+        LsS.forEach((item, index) => {
+          item.rank = index + 1;
+        });
 
-LsPop.forEach((item, index) => { 
-  item.rank = index + 1;
-  rankPop[item.id.toUpperCase()] = index + 1;
-});
+        LsS.forEach((item, index) => {
+          item.rank = index + 1;
+          rankS[item.id.toUpperCase()] = index + 1;
+        });
 
-
-  LsS = [...Ls].sort((a, b) => L_q[b.id.toUpperCase()].s - L_q[a.id.toUpperCase()].s);
-  LsS.forEach((item, index) => { item.rank = index + 1; });
-
-  LsS.forEach((item, index) => { 
-  item.rank = index + 1;
-  rankS[item.id.toUpperCase()] = index + 1;
-});
-
-
-
-
-  fillContentC(LsInit);
-}, 100);
-
-
- 
-
-
-
-
+        fillContentC(LsInit);
+      }, 100);
 
       reset.addEventListener("click", () => {
         fillContentC(LsInit);
@@ -16111,13 +18036,26 @@ LsPop.forEach((item, index) => {
             return;
           }
 
-          const val = inputC.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-          const nom = L_q[p.id.toUpperCase()].n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+          const val = inputC.value
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toUpperCase();
+          const nom = L_q[p.id.toUpperCase()].n
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toUpperCase();
 
-          const valL =inputC.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-          const nomL = L_q[p.id.toUpperCase()].n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+          const valL = inputC.value
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+          const nomL = L_q[p.id.toUpperCase()].n
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
           if (
-            (val===nom.slice(0,val.length)||valL===nomL.slice(0,val.length)) &&
+            (val === nom.slice(0, val.length) ||
+              valL === nomL.slice(0, val.length)) &&
             inputC.value.length != 0
           ) {
             Ls.push({
@@ -16126,12 +18064,11 @@ LsPop.forEach((item, index) => {
             });
           }
         });
-        
-        
+
         if (Ls.length === 0 && inputC.value.length === 0) {
-          Ls = LsInit
+          Ls = LsInit;
         }
-        fillContentC(Ls)
+        fillContentC(Ls);
       });
 
       //Fin script searching
@@ -16225,69 +18162,58 @@ LsPop.forEach((item, index) => {
         }, 400);
       }
 
+      const rect = svg.getBoundingClientRect();
+      const centerScreen = {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      };
 
-  const rect = svg.getBoundingClientRect();
-const centerScreen = {
-  x: rect.left + rect.width / 2,
-  y: rect.top + rect.height / 2,};
+      const pt = svg.createSVGPoint();
+      pt.x = centerScreen.x;
+      pt.y = centerScreen.y;
 
-  const pt = svg.createSVGPoint();
-pt.x = centerScreen.x;
-pt.y = centerScreen.y;
+      const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
 
-const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
+      const initialViewBox2 = {
+        width: svg.viewBox.baseVal.width,
+        height: svg.viewBox.baseVal.height,
+      };
 
+      function zoomCenterScreen(svg, zoomFactor = 2, duration = 700) {
+        const vb = svg.viewBox.baseVal;
 
+        const rect = svg.getBoundingClientRect();
+        const pt = svg.createSVGPoint();
+        pt.x = rect.left + rect.width / 2;
+        pt.y = rect.top + rect.height / 2;
 
+        const center = pt.matrixTransform(svg.getScreenCTM().inverse());
 
-const initialViewBox2 = {
-  width: svg.viewBox.baseVal.width,
-  height: svg.viewBox.baseVal.height
-};
+        const MIN_WIDTH = initialViewBox2.width / 60;
+        const MIN_HEIGHT = initialViewBox2.height / 60;
 
-function zoomCenterScreen(svg, zoomFactor = 2, duration = 700) {
-  const vb = svg.viewBox.baseVal;
+        const MAX_WIDTH = initialViewBox2.width;
+        const MAX_HEIGHT = initialViewBox2.height;
 
-  const rect = svg.getBoundingClientRect();
-  const pt = svg.createSVGPoint();
-  pt.x = rect.left + rect.width / 2;
-  pt.y = rect.top + rect.height / 2;
+        const newW = Math.min(
+          Math.max(vb.width / zoomFactor, MIN_WIDTH),
+          MAX_WIDTH,
+        );
+        const newH = Math.min(
+          Math.max(vb.height / zoomFactor, MIN_HEIGHT),
+          MAX_HEIGHT,
+        );
 
-  const center = pt.matrixTransform(svg.getScreenCTM().inverse());
+        const target = [center.x - newW / 2, center.y - newH / 2, newW, newH];
 
-  const MIN_WIDTH = initialViewBox2.width / 60;
-  const MIN_HEIGHT = initialViewBox2.height / 60;
+        animateViewBox(svg, target, duration);
+      }
+      ``;
 
-  const MAX_WIDTH = initialViewBox2.width;
-  const MAX_HEIGHT = initialViewBox2.height ;
+      zP.addEventListener("click", () => zoomCenterScreen(svgMonde, 2, 300));
 
-  const newW = Math.min( Math.max(vb.width / zoomFactor, MIN_WIDTH), MAX_WIDTH)
-  const newH = Math.min(Math.max(vb.height / zoomFactor, MIN_HEIGHT),MAX_HEIGHT)
-
-  const target = [
-    center.x - newW / 2,
-    center.y - newH / 2,
-    newW,
-    newH,
-  ];
-
-  animateViewBox(svg, target, duration);
-}
-``
-
-
-      
-zP.addEventListener("click", () =>
-  zoomCenterScreen(svgMonde, 2, 300)
-);
-
-// Dézoom rapide
-zM.addEventListener("click", () =>
-  zoomCenterScreen(svgMonde, 0.5, 300)
-);
-
-
-      
+      // Dézoom rapide
+      zM.addEventListener("click", () => zoomCenterScreen(svgMonde, 0.5, 300));
 
       //Partie cadre
 
@@ -17291,26 +19217,30 @@ zM.addEventListener("click", () =>
 
       const contentC = document.getElementById("contentC");
       const contentFlagS = document.getElementById("contentFlagS");
-      let currentSearching = "pays"
+      let currentSearching = "pays";
       const alphabet = document.querySelector(".alphabet");
       const letters = document.querySelectorAll(".letter");
       let dragging = false;
 
-
-      
-      const footerCadreName = document.getElementById("footerCadreName")
+      const footerCadreName = document.getElementById("footerCadreName");
       setTimeout(() => {
-        contentC.style.paddingBottom =  footerCadreName.getBoundingClientRect().height  + "px";
-        contentFlagS.style.paddingBottom = footerCadreName.getBoundingClientRect().height  + "px";
-
+        contentC.style.paddingBottom =
+          footerCadreName.getBoundingClientRect().height + "px";
+        contentFlagS.style.paddingBottom =
+          footerCadreName.getBoundingClientRect().height + "px";
       }, 20);
 
+      const colorsChoice = document.querySelectorAll(".colorChoice");
 
-      const colorsChoice = document.querySelectorAll('.colorChoice')
-
-      const D_colorChoice = {r:false,w:false,o:false,b:false,k:false, y:false,g:false}
-
-
+      const D_colorChoice = {
+        r: false,
+        w: false,
+        o: false,
+        b: false,
+        k: false,
+        y: false,
+        g: false,
+      };
 
       const wrapperMenuGrid = document.querySelector(".wrapperMenuGrid");
       const gridChoice = document.getElementById("gridChoice");
@@ -17319,8 +19249,8 @@ zM.addEventListener("click", () =>
       const cadreClasser = document.getElementById("cadreClasser");
       const classer = document.querySelector(".classer");
       const itemsClasser = document.querySelectorAll(".itemClasser");
-      let currentClass = "name"
-      let currentWorldFilter = "world"
+      let currentClass = "name";
+      let currentWorldFilter = "world";
       let decroissant = true;
 
       const arrowC = document.querySelector(".arrowC");
@@ -17331,7 +19261,7 @@ zM.addEventListener("click", () =>
 
       backSearch.addEventListener("click", () => {
         setTimeout(() => {
-        inputC.value = ""          
+          inputC.value = "";
         }, 100);
         cadreS.classList.remove("active");
       });
@@ -17340,21 +19270,23 @@ zM.addEventListener("click", () =>
 
       //Header
       titleCadreS.addEventListener("click", (e) => {
-        e.stopPropagation()
-        cadreClasser.classList.remove('active')
-        cadreFilterS.classList.remove('active')
+        e.stopPropagation();
+        cadreClasser.classList.remove("active");
+        cadreFilterS.classList.remove("active");
         cadreModeS.classList.toggle("active");
         document.getElementById("arrowTitle").classList.toggle("active");
       });
 
       optionModeS.forEach((option) => {
         option.addEventListener("click", () => {
-          currentSearching = option.dataset.searching
-          currentSearching === "pays" ? fillContentC(Ls) : fillContentFlag(LfInit)
+          currentSearching = option.dataset.searching;
+          currentSearching === "pays"
+            ? fillContentC(Ls)
+            : fillContentFlag(LfInit);
 
           optionModeS.forEach((opt) => opt.classList.remove("active"));
           option.classList.add("active");
-          cadreModeS.classList.remove('active')
+          cadreModeS.classList.remove("active");
           if (option.id === "flagS") {
             // Logique pour afficher les drapeaux
             titleCadreS.querySelector("span").textContent = "Drapeaux";
@@ -17393,18 +19325,20 @@ zM.addEventListener("click", () =>
         cadreFilterS.classList.toggle("active");
       });
       worldFilter.addEventListener("click", (e) => {
-        e.stopPropagation()
-        cadreClasser.classList.remove('active')
-        cadreModeS.classList.remove('active')
+        e.stopPropagation();
+        cadreClasser.classList.remove("active");
+        cadreModeS.classList.remove("active");
         if (e.target.closest("label")) return; // le label gère déjà via change
         burgerInput.click();
       });
 
       itemsFilter.forEach((item) => {
         item.addEventListener("click", () => {
-          currentWorldFilter = item.dataset.region
-          currentSearching === "pays" ? fillContentC(Ls) : fillContentFlag(LfInit)
-          
+          currentWorldFilter = item.dataset.region;
+          currentSearching === "pays"
+            ? fillContentC(Ls)
+            : fillContentFlag(LfInit);
+
           itemsFilter.forEach(
             (i) => (i.querySelector("span").style.opacity = "0"),
           );
@@ -17486,19 +19420,20 @@ zM.addEventListener("click", () =>
       colorsChoice.forEach((color) => {
         color.addEventListener("click", () => {
           color.classList.toggle("active");
-          D_colorChoice[color.dataset.color]= !D_colorChoice[color.dataset.color]
-          fillContentFlag(LfInit)
+          D_colorChoice[color.dataset.color] =
+            !D_colorChoice[color.dataset.color];
+          fillContentFlag(LfInit);
         });
       });
 
       wrapperMenuGrid.addEventListener("click", (e) => {
-        e.stopPropagation()
+        e.stopPropagation();
         gridChoice.classList.toggle("active");
       });
 
       optionsGrid.forEach((option) => {
         option.addEventListener("click", () => {
-          gridChoice.classList.remove('active')
+          gridChoice.classList.remove("active");
           optionsGrid.forEach((o) => {
             o.classList.remove("active");
           });
@@ -17517,27 +19452,26 @@ zM.addEventListener("click", () =>
       ///
 
       arrowC.addEventListener("click", () => {
-        decroissant = !decroissant
+        decroissant = !decroissant;
         arrowC.classList.toggle("dec");
-        fillContentC(Ls)
+        fillContentC(Ls);
       });
 
       //Classer par...*********************************************************
 
       classer.addEventListener("click", (e) => {
-        e.stopPropagation()
-        cadreModeS.classList.remove('active')
-        cadreFilterS.classList.remove('active')
-        
+        e.stopPropagation();
+        cadreModeS.classList.remove("active");
+        cadreFilterS.classList.remove("active");
 
         cadreClasser.classList.toggle("active");
       });
 
       itemsClasser.forEach((item) => {
         item.addEventListener("click", () => {
-          currentClass = item.dataset.classer
-          
-          fillContentC(inputC.value.length === 0 ? LsInit : Ls)
+          currentClass = item.dataset.classer;
+
+          fillContentC(inputC.value.length === 0 ? LsInit : Ls);
           // Retire le ✓ de tous
           itemsClasser.forEach(
             (i) => (i.querySelector("span").style.opacity = "0"),
@@ -17555,19 +19489,22 @@ zM.addEventListener("click", () =>
         });
       });
 
-      document.addEventListener('pointerdown',(e)=>{
-      const L_propagation = [wrapperMenuGrid, document.querySelector('.wrapperClasser'), document.querySelector('.wrapperWorldFilter'),document.querySelector('.wrapperTitleS') ]
-       if (L_propagation.some(el => el && el.contains(e.target))) return;
-        
-        cadreFilterS.classList.remove('active')
-        cadreClasser.classList.remove('active')
-        cadreModeS.classList.remove('active')
-        gridChoice.classList.remove('active')
-      })
+      document.addEventListener("pointerdown", (e) => {
+        const L_propagation = [
+          wrapperMenuGrid,
+          document.querySelector(".wrapperClasser"),
+          document.querySelector(".wrapperWorldFilter"),
+          document.querySelector(".wrapperTitleS"),
+        ];
+        if (L_propagation.some((el) => el && el.contains(e.target))) return;
 
-//abc
-      
+        cadreFilterS.classList.remove("active");
+        cadreClasser.classList.remove("active");
+        cadreModeS.classList.remove("active");
+        gridChoice.classList.remove("active");
+      });
 
+      //abc
 
       // Fin script Maps
     </script>
