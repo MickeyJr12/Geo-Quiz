@@ -8705,6 +8705,7 @@
       const zBox = document.querySelector(".zBox");
       const only = document.getElementById("only");
       const boxCalques = document.querySelector(".boxCalques");
+      const calquesChoice = document.querySelectorAll('.calqueChoice')
 
       const vueCo2e = document.getElementById("vueCo2e");
       const vueP = document.getElementById("vueP");
@@ -17362,7 +17363,9 @@
               }, delay);
               delay += 50;
             }),
-            (only.style.marginBottom = ""),
+            (only.style.marginBottom = ""),            
+            (boxCalques.style.pointerEvents = "none"),
+            (calquesChoice.forEach(c=>{c.style.pointerEvents = "none"})),
             (wrapperTool.style.pointerEvents = ""),
             calque.classList.remove("active"));
       });
