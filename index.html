@@ -275,7 +275,8 @@
         transform: scale(0.75) translateY(1em);
         transition:
           transform 0.35s ease,
-          opacity 0.35s ease;
+          opacity 0.35s ease,
+          filter 0.30s ease;
       }
       #zP,
       #zM {
@@ -289,7 +290,8 @@
           background 0.2s ease,
           transform 0.35s ease,
           opacity 0.35s ease,
-          outline 0.2s ease;
+          outline 0.2s ease,
+          filter 0.30s ease;
       }
       #zM:active,
       #zP:active {
@@ -322,7 +324,7 @@
         cursor: pointer;
       }
       #calque.active{
-        background: rgba(84, 149, 209, 0.8);
+        background: rgba(91, 175, 253, 0.8);
         outline: 0.1em solid rgba(255, 255, 255, 0.5);
       }
 
@@ -400,7 +402,7 @@
       }
       #openTool{pointer-events: all;}
       #openTool.active {
-        background: rgba(84, 149, 209, 0.8);
+        background: rgba(91, 175, 253, 0.8);
         outline: 0.1em solid rgba(255, 255, 255, 0.5);
       }
 
@@ -5551,7 +5553,7 @@
         </svg>
       </div>
       <div class="wrapperCalque">
-        <div class="toolCarre tool" id="calque">
+        <div class="toolCarre" id="calque">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1"
@@ -8698,6 +8700,7 @@
       const vueP = document.getElementById('vueP')
       const vuePib = document.getElementById('vuePib')
       const calques = document.querySelectorAll('.calqueChoice')
+      const tools = [centerBtn,zBox,only]
 
 
 
@@ -15454,7 +15457,6 @@
       });
 
       calque.addEventListener('click',()=>{
-        
         let delay = 0;
         let L_calque = [vueCo2e, vuePib, vueP];
         let L_calqueReverse = [...L_calque].reverse();
@@ -16236,7 +16238,14 @@ pt.y = centerScreen.y;
 const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
 
 
-function zoomCenterScreen(svg, zoomFactor = 2) {
+
+
+const initialViewBox2 = {
+  width: svg.viewBox.baseVal.width,
+  height: svg.viewBox.baseVal.height
+};
+
+function zoomCenterScreen(svg, zoomFactor = 2, duration = 700) {
   const vb = svg.viewBox.baseVal;
 
   const rect = svg.getBoundingClientRect();
@@ -16246,8 +16255,14 @@ function zoomCenterScreen(svg, zoomFactor = 2) {
 
   const center = pt.matrixTransform(svg.getScreenCTM().inverse());
 
-  const newW = vb.width / zoomFactor;
-  const newH = vb.height / zoomFactor;
+  const MIN_WIDTH = initialViewBox2.width / 60;
+  const MIN_HEIGHT = initialViewBox2.height / 60;
+
+  const MAX_WIDTH = initialViewBox2.width;
+  const MAX_HEIGHT = initialViewBox2.height ;
+
+  const newW = Math.min( Math.max(vb.width / zoomFactor, MIN_WIDTH), MAX_WIDTH)
+  const newH = Math.min(Math.max(vb.height / zoomFactor, MIN_HEIGHT),MAX_HEIGHT)
 
   const target = [
     center.x - newW / 2,
@@ -16256,18 +16271,21 @@ function zoomCenterScreen(svg, zoomFactor = 2) {
     newH,
   ];
 
-  animateViewBox(svg, target, 700);
+  animateViewBox(svg, target, duration);
 }
+``
 
-
-      zP.addEventListener("click", () => {
-
-      zoomCenterScreen(document.getElementById("svgMonde"), 2);
 
       
+zP.addEventListener("click", () =>
+  zoomCenterScreen(svgMonde, 2, 300)
+);
 
-      });
-      zM.addEventListener("click", () => zoomCenterScreen(document.getElementById("svgMonde"), 2));
+// Dézoom rapide
+zM.addEventListener("click", () =>
+  zoomCenterScreen(svgMonde, 0.5, 300)
+);
+
 
       
 
