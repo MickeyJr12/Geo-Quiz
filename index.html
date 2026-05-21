@@ -16223,8 +16223,53 @@ LsPop.forEach((item, index) => {
         }, 400);
       }
 
-      // zP.addEventListener("click", () => applyZoomBtn(true));
-      // zM.addEventListener("click", () => applyZoomBtn(false));
+
+  const rect = svg.getBoundingClientRect();
+const centerScreen = {
+  x: rect.left + rect.width / 2,
+  y: rect.top + rect.height / 2,};
+
+  const pt = svg.createSVGPoint();
+pt.x = centerScreen.x;
+pt.y = centerScreen.y;
+
+const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+
+function zoomCenterScreen(svg, zoomFactor = 2) {
+  const vb = svg.viewBox.baseVal;
+
+  const rect = svg.getBoundingClientRect();
+  const pt = svg.createSVGPoint();
+  pt.x = rect.left + rect.width / 2;
+  pt.y = rect.top + rect.height / 2;
+
+  const center = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+  const newW = vb.width / zoomFactor;
+  const newH = vb.height / zoomFactor;
+
+  const target = [
+    center.x - newW / 2,
+    center.y - newH / 2,
+    newW,
+    newH,
+  ];
+
+  animateViewBox(svg, target, 700);
+}
+
+
+      zP.addEventListener("click", () => {
+
+      zoomCenterScreen(document.getElementById("svgMonde"), 2);
+
+      
+
+      });
+      zM.addEventListener("click", () => zoomCenterScreen(document.getElementById("svgMonde"), 2));
+
+      
 
       //Partie cadre
 
