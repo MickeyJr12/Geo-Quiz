@@ -201,6 +201,9 @@
       }
 
       /*CSS Maps*/
+      .Maps{
+        position: relative;
+      }
 
       .monde {
         position: absolute;
@@ -1524,7 +1527,7 @@
         display: flex;
         position: absolute;
         right: 1em;
-        top: 8em;
+        top: 12em;
         pointer-events: all;
         justify-content: center;
         align-items: center;
@@ -5857,7 +5860,7 @@
             <div
               class="calqueChoice"
               id="vuePib"
-              data-donnee="PIB/hab"
+              data-donnee="PIB/hab (USD/an)"
               data-max="> 80 000"
               ,
               data-min="200"
@@ -8795,6 +8798,7 @@
           700,
         );
         Maps.appendChild(globe);
+        globe.style.zIndex = "5";
         phoneHome.style.display = "none";
         Maps.style.visibility = "visible";
         Maps.style.opacity = "1";
