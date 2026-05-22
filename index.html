@@ -366,6 +366,7 @@
           background 0.2s ease,
           transform 0.35s ease,
           opacity 0.35s ease,
+          box-shadow 0.3s ease,
           outline 0.2s ease;
       }
       .calqueChoice.active {
@@ -420,6 +421,192 @@
         transform: rotate(0);
       }
       /*Fin CSS Tools*/
+
+      /*CSS Legend */
+
+        #cadreLegend{
+        display : flex;
+        overflow: hidden;
+        position : fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        user-select: none;
+        color : white;
+        opacity: 0;
+        border-radius: 0.6em;
+        left: 1em;
+        bottom: 3em;
+        width: 2.6em;
+
+        width : 14em;
+        max-width: 0em;
+        height : fit-content;
+        background: rgba(28, 23, 156, 0.8);
+        transition : max-width 0.4s ease, opacity 0.5s ease;
+      }
+      #cadreLegend.expend{
+        max-width: 15em;
+        opacity: 1;
+      }
+      
+      .contentLegend{
+        display: flex;
+        position : relative;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        align-items: center;
+        overflow: hidden;
+        opacity: 0;
+        flex:1;
+        max-height: 0;
+        width: 100%;
+        height : fit-content;
+        transition : max-height 0.4s ease, opacity 0.4s ease;
+      }
+      .contentLegend.expend {
+        max-height: 10em;
+        opacity: 1;
+
+      }
+      .titleLegend{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0.4em;
+        box-sizing: border-box;
+        font-size: 1.2em;
+      }
+      
+      .boxBarreLegend{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        box-sizing: border-box;
+        padding : 0.4em 0em;
+        margin-left: 0.8em;
+        gap : 0.4em;
+        width : 100%;
+        height : 10em;
+      }
+
+
+       .cadreNonDispo {
+        display: flex;
+        flex-wrap:nowrap ;
+        gap : 0.8em;
+        width : 100%;
+        height : fit-content;
+      }
+
+      .carreNonDispo {
+        display: flex;
+        align-self:center ;
+        width : 1.1em;
+        max-height: 1.1em;
+        aspect-ratio: 1/1;
+        border-radius: 0.15em;
+        
+      }
+     #carreMaxLegend{background : green}
+     #carreMidLegend{background : orange}
+     #carreMinLegend{background : red}
+    #carreBlackLegend{background-color: black;}
+
+      .cadreFooterLegend{
+        display: flex;
+        position : relative;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box ;
+        border-radius: inherit;
+        gap : 0;
+        width : 100%;
+        height : 2em;
+        transition : gap 0.2s ease
+      }
+      .footerLegend{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position : relative;
+        box-sizing: border-box ;
+        border-radius: inherit;
+        z-index: 10;
+        cursor: pointer;
+        font-size: 1.2em;
+        width : 100%;
+        height : 100%;
+        background:rgba(41, 131, 241, 0.8) ;
+        transition: opacity 0.35s ease, width 0.4s ease, border-radius 0.3s ease;
+      }
+        .footerLegend.reduce{
+        width : 2em;
+        border-top-left-radius : 0 ;
+        border-bottom-right-radius : 0 ;
+
+      }
+
+
+       .footerLegend span {
+        opacity: 1;
+        width: fit-content;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-width 0.3s ease;
+      }
+      .footerLegend span.reduce {
+        opacity: 0;
+        max-width: 0;
+      }
+      .footerLegend svg{
+        width: 80%;
+        height : 80%;
+        fill : white;
+        transition: opacity 0.3s ease, max-width 0.3s ease;
+
+      }
+      .footerLegend svg.expend {
+        opacity: 0;
+        max-width: 0px;
+      }
+    
+      .arrowUpLegend  {
+        position: absolute;
+        pointer-events: none;
+        width : 2em;
+        opacity: 1;
+        outline : 1px solid reed;
+        right : 0em;
+        max-width : 2em;
+        transform : rotate(90deg);
+        fill : white;
+        transition : opacity 0.3s ease;
+      }
+      .arrowUpLegend.reduce {
+        opacity : 0;
+      }
+      .infoDonneeLegend{
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 0;
+        flex: 1;
+        opacity: 0;
+        justify-self: center;
+        align-items: center;
+        font-size: 0.9em;
+        color : rgba(255,255,255,0.6);
+        width: fit-content;
+        transition : max-width 0.4s ease, opacity 0.6s ease;
+      }
+      .infoDonneeLegend.reduce {
+        max-width: 15em;
+        opacity : 1;
+      }
 
       /*CSS cadreSearch*/
 
@@ -5502,6 +5689,55 @@
         </div>
       </div>
 
+
+      <!--HTML Legend-->
+ <div id="cadreLegend">
+      <div class="contentLegend">
+    <div class="titleLegend">Légende</div>
+         <hr style="width:90%; border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 0.2em 0;">
+
+
+        <div class="boxBarreLegend">
+        
+<div class="cadreNonDispo">
+          <div class="carreNonDispo" id="carreMaxLegend"></div>
+            <span id="txtMaxLegend">13 millions</span>
+          </div>
+          <div class="cadreNonDispo">
+          <div class="carreNonDispo" id="carreMidLegend"></div>
+            <span id="txtMidLegend">Non Disponnible</span>
+          </div>
+
+          <div class="cadreNonDispo" >
+          <div class="carreNonDispo" id="carreMinLegend"></div>
+            <span id="txtMinLegend">Non Disponnible</span>
+          </div>
+ <div class="cadreNonDispo" >
+          <div class="carreNonDispo" id="carreBlackLegend"></div>
+            <span id="txtNoLegend">Non Disponnible</span>
+          </div>
+          
+
+        </div>
+
+      </div>
+
+      <div class="cadreFooterLegend">
+
+    <div class="footerLegend"> 
+      <svg class="expend" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z"/></svg>
+      <span>Légende</span>
+
+      <svg class="arrowUpLegend" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z"/></svg>
+
+    </div>
+    <div class="infoDonneeLegend">Émission (tCO2e/an)</div>
+
+    </div>
+
+  </div>
+      <!--Fin HTML Legend-->
+
       <div class="wrapperTool">
         <div class="tool zBox">
           <div id="zP">
@@ -8679,6 +8915,19 @@
         },
         { label: "FMI", id: "orgaFMI", key: "fmi" },
       ];
+
+
+      //Script const Legend
+    const cadreLegend = document.getElementById('cadreLegend')
+    const contentLegend = document.querySelector('.contentLegend')
+    const footerLedend = document.querySelector('.footerLegend')
+    const svgLegend = footerLedend.querySelector('svg')
+    const spnFooter = footerLedend.querySelector('span')
+    const infoDonneeLegend = document.querySelector('.infoDonneeLegend')
+    const cadreFooterLegend = document.querySelector('.cadreFooterLegend')
+    const arrowUpLegend = document.querySelector('.arrowUpLegend')
+    
+      //fin const legend
       const cadreVue = document.querySelector(".cadreVue");
 
       function closeCadre() {
@@ -8686,6 +8935,8 @@
         cadre.style.transform = "scale(0.9)";
         cadre.style.pointerEvents = "none";
       }
+
+
 
       const vuesBox = document.querySelector(".vuesBox");
       const listBox = document.querySelector(".listBox");
@@ -17450,6 +17701,23 @@
       });*/
       /*---------------------------*/
 
+      footerLedend.addEventListener('click',()=>{
+      footerLedend.classList.toggle('reduce')
+      spnFooter.classList.toggle('reduce')
+      svgLegend.classList.toggle('expend')
+      infoDonneeLegend.classList.toggle('reduce')
+      arrowUpLegend.classList.toggle('reduce')
+
+      contentLegend.classList.toggle('expend')
+      cadreFooterLegend.style.gap = cadreFooterLegend.style.gap===""? 0.6+"em" : "";
+
+    })      
+
+
+
+
+
+
       let min = Infinity;
       let max = -Infinity;
       let minKey = null;
@@ -17472,9 +17740,11 @@
       let vP = false;
       vueP.addEventListener("click", () => {
         calques.forEach((c) => c.classList.remove("active"));
+        calquesChoice.forEach(v=>{v.style.boxShadow = "";})
         vCo2e = false;
         vPib = false;
         if (!vP) {
+          cadreLegend.classList.add('expend')
           vueP.classList.add("active");
           vueP.style.boxShadow = "0px 0px 1em white";
           vP = true;
@@ -17516,6 +17786,8 @@
             current: "rgb(72, 5, 5)",
           });
         } else {
+          cadreLegend.classList.remove('expend')
+
           vueP.style.boxShadow = "";
           vP = false;
           globe.querySelectorAll("path").forEach((p) => {
@@ -17533,9 +17805,15 @@
 
       vuePib.addEventListener("click", () => {
         calques.forEach((c) => c.classList.remove("active"));
+        calquesChoice.forEach(v=>{v.style.boxShadow = "";})
+
         vP = false;
         vCo2e = false;
         if (!vPib) {
+          cadreLegend.classList.add('expend')
+
+          vuePib.style.boxShadow = "0px 0px 1em white";
+
           vuePib.classList.add("active");
           vPib = true;
           globe.querySelectorAll("path").forEach((p) => {
@@ -17560,6 +17838,7 @@
             });
           });
         } else {
+          cadreLegend.classList.remove('expend')
           vuePib.style.boxShadow = "";
           vPib = false;
           globe.querySelectorAll("path").forEach((p) => {
@@ -17578,12 +17857,16 @@
 
       vueCo2e.addEventListener("click", () => {
         calques.forEach((c) => c.classList.remove("active"));
+        calquesChoice.forEach(v=>{v.style.boxShadow = "";})
 
         vPib = false;
         vP = false;
 
         if (!vCo2e) {
+          cadreLegend.classList.add('expend')
+
           vueCo2e.classList.add("active");
+                 vueCo2e.style.boxShadow = "0px 0px 1em white";
 
           vCo2e = true;
 
@@ -17635,6 +17918,7 @@
             });
           });
         } else {
+          cadreLegend.classList.remove('expend')
           vueCo2e.style.boxShadow = "";
           vCo2e = false;
 
