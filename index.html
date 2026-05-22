@@ -17701,13 +17701,13 @@
       });*/
       /*---------------------------*/
 
-      footerLedend.addEventListener('pointerdown',()=>{
+      footerLedend.addEventListener('click',()=>{
+      contentLegend.classList.toggle('expend')
       footerLedend.classList.toggle('reduce')
       spnFooter.classList.toggle('reduce')
       svgLegend.classList.toggle('expend')
       infoDonneeLegend.classList.toggle('reduce')
       arrowUpLegend.classList.toggle('reduce')
-      contentLegend.classList.toggle('expend')
       cadreFooterLegend.style.gap = cadreFooterLegend.style.gap===""? 0.6+"em" : "";
 
     })      
