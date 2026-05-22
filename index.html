@@ -319,6 +319,10 @@
         border-radius: 0.6em;
         transform: scale(0.75) translateY(1em);
       }
+      #only.active{
+        background: rgba(91, 175, 253, 0.8);
+        outline: 0.1em solid rgba(255, 255, 255, 0.5);
+      }
       #calque {
         background: rgba(56, 140, 223, 0.674);
         outline: 0.1em solid rgba(255, 255, 255, 0.3);
@@ -373,7 +377,7 @@
           outline 0.2s ease;
       }
       .calqueChoice.active {
-        background: rgba(84, 149, 209, 0.8);
+        background: rgba(91, 175, 253, 0.8);
         outline: 0.1em solid rgba(255, 255, 255, 0.5);
       }
       .calqueChoice svg {
@@ -17584,6 +17588,7 @@
         cadreVueTF = !cadreVueTF;
       }
       only.addEventListener("click", () => {
+        only.classList.toggle('active')
         afficheVue();
       });
 
