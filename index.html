@@ -1564,6 +1564,9 @@
         top: 3%;
       }
       .info {
+        position : absolute;
+        top: calc(env(safe-area-inset-top) + 0.4em);
+        right: 1em;
         width: 2em;
         height: 2em;
         border-radius: 50%;
@@ -1573,6 +1576,10 @@
       }
       .info:hover {
         transform: scale(1.1);
+      }
+      .info svg {
+        fill : white;
+        height : 70%;
       }
 
       /****************************************CSS nouveaux Cadres*******************************/
@@ -4929,7 +4936,7 @@
         </svg>
       </div>
 
-      <div id="cadreS">
+      <div id="cadreS">        
         <div id="headerCadre">
           <button id="backSearch">
             <svg
@@ -5858,6 +5865,9 @@
             />
           </svg>
         </button>
+        <div class="info">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" ><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z"/><path d="M12,10H11a1,1,0,0,0,0,2h1v6a1,1,0,0,0,2,0V12A2,2,0,0,0,12,10Z"/><circle cx="12" cy="6.5" r="1.5"/></svg>
+        </div>
         <div id="contentCadre">
           <div id="cadreDrapeau">
             <div id="drapeauBox">
@@ -17664,10 +17674,7 @@
         e.preventDefault();
       });
 
-      /* info.addEventListener("click", () => {
-        const str = currentCountry.getAttribute("title").replace(" ", "_");
-        window.open(`https://en.wikipedia.org/wiki/${str}`, "_blank");
-      });*/
+    
       /*---------------------------*/
 
       function fillLegend(v) {
@@ -19539,6 +19546,9 @@
       const opensearch = document.querySelector(".opensearch");
       const cadreS = document.getElementById("cadreS");
       const backSearch = document.getElementById("backSearch");
+      const info = document.querySelector('.info')
+      console.log("🚀 ~ info:", info)
+      
 
       const titleCadreS = document.querySelector(".titleCadreS");
       const optionModeS = document.querySelectorAll(".optionModeS");
@@ -19612,6 +19622,12 @@
         cadreFilterS.classList.remove("active");
         cadreModeS.classList.toggle("active");
         document.getElementById("arrowTitle").classList.toggle("active");
+      });
+
+         info.addEventListener("click", () => {
+        const str = currentCountry.getAttribute("title").replace(" ", "_");
+        
+        window.open(`https://en.wikipedia.org/wiki/${str}`, "_blank");
       });
 
       optionModeS.forEach((option) => {
