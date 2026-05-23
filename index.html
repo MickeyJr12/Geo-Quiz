@@ -5316,32 +5316,32 @@
         </div>
         <div id="contentC">
           <div class="alphabet">
-            <div class="letter"><div class="caseLetter">A</div></div>
-            <div class="letter"><div class="caseLetter">B</div></div>
-            <div class="letter"><div class="caseLetter">C</div></div>
-            <div class="letter"><div class="caseLetter">D</div></div>
-            <div class="letter"><div class="caseLetter">E</div></div>
-            <div class="letter"><div class="caseLetter">F</div></div>
-            <div class="letter"><div class="caseLetter">G</div></div>
-            <div class="letter"><div class="caseLetter">H</div></div>
-            <div class="letter"><div class="caseLetter">I</div></div>
-            <div class="letter"><div class="caseLetter">J</div></div>
-            <div class="letter"><div class="caseLetter">K</div></div>
-            <div class="letter"><div class="caseLetter">L</div></div>
-            <div class="letter"><div class="caseLetter">M</div></div>
-            <div class="letter"><div class="caseLetter">N</div></div>
-            <div class="letter"><div class="caseLetter">O</div></div>
-            <div class="letter"><div class="caseLetter">P</div></div>
-            <div class="letter"><div class="caseLetter">Q</div></div>
-            <div class="letter"><div class="caseLetter">R</div></div>
-            <div class="letter"><div class="caseLetter">S</div></div>
-            <div class="letter"><div class="caseLetter">T</div></div>
-            <div class="letter"><div class="caseLetter">U</div></div>
-            <div class="letter"><div class="caseLetter">V</div></div>
-            <div class="letter"><div class="caseLetter">W</div></div>
-            <div class="letter"><div class="caseLetter">X</div></div>
-            <div class="letter"><div class="caseLetter">Y</div></div>
-            <div class="letter"><div class="caseLetter">Z</div></div>
+          <div class="letter"><div class="caseLetter" id="caseA">A</div></div>
+<div class="letter"><div class="caseLetter" id="caseB">B</div></div>
+<div class="letter"><div class="caseLetter" id="caseC">C</div></div>
+<div class="letter"><div class="caseLetter" id="caseD">D</div></div>
+<div class="letter"><div class="caseLetter" id="caseE">E</div></div>
+<div class="letter"><div class="caseLetter" id="caseF">F</div></div>
+<div class="letter"><div class="caseLetter" id="caseG">G</div></div>
+<div class="letter"><div class="caseLetter" id="caseH">H</div></div>
+<div class="letter"><div class="caseLetter" id="caseI">I</div></div>
+<div class="letter"><div class="caseLetter" id="caseJ">J</div></div>
+<div class="letter"><div class="caseLetter" id="caseK">K</div></div>
+<div class="letter"><div class="caseLetter" id="caseL">L</div></div>
+<div class="letter"><div class="caseLetter" id="caseM">M</div></div>
+<div class="letter"><div class="caseLetter" id="caseN">N</div></div>
+<div class="letter"><div class="caseLetter" id="caseO">O</div></div>
+<div class="letter"><div class="caseLetter" id="caseP">P</div></div>
+<div class="letter"><div class="caseLetter" id="caseQ">Q</div></div>
+<div class="letter"><div class="caseLetter" id="caseR">R</div></div>
+<div class="letter"><div class="caseLetter" id="caseS">S</div></div>
+<div class="letter"><div class="caseLetter" id="caseT">T</div></div>
+<div class="letter"><div class="caseLetter" id="caseU">U</div></div>
+<div class="letter"><div class="caseLetter" id="caseV">V</div></div>
+<div class="letter"><div class="caseLetter" id="caseW">W</div></div>
+<div class="letter"><div class="caseLetter" id="caseX">X</div></div>
+<div class="letter"><div class="caseLetter" id="caseY">Y</div></div>
+<div class="letter"><div class="caseLetter" id="caseZ">Z</div></div>
           </div>
 
       
@@ -18304,6 +18304,7 @@
         Y: ["Y", "Ÿ"],
         Z: ["Z"],
       };
+      let L_alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
       let Ls = [];
       let LsInit = [];
@@ -18398,8 +18399,9 @@
             .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase();
           if (
-            (val === nom.slice(0, val.length) ||
-              valL === nomL.slice(0, val.length)) &&
+            (nom.includes(val) ||
+            nomL.includes(valL)
+              /*valL === nomL.slice(0, val.length)*/ ) &&
             inputC.value.length != 0
           ) {
             Ls.push({
@@ -19721,6 +19723,7 @@
         );
         if (target) target.scrollIntoView({ block: "start" });
       }
+
 
       alphabet.addEventListener("pointerdown", (e) => {
         alphabet.style.width = "100%";
