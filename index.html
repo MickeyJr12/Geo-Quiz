@@ -19830,6 +19830,7 @@
       let currentSearching = "pays";
       const alphabet = document.querySelector(".alphabet");
       const letters = document.querySelectorAll(".letter");
+      const casesLetter = document.querySelectorAll('.caseLetter')
       let dragging = false;
 
       const footerCadreName = document.getElementById("footerCadreName");
@@ -19976,6 +19977,44 @@
 
       //Content Pays
 
+let scrollLetter = document.getElementById('caseA')
+ scrollLetter.style.transform =
+            "scale(1.2) translateX(-0.6em)";
+    scrollLetter.style.color = "white";
+    
+contentC.addEventListener('scroll', () => {
+  const containerTop = contentC.getBoundingClientRect().top;
+  
+  let closestLetter = null;
+  let closestDistance = -Infinity;
+
+  ['A','B','C','D','E','F','G','H','I','J','K','L','M',
+   'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].forEach(l => {
+    const el = document.getElementById('letter' + l);
+    if (!el) return;
+
+    const elTop = el.getBoundingClientRect().top - containerTop;
+
+    // On veut ceux qui ont dépassé le haut (elTop < 0)
+    // et on prend le plus proche du top (le moins négatif)
+    if (elTop <= 0 && elTop > closestDistance) {
+      closestDistance = elTop;
+      closestLetter = l;
+    }
+  });
+
+  if (closestLetter) {
+
+    casesLetter.forEach(c=>{c.style.transform = "";c.style.color = ""})
+    scrollLetter = document.getElementById('case'+closestLetter)    
+    scrollLetter.style.transform =
+            "scale(1.1) translateX(-0.5em)";
+    scrollLetter.style.color = "white";
+                
+  }
+});
+
+
       function scrollToLetter(el) {
         const letter = el?.closest(".letter");
         if (!letter) return;
@@ -19999,34 +20038,38 @@
 
         if (letter) {
           letters.forEach((L) => {
-            L.querySelector(".caseLetter").style.transform = "";
-          });
-          letter.querySelector(".caseLetter").style.transform =
-            "scale(1.2) translateX(-0.6em)";
-          letters.forEach((L) => {
+            L.querySelector(".caseLetter").style.transform = "";              
             L.querySelector(".caseLetter").style.color = "white";
           });
+
+          letter.querySelector(".caseLetter").style.transform =
+            "scale(1.2) translateX(-0.6em)";
         }
 
         scrollToLetter(el);
       });
       alphabet.addEventListener("pointerup", () => {
+        
         alphabet.style.width = "";
         letters.forEach((L) => {
-          L.querySelector(".caseLetter").style.transform = "";
-        });
-        letters.forEach((L) => {
-          L.querySelector(".caseLetter").style.color = "";
+            const currentLetter = L.querySelector(".caseLetter")
+            if (currentLetter!== scrollLetter){
+              currentLetter.style.transform = "";
+              currentLetter.style.color = "";
+            }        
         });
         dragging = false;
       });
+
       alphabet.addEventListener("pointercancel", () => {
+        
         alphabet.style.width = "";
         letters.forEach((L) => {
-          L.querySelector(".caseLetter").style.transform = "";
-        });
-        letters.forEach((L) => {
-          L.querySelector(".caseLetter").style.color = "";
+            const currentLetter = L.querySelector(".caseLetter")
+            if (currentLetter!== scrollLetter){
+              currentLetter.style.transform = "";
+              currentLetter.style.color = "";
+            }        
         });
         dragging = false;
       });
