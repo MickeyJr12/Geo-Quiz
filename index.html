@@ -17365,6 +17365,14 @@
 
         const original = document.getElementById(pathId);
         if (!original) return;
+
+            const p = document.getElementById(pathId)
+        const status = idVisible_m.get(p.id);
+          const visible = status && Object.values(status).every(Boolean);
+          if (!visible) {
+            return;
+          }
+
         
         original.parentNode.append(original);
         overlay.parentNode.append(overlay);
@@ -17386,9 +17394,9 @@
           const status = idVisible_m.get(p.id);
           const visible = status && Object.values(status).every(Boolean);
           p.style.fill = visible ? pColor_m.get(p).current : "";
-          if (!visible) {
-            return;
-          }
+          // if (!visible) {
+          //   return;
+          // }
 
           if (p === currentCountry && currentCountry != null) {
             const overlay = overlay_m.get(p.id);
