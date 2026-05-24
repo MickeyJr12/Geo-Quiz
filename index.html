@@ -8345,8 +8345,7 @@
             700,
           );
         }, 10);
-          colorCurrentCountry()
-
+        colorCountry();
       }
 
       function cacherMaps() {
@@ -8678,15 +8677,15 @@
       //Fin script flemme
 
       map.addEventListener("click", () => {
-        //animeColorC = requestAnimationFrame(colorCurrentCountry);
+        //animeColorC = requestAnimationFrame(colorCountry);
         animateViewBox(
           document.getElementById("svgMonde"),
           initialViewBox,
           700,
         );
         Maps.appendChild(globe);
-        currentCountry=null
-        colorCurrentCountry()
+        currentCountry = null;
+        colorCountry();
         globe.style.zIndex = "5";
         phoneHome.style.display = "none";
         Maps.style.visibility = "visible";
@@ -8799,6 +8798,7 @@
             mCadre.style.opacity = "1";
           }, 20);
         } else {
+          currentCountry = null
           paths.forEach((p) => {
             resetOverlay(p.id, overlay_m.get(p.id));
           });
@@ -17132,10 +17132,9 @@
 
             p.style.transform = "";
 
-            if (pColor_m.has(p)) {
+            if (pColor_m.has(p)&& visible) {
               p.style.fill = pColor_m.get(p).current;
             }
-            p.style.filter = "";
           });
           return;
         } // clic dans le vide
@@ -17148,6 +17147,28 @@
           pathHover(id, name, country);
         }, 20);
       });
+// Claude : retirer les filter si le curserue est null
+    let pathActif = null
+
+globe.addEventListener("mouseout", (e) => {
+    if (e.target.tagName !== "path") return
+    
+    const suivant = e.relatedTarget
+    if (!suivant || suivant.tagName !== "path") {
+        // curseur a quitté tous les paths
+        if (pathActif) {
+            pathActif.style.filter = ""
+            pathActif = null
+        }
+    }
+})
+
+globe.addEventListener("mouseover", (e) => {
+    if (e.target.tagName !== "path") return
+    pathActif = e.target
+})
+//
+
 
       svg.addEventListener("click", (event) => {
         const country = event.target.closest("path");
@@ -17173,7 +17194,7 @@
           return;
         }
         currentCountry = country;
-        colorCurrentCountry();
+        colorCountry();
 
         toggleC(true);
         const id = country.id;
@@ -17185,14 +17206,14 @@
       });
 
       svg.addEventListener("mouseleave", () => {
-        if (isMobile) return; // ⭐ IMPORTANT
+        if (isMobile) return;
         currentCountryHover = null;
         paths.forEach((p) => {
           p.style.transform = "";
-          const status = idVisible_m.get(p.id);
-          if (status && Object.values(status).every(Boolean)) {
-            p.style.fill = pColor_m.get(p).current;
-          }
+          // const status = idVisible_m.get(p.id);
+          // if (status && Object.values(status).every(Boolean)) {
+          //   p.style.fill = pColor_m.get(p).current;
+          // }
           ``; /**/ //Si toutes les cléfs sont vraies
           p.style.filter = "";
         });
@@ -17317,13 +17338,13 @@
         if (isMobile) return;
         if (lastHovered && lastHovered !== element) {
           lastHovered.style.transform = "";
-          lastHovered.style.fill = pColor_m.get(lastHovered).current;
-          lastHovered.style.filter = "";
+          lastHovered.style.filter=""
+          if (!Object.values(idVisible_m.get(lastHovered.id)).some((v) => v === false)){lastHovered.style.fill = pColor_m.get(lastHovered).current}
         }
 
         element.style.filter = "brightness(0.86)";
         element.style.transform = "translateY(-0.1%)";
-
+        
         lastHovered = element;
       }
 
@@ -17366,18 +17387,17 @@
         const original = document.getElementById(pathId);
         if (!original) return;
 
-            const p = document.getElementById(pathId)
+        const p = document.getElementById(pathId);
         const status = idVisible_m.get(p.id);
-          const visible = status && Object.values(status).every(Boolean);
-          if (!visible) {
-            return;
-          }
+        const visible = status && Object.values(status).every(Boolean);
+        if (!visible) {
+          return;
+        }
 
-        
         original.parentNode.append(original);
         overlay.parentNode.append(overlay);
         setTimeout(() => {
-        overlay.style.opacity = "0.3";          
+          overlay.style.opacity = "0.3";
         }, 20);
       }
 
@@ -17389,10 +17409,10 @@
         createOverlay(p.id);
       });
 
-      function colorCurrentCountry() {
+      function colorCountry() {
         paths.forEach((p) => {
           const status = idVisible_m.get(p.id);
-          const visible = status && Object.values(status).every(Boolean);
+          const visible = status && Object.values(status).every(Boolean);          
           p.style.fill = visible ? pColor_m.get(p).current : "";
           // if (!visible) {
           //   return;
@@ -17402,7 +17422,7 @@
             const overlay = overlay_m.get(p.id);
             darkenCountry(p.id, overlay);
           } else if (p !== currentCountryHover) {
-            if (p !== currentCountry && currentCountry != null) {
+            if (p !== currentCountry) {
               if (overlay_m.has(p.id)) {
                 resetOverlay(p.id, overlay_m.get(p.id));
               }
@@ -17416,7 +17436,7 @@
           }
         });
       }
-      colorCurrentCountry();
+      colorCountry();
 
       function fillCadreOrga(p_id) {
         const p = document.getElementById(p_id);
@@ -17591,7 +17611,7 @@
           .catch(function () {
             console.log("pays introuvable");
           });
-        colorCurrentCountry();
+        colorCountry();
       }
 
       //Script tools
@@ -17678,7 +17698,7 @@
           cadreVue.style.opacity = "1";
           cadreVue.style.pointerEvents = "auto";
         } else {
-          only.classList.remove('active')
+          only.classList.remove("active");
           cadreVue.style.opacity = "";
           cadreVue.style.pointerEvents = "";
         }
@@ -17839,10 +17859,7 @@
           vP = true;
           globe.querySelectorAll("path").forEach((p) => {
             const statusP = idVisible_m.get(p.id);
-            const visibleP = statusP && Object.values(statusP).every(Boolean);
-            if (!visibleP) {
-              return;
-            }
+            const visibleP = statusP && Object.values(statusP).every(Boolean);            
 
             if (!P_info[p.id] || typeof P_info[p.id].population !== "number") {
               p.style.fill = "rgb(0, 0, 0)";
@@ -17862,32 +17879,36 @@
               168;
             let B =
               ((17 - 31) * (P_info[p.id].population - min)) / (max - min) + 31;
-            p.style.fill = `rgb(${Math.round(R)}, ${Math.round(G)}, ${Math.round(B)})`;
-            pColor_m.set(p, {
-              hovered: "rgb(29, 204, 90)",
-              current: `rgb(${Math.round(R)}, ${Math.round(G)}, ${Math.round(B)})`,
-            });
+
+              if (visibleP) {
+              p.style.fill = `rgb(${Math.round(R)}, ${Math.round(G)}, ${Math.round(B)})`;
+            }
+              pColor_m.set(p, {
+                hovered: "rgb(29, 204, 90)",
+                current: `rgb(${Math.round(R)}, ${Math.round(G)}, ${Math.round(B)})`,
+              });
+            
           });
 
+
           const statusCN = idVisible_m.get("CN");
-          const visibleCN = status && Object.values(status).every(Boolean);
-          if (visibleCN) {
-            document.getElementById("CN").style.fill = "rgb(129, 12, 12)";
-            pColor_m.set(document.getElementById("CN"), {
+          const visibleCN = statusCN && Object.values(statusCN).every(Boolean);
+          pColor_m.set(document.getElementById("CN"), {
               hovered: "rgb(29, 204, 90)",
               current: "rgb(129, 12, 12)",
             });
-          }
+          if (visibleCN) {document.getElementById("CN").style.fill = "rgb(129, 12, 12)"}
+
 
           const statusIN = idVisible_m.get("IN");
-          const visibleIN = status && Object.values(status).every(Boolean);
-          if (visibleIN) {
-            document.getElementById("IN").style.fill = "rgb(72, 5, 5)";
-            pColor_m.set(document.getElementById("IN"), {
+          const visibleIN = statusIN && Object.values(statusIN).every(Boolean);
+           pColor_m.set(document.getElementById("IN"), {
               hovered: "rgb(29, 204, 90)",
               current: "rgb(72, 5, 5)",
             });
-          }
+          if (visibleIN) {document.getElementById("IN").style.fill = "rgb(72, 5, 5)"}
+
+
         } else {
           footerLegendClick();
 
@@ -17901,8 +17922,7 @@
               current: `${colorPath}`,
             });
           });
-
-          paths.forEach((p) => {
+       paths.forEach((p) => {
             const status = idVisible_m.get(p.id);
             const visible = status && Object.values(status).every(Boolean);
             if (!visible) {
@@ -17910,11 +17930,13 @@
             }
             p.style.transform = "";
 
-            if (pColor_m.has(p)) {
+            if (pColor_m.has(p)&& visible) {
               p.style.fill = pColor_m.get(p).current;
             }
             p.style.filter = "";
           });
+
+          
         }
       });
 
@@ -17941,10 +17963,9 @@
           vPib = true;
           globe.querySelectorAll("path").forEach((p) => {
             const statusPib = idVisible_m.get(p.id);
-            const visiblePib = statusPib && Object.values(statusPib).every(Boolean);
-            if (!visiblePib) {
-              return;
-            }
+            const visiblePib =
+              statusPib && Object.values(statusPib).every(Boolean);
+            
 
             if (!P_info[p.id] || typeof P_info[p.id].pib !== "number") {
               p.style.fill = "rgb(0, 0, 0)";
@@ -17959,7 +17980,9 @@
               (Math.log(max2) - Math.log(min2));
 
             const hue = 120 * Math.max(0, Math.min(1, t));
+            if (visiblePib) {
             p.style.fill = `hsl(${hue}, 85%, 45%)`;
+            }
 
             pColor_m.set(p, {
               hovered: "rgb(29, 204, 90)",
@@ -17979,7 +18002,7 @@
             });
           });
 
-           paths.forEach((p) => {
+          paths.forEach((p) => {
             const status = idVisible_m.get(p.id);
             const visible = status && Object.values(status).every(Boolean);
             if (!visible) {
@@ -17987,7 +18010,7 @@
             }
             p.style.transform = "";
 
-            if (pColor_m.has(p)) {
+            if (pColor_m.has(p)&& visible) {
               p.style.fill = pColor_m.get(p).current;
             }
             p.style.filter = "";
@@ -18020,16 +18043,17 @@
 
           globe.querySelectorAll("path").forEach((p) => {
             const statusCo2e = idVisible_m.get(p.id);
-            const visibleCo2e= statusCo2e && Object.values(statusCo2e).every(Boolean);
-            if (!visibleCo2e) {
-              return;
-            }
+            const visibleCo2e =
+              statusCo2e && Object.values(statusCo2e).every(Boolean);
+            
             if (
               !P_info[p.id] ||
               typeof P_info[p.id].co2e !== "number" ||
               P_info[p.id].co2e <= 0
             ) {
+              if (visibleCo2e) {
               p.style.fill = "rgb(0, 0, 0)";
+            }
               pColor_m.set(p, {
                 hovered: "rgb(29, 204, 90)",
                 current: "rgb(0, 0, 0)",
@@ -18040,7 +18064,10 @@
             const status = idVisible_m.get(p.id);
             // ✅ Valeur absente → NOIR
             if (typeof value !== "number" || value <= 0) {
+
+              if (visibleCo2e) {
               p.style.fill = "rgb(0, 0, 0)";
+            }
               pColor_m.set(p, {
                 hovered: "rgb(29, 204, 90)",
                 current: "rgb(0, 0, 0)",
@@ -18063,7 +18090,9 @@
             let B = (end.B - start.B) * tt + start.B;
 
             const color = `rgb(${Math.round(R)}, ${Math.round(G)}, ${Math.round(B)})`;
+            if (visibleCo2e) {
             p.style.fill = color;
+            }
 
             pColor_m.set(p, {
               hovered: "rgb(29, 204, 90)",
@@ -18078,13 +18107,13 @@
           vCo2e = false;
 
           globe.querySelectorAll("path").forEach((p) => {
-            p.style.fill = "";
+            
             pColor_m.set(p, {
               hovered: "rgb(29, 204, 90)",
               current: `${colorPath}`,
             });
           });
-           paths.forEach((p) => {
+          paths.forEach((p) => {
             const status = idVisible_m.get(p.id);
             const visible = status && Object.values(status).every(Boolean);
             if (!visible) {
@@ -18092,10 +18121,9 @@
             }
             p.style.transform = "";
 
-            if (pColor_m.has(p)) {
+            if (pColor_m.has(p) && visible) {
               p.style.fill = pColor_m.get(p).current;
             }
-            p.style.filter = "";
           });
         }
       });
@@ -18980,8 +19008,7 @@
               entry.continent = false;
             }
           });
-            colorCurrentCountry();
-
+          colorCountry();
         }
 
         continentsData.forEach((r) => {
@@ -19174,7 +19201,7 @@
               entry.continent = !willHide;
             });
             subEyes.forEach(({ btn, line }) => setEye(btn, line, !willHide));
-            colorCurrentCountry();
+            colorCountry();
           }
 
           regionEyeBtn.addEventListener("click", (e) => {
@@ -19267,7 +19294,7 @@
               const b = document.getElementById(o.id + "-eye");
               if (b) b.classList.remove("active");
             });
-            colorCurrentCountry();
+            colorCountry();
 
             return;
           }
@@ -19293,7 +19320,7 @@
               else b.classList.remove("active");
             }
           });
-          colorCurrentCountry();
+          colorCountry();
         }
 
         /* ── construction du bloc principal ── */
@@ -19451,7 +19478,7 @@
               }
             }
           });
-          colorCurrentCountry();
+          colorCountry();
           if (btn.contains(e.target)) return;
           setEye(btn, line, btn.classList.contains("hidden"));
         }
@@ -19476,7 +19503,7 @@
               }
             }
           });
-          colorCurrentCountry();
+          colorCountry();
           if (btn.contains(e.target)) return;
           setEye(btn, line, btn.classList.contains("hidden"));
         }
@@ -19843,7 +19870,7 @@
       let currentSearching = "pays";
       const alphabet = document.querySelector(".alphabet");
       const letters = document.querySelectorAll(".letter");
-      const casesLetter = document.querySelectorAll('.caseLetter')
+      const casesLetter = document.querySelectorAll(".caseLetter");
       let dragging = false;
 
       const footerCadreName = document.getElementById("footerCadreName");
@@ -19990,43 +20017,67 @@
 
       //Content Pays
 
-let scrollLetter = document.getElementById('caseA')
- scrollLetter.style.transform =
-            "scale(1.1) translateX(-0.5em)";
-    scrollLetter.style.color = "white";
-    
-contentC.addEventListener('scroll', () => {
-  const containerTop = contentC.getBoundingClientRect().top;
-  
-  let closestLetter = null;
-  let closestDistance = -Infinity;
+      let scrollLetter = document.getElementById("caseA");
+      scrollLetter.style.transform = "scale(1.1) translateX(-0.5em)";
+      scrollLetter.style.color = "white";
 
-  ['A','B','C','D','E','F','G','H','I','J','K','L','M',
-   'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].forEach(l => {
-    const el = document.getElementById('letter' + l);
-    if (!el) return;
+      contentC.addEventListener("scroll", () => {
+        const containerTop = contentC.getBoundingClientRect().top;
 
-    const elTop = el.getBoundingClientRect().top - containerTop;
+        let closestLetter = null;
+        let closestDistance = -Infinity;
 
-    // On veut ceux qui ont dépassé le haut (elTop < 0)
-    // et on prend le plus proche du top (le moins négatif)
-    if (elTop <= 0 && elTop > closestDistance) {
-      closestDistance = elTop;
-      closestLetter = l;
-    }
-  });
+        [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y",
+          "Z",
+        ].forEach((l) => {
+          const el = document.getElementById("letter" + l);
+          if (!el) return;
 
-  if (closestLetter) {
+          const elTop = el.getBoundingClientRect().top - containerTop;
 
-    casesLetter.forEach(c=>{c.style.transform = "";c.style.color = ""})
-    scrollLetter = document.getElementById('case'+closestLetter)    
-    scrollLetter.style.transform =
-            "scale(1.1) translateX(-0.5em)";
-    scrollLetter.style.color = "white";
-                
-  }
-});
+          // On veut ceux qui ont dépassé le haut (elTop < 0)
+          // et on prend le plus proche du top (le moins négatif)
+          if (elTop <= 0 && elTop > closestDistance) {
+            closestDistance = elTop;
+            closestLetter = l;
+          }
+        });
 
+        if (closestLetter) {
+          casesLetter.forEach((c) => {
+            c.style.transform = "";
+            c.style.color = "";
+          });
+          scrollLetter = document.getElementById("case" + closestLetter);
+          scrollLetter.style.transform = "scale(1.1) translateX(-0.5em)";
+          scrollLetter.style.color = "white";
+        }
+      });
 
       function scrollToLetter(el) {
         const letter = el?.closest(".letter");
@@ -20051,7 +20102,7 @@ contentC.addEventListener('scroll', () => {
 
         if (letter) {
           letters.forEach((L) => {
-            L.querySelector(".caseLetter").style.transform = "";              
+            L.querySelector(".caseLetter").style.transform = "";
             L.querySelector(".caseLetter").style.color = "white";
           });
 
@@ -20062,27 +20113,25 @@ contentC.addEventListener('scroll', () => {
         scrollToLetter(el);
       });
       alphabet.addEventListener("pointerup", () => {
-        
         alphabet.style.width = "";
         letters.forEach((L) => {
-            const currentLetter = L.querySelector(".caseLetter")
-            if (currentLetter!== scrollLetter){
-              currentLetter.style.transform = "";
-              currentLetter.style.color = "";
-            }        
+          const currentLetter = L.querySelector(".caseLetter");
+          if (currentLetter !== scrollLetter) {
+            currentLetter.style.transform = "";
+            currentLetter.style.color = "";
+          }
         });
         dragging = false;
       });
 
       alphabet.addEventListener("pointercancel", () => {
-        
         alphabet.style.width = "";
         letters.forEach((L) => {
-            const currentLetter = L.querySelector(".caseLetter")
-            if (currentLetter!== scrollLetter){
-              currentLetter.style.transform = "";
-              currentLetter.style.color = "";
-            }        
+          const currentLetter = L.querySelector(".caseLetter");
+          if (currentLetter !== scrollLetter) {
+            currentLetter.style.transform = "";
+            currentLetter.style.color = "";
+          }
         });
         dragging = false;
       });
