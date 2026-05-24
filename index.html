@@ -1541,7 +1541,7 @@
         backdrop-filter: blur(10px);
         border-radius: 0.6em;
         box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
-        transition: transform 0.2s ease;
+        transition: transform 0.2s ease, filter 0.3s ease;
       }
       .opensearch:active {
         transform: scale(0.96);
@@ -17745,11 +17745,16 @@
         if (!cadreVueTF) {
           cadreVue.style.opacity = "1";
           cadreVue.style.pointerEvents = "auto";
-          globe.style.filter = "blur(4px) brightness(0.8)";
+          globe.style.filter = "blur(4px) brightness(0.65)";
           globe.style.pointerEvents = "none";
 
-          mCadre.style.filter = "blur(4px) brightness(0.8)";
+          mCadre.style.filter = "blur(4px) brightness(0.65)";
           mCadre.style.pointerEvents = "none";
+          if(isMobile){
+
+          opensearch.style.filter = "blur(4px) brightness(0.65)";
+          opensearch.style.pointerEvents = "none";
+        }
         } else {
           only.classList.remove("active");
           cadreVue.style.opacity = "";
@@ -17759,6 +17764,10 @@
 
           mCadre.style.filter = "";
           mCadre.style.pointerEvents = "";
+        if (isMobile){
+          opensearch.style.filter = "";
+          opensearch.style.pointerEvents = "";
+        }
         }
         cadreVueTF = !cadreVueTF;
       }
