@@ -7655,6 +7655,17 @@
       const phoneConfig = document.getElementById("phoneConfig");
 
       play.addEventListener("click", () => {
+         clonepColor_m.clear();
+        cloneVisible_m.clear();
+
+        pColor_m.forEach(
+          (val, key) => clonepColor_m.set(key, { ...val }),
+        );
+
+        idVisible_m.forEach(
+          (val, key) => cloneVisible_m.set(key, { ...val }),
+        );       
+ 
         [...phoneHome.children].forEach((el) => {
           el.style.transition = "transform 0.5s ease, opacity 0.2s ease";
         });
@@ -8285,18 +8296,7 @@
           countryClick(p_id, getId(p_id).getAttribute("title"), getId(p_id));
         }, 10);
       }
-      function afficherMaps() {
-        clonepColor_m.clear();
-        cloneVisible_m.clear();
-
-        pColor_m.forEach(
-          (val, key) => clonepColor_m.set(key, { ...val }),
-        );
-
-        idVisible_m.forEach(
-          (val, key) => cloneVisible_m.set(key, { ...val }),
-        );       
-
+      function afficherMaps() {       
         viewMaps = true;
         //Cacher les éléments
         L_replace.forEach((b) => {
