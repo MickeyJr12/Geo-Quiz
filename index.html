@@ -1607,7 +1607,8 @@
         transform-origin: center top;
         transition:
           opacity 0.2s ease,
-          transform 0.4s ease;
+          transform 0.4s ease,
+          filter 0.3s ease;
       }
       #mLoadingCadre {
         position: absolute;
@@ -2014,7 +2015,8 @@
         height: 100vh;
         transition:
           transform 0.3s ease,
-          opacity 0.4s ease;
+          opacity 0.4s ease,
+          filter 0.3s ease;
       }
 
       @keyframes appear {
@@ -2058,24 +2060,25 @@
       /*N'afficher que
       /**********************************************************************************/
       .cadreVue {
-        position: absolute;
+        position: fixed;
         display: flex;
         pointer-events: none;
         flex-direction: column;
         border: 1px solid rgba(255, 255, 255, 0.15);
 
-        height: auto;
+        height: fit-content;
         max-height: 70vh; /* ← le cadre ne dépassera pas 70% de l'écran */
         overflow: hidden; /* garde le border-radius propre */
         padding-top: 5px;
         padding-bottom: 5px;
         opacity: 0;
-        left: 50%;
-        top: 16em;
-        transform: translateX(-50%);
-        z-index: 999;
+        inset:0;
+        left : 50%;
+        top : 50%;
+        transform : translate(-50%,-50%);
+        z-index: 125;
         width: 300px;
-        background: rgba(0, 0, 0, 0.35);
+        background: rgba(17, 23, 79, 0.95);
         backdrop-filter: blur(12px);
         border-radius: 14px;
         transition:
@@ -17693,14 +17696,29 @@ globe.addEventListener("mouseover", (e) => {
             (boxCalques.style.pointerEvents = ""));
       });
 
+      document.addEventListener('click',(e)=>{
+        console.log(e.target, document.body, e.target===document.body)
+        if (e.target===document.body && cadreVueTF){cadreVueTF=true; afficheVue()}
+
+      })
       function afficheVue() {
         if (!cadreVueTF) {
           cadreVue.style.opacity = "1";
           cadreVue.style.pointerEvents = "auto";
+          globe.style.filter = "blur(4px) brightness(0.8)"
+          globe.style.pointerEvents = "none";
+          
+          mCadre.style.filter = "blur(4px) brightness(0.8)"
+          mCadre.style.pointerEvents = "none";
         } else {
           only.classList.remove("active");
           cadreVue.style.opacity = "";
           cadreVue.style.pointerEvents = "";
+          globe.style.filter = ""
+          globe.style.pointerEvents = "";
+          
+          mCadre.style.filter = ""
+          mCadre.style.pointerEvents = "";
         }
         cadreVueTF = !cadreVueTF;
       }
@@ -17722,7 +17740,7 @@ globe.addEventListener("mouseover", (e) => {
           CX -
           cadreVue.getBoundingClientRect().left -
           cadreVue.getBoundingClientRect().width / 2;
-        difY = CY - cadreVue.getBoundingClientRect().top;
+        difY = CY - cadreVue.getBoundingClientRect().top -  cadreVue.getBoundingClientRect().height / 2;
       });
       document.addEventListener("mousemove", (e) => {
         if (moveCV) {
