@@ -20249,11 +20249,13 @@ subEyeBtn.addEventListener("click", (e) => {
           document.querySelector(".wrapperTitleS"),
         ];
         if (L_propagation.some((el) => el && el.contains(e.target))) return;
-
+        cadreFilterS.classList.contains('active')? burgerInput.click() : 1===1;
         cadreFilterS.classList.remove("active");
         cadreClasser.classList.remove("active");
         cadreModeS.classList.remove("active");
         gridChoice.classList.remove("active");
+        document.getElementById('arrowTitle').classList.remove('active')
+
       });
 
       //abc
