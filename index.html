@@ -18922,6 +18922,7 @@
           orgaI.className = "perSub";
           const orgaTitle = document.createElement("h1");
           orgaTitle.style.color = "white";
+          orgaTitle.style.marginTop = "1.4em"
           orgaTitle.textContent = r.label;
           orgaTitle.style.textDecoration = "underline";
           orgaI.appendChild(orgaTitle);
@@ -18944,6 +18945,8 @@
             orgaI.appendChild(countryI);
           });
           listBox.appendChild(orgaI);
+          orgaI.children[1].remove();
+
         } else if (subject === "last2") {
           const onu = document.createElement("div");
           onu.className = "perONU";
