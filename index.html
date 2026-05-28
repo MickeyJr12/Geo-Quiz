@@ -256,6 +256,7 @@
         width: 2.6em;
         height: fit-content;
         gap: 0.6em;
+        transition: transform 0.2s ease, filter 0.3s ease;
       }
       .wrapperTool > div:not(.wrapperCalque) {
         background: rgba(56, 140, 223, 0.674);
@@ -2075,7 +2076,7 @@
         transform: translate(-50%, -50%);
         z-index: 125;
         width: 300px;
-        background: rgba(17, 23, 79, 0.95);
+        background: rgba(17, 23, 79, 0.70);
         backdrop-filter: blur(12px);
         border-radius: 14px;
         transition:
@@ -7652,6 +7653,8 @@
       const phoneConfig = document.getElementById("phoneConfig");
 
       play.addEventListener("click", () => {
+              
+
          clonepColor_m.clear();
         cloneVisible_m.clear();
 
@@ -7687,7 +7690,7 @@
           currentPhone = phoneConfig;
 
           phoneConfig.offsetHeight; // force reflow
-
+          document.getElementById('modeContainerConfig').scrollTop =0;
           phoneConfig.style.transition =
             "transform 0.6s ease, opacity 0.5s ease";
           phoneConfig.style.opacity = "1";
@@ -8704,7 +8707,7 @@
         );
         Maps.appendChild(globe);
         currentCountry = null;
-        colorCountry();
+        colorCountry();        
         globe.style.zIndex = "5";
         phoneHome.style.display = "none";
         Maps.style.visibility = "visible";
@@ -17757,11 +17760,17 @@ document.addEventListener("mouseup", () => {
           cadreVue.style.opacity = "1";
           cadreVue.style.pointerEvents = "auto";
           setTimeout(() => {
-               globe.style.filter = "blur(4px) brightness(0.65)";
+          globe.style.filter = "blur(4px) brightness(0.65)";
           globe.style.pointerEvents = "none";
 
           mCadre.style.filter = "blur(4px) brightness(0.65)";
           mCadre.style.pointerEvents = "none";
+
+
+          wrapperTool.style.filter = "blur(4px) brightness(0.65)";
+          wrapperTool.style.pointerEvents = "none";
+
+          
           if(isMobile){
 
           opensearch.style.filter = "blur(4px) brightness(0.65)";
@@ -17775,6 +17784,9 @@ document.addEventListener("mouseup", () => {
           cadreVue.style.pointerEvents = "";
           globe.style.filter = "";
           globe.style.pointerEvents = "";
+
+          wrapperTool.style.filter = "";
+          wrapperTool.style.pointerEvents = "";
 
           mCadre.style.filter = "";
           mCadre.style.pointerEvents = "";
