@@ -47,10 +47,10 @@
         width: 100%;
         min-height: 100dvh;
         background: linear-gradient(
-          228deg,
-          #0f23fa 0%,
-          #0f85fa 50%,
-          #0fe7fa 100%
+          134deg,
+          #1425e6 0%,
+          #181cdc 37%,
+          #150570 73%
         );
       }
 
@@ -2449,7 +2449,7 @@
 
       /*Style Home*/
       #phoneHome {
-        display: flex;
+        display: none;
         position: fixed;
         flex-direction: column;
         justify-content: flex-end;
@@ -7677,6 +7677,43 @@ Score :<span style="margin-left: 0.5em;" id="spnScore"></span>/15
 
     <!--Script Home-->
     <script>
+      
+window.addEventListener("load", () => {
+        // Sortie de phoneConfig
+        phoneConfig.style.transition = "transform 0.5s ease, opacity 0.2s ease";
+        phoneConfig.style.opacity = "0";
+
+        setTimeout(() => {
+          phoneConfig.style.display = "none";
+
+          // Prépare phoneHome avant de l'afficher
+          [...phoneHome.children].forEach((el) => {
+            el.style.transition = "none";
+            el.style.opacity = "0";
+          });
+
+
+          phoneHome.style.display = "flex";
+          currentPhone = phoneHome;
+          phoneHome.offsetHeight; // force reflow
+
+          // Anime le retour de phoneHome
+          [...phoneHome.children].forEach((el) => {
+            el.style.transition = "transform 0.5s ease, opacity 0.4s ease";
+            el.style.opacity = "1";
+            if (el.id === "mapHome") {
+              el.style.opacity = 0.08;
+            }
+          });
+
+
+         
+        }, 150);
+      });
+
+
+
+
       //Ajouter une transition
       // Utilisation : addTransition(element, "opacity 0.3s ease");
       function addTransition(el, transition) {
