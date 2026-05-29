@@ -2605,6 +2605,7 @@
         position: absolute;
         background: transparent;
         border: none;
+        cursor: pointer;
         border-radius: 5px;
         top: calc(0.1em + env(safe-area-inset-top));
         left: 2em;
@@ -2615,6 +2616,7 @@
         background: rgba(255, 255, 255, 0.2);
       }
       #backMaps {
+         background: rgba(56, 140, 223, 0.4);
         left: 0.75em;
       }
       #configTitle {
@@ -3126,13 +3128,31 @@
       }
       #cadreScorePm{
         display: none;
+        position: relative;
+        overflow: visible;
         justify-content: center;
-        align-items: center;
-        padding: 0.6em;
-        padding-top: 0;
-        width : 100%;
+        align-items: flex-end;
+        gap : 0.5em;
+        padding : 0 0.6em;
         font-size: 1.05em;
       }
+      #cadreScorePm svg {
+          height : 1em;
+      }
+
+      .cadreStars {
+        display : flex;
+        position : absolute;
+        justify-content : center;
+        align-items: center;
+        gap : 0.4em;
+        left : 100%;
+        top : 0;
+      }      
+      #star1.scored path{fill: rgb(239,235,36)}
+      #star2.scored path{fill: rgb(239,235,36)}
+      #star3.scored path{fill: rgb(239,235,36)}
+
       #cadrePrPm {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -4829,7 +4849,24 @@
       <div id="cachePm"></div>
       <div id="pm4Choix">
         <div id="pmTitle">Menu pause</div>
-        <div id="cadreScorePm">Score : <span style="margin-left: 0.5em;" id="spnScore"></span>/15</div>
+        <div id="cadreScorePm">         
+Score :<span style="margin-left: 0.5em;" id="spnScore"></span>/15
+<div class="cadreStars">
+<svg  id="star1" class="starScore" viewBox="0 0 314 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill="rgba(23, 84, 216, 0.5"  d="M146.454 7.60076C149.747 -2.53366 164.085 -2.53365 167.378 7.60077L196.879 98.3982C198.352 102.93 202.576 105.999 207.341 105.999H302.811C313.467 105.999 317.898 119.635 309.277 125.898L232.04 182.014C228.185 184.815 226.571 189.78 228.044 194.312L257.546 285.11C260.839 295.244 249.239 303.672 240.619 297.408L163.382 241.292C159.526 238.491 154.306 238.491 150.45 241.292L73.2135 297.408C64.5926 303.672 52.9933 295.244 56.2862 285.11L85.7881 194.312C87.2607 189.78 85.6475 184.815 81.7921 182.014L4.55522 125.898C-4.06563 119.635 0.364898 105.999 11.0209 105.999H106.491C111.256 105.999 115.48 102.93 116.953 98.3982L146.454 7.60076Z" />
+</svg>
+
+<svg id="star2" class="starScore" viewBox="0 0 314 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill="rgba(23, 84, 216, 0.5" d="M146.454 7.60076C149.747 -2.53366 164.085 -2.53365 167.378 7.60077L196.879 98.3982C198.352 102.93 202.576 105.999 207.341 105.999H302.811C313.467 105.999 317.898 119.635 309.277 125.898L232.04 182.014C228.185 184.815 226.571 189.78 228.044 194.312L257.546 285.11C260.839 295.244 249.239 303.672 240.619 297.408L163.382 241.292C159.526 238.491 154.306 238.491 150.45 241.292L73.2135 297.408C64.5926 303.672 52.9933 295.244 56.2862 285.11L85.7881 194.312C87.2607 189.78 85.6475 184.815 81.7921 182.014L4.55522 125.898C-4.06563 119.635 0.364898 105.999 11.0209 105.999H106.491C111.256 105.999 115.48 102.93 116.953 98.3982L146.454 7.60076Z" />
+</svg>
+
+<svg id="star3" class="starScore" viewBox="0 0 314 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill="rgba(23, 84, 216, 0.5" d="M146.454 7.60076C149.747 -2.53366 164.085 -2.53365 167.378 7.60077L196.879 98.3982C198.352 102.93 202.576 105.999 207.341 105.999H302.811C313.467 105.999 317.898 119.635 309.277 125.898L232.04 182.014C228.185 184.815 226.571 189.78 228.044 194.312L257.546 285.11C260.839 295.244 249.239 303.672 240.619 297.408L163.382 241.292C159.526 238.491 154.306 238.491 150.45 241.292L73.2135 297.408C64.5926 303.672 52.9933 295.244 56.2862 285.11L85.7881 194.312C87.2607 189.78 85.6475 184.815 81.7921 182.014L4.55522 125.898C-4.06563 119.635 0.364898 105.999 11.0209 105.999H106.491C111.256 105.999 115.48 102.93 116.953 98.3982L146.454 7.60076Z" />
+</svg>
+</div>
+ 
+
+</div>
         <div
           class="ligneIn"
           style="width: 100%; border: 1px solid rgb(234, 233, 233)"
@@ -7810,7 +7847,11 @@
 
       function fillPhonePlay() {        
         spnScore.textContent = score;
-       if (parseInt(qNumber.textContent)>=3){
+        L_stars.forEach(s=>s.classList.remove('scored'))
+        L_stars.slice(0,Math.floor(score/5)).forEach(s=>s.classList.add('scored'))
+        
+
+       if (parseInt(qNumber.textContent)>=15){
         affichePm(); 
         document.getElementById('cadreScorePm').style.display = "flex";
         pause4Choix.style.opacity = "0"
@@ -8216,6 +8257,12 @@
       const spanNext = cadreNext.querySelector("span");
       const qNumber = document.getElementById('qNumber')
       const spnScore = document.getElementById('spnScore')
+      const starScore = document.querySelectorAll('.starScore')
+      const star1 = document.getElementById('star1')
+      const star2 = document.getElementById('star2')
+      const star3 = document.getElementById('star3')
+      let L_stars = [star1,star2,star3]
+
       let score = 0;
 
 
@@ -8267,7 +8314,7 @@
           });
 
           
-           if (parseInt(qNumber.textContent)>=3){          
+           if (parseInt(qNumber.textContent)>=15){          
           document.querySelector('.btn-suivant').textContent = "Fin"
           btnReprendre.textContent = "Rejouer"
           document.getElementById('pmTitle').textContent = "Fin de partie !"          
@@ -8638,7 +8685,7 @@
       });
 
       btnReprendre.addEventListener("click", () => {
-        if (parseInt(qNumber.textContent)>=3){
+        if (parseInt(qNumber.textContent)>=15){
         score = 0;
         spnScore.textContent = score;
 
