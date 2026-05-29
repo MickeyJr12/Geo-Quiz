@@ -3124,6 +3124,14 @@
         font-size: 1.6em;
         letter-spacing: 1.1px;
       }
+      #cadreScorePm{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6em;
+        width : 100%;
+        font-size: 1.05em;
+      }
       #cadrePrPm {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -4820,6 +4828,7 @@
       <div id="cachePm"></div>
       <div id="pm4Choix">
         <div id="pmTitle">Menu pause</div>
+        <div id="cadreScorePm">Score : <span style="margin-left: 0.5em;" id="spnScore"></span>/15</div>
         <div
           class="ligneIn"
           style="width: 100%; border: 1px solid rgb(234, 233, 233)"
@@ -7787,6 +7796,7 @@
       }
 
       let L_reponse = [];
+      let L_reponses = []
       let L_cBoxHasard = [cc1, cc2, cc3, cc4];
       let L_btn4ChoixHasard = [c1, c2, c3, c4];
       let reponseFound = false;
@@ -7798,13 +7808,14 @@
       L_btn4ChoixHasard.forEach((btn) => idProps_m.set(btn, null)); // Clef : DROM, valeur : identifiant
 
       function fillPhonePlay() {        
+        spnScore.textContent = score;
        if (parseInt(qNumber.textContent)>=3){
         affichePm(); 
+        document.getElementById('cadreScorePm').style.display = "flex";
         pause4Choix.style.opacity = "0"
-        pause4Choix.style.pointerEvents="none";      
-        return
-        
-      
+        pause4Choix.style.pointerEvents="none";
+        L_reponses = []      
+        return              
       }
         qNumber.textContent =  parseInt(qNumber.textContent)+1;
 
@@ -7826,7 +7837,7 @@
         //Fonction
         const paysDispos = Object.keys(L_q).filter(
           (id) =>
-            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") &&
+            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(L_q[id]) && 
             (P_info[id].region === L_config.c || L_config.c === "allC") &&
             P_info[id].region !== null,
         );
@@ -7837,6 +7848,7 @@
           idBonneReponse =
             paysDispos[Math.floor(Math.random() * paysDispos.length)]; // Choix de la bonne réponse au hasard
           idProps_m.set(cBoxHasard.parentNode, idBonneReponse);
+          L_reponses.push(idBonneReponse) // Ne pas avoir plusieurs fois la même bonne réponse
           // remplir les réponses
 
           cBoxs.forEach((c) => {
@@ -8164,6 +8176,11 @@
       });
 
       playConfig.addEventListener("click", () => {
+        score = 0;
+        spnScore.textContent = score;
+
+        pause4Choix.style=""
+        document.getElementById('cadreScorePm').style.display = "none";
         qNumber.textContent = "0"
         document.querySelector('.btn-suivant').textContent = "Suivant →"
         btnReprendre.textContent = "Reprendre"
@@ -8197,6 +8214,8 @@
       const cadreNext = document.querySelector(".cadreNext");
       const spanNext = cadreNext.querySelector("span");
       const qNumber = document.getElementById('qNumber')
+      const spnScore = document.getElementById('spnScore')
+      let score = 0;
 
 
       const D_classBtn4Choix = { c1: null, c2: null, c3: null, c4: null };
@@ -8221,6 +8240,7 @@
           if (correct) {
             cadreNext.classList.add("good");
             spanNext.textContent = "✓ Bonne réponse !";
+            score +=1
           } else {
             cadreNext.classList.add("bad");
             spanNext.textContent = "✗ Mauvaise réponse";
@@ -8618,8 +8638,10 @@
 
       btnReprendre.addEventListener("click", () => {
         if (parseInt(qNumber.textContent)>=3){
+        score = 0;
+        spnScore.textContent = score;
 
-          pause4Choix.style.opacity = "1"
+        pause4Choix.style.opacity = "1"
         pause4Choix.style.pointerEvents="all"; 
 
 
@@ -8632,14 +8654,13 @@
         cachePm.style.opacity = "0";
         pm4Choix.style.pointerEvents = "none";
         cachePm.style.pointerEvents = "none";
+        fillPhonePlay()
         setTimeout(() => {
-          
+        document.getElementById('cadreScorePm').style.display = "none";
         contentPm.innerHTML = ``;
         document.getElementById('pmTitle').textContent = "Menu Pause"
         btnReprendre.textContent = "Reprendre"
-        fillPhonePlay()
-        }, 220);
-
+        }, 220);        
         }
 
         if (!cadreNext.classList.contains("visible")) {
