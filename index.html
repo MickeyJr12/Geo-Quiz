@@ -2108,6 +2108,8 @@
         box-sizing: border-box;
       }
 
+      
+
       .listBox::-webkit-scrollbar {
         width: 4px;
       }
@@ -9058,24 +9060,17 @@ window.addEventListener("load", () => {
       const orgaData = [
         { label: "OTAN", id: "orgaOTAN", key: "otan" },
         { label: "UE", id: "orgaUE", key: "ue" },
-        { label: "OPEP", id: "orgaOPEP", key: "opep" },
-        { label: "OPEP+", id: "orgaOPEPP", key: "opepplus" }, // OPEP+ : même clé, logique étendue si besoin
+        {label:"Moyen-Orient", id:"orgaMoyenOrient", key: "moyenOrient"},
+        { label: "Ligue arabe", id: "orgaLigueArabe", key: "ligueArabe" },
+        { label: "Ex-URSS", id: "orgaExUrss", key: "exURSS" },
         { label: "G20", id: "orgaG20", key: "g20" },
         { label: "G7", id: "orgaG7", key: "g7" },
+        { label: "OPEP+", id: "orgaOPEPP", key: "opepplus" }, // OPEP+ : même clé, logique étendue si besoin
         { label: "COP21", id: "orgaCOP", key: "cop" },
-        { label: "Ex-URSS", id: "orgaExUrss", key: "exURSS" },
-        { label: "Ligue arabe", id: "orgaLigueArabe", key: "ligueArabe" },
+        { label: "OPEP", id: "orgaOPEP", key: "opep" },
         { label: "UNESCO", id: "orgaUnesco", key: "unesco" },
-        {
-          label: "Banque mondiale",
-          id: "orgaBanqueMondiale",
-          key: "banqueMondiale",
-        },
-        {
-          label: "Union africaine",
-          id: "orgaUnionAfricaine",
-          key: "unionAfricaine",
-        },
+        {label: "Banque mondiale",id: "orgaBanqueMondiale",key: "banqueMondiale",},
+        {label: "Union africaine",id: "orgaUnionAfricaine",key: "unionAfricaine",},
         { label: "FMI", id: "orgaFMI", key: "fmi" },
       ];
 
@@ -19065,7 +19060,7 @@ document.addEventListener("mouseup", () => {
               if (P_info[path.id].subregion != subTitle.textContent) {
                 return;
               }
-              L.push(path.getAttribute("title"));
+              L.push(L_q[path.id].n);
             });
             L.sort();
             L.forEach((name) => {
@@ -19096,7 +19091,7 @@ document.addEventListener("mouseup", () => {
             if (P_info[path.id].subregion != subTitle.textContent) {
               return;
             }
-            L.push(path.getAttribute("title"));
+            L.push(L_q[path.id].n);
           });
           L.sort();
           L.forEach((name) => {
@@ -19124,7 +19119,7 @@ document.addEventListener("mouseup", () => {
             if (!P_info[path.id][r.key]) {
               return;
             }
-            L.push(path.getAttribute("title"));
+            L.push(L_q[path.id].n);
           });
           L.sort();
           L.forEach((name) => {
@@ -19161,7 +19156,7 @@ document.addEventListener("mouseup", () => {
             if (P_info[path.id][r.key]) {
               return;
             }
-            L.push(path.getAttribute("title"));
+            L.push(L_q[path.id].n);
           });
           L.sort();
           L.forEach((name) => {
