@@ -7918,7 +7918,7 @@ window.addEventListener("load", () => {
         //Fonction
         const paysDispos = Object.keys(L_q).filter(
           (id) =>
-            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(id) && 
+            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(id) && id!="GO" &&
             (P_info[id].region === L_config.c || L_config.c === "allC") &&
             P_info[id].region !== null,
         );
@@ -7939,7 +7939,7 @@ window.addEventListener("load", () => {
                 Object.keys(L_q)[
                   Math.floor(Math.random() * Object.keys(L_q).length)
                 ]; // identifiant de pays au hasard
-
+              if (p_id==="GO"){continue}
               //Attribuer à chaque case, l'id de la réponse qu'elle contient
               if (c !== cBoxHasard) {
                 idProps_m.set(c.parentNode, p_id);
