@@ -7921,7 +7921,7 @@ window.addEventListener("load", () => {
         //Fonction
         const paysDispos = Object.keys(L_q).filter(
           (id) =>
-            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(id) && id!="GO" &&
+            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(id) && id!=="GO" && id!=="UM" &&
             (P_info[id].region === L_config.c || L_config.c === "allC") &&
             P_info[id].region !== null,
         );
@@ -18401,12 +18401,12 @@ document.addEventListener("mouseup", () => {
         let sautPays = false;
 
         for (const r of Lf) {
-          if (r.id === "GO") {
+          if (r.id === "GO" || r.id === "UM") {
             continue;
           }
           sautPays = false;
           for (const [color, value] of Object.entries(D_colorChoice)) {
-            if (r.id === "GO") continue;
+            if (r.id === "GO"|| r.id === "UM") continue;
             if (value && !D_color[r.id.toUpperCase()][color]) {
               sautPays = true;
             }
