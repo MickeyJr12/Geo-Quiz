@@ -7681,7 +7681,8 @@ Score :<span style="margin-left: 0.5em;" id="spnScore"></span>/15
     <script>
       
 window.addEventListener("load", () => {
-        // Sortie de phoneConfig
+  setTimeout(() => {
+     // Sortie de phoneConfig
         phoneConfig.style.transition = "transform 0.5s ease, opacity 0.2s ease";
         phoneConfig.style.opacity = "0";
 
@@ -7711,6 +7712,8 @@ window.addEventListener("load", () => {
 
          
         }, 150);
+  }, 100);
+       
       });
 
 
