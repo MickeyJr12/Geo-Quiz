@@ -7921,7 +7921,7 @@ window.addEventListener("load", () => {
         //Fonction
         const paysDispos = Object.keys(L_q).filter(
           (id) =>
-            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(id) && id!=="GO" && id!=="UM" && id!=="MF" &&
+            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") && !L_reponses.includes(id) && id!=="GO" && id!=="UM" && id!=="MF" && id!=="SJ"&&
             (P_info[id].region === L_config.c || L_config.c === "allC") &&
             P_info[id].region !== null,
         );
@@ -7942,7 +7942,7 @@ window.addEventListener("load", () => {
                 Object.keys(L_q)[
                   Math.floor(Math.random() * Object.keys(L_q).length)
                 ]; // identifiant de pays au hasard
-              if (p_id==="GO" || p_id === "UM" || p_id === "MF"){continue}
+              if (p_id==="GO" || p_id === "UM" || p_id === "MF"|| p_id === "SJ"){continue}
               //Attribuer à chaque case, l'id de la réponse qu'elle contient
               if (c !== cBoxHasard) {
                 idProps_m.set(c.parentNode, p_id);
@@ -18401,12 +18401,12 @@ document.addEventListener("mouseup", () => {
         let sautPays = false;
 
         for (const r of Lf) {
-          if (r.id === "GO" || r.id === "UM" || r.id === "MF") {
+          if (r.id === "GO" || r.id === "UM" || r.id === "MF"||r.id === "SJ") {
             continue;
           }
           sautPays = false;
           for (const [color, value] of Object.entries(D_colorChoice)) {
-            if (r.id === "GO"|| r.id === "UM" ||  r.id === "MF") continue;
+            if (r.id === "GO"|| r.id === "UM" ||  r.id === "MF" || r.id === "SJ") continue;
             if (value && !D_color[r.id.toUpperCase()][color]) {
               sautPays = true;
             }
