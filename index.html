@@ -8486,17 +8486,18 @@ window.addEventListener("load", () => {
       let classBtnNext; // Class du cadre de btnNext
       let viewMaps = false;
 
-      function zoomCountry(p_id) {
+     function zoomCountry(p_id) {
   currentCountry = document.getElementById(p_id);
   document.querySelector("svg.monde").appendChild(currentCountry);
   const svgMonde = document.getElementById("svgMonde");
-
   const el = getId(p_id);
 
-  // ── Nouveau : BBox en coordonnées SVG racine (tient compte du transform) ──
+  // ── Force le navigateur à recalculer le layout avant de lire les rects ──
+  svgMonde.getBoundingClientRect(); // lecture factice = flush du reflow
+  // ────────────────────────────────────────────────────────────────────────
+
   let b;
   try {
-    // getBBoxInUserSpaceOf n'existe pas partout, on utilise getScreenCTM
     const rect = el.getBoundingClientRect();
     const svgRect = svgMonde.getBoundingClientRect();
     const vb = svgMonde.viewBox.baseVal;
@@ -8509,9 +8510,8 @@ window.addEventListener("load", () => {
       height: rect.height * scaleY,
     };
   } catch (e) {
-    b = el.getBBox(); // fallback
+    b = el.getBBox();
   }
-  // ─────────────────────────────────────────────────────────────────────────
 
   const pad = Math.max(b.width, b.height) * 1.3;
   const MIN_SIZE = 50;
@@ -8530,6 +8530,8 @@ window.addEventListener("load", () => {
     countryClick(p_id, el.getAttribute("title"), el);
   }, 10);
 }
+
+
       function afficherMaps() {       
         viewMaps = true;
         //Cacher les éléments
