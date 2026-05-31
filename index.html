@@ -5414,61 +5414,7 @@ Score :<span style="margin-left: 0.4em;" id="spnScore"></span>/15
         </div>
 
         <div id="contentFlagS" class="grid2">
-          <div class="celDrapeau"></div>
-
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/np.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/np.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/fr.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/mq.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/id.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/ng.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/np.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
-
-          <div class="celDrapeau">
-            <div class="caseCelDrapeau">
-              <img src="https://flagcdn.com/np.svg" draggable="false" alt="" />
-            </div>
-            <div class="footerCelDrapeau">France</div>
-          </div>
+        
         </div>
         <div class="footerCadreS" id="footerCadreFlag" style="display: none">
           <div id="cadreColorChoice">
@@ -7959,7 +7905,7 @@ window.addEventListener("load", () => {
           cBoxHasard = L_cBoxHasard[random]; // Mettre la bonne réponse sur une case au hasard
           cHasard = L_btn4ChoixHasard[random]; // Bouton contenant la bonne réponse
           idBonneReponse =
-            paysDispos[Math.floor(Math.random() * paysDispos.length)]; // Choix de la bonne réponse au hasard
+            paysDispos[Math.floor(Math.random() * paysDispos.length)]; // Choix de la bonne réponse au hasard          
           idProps_m.set(cBoxHasard.parentNode, idBonneReponse);
           L_reponses.push(idBonneReponse) // Ne pas avoir plusieurs fois la même bonne réponse
           // remplir les réponses
@@ -7985,8 +7931,13 @@ window.addEventListener("load", () => {
                 //Remplir les cbox, les réponses
                 if (L_config.r === "drapeauR") {
                   c.innerHTML = ` <img class="drapeau4Choix"  src="https://flagcdn.com/${p_id.toLowerCase()}.svg" draggable="false" alt="">`;
+
+                  if (p_id==="GP"){c.innerHTML = ` <img class="drapeau4Choix"  src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg" draggable="false" alt="">`;}
+
                   if (c === cBoxHasard) {
                     c.innerHTML = ` <img class="drapeau4Choix"  src="https://flagcdn.com/${idBonneReponse.toLowerCase()}.svg" draggable="false" alt="">`;
+                  if (idBonneReponse==="GP"){c.innerHTML = ` <img class="drapeau4Choix"  src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg" draggable="false" alt="">`;}
+                    
                   }
                   L_reponse.push(c === cBoxHasard ? idBonneReponse : p_id);
                   reponseFound = true;
@@ -8017,7 +7968,11 @@ window.addEventListener("load", () => {
                 if (L_config.q === "contourQ") {
                   qBox.innerHTML = `<img class="drapeau4Choix"  src="https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${idBonneReponse.toLowerCase()}/vector.svg" draggable="false" alt="">`;
                 } else if (L_config.q === "drapeauQ") {
-                  qBox.innerHTML = ` <img class="drapeau4Choix"  src="https://flagcdn.com/${idBonneReponse.toLowerCase()}.svg" draggable="false" alt="">`;
+                  qBox.innerHTML = `<img class="drapeau4Choix"  src="https://flagcdn.com/${idBonneReponse.toLowerCase()}.svg" draggable="false" alt="">`;
+                  if (idBonneReponse==="GP"){
+                    qBox.innerHTML = `<img class="drapeau4Choix"  src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg" draggable="false" alt="">`;
+                  }
+
                   document.getElementById("cadreQ4Choix").style.marginBottom =
                     "3em";
                 } else if (L_config.q === "nomQ") {
@@ -10005,9 +9960,9 @@ window.addEventListener("load", () => {
           o: false,
         },
         GP: {
-          r: false,
-          w: false,
-          b: true,
+          r: true,
+          w: true,
+          b: false,
           g: true,
           y: true,
           k: false,
@@ -17825,8 +17780,12 @@ document.addEventListener("mouseup", () => {
         ((itemBlason.src = ``), (cadreContours.innerHTML = ``));
 
         mDrapeauCadre.src = `https://flagcdn.com/${id.toLowerCase()}.svg`;
-
         drapeauCadre.src = `https://flagcdn.com/${id.toLowerCase()}.svg`;
+        if (id==="GP"){
+          mDrapeauCadre.src = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg"
+          drapeauCadre.src = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg"
+        }
+
 
         fetch(
           `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`,
@@ -18546,6 +18505,10 @@ document.addEventListener("mouseup", () => {
           caseCelDrapeau.innerHTML = `
               <img src="https://flagcdn.com/${r.id.toLowerCase()}.svg" draggable="false" alt="" />
           `;
+          if (r.id.toUpperCase()==="GP"){
+            caseCelDrapeau.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg" draggable="false" alt="" />`
+        }
+
           footerCelDrapeau.textContent = L_q[r.id.toUpperCase()].n;
 
           celDrapeau.append(caseCelDrapeau, footerCelDrapeau);
@@ -18651,6 +18614,10 @@ document.addEventListener("mouseup", () => {
           ligneInContent.className = "ligneInContent";
 
           boxSvgItem.innerHTML = ` <img  src="https://flagcdn.com/${r.id.toLowerCase()}.svg" alt="" />`;
+          if (r.id==="GP"){
+            boxSvgItem.innerHTML = ` <img  src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg" alt="" />`;
+        }
+
           titleItemC.textContent = L_q[r.id.toUpperCase()].n;
           if (currentClass === "name") {
             capItemC.innerHTML = `
