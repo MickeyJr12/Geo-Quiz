@@ -8486,31 +8486,53 @@ window.addEventListener("load", () => {
       let classBtnNext; // Class du cadre de btnNext
       let viewMaps = false;
 
-     function zoomCountry(p_id) {
+    function zoomCountry(p_id) {
   currentCountry = document.getElementById(p_id);
   document.querySelector("svg.monde").appendChild(currentCountry);
   const svgMonde = document.getElementById("svgMonde");
   const el = getId(p_id);
 
-  // ── Force le navigateur à recalculer le layout avant de lire les rects ──
-  svgMonde.getBoundingClientRect(); // lecture factice = flush du reflow
-  // ────────────────────────────────────────────────────────────────────────
-
   let b;
   try {
-    const rect = el.getBoundingClientRect();
-    const svgRect = svgMonde.getBoundingClientRect();
-    const vb = svgMonde.viewBox.baseVal;
-    const scaleX = vb.width  / svgRect.width;
-    const scaleY = vb.height / svgRect.height;
+    // getScreenCTM() donne la matrice SVG→écran, son inverse donne écran→SVG
+    const ctm = el.getScreenCTM();
+    const bbox = el.getBBox(); // bbox dans l'espace local de l'élément
+
+    // On transforme les 4 coins du bbox via la CTM pour obtenir les coords SVG racine
+    const svgMonde2 = svgMonde;
+    const toSVG = svgMonde2.getScreenCTM().inverse();
+
+    function transformPoint(x, y) {
+      let pt = svgMonde.createSVGPoint();
+      pt.x = x;
+      pt.y = y;
+      // Passer par la CTM de l'élément pour aller en coordonnées écran
+      pt = pt.matrixTransform(ctm);
+      // Puis revenir en coordonnées SVG racine
+      return pt.matrixTransform(toSVG);
+    }
+
+    const p1 = transformPoint(bbox.x,              bbox.y);
+    const p2 = transformPoint(bbox.x + bbox.width,  bbox.y);
+    const p3 = transformPoint(bbox.x,              bbox.y + bbox.height);
+    const p4 = transformPoint(bbox.x + bbox.width,  bbox.y + bbox.height);
+
+    const xs = [p1.x, p2.x, p3.x, p4.x];
+    const ys = [p1.y, p2.y, p3.y, p4.y];
+
+    const minX = Math.min(...xs);
+    const minY = Math.min(...ys);
+    const maxX = Math.max(...xs);
+    const maxY = Math.max(...ys);
+
     b = {
-      x:      (rect.left - svgRect.left) * scaleX + vb.x,
-      y:      (rect.top  - svgRect.top)  * scaleY + vb.y,
-      width:  rect.width  * scaleX,
-      height: rect.height * scaleY,
+      x:      minX,
+      y:      minY,
+      width:  maxX - minX,
+      height: maxY - minY,
     };
   } catch (e) {
-    b = el.getBBox();
+    b = el.getBBox(); // fallback
   }
 
   const pad = Math.max(b.width, b.height) * 1.3;
