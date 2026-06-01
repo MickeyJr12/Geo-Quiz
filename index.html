@@ -20271,13 +20271,13 @@
 
             const zoomFactor = lastTouchDist / newDist;
             const newW = Math.min(
-              Math.max(vb.w * zoomFactor, MIN_SIZE),
-              MAX_SIZE,
-            );
+  Math.max(vb.w * zoomFactor, initialViewBox2.width / 60),  // même min que zoomCenterScreen
+  initialViewBox2.width                                       // même max
+);
             const newH = Math.min(
-              Math.max(vb.h * zoomFactor, MIN_SIZE),
-              MAX_SIZE,
-            );
+  Math.max(vb.h * zoomFactor, initialViewBox2.height / 60), // même min
+  initialViewBox2.height                                      // même max
+);
 
             const newX = midVBx - (midVBx - vb.x) * (newW / vb.w);
             const newY = midVBy - (midVBy - vb.y) * (newH / vb.h);
