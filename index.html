@@ -8432,6 +8432,8 @@
             qTrouver.style.pointerEvents = "all"
             cadreNext.classList.add("visible");
             document.querySelector(".btn-suivant").textContent = "Suivant →";
+            pause4Choix.style.opacity = "0";
+            pause4Choix.style.pointerEvents = "none";
 
             if(L_config.m==="modeTrouver"){
               pColor_m.set(document.getElementById(idBonneReponse), {hover : "", current : "green"})
