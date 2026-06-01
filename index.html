@@ -8112,6 +8112,7 @@
             if (m.id !== "backMaps")
               document.getElementById("phone4Choix").appendChild(m);
           });
+
           document.getElementById("phone4Choix").append(zBox);
           zBox.classList.add("modeTrouver");
 
@@ -8977,7 +8978,8 @@
             m.classList.remove("modeTrouver");
           });
         L_config.m = null;
-
+        cChooseTrouver= null;
+        zBox.remove()
         pColor_m.clear();
         idVisible_m.clear();
 
