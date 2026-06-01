@@ -4865,7 +4865,7 @@
                 <div
                   class="chrono-option"
                   id="chrono15"
-                  data-value="4"
+                  data-value="15"
                   data-label="15s"
                 >
                   15s
@@ -8969,6 +8969,10 @@
 
       // Bouton Menu principal
       btnMenu.addEventListener("click", () => {
+
+          L_modeTrouver.forEach((m) => {
+            m.classList.remove("modeTrouver");
+          });
         L_config.m = null;
 
         pColor_m.clear();
