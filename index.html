@@ -8135,7 +8135,6 @@
             toggleC(true)
             qTrouver.style.pointerEvents = "all"
           cadreNext.classList.remove("good", "bad", "none");
-          qTrouver.classList.remove("good", "bad", "none");            
 
             pColor_m.set(document.getElementById(idBonneReponse), { hover: "", current: "green" });
 
@@ -8146,13 +8145,11 @@
          if (correct){
             cadreNext.classList.add("good");
             spanNext.textContent = "✓ Bonne réponse !";
-            qTrouver.classList.add('good')
             fillContentPm(currentCountry.id,idBonneReponse)
              score += 1;
          }
          else {
             cadreNext.classList.add("bad");
-            qTrouver.classList.add('bad')
 
             spanNext.textContent = "✗ Mauvaise réponse";
             fillContentPm(currentCountry.id,idBonneReponse)
