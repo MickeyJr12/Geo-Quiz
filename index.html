@@ -7950,7 +7950,9 @@
           return;
         }
 
-        if (parseInt(qNumber.textContent)<15){qNumber.textContent = parseInt(qNumber.textContent) + 1}
+        if (parseInt(qNumber.textContent)<15 && (L_config.m === "modeChoix" || L_config.m === "modeTrouver" && cChooseTrouver)){
+          qNumber.textContent = parseInt(qNumber.textContent) + 1;
+        }
 
         //Reset les paramètres
         btns4Choix.forEach((b) => {
