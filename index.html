@@ -9756,9 +9756,7 @@
           openTool.style.pointerEvents = "none"
 
           const LcelSup = [devise,carSide,seaAccess,independance,calendar,co2e,pibPh,gouvernement,religion,fuseaux]
-
           const celsCadre  = document.querySelectorAll('.celCadre')
-
           celsCadre.forEach(cel=>{
 
             LcelSup.forEach(el=>{
@@ -9768,6 +9766,10 @@
             })
             
           })
+          orgaMenu.style.display = "none"
+          blasonMenu.style.display = "none"
+          contoursMenu.click()
+
           
 
           let backUs = document.createElement("button");
@@ -9824,7 +9826,9 @@
             })
             
           })
-          
+          orgaMenu.style.display = ""
+          blasonMenu.style.display = ""
+          orgaMenu.click()
 
           });
         }
@@ -18982,7 +18986,8 @@
             "https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg";
         }
         fetch(
-          `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`,
+          !viewState ?
+          `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`:`https://borderly.dev/${id.slice(-2).toLowerCase()}.svg`
         )
           .then((r) => {
             if (!r.ok) throw new Error();
@@ -19006,6 +19011,8 @@
                 "viewBox",
                 `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`,
               );
+              svgEl.style.stroke = "black";
+              svgEl.style.strokeWidth = "0"
               if (wasHidden) cadreContours.style.display = "";
             }, 0);
           })
