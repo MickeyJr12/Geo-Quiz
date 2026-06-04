@@ -1751,6 +1751,7 @@
 
       #viewUs {
         overflow: hidden;
+        color:white;
         max-height: 0em;
         opacity: 0;
         margin-bottom: -0.6em;
@@ -18917,7 +18918,7 @@
       function countryClick(id, name, element) {
         if (
           (L_config.m === "modeTrouver" && cChooseTrouver) ||
-          L_config.m !== "modeTrouver"
+          L_config.m !== "modeTrouver" || ! (viewState && id==="US")
         ) {
           toggleC(element.id === currentCountry.id);
         }
