@@ -9100,7 +9100,7 @@
 
         animateViewBox(svgMonde, targetViewBox, 700);
         setTimeout(() => {
-          countryClick(p_id, el.getAttribute("title"), el);
+          if (!viewState){countryClick(p_id, el.getAttribute("title"), el)}
         }, 10);
       }
 
@@ -9716,6 +9716,9 @@
           cadreLegend,
           openTool
         ];
+
+
+
         if (!viewState) {
           viewState = true;
           cloneVisible_m.clear();
@@ -9752,6 +9755,20 @@
           });
           openTool.style.pointerEvents = "none"
 
+          const LcelSup = [devise,carSide,seaAccess,independance,calendar,co2e,pibPh,gouvernement,religion,fuseaux]
+
+          const celsCadre  = document.querySelectorAll('.celCadre')
+
+          celsCadre.forEach(cel=>{
+
+            LcelSup.forEach(el=>{
+              if (cel.contains(el)){
+                cel.style.display = "none"
+              }
+            })
+            
+          })
+          
 
           let backUs = document.createElement("button");
           backUs.className = "back";
@@ -9778,7 +9795,6 @@
           backUs.addEventListener("click", () => {
             setTimeout(() => {
               backUs = null;
-              backUs.remove();
             }, 500);
             viewState = false;
             cloneVisible_m.forEach((val, key) =>
@@ -9799,7 +9815,16 @@
               el.style.pointerEvents = "";
             });
           openTool.style.pointerEvents = ""
+          
+          celsCadre.forEach(cel=>{
+            LcelSup.forEach(el=>{
+              if (cel.contains(el)){
+                cel.style.display = ""
+              }
+            })
             
+          })
+          
 
           });
         }
@@ -18755,6 +18780,8 @@
       globe.addEventListener("mousemove", (e) => {
         const country = e.target.closest("path");
         if (country != null) {
+          if (!D_us[country.id.slice(-2)] && viewState){return}
+          
           infoName.textContent =  viewState? D_us[country.id.slice(-2)].n : L_q[country.id].n;
           infoName.style.left =
             e.clientX - infoName.getBoundingClientRect().width / 2 + "px";
@@ -18775,10 +18802,9 @@
       function pathHover(id, name, element) {
         if (
           Object.values(idVisible_m.get(element.id)).some((v) => v === false) ||
-          isMobile || viewState
+          isMobile
         )
           return;
-        if (isMobile) return;
         if (lastHovered && lastHovered !== element) {
           lastHovered.style.transform = "";
           lastHovered.style.filter = "";
@@ -19006,9 +19032,15 @@
         });
         titlesCadre.forEach(
           (t) =>
-            (t.textContent = viewState
-              ? D_us[id.slice(-2)].n + " (" + id + ")"
-              : L_q[id].n + " (" + id + ")"),
+            {if (!viewState){
+              t.textContent = L_q[id].n + " (" + id + ")"}
+            else {
+              if (!D_us[id.slice(-2)]){return}
+              t.textContent = D_us[id.slice(-2)].n + " (" + id + ")"
+            }
+              
+            }
+               
         );
         mTitleCadre.textContent = viewState ? D_us[id.slice(-2)].n : L_q[id].n;
 
@@ -19088,6 +19120,9 @@
                   " tCO₂e/an";
               }
             }
+          }).catch(err => {
+      console.error("Pays introuvable");
+
           })
           
           if (viewState){
