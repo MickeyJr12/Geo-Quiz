@@ -18923,7 +18923,7 @@
       function countryClick(id, name, element) {
         if (
           (L_config.m === "modeTrouver" && cChooseTrouver) ||
-          L_config.m !== "modeTrouver" || ! (viewState && id==="US")
+          L_config.m !== "modeTrouver" &&  (!viewState || id!=="US")
         ) {
           toggleC(element.id === currentCountry.id);
         }
