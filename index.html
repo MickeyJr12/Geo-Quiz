@@ -9778,6 +9778,9 @@
             cloneVisible_m.forEach((val, key) =>
               idVisible_m.set(key, { ...val }),
             );
+            pathsUs.forEach(p=> p.style.fill=colorPath );
+            toggleC(false);
+
             svgUs.classList.remove("viewState");
             document.getElementById("US").classList.remove("viewState");
             colorCountry();
