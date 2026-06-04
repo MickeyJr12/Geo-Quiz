@@ -18821,6 +18821,7 @@
           ? (document.getElementById(pathId).style.stroke = "white" )
           : (document.getElementById(pathId).style.stroke =
               "rgba(255,210,50,1)");
+          
 
         const original = document.getElementById(pathId);
         const p = document.getElementById(pathId);
@@ -18831,7 +18832,8 @@
           p.style.fill="rgba(190,190,190,1)"
           return
         }
-        if (!visible ||!original || (viewState && pathId === "US-AK")) return;
+
+        if (!visible ||!original ||svgUs.contains(document.getElementById(pathId))  ) return;
 
         if (!viewState) {
           original.parentNode.append(original);
