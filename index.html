@@ -203,6 +203,8 @@
       /*CSS Maps*/
       .Maps {
         position: relative;
+        z-index: 1;
+
       }
 
       .monde {
@@ -2532,6 +2534,7 @@
       /*Style Home*/
       #phoneHome {
         display: none;
+        z-index: 2;
         position: fixed;
         flex-direction: column;
         justify-content: flex-end;
@@ -9558,10 +9561,42 @@
         toggleC(false);
         colorCountry();
         globe.style.zIndex = "5";
-        phoneHome.style.display = "none";
+
+
+
+        //***
+        [...phoneHome.children].forEach((el) => {
+          el.style.transition = "transform 0.5s ease, opacity 0.2s ease";
+        });
+
+        homeTitle.style.transform = "translateX(-50%) translateY(-3em)";
+        waveBottomHome.style.transform = "translateY(3em)";
+        btnHomeBox.style.transform = `translateX(-50%) translateY(calc(-50% + 3em))`;
+
+        document.getElementById("mapHome").style.transform =
+          "translateX(-40%) translateY(3em)";
+
+        [...phoneHome.children].forEach((el) => {
+          el.style.opacity = "0";
+        });
+          
         Maps.style.visibility = "visible";
-        Maps.style.opacity = "1";
-        currentPhone = Maps;
+        setTimeout(() => {
+          phoneHome.style.display = "none";
+          Maps.style.transition = "none";
+          Maps.style.opacity = "0";
+          Maps.style.transform = "scale(0.97)";
+          Maps.style.display = "flex";
+          currentPhone = Maps;
+
+          Maps.offsetHeight; // force reflow
+          Maps.style.transition =
+            "transform 0.6s ease, opacity 0.5s ease";
+          Maps.style.opacity = "1";
+          Maps.style.transform = "";
+        }, 180); // attend la fin de l'animation de phoneHome
+      
+        //**
       });
 
       const backMaps = document.getElementById("backMaps");
@@ -9582,11 +9617,52 @@
         afficheVue();
 
         currentCountry = null;
-        phoneHome.style.display = "flex";
         currentPhone = phoneHome;
 
         Maps.style.visibility = "";
         Maps.style.opacity = "";
+        //****
+
+          // Sortie de phoneConfig
+
+        setTimeout(() => {
+
+          // Prépare phoneHome avant de l'afficher
+          [...phoneHome.children].forEach((el) => {
+            el.style.transition = "none";
+            el.style.opacity = "0";
+          });
+
+          homeTitle.style.transform = "translateX(-50%) translateY(-3em)";
+          waveBottomHome.style.transform = "translateY(3em)";
+          btnHomeBox.style.transform =
+            "translateX(-50%) translateY(calc(-50% + 3em))";
+          document.getElementById("mapHome").style.transform =
+            "translateX(-40%) translateY(3em)";
+
+          phoneHome.style.display = "flex";
+          currentPhone = phoneHome;
+          phoneHome.offsetHeight; // force reflow
+
+          // Anime le retour de phoneHome
+          [...phoneHome.children].forEach((el) => {
+            el.style.transition = "transform 0.5s ease, opacity 0.4s ease";
+            el.style.opacity = "1";
+            if (el.id === "mapHome") {
+              el.style.opacity = 0.08;
+            }
+          });
+
+          homeTitle.style.transform = "translateX(-50%)";
+          waveBottomHome.style.transform = "";
+          btnHomeBox.style.transform = "translateX(-50%) translateY(-50%)";
+          document.getElementById("mapHome").style.transform =
+            "translateX(-40%)";
+
+        }, 150);
+      
+
+
       });
 
       const svg = document.querySelector("svg.monde");
