@@ -8457,7 +8457,7 @@
             //Cacher les éléments
             //Afficher maps
             L_addMaps.forEach((m) => {
-              if (m.id !== "backMaps")
+              if (m !== backMapsPlay)
                 document.getElementById("phone4Choix").appendChild(m);
             });
 
@@ -9053,14 +9053,14 @@
         document.querySelector(".txtChrono"),
       ];
 
-      let backMapPlay = document.createElement("button");
-          backMapPlay.className = "back";
-          backMapPlay.id = "backUs";
-          backMapPlay.style.background = "rgba(56, 140, 223, 0.4)";
-          backMapPlay.style.left = "0.75em";
-          backMapPlay.style.transition = "opacity 0.3s ease";
-          backMapPlay.style.zIndex = "30";
-          backMapPlay.innerHTML = `
+      let backMapsPlay = document.createElement("button");
+          backMapsPlay.className = "back";
+          backMapsPlay.id = "backUs";
+          backMapsPlay.style.background = "rgba(56, 140, 223, 0.4)";
+          backMapsPlay.style.left = "0.75em";
+          backMapsPlay.style.transition = "opacity 0.3s ease";
+          backMapsPlay.style.zIndex = "30";
+          backMapsPlay.innerHTML = `
            <svg
           fill="white"
           xmlns="http://www.w3.org/2000/svg"
@@ -9073,20 +9073,17 @@
           />
         </svg>
           `;
-          backMapPlay.addEventListener("click", () => {
+          backMapsPlay.addEventListener("click", () => {
         cacherMaps();
         activerCarte();
       });
       const L_addMaps = [
         getC(".globe"),
         getId("mCadre"),
-        backMapPlay,
+        backMapsPlay,
         getId("cadre"),
       ];
 
-
-      
-      getId("backMaps").addEventListener("click", () => {});
       //z-index des éléments de maps dans 4 choix
 
       let classBtnNext; // Class du cadre de btnNext
