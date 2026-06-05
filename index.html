@@ -8909,6 +8909,13 @@
       const badSound = new Audio('badSound.mp3');
       const funSound = new Audio('funSound.mp3');
 
+      document.addEventListener('touchstart', () => {
+      goodSound.load();
+      badSound.load();
+      funSound.load();
+
+        }, { once: true });
+
       function playSound(song) {
         song.currentTime = 0;
         song.play();
