@@ -2702,7 +2702,6 @@
         background: rgba(255, 255, 255, 0.2);
       }
       #backMaps {
-        z-index: 30;
         background: rgba(56, 140, 223, 0.4);
         left: 0.75em;
       }
@@ -9238,6 +9237,7 @@
         });
         L_addMaps.forEach((p) => {
           Maps.appendChild(p);
+          p.style.zIndex = ""
         });
         L_replace.forEach((p) => {
           p.style.opacity = "1";
@@ -9600,6 +9600,7 @@
         zBox.classList.remove("modeTrouver");
         L_addMaps.forEach((p) => {
           Maps.appendChild(p);
+          p.style.zIndex = ""
         });
 
         //animeColorC = requestAnimationFrame(colorCountry);
