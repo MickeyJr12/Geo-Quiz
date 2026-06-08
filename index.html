@@ -8079,9 +8079,10 @@
     <script>
       window.addEventListener("load", () => {
           // Sortie de phoneConfig
+          phoneConfig.style.transition = "opacity 0.01s ease"
+          phoneConfig.style.opacity = "0";
           phoneConfig.style.transition =
             "transform 0.5s ease, opacity 0.2s ease";
-          phoneConfig.style.opacity = "0";
 
           setTimeout(() => {
 
@@ -8103,7 +8104,7 @@
                 el.style.opacity = 0.08;
               }
             });
-          }, 150);
+          }, 100);
       });
 
       //Ajouter une transition
