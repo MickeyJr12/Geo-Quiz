@@ -6493,7 +6493,8 @@
           class="monde"
           id="svgMonde"
           position="absolute"
-          viewBox="0 0 850 525"
+          viewBox="0 0 1100 700"
+          
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
@@ -8125,6 +8126,7 @@
       const phoneConfig = document.getElementById("phoneConfig");
 
       play.addEventListener("click", () => {
+        
         cChooseTrouver = null;
         viewMaps = false;
         clonepColor_m.clear();
@@ -9705,6 +9707,54 @@
       const initialViewBox = svg.getAttribute("viewBox").split(" ").map(Number);
       const paths = svg.querySelectorAll("path");
       const pathsUs = svgUs.querySelectorAll("path");
+      const L_circles = ["MQ","GI","AD","LI","SC","GO","IO","NF","MC","VA","SM"]
+      
+      function getPathCenter(pathEl, svgEl) {
+  const bbox = pathEl.getBBox();
+
+  // Point central dans le système local du path
+  const localPoint = svgEl.createSVGPoint();
+  localPoint.x = bbox.x + bbox.width / 2;
+  localPoint.y = bbox.y + bbox.height / 2;
+
+  // Matrice de transformation du path vers le SVG racine
+  const ctm = pathEl.getCTM();
+
+  // Conversion en coordonnées SVG racine
+  const svgPoint = localPoint.matrixTransform(ctm);
+
+  return { cx: svgPoint.x, cy: svgPoint.y };
+}
+
+      function createCircle(pId) {
+  const c = document.getElementById(pId);
+  const bbox = c.getBBox();
+
+  // Convertir le centre local → coordonnées SVG racine
+  const pt = svg.createSVGPoint();
+  pt.x = bbox.x + bbox.width / 2;
+  pt.y = bbox.y + bbox.height / 2;
+
+  const ctm = c.getScreenCTM();           // local → écran
+  const toSVG = svg.getScreenCTM().inverse(); // écran → SVG racine
+
+  const svgPt = pt.matrixTransform(ctm).matrixTransform(toSVG);
+
+  const r = Math.max(bbox.width, bbox.height) / 2 * 1.4;
+
+  const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttribute('cx', svgPt.x);
+  circle.setAttribute('cy', svgPt.y);
+  circle.setAttribute('r', r);
+  circle.setAttribute('fill', 'none');
+  circle.setAttribute('stroke', 'white');
+  circle.setAttribute('stroke-width', '0.3');
+  svg.appendChild(circle);
+}
+      setTimeout(() => {        
+      createCircle("MQ")
+      }, 5000);
+      
       const infoName = document.querySelector(".infoName");
 
       const mCadre = document.getElementById("mCadre");
@@ -21923,7 +21973,7 @@
 
         requestAnimationFrame(loop);
       }
- loop()
+//  loop()
 
       /*phoneHome.style.display="none"
       phone4Choix.style.display="flex"*/
