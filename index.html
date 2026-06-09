@@ -9728,7 +9728,6 @@
   r = Math.max(r,0.85)
 
   const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-  circle.style.display = "none"
   circle.setAttribute('cx', svgPt.x);
   circle.setAttribute('cy', svgPt.y);
   circle.setAttribute('r', r);
@@ -20438,13 +20437,12 @@
           const newX = mouseVBx - (mouseVBx - vb.x) * (newW / vb.w);
           const newY = mouseVBy - (mouseVBy - vb.y) * (newH / vb.h);
 
-          if(newW<=550){
-          L_elCircles.forEach(c=>c.style.display = 'flex')
-          }
-          else {
-          L_elCircles.forEach(c=>c.style.display = 'none')
-          }
-          console.log(newW)
+          // if(newW<=550){
+          // L_elCircles.forEach(c=>c.style.display = 'flex')
+          // }
+          // else {
+          // L_elCircles.forEach(c=>c.style.display = 'none')
+          // }
 
           setVB({ x: newX, y: newY, w: newW, h: newH });
         },
