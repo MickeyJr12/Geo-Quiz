@@ -9733,9 +9733,9 @@
 
         const svgPt = pt.matrixTransform(ctm).matrixTransform(toSVG);
 
-        let r = (Math.max(bbox.width, bbox.height) / 2) * 1.9;
+        let r = (Math.max(bbox.width, bbox.height) / 2) * 2.05;
 
-        r = Math.max(r, 0.85);
+        r = Math.max(r, 0.88);
 
         const circle = document.createElementNS(
           "http://www.w3.org/2000/svg",
@@ -9747,7 +9747,7 @@
         circle.setAttribute("r", r);
         circle.setAttribute("fill", "transparent");
         circle.setAttribute("stroke", "rgb(250, 160, 15)");
-        circle.setAttribute("stroke-width", "0.08");
+        circle.setAttribute("stroke-width", "0.1");
         svg.appendChild(circle);
 
         //
@@ -21447,7 +21447,7 @@
               initialViewBox2.height, // même max
             );
 
-            if (newW <= 200) {
+            if (newW <= 165) {
               L_elCircles.forEach((c) => (c.style.display = "flex"));
             } else {
               L_elCircles.forEach((c) => (c.style.display = "none"));
