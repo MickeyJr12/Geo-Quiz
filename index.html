@@ -9735,7 +9735,7 @@
 
         let r = (Math.max(bbox.width, bbox.height) / 2) * 2.05;
 
-        r = Math.max(r, 0.88);
+        r = Math.max(r, 0.95);
 
         const circle = document.createElementNS(
           "http://www.w3.org/2000/svg",
@@ -9747,7 +9747,7 @@
         circle.setAttribute("r", r);
         circle.setAttribute("fill", "transparent");
         circle.setAttribute("stroke", "rgb(250, 160, 15)");
-        circle.setAttribute("stroke-width", "0.1");
+        circle.setAttribute("stroke-width", "0.15");
         svg.appendChild(circle);
 
         //
@@ -21447,7 +21447,7 @@
               initialViewBox2.height, // même max
             );
 
-            if (newW <= 165) {
+            if (newW <= 150) {
               L_elCircles.forEach((c) => (c.style.display = "flex"));
             } else {
               L_elCircles.forEach((c) => (c.style.display = "none"));
