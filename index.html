@@ -8350,6 +8350,14 @@
           L_reponses.push(idBonneReponse); // Ne pas avoir plusieurs fois la même bonne réponse
         }
 
+        //Retirer les circles inutiles
+        
+for (const clef in D_circles) {
+  if(paysDispos.includes(clef)){D_circles[clef].style.visibility = ""}
+  else{D_circles[clef].style.visibility = "hidden"}
+}
+
+
         if (L_config.m === "modeChoix") {
           let random = Math.floor(Math.random() * 4);
           cBoxHasard = L_cBoxHasard[random]; // Mettre la bonne réponse sur une case au hasard
@@ -9387,6 +9395,10 @@
 
         cloneVisible_m.forEach((val, key) => idVisible_m.set(key, { ...val }));
 
+        for (const clef in D_circles) {
+          D_circles[clef].style.visibility = ""
+}
+        
         phone4Choix.style.display = "none";
 
         // Sortie de phoneConfig
@@ -9601,6 +9613,11 @@
           p.style.zIndex = "";
         });
 
+         for (const clef in D_circles) {
+          D_circles[clef].style.visibility = ""
+}
+        
+
         //animeColorC = requestAnimationFrame(colorCountry);
         animateViewBox(
           document.getElementById("svgMonde"),
@@ -9721,6 +9738,7 @@
         "YT",
         "AX"
       ];
+      const D_circles = {}
       const L_elCircles = [];
 
       function createCircle(pId) {
@@ -9819,6 +9837,7 @@
           }, 20);
         });
         L_elCircles.push(circle);
+        D_circles[c.id] = circle
       }
       L_circles.forEach((c) => createCircle(c));
 
