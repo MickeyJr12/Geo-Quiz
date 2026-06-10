@@ -9727,6 +9727,9 @@ for (const clef in D_circles) {
       const paths = svg.querySelectorAll("path");
       const pathsUs = svgUs.querySelectorAll("path");
       const L_circles = [
+        "LC",
+        "GD",
+        "VC",
         "CW",
         "AW",
         "TC",
@@ -9752,6 +9755,15 @@ for (const clef in D_circles) {
         "BL","HM","PW","NU","CC","NR","PN","CX","AS","CK","PW","GU","MT",
       ];
       const D_circles = {}
+      const D_factorC = {
+        "VC":1.1,
+        "TC":1.1,
+        "MQ" : 1.4,
+        "MS" : 2.2,
+        "FO" : 1.2,
+        "AX" : 1.4
+
+      }
       const L_elCircles = [];
 
       function createCircle(pId) {
@@ -9768,7 +9780,7 @@ for (const clef in D_circles) {
 
         const svgPt = pt.matrixTransform(ctm).matrixTransform(toSVG);
 
-        let r = (Math.max(bbox.width, bbox.height) / 2) * 2;
+        let r = (Math.max(bbox.width, bbox.height) / 2) * (D_factorC[c.id] ? D_factorC[c.id] : 1.9);
 
         r = Math.max(r, 0.4);
 
