@@ -19292,9 +19292,10 @@ for (const clef in D_circles) {
             "https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg";
         }
         fetch(
-          !viewState
-            ? `https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`
-            : `https://borderly.dev/${id.slice(-2).toLowerCase()}.svg`,
+          !viewState? 
+            
+            (id==="MQ" ?  "https://upload.wikimedia.org/wikipedia/commons/6/61/Blank_Map_of_Martinique_Department%2C_France%2C_with_Communes.svg":`https://cdn.jsdelivr.net/gh/djaiss/mapsicon@master/all/${id.toLowerCase()}/vector.svg`)
+            :`https://borderly.dev/${id.slice(-2).toLowerCase()}.svg`,
         )
           .then((r) => {
             if (!r.ok) throw new Error();
