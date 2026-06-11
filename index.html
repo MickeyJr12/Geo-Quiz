@@ -2013,7 +2013,7 @@
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
         inset: 0;
         height: clamp(0px, 80%, 80%);
-        width: clamp(0px, 100%, 40em);
+        width: clamp(0px, 80%, 40em);
 
         border-radius: 0.6em;
         background: linear-gradient(
@@ -2030,6 +2030,21 @@
         transition:
           transform 0.3s ease,
           opacity 0.2s ease;
+      }
+      #cacheIle{
+        pointer-events: none;
+        position : absolute;
+        opacity : 0;
+        width : 100%;
+        height : 100%;
+        z-index: 99;
+        background: rgba(0,0,0,0.6) ;
+        backdrop-filter: blur(8px);
+        transition : opacity 0.2s ease
+      }
+      #cacheIle.active {
+        pointer-events: all;
+        opacity : 1
       }
       #cadreIle.active {
         pointer-events: all;
@@ -2051,7 +2066,7 @@
       }
 
       .svgIle polygon.active {
-        fill: rgb(61, 81, 212);
+        fill: rgb(19, 88, 192);
       }
       .svgIle {
         max-height: 100%;
@@ -6137,6 +6152,7 @@
       <!--------------------------Grand Cadre------------------------------->
 
       <div id="cadre">
+        <div id="cacheIle"></div>
         <div id="cadreIle">
           <div id="footerCadreIle">
             <div id="titleIle">Ducos (97224)</div>
@@ -10599,6 +10615,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const ileExpend = document.getElementById("ileExpend");
       const boxSvgIle = document.getElementById("boxSvgIle");
       const cadreIle = document.getElementById("cadreIle");
+      const cacheIle = document.getElementById("cacheIle");
+      
       const polygons = boxSvgIle.querySelectorAll("polygon");
       const svgIles = document.querySelectorAll(".svgIle");
       const svgMQ = document.getElementById("svgMQ");
@@ -10634,7 +10652,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const religion = document.getElementById("religion");
       const fuseaux = document.getElementById("fuseaux");
 
-      ileExpend.addEventListener('click',()=>{cadreIle.classList.add('active')})
+      ileExpend.addEventListener('click',()=>{
+        cadreIle.classList.add('active')
+        cacheIle.classList.add('active')
+      })
 
       //Script cadreIle
       svgIles.forEach((s) => {
