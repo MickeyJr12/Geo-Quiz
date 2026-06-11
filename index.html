@@ -2002,11 +2002,26 @@
       }
 
       /*CSS cadreIles*/
+
+       #cacheIle{
+        pointer-events: none;
+        position : absolute;
+        opacity : 0;
+        width : 100%;
+        height : 100%;
+        z-index: 99;
+        background: rgba(0,0,0,0.6) ;
+        backdrop-filter: blur(8px);
+        transition : opacity 0.2s ease
+      }
+
+
       #cadreIle {
         display: flex;
         position: absolute;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
         z-index: 100;
         margin: auto;
         outline: 0.01em solid rgba(255, 255, 255, 0.5);
@@ -2015,7 +2030,8 @@
         width: clamp(0px, 90%, 40em);
         max-height : 80%;
         aspect-ratio: 2/3;
-
+        padding : 0.2em;
+        padding-bottom: 5.2em;
         border-radius: 0.6em;
         background: linear-gradient(
           128deg,
@@ -2038,17 +2054,6 @@
         top : 0.2em;
       }
 
-      #cacheIle{
-        pointer-events: none;
-        position : absolute;
-        opacity : 0;
-        width : 100%;
-        height : 100%;
-        z-index: 99;
-        background: rgba(0,0,0,0.6) ;
-        backdrop-filter: blur(8px);
-        transition : opacity 0.2s ease
-      }
       #cacheIle.active {
         pointer-events: all;
         opacity : 1
@@ -2092,7 +2097,6 @@
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
         transform: translateY(0.8em);
         width: 100%;
-        height: fit-content;
         height: 5em;
         bottom: 0em;
         border-radius: 0.6em;
@@ -10695,7 +10699,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       //Script cadreIle
       svgIles.forEach((s) => {
-        s.id === "svgMQ" ? "" : (s.style.display = "none");
+        s.id === "svgGP" ? "" : (s.style.display = "none");
       });
 
       let startVBxIle, startVByIle; // Position du viewBox au début du drag
