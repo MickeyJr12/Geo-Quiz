@@ -2047,7 +2047,7 @@
           transform 0.3s ease,
           opacity 0.2s ease;
       }
-      #ileCross{
+      #crossIle{
         position : absolute;
         right : 0.2em;
         top : 0.2em;
@@ -6166,7 +6166,7 @@
       <div id="cadre">
         <div id="cacheIle"></div>
         <div id="cadreIle">
-          <button class="cross" id="ileCross">
+          <button class="cross" id="crossIle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Outline"
@@ -10641,7 +10641,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const itemBlason = document.querySelector(".itemBlason");
       const cadreContours = document.getElementById("cadreContours");
       const ileExpend = document.getElementById("ileExpend");
-      const ileCross = document.getElementById('ileCross')
+      const crossIle = document.getElementById('crossIle')
       const boxSvgIle = document.getElementById("boxSvgIle");
       const cadreIle = document.getElementById("cadreIle");
       const cacheIle = document.getElementById("cacheIle");
@@ -10695,16 +10695,18 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         cacheIle.classList.add('active')
       })
 
-        ileCross.addEventListener('click',()=>{
+        crossIle.addEventListener('click',()=>{
         cadreIle.classList.remove('active')
         cacheIle.classList.remove('active')
         footerCadreIle.classList.remove("active");
+        polygons.forEach(p=>p.classList.remove('active'))
       })
 
         cacheIle.addEventListener('click',()=>{
         cadreIle.classList.remove('active')
         cacheIle.classList.remove('active')
         footerCadreIle.classList.remove("active");
+        polygons.forEach(p=>p.classList.remove('active'))
       })
 
 
