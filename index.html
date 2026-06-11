@@ -19115,8 +19115,11 @@ for (const clef in D_circles) {
         return { x: v.x, y: v.y, w: v.width, h: v.height };
       }
 
-      function setVB({ x, y, w, h }) {
-        svg.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
+      function setVB({ x, y, w, h }) {    
+
+        let xp = Math.min(Math.max(x,-398),323)
+        let yp = Math.min(Math.max(y,-268),230)
+        svg.setAttribute("viewBox", `${xp} ${yp} ${w} ${h}`);
       }
       // ── Drag (pan) ───────────────────────────────────────────────
 
@@ -19160,8 +19163,7 @@ for (const clef in D_circles) {
         console.log(startVBy - dy)
     
 
-        dx = (startVBx - dx < 323 && startVBx - dx > -398)? dx : (startVBx - dx < 323)? startVBx+398 : startVBx - 323;
-        dy = (startVBy - dy < 230 && startVBy - dy > -268)? dy : (startVBy - dy < 230)? startVBy + 268 :startVBy - 230 ;
+       
        
 
 
@@ -21699,8 +21701,6 @@ for (const clef in D_circles) {
             if (Math.abs(currentVelX) < 0.1 && Math.abs(currentVelY) < 0.1)
               return;
             const vb = getVB();
-            currentVelX = (vb.x - currentVelX < 323 && vb.x - currentVelX > -398)? currentVelX : (vb.x - currentVelX < 323)? vb.x+398 : vb.x - 323;
-            currentVelY = (vb.y - currentVelY < 230 && vb.y - currentVelY > -268)? currentVelY : (vb.y - currentVelY < 230)? vb.y + 268 :vb.y - 230 ;
             setVB({
               x: vb.x - currentVelX,
               y: vb.y - currentVelY,
