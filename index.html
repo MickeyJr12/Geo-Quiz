@@ -2012,8 +2012,9 @@
         outline: 0.01em solid rgba(255, 255, 255, 0.5);
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
         inset: 0;
-        height: clamp(0px, 80%, 80%);
-        width: clamp(0px, 80%, 40em);
+        width: clamp(0px, 90%, 40em);
+        max-height : 80%;
+        aspect-ratio: 2/3;
 
         border-radius: 0.6em;
         background: linear-gradient(
@@ -2031,6 +2032,7 @@
           transform 0.3s ease,
           opacity 0.2s ease;
       }
+
       #cacheIle{
         pointer-events: none;
         position : absolute;
@@ -6154,6 +6156,19 @@
       <div id="cadre">
         <div id="cacheIle"></div>
         <div id="cadreIle">
+           <button class="back" id="backIle">
+        <svg
+          fill="white"
+          xmlns="http://www.w3.org/2000/svg"
+          id="Bold"
+          viewBox="0 0 24 24"
+          width="100%"
+        >
+          <path
+            d="M17.921,1.505a1.5,1.5,0,0,1-.44,1.06L9.809,10.237a2.5,2.5,0,0,0,0,3.536l7.662,7.662a1.5,1.5,0,0,1-2.121,2.121L7.688,15.9a5.506,5.506,0,0,1,0-7.779L15.36.444a1.5,1.5,0,0,1,2.561,1.061Z"
+          />
+        </svg>
+      </button>
           <div id="footerCadreIle">
             <div id="titleIle">Ducos (97224)</div>
             <div id="infoIle">
@@ -10613,6 +10628,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const itemBlason = document.querySelector(".itemBlason");
       const cadreContours = document.getElementById("cadreContours");
       const ileExpend = document.getElementById("ileExpend");
+      const backIle = document.getElementById('backIle')
       const boxSvgIle = document.getElementById("boxSvgIle");
       const cadreIle = document.getElementById("cadreIle");
       const cacheIle = document.getElementById("cacheIle");
@@ -10656,6 +10672,19 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         cadreIle.classList.add('active')
         cacheIle.classList.add('active')
       })
+
+        backIle.addEventListener('click',()=>{
+        cadreIle.classList.remove('active')
+        cacheIle.classList.remove('active')
+        footerCadreIle.classList.remove("active");
+      })
+
+        cacheIle.addEventListener('click',()=>{
+        cadreIle.classList.remove('active')
+        cacheIle.classList.remove('active')
+        footerCadreIle.classList.remove("active");
+      })
+
 
       //Script cadreIle
       svgIles.forEach((s) => {
