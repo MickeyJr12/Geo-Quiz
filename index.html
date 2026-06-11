@@ -2075,6 +2075,9 @@
         stroke-width: 40;
         transition: fill 0.25s ease;
       }
+      #svgLC polygon{
+        stroke-width: 1;
+      }
 
       .svgIle polygon.active {
         fill: rgb(19, 88, 192);
@@ -2115,7 +2118,7 @@
         justify-content: flex-start;
         width: 100%;
         padding: 0.4em;
-        margin-left: 2em;
+        margin-left: 0.5em;
         font-size: 1.05em;
         font-weight: 500;
       }
@@ -10645,6 +10648,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const D_ileLink = {
         "MQ" :"https://upload.wikimedia.org/wikipedia/commons/6/61/Blank_Map_of_Martinique_Department%2C_France%2C_with_Communes.svg",
         "GP" : "https://upload.wikimedia.org/wikipedia/commons/3/3c/Blank_Map_of_Guadeloupe_Department%2C_France%2C_with_Communes.svg",
+        "LC" : "svgLC.svg"
       }
       
       const polygons = boxSvgIle.querySelectorAll("polygon");
@@ -10715,7 +10719,11 @@ svgIles.forEach((s) => {
 
       function fillFooterIle(id) {
         const p = document.getElementById(id);
+        console.log(p.id)
         titleIle.textContent = p.id.slice(5) + " (" + p.id.slice(0, 5) + ")";
+        if(currentCountry.id === "LC"){
+          titleIle.textContent = p.getAttribute('name') + " (" + p.id.slice(0, 5) + ")";
+        }
       }
 
       polygons.forEach((p) => {
