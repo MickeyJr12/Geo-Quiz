@@ -4355,7 +4355,7 @@
 
           <div id="gridQR">
             <div class="cadreQR" id="cadreQ">
-              <div class="titleQR">Question</div>
+              <div class="titleQR" id="titleQ">Question</div>
               <div class="ligneQR"></div>
               <div class="qr q" id="drapeauQ">Drapeaux</div>
               <div class="qr q" id="capitaleQ">Capitale</div>
@@ -4372,7 +4372,7 @@
               </div>
             </div>
             <div class="cadreQR" id="cadreR">
-              <div class="titleQR">Réponses</div>
+              <div class="titleQR" id="titleR">Réponses</div>
               <div class="ligneQR"></div>
 
               <div class="qr r" id="drapeauR" style="display: none">
@@ -9035,7 +9035,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const cc3 = document.getElementById("cc3");
       const cc4 = document.getElementById("cc4");
 
-      function activePlay() {
+      function activePlay() {        
+        document.getElementById('titleR').textContent = L_config.m ==="modeClasser" ? "Propositions" : "Réponses";
         if (Object.values(L_config).every(Boolean)) {
           playConfig.classList.add("active");
           return;
