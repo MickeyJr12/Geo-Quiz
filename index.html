@@ -1971,7 +1971,7 @@
         height: auto;
         width: 100%;
       }
-      #ileExpend {
+      #expandIle {
         display: flex;
         cursor: pointer;
         justify-content: center;
@@ -1983,7 +1983,7 @@
         right: 2.5em;
         bottom: 0.2em;
       }
-      #ileExpend svg {
+      #expandIle svg {
         fill: white;
         height: 0.95em;
         width: 0.95em;
@@ -2098,9 +2098,9 @@
         color: white;
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
         transform: translateY(0.8em);
-        width: 100%;
+        width: calc(100% - 0.8em);
         height: 5em;
-        bottom: 0em;
+        bottom: 0.4em;
         border-radius: 0.6em;
         background: rgb(19, 88, 158);
         padding: 0.2em;
@@ -6185,9 +6185,9 @@
           <div id="footerCadreIle">
             <div id="titleIle">Ducos (97224)</div>
             <div id="infoIle">
-              <div id="infoPIles">Population : 14 000</div>
+              <div id="infoPIles">Population : <span></span></div>
               <div id="lineInterIle"></div>
-              <div id="infoSIles">Superficie : 14 000km²</div>
+              <div id="infoSIles">Superficie : <span></span></div>
             </div>
           </div>
           <div id="boxSvgIle">
@@ -6837,7 +6837,7 @@
 
           <div id="cadreOrga"></div>
           <div id="cadreContours">
-            <div id="ileExpend"></div>
+            <div id="expandIle"></div>
           </div>
 
           <div id="cadreBlason">
@@ -10510,6 +10510,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const paths = svg.querySelectorAll("path");
       const pathsUs = svgUs.querySelectorAll("path");
       const L_circles = [
+        "BM",
         "GP",
         "IM",
         "GG",
@@ -10560,6 +10561,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const D_circles = {};
       const L_antilles = ["MQ","GP","LC","BB","DM","GD","VC","AG","MS","KN"] // mettre leur cercle invisibles
       const D_factorC = {
+        BM : 5,
         GP: 1.05,
         VC: 1.1,
         TC: 1.1,
@@ -10704,11 +10706,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const capitales = document.querySelectorAll(".capitaleLabel");
       const itemBlason = document.querySelector(".itemBlason");
       const cadreContours = document.getElementById("cadreContours");
-      const ileExpend = document.getElementById("ileExpend");
+      const expandIle = document.getElementById("expandIle");
       const crossIle = document.getElementById('crossIle')
       const boxSvgIle = document.getElementById("boxSvgIle");
       const cadreIle = document.getElementById("cadreIle");
       const cacheIle = document.getElementById("cacheIle");
+       
       const D_ileLink = {
         "MQ" :"https://upload.wikimedia.org/wikipedia/commons/6/61/Blank_Map_of_Martinique_Department%2C_France%2C_with_Communes.svg",
         "GP" : "https://upload.wikimedia.org/wikipedia/commons/3/3c/Blank_Map_of_Guadeloupe_Department%2C_France%2C_with_Communes.svg",
@@ -10716,6 +10719,285 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         "DM" :"svgDM.svg"
       }
       
+      // Populations sources :
+// Martinique (972xx) : INSEE recensement 2022
+// Guadeloupe (971xx) : INSEE recensement 2022/2023
+// Saint Lucie (LC-xx) : Census 2022 (districts)
+// Dominique (DM-xx) : Census 2011 (derniers chiffres officiels disponibles)
+
+const D_IleCp = {
+  // ── MARTINIQUE (34 communes) ──────────────────────────────
+  "97201": 97216, // L'Ajoupa-Bouillon
+  "97202": 97217, // Les Anses-d'Arlet
+  "97203": 97221, // Basse-Pointe
+  "97204": 97222, // Le Carbet
+  "97205": 97229, // Case-Pilote
+  "97206": 97223, // Le Diamant
+  "97207": 97224, // Ducos
+  "97208": 97250, // Fonds-Saint-Denis
+  "97209": 97200, // Fort-de-France
+  "97210": 97240, // Le François
+  "97211": 97218, // Grand'Rivière
+  "97212": 97213, // Gros-Morne
+  "97213": 97232, // Le Lamentin
+  "97214": 97214, // Le Lorrain
+  "97215": 97218, // Macouba
+  "97216": 97215, // Le Marigot
+  "97217": 97290, // Le Marin
+  "97218": 97260, // Le Morne-Rouge
+  "97219": 97250, // Le Prêcheur
+  "97220": 97231, // Le Robert
+  "97221": 97270, // Saint-Esprit
+  "97222": 97212, // Saint-Joseph
+  "97223": 97250, // Saint-Pierre
+  "97224": 97227, // Sainte-Anne
+  "97225": 97228, // Sainte-Luce
+  "97226": 97230, // Sainte-Marie
+  "97227": 97233, // Schoelcher
+  "97228": 97220, // La Trinité
+  "97229": 97229, // Les Trois-Îlets
+  "97230": 97280, // Le Vauclin
+  "97231": 97215, // Rivière-Salée
+  "97232": 97211, // Rivière-Pilote
+  "97233": 97226, // Le Morne-Vert
+  "97234": 97222, // Bellefontaine
+
+  // ── GUADELOUPE (32 communes) ─────────────────────────────
+  "97101": 97139, // Les Abymes
+  "97102": 97121, // Anse-Bertrand
+  "97103": 97122, // Baie-Mahault
+  "97104": 97123, // Baillif
+  "97105": 97100, // Basse-Terre
+  "97106": 97125, // Bouillante
+  "97107": 97130, // Capesterre-Belle-Eau
+  "97108": 97140, // Capesterre-de-Marie-Galante
+  "97109": 97113, // Gourbeyre
+  "97110": 97127, // La Désirade
+  "97111": 97126, // Deshaies
+  "97112": 97112, // Grand-Bourg
+  "97113": 97190, // Le Gosier
+  "97114": 97128, // Goyave
+  "97115": 97129, // Lamentin
+  "97116": 97111, // Morne-à-l'Eau
+  "97117": 97160, // Le Moule
+  "97118": 97170, // Petit-Bourg
+  "97119": 97131, // Petit-Canal
+  "97120": 97110, // Pointe-à-Pitre
+  "97121": 97116, // Pointe-Noire
+  "97122": 97117, // Port-Louis
+  "97124": 97120, // Saint-Claude
+  "97125": 97118, // Saint-François
+  "97126": 97134, // Saint-Louis
+  "97128": 97180, // Sainte-Anne
+  "97129": 97115, // Sainte-Rose
+  "97130": 97136, // Terre-de-Bas
+  "97131": 97137, // Terre-de-Haut
+  "97132": 97114, // Trois-Rivières
+  "97133": 97141, // Vieux-Fort
+  "97134": 97119  // Vieux-Habitants
+};
+
+const D_ileP = {
+
+  // ── MARTINIQUE (34 communes) ──────────────────────────────
+  "97201": 1730,   // L'Ajoupa-Bouillon
+  "97202": 3902,   // Les Anses-d'Arlet
+  "97203": 2839,   // Basse-Pointe
+  "97204": 3663,   // Le Carbet
+  "97205": 4582,   // Case-Pilote
+  "97206": 5994,   // Le Diamant
+  "97207": 18076,  // Ducos
+  "97208": 644,    // Fonds-Saint-Denis
+  "97209": 75799,  // Fort-de-France
+  "97210": 15999,  // Le François
+  "97211": 519,    // Grand'Rivière
+  "97212": 9858,   // Gros-Morne
+  "97213": 39753,  // Le Lamentin
+  "97214": 6678,   // Le Lorrain
+  "97215": 1004,   // Macouba
+  "97216": 3036,   // Le Marigot
+  "97217": 8598,   // Le Marin
+  "97218": 4520,   // Le Morne-Rouge
+  "97219": 1474,   // Le Prêcheur
+  "97220": 21598,  // Le Robert
+  "97221": 10522,  // Saint-Esprit
+  "97222": 16663,  // Saint-Joseph
+  "97223": 4119,   // Saint-Pierre
+  "97224": 4556,   // Sainte-Anne
+  "97225": 9475,   // Sainte-Luce
+  "97226": 15008,  // Sainte-Marie
+  "97227": 19557,  // Schoelcher
+  "97228": 11778,  // La Trinité
+  "97229": 6814,   // Les Trois-Îlets
+  "97230": 8580,   // Le Vauclin
+  "97231": 12033,  // Rivière-Salée
+  "97232": 11897,  // Rivière-Pilote
+  "97233": 1770,   // Le Morne-Vert
+  "97234": 1953,   // Bellefontaine
+
+  // ── GUADELOUPE (32 communes) ─────────────────────────────
+  "97101": 51055,  // Les Abymes
+  "97102": 4412,   // Anse-Bertrand
+  "97103": 30924,  // Baie-Mahault
+  "97104": 5096,   // Baillif
+  "97105": 9417,   // Basse-Terre
+  "97106": 6127,   // Bouillante
+  "97107": 17684,  // Capesterre-Belle-Eau
+  "97108": 3123,   // Capesterre-de-Marie-Galante  ← demandé
+  "97109": 7307,   // Gourbeyre
+  "97110": 1306,   // La Désirade                 ← demandé
+  "97111": 3710,   // Deshaies
+  "97112": 4617,   // Grand-Bourg                 ← demandé
+  "97113": 27757,  // Le Gosier
+  "97114": 7565,   // Goyave
+  "97115": 18628,  // Lamentin
+  "97116": 16228,  // Morne-à-l'Eau
+  "97117": 23014,  // Le Moule
+  "97118": 24665,  // Petit-Bourg
+  "97119": 8212,   // Petit-Canal
+  "97120": 15040,  // Pointe-à-Pitre
+  "97121": 5762,   // Pointe-Noire
+  "97122": 5607,   // Port-Louis
+  "97124": 10177,  // Saint-Claude
+  "97125": 13942,  // Saint-François
+  "97126": 2610,   // Saint-Louis (Marie-Galante)  ← demandé
+  "97128": 23973,  // Sainte-Anne
+  "97129": 17700,  // Sainte-Rose
+  "97130": 895,    // Terre-de-Bas                ← demandé
+  "97131": 1463,   // Terre-de-Haut               ← demandé
+  "97132": 7519,   // Trois-Rivières
+  "97133": 1730,   // Vieux-Fort
+  "97134": 7077,   // Vieux-Habitants
+
+  // ── SAINT LUCIE – districts (codes ISO 3166-2) ───────────
+  // Census 2022 : pop. totale ~172 000
+  "LC01": 5900,   // Anse-la-Raye
+  "LC12": 2200,   // Canaries
+  "LC02": 60600,  // Castries (district)
+  "LC03": 5800,   // Choiseul
+  "LC05": 12900,  // Dennery
+  "LC06": 29953,  // Gros-Islet
+  "LC07": 6500,   // Laborie
+  "LC08": 16700,  // Micoud
+  "LC10": 7200,   // Soufrière
+  "LC11": 17600,  // Vieux-Fort
+
+  // ── DOMINIQUE – paroisses (codes ISO 3166-2) ─────────────
+  // Census 2011 (dernières données officielles)
+  "DM02": 9471,   // Saint Andrew  (chef-lieu : Marigot)
+  "DM03": 6043,   // Saint David   (chef-lieu : Castle Bruce)
+  "DM04": 21241,  // Saint George  (chef-lieu : Roseau)
+  "DM05": 6561,   // Saint John    (chef-lieu : Portsmouth)
+  "DM06": 5637,   // Saint Joseph
+  "DM07": 1668,   // Saint Luke    (chef-lieu : Pointe Michel)
+  "DM08": 1834,   // Saint Mark    (chef-lieu : Soufrière)
+  "DM09": 7622,   // Saint Patrick (chef-lieu : Berekua)
+  "DM10": 9786,   // Saint Paul    (chef-lieu : Pont Cassé)
+  "DM11": 1430,   // Saint Peter   (chef-lieu : Colihaut)
+};
+// Sources :
+// Martinique (972xx) : INSEE / Wikipedia communes
+// Guadeloupe (971xx) : INSEE / Wikipedia communes
+// Saint Lucie (LCxx) : districts, données officielles
+// Dominique (DMxx) : paroisses, Wikipedia 2011
+
+const D_ileS = {
+  // ── MARTINIQUE (34 communes) ──────────────────────────────
+  "97201": 12.30,  // L'Ajoupa-Bouillon
+  "97202": 25.92,  // Les Anses-d'Arlet
+  "97203": 27.95,  // Basse-Pointe
+  "97204": 36.00,  // Le Carbet
+  "97205": 18.44,  // Case-Pilote
+  "97206": 52.36,  // Le Diamant
+  "97207": 37.69,  // Ducos
+  "97208": 17.17,  // Fonds-Saint-Denis
+  "97209": 44.21,  // Fort-de-France
+  "97210": 53.93,  // Le François
+  "97211": 16.60,  // Grand'Rivière
+  "97212": 54.25,  // Gros-Morne
+  "97213": 62.32,  // Le Lamentin
+  "97214": 50.33,  // Le Lorrain
+  "97215": 16.93,  // Macouba
+  "97216": 21.63,  // Le Marigot
+  "97217": 31.54,  // Le Marin
+  "97218": 37.64,  // Le Morne-Rouge
+  "97219": 29.72,  // Le Prêcheur
+  "97220": 47.30,  // Le Robert
+  "97221": 23.46,  // Saint-Esprit
+  "97222": 43.29,  // Saint-Joseph
+  "97223": 38.72,  // Saint-Pierre
+  "97224": 41.05,  // Sainte-Anne
+  "97225": 28.02,  // Sainte-Luce
+  "97226": 44.55,  // Sainte-Marie
+  "97227": 21.17,  // Schoelcher
+  "97228": 45.77,  // La Trinité
+  "97229": 14.86,  // Les Trois-Îlets
+  "97230": 39.06,  // Le Vauclin
+  "97231": 39.38,  // Rivière-Salée
+  "97232": 35.78,  // Rivière-Pilote
+  "97233": 13.37,  // Le Morne-Vert
+  "97234": 11.89,  // Bellefontaine
+
+  // ── GUADELOUPE (32 communes) ─────────────────────────────
+  "97101": 81.25,  // Les Abymes
+  "97102": 62.73,  // Anse-Bertrand
+  "97103": 69.72,  // Baie-Mahault
+  "97104": 14.97,  // Baillif
+  "97105": 8.71,   // Basse-Terre
+  "97106": 68.08,  // Bouillante
+  "97107": 99.36,  // Capesterre-Belle-Eau
+  "97108": 46.19,  // Capesterre-de-Marie-Galante
+  "97109": 22.52,  // Gourbeyre
+  "97110": 22.00,  // La Désirade
+  "97111": 55.96,  // Deshaies
+  "97112": 87.84,  // Grand-Bourg
+  "97113": 45.20,  // Le Gosier
+  "97114": 32.21,  // Goyave
+  "97115": 65.60,  // Lamentin
+  "97116": 41.96,  // Morne-à-l'Eau
+  "97117": 136.20, // Le Moule
+  "97118": 129.88, // Petit-Bourg
+  "97119": 47.60,  // Petit-Canal
+  "97120": 2.66,   // Pointe-à-Pitre
+  "97121": 59.70,  // Pointe-Noire
+  "97122": 35.19,  // Port-Louis
+  "97124": 34.30,  // Saint-Claude
+  "97125": 61.00,  // Saint-François
+  "97126": 56.28,  // Saint-Louis (Marie-Galante)
+  "97128": 80.29,  // Sainte-Anne
+  "97129": 118.60, // Sainte-Rose
+  "97130": 6.80,   // Terre-de-Bas
+  "97131": 6.00,   // Terre-de-Haut
+  "97132": 31.10,  // Trois-Rivières
+  "97133": 7.24,   // Vieux-Fort
+  "97134": 58.70,  // Vieux-Habitants
+
+  // ── SAINT LUCIE – districts (codes ISO sans tiret) ───────
+  "LC01": 31.00,   // Anse-la-Raye
+  "LC12": 10.30,   // Canaries
+  "LC02": 90.33,   // Castries
+  "LC03": 31.30,   // Choiseul
+  "LC05": 72.30,   // Dennery
+  "LC06": 101.50,  // Gros-Islet
+  "LC07": 37.70,   // Laborie
+  "LC08": 77.90,   // Micoud
+  "LC10": 50.50,   // Soufrière
+  "LC11": 49.80,   // Vieux-Fort
+
+  // ── DOMINIQUE – paroisses (codes ISO sans tiret) ─────────
+  "DM02": 178.10,  // Saint Andrew
+  "DM03": 125.80,  // Saint David
+  "DM04": 56.20,   // Saint George  (Roseau)
+  "DM05": 59.10,   // Saint John    (Portsmouth)
+  "DM06": 118.40,  // Saint Joseph
+  "DM07": 10.80,   // Saint Luke
+  "DM08": 13.50,   // Saint Mark
+  "DM09": 86.70,   // Saint Patrick
+  "DM10": 66.40,   // Saint Paul
+  "DM11": 34.20,   // Saint Peter
+};
+
+
       const polygons = boxSvgIle.querySelectorAll("polygon");
       const svgIles = document.querySelectorAll(".svgIle");
       const svgMQ = document.getElementById("svgMQ");
@@ -10751,7 +11033,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const religion = document.getElementById("religion");
       const fuseaux = document.getElementById("fuseaux");
 
-      ileExpend.addEventListener('click',()=>{
+      expandIle.addEventListener('click',()=>{
          svgIles.forEach((s) => {
         s.id === ("svg" + currentCountry.id) ? s.style.display= "flex" : s.style.display = "none";
       });
@@ -10787,10 +11069,15 @@ svgIles.forEach((s) => {
       function fillFooterIle(id) {
         const p = document.getElementById(id);
         console.log(p.id)
-        titleIle.textContent = p.id.slice(5) + " (" + p.id.slice(0, 5) + ")";
+        titleIle.textContent = p.id.slice(5) + " (" + (p.id.slice(0, 5) in D_IleCp ? D_IleCp[p.id.slice(0, 5)] :  p.id.slice(0, 5) )+ ")";
         if(["LC","DM"].includes(currentCountry.id)){
-          titleIle.textContent = p.getAttribute('name') + " (" + p.id.slice(0, 5) + ")";
+          titleIle.textContent = p.getAttribute('name') + " (" + (p.id.slice(0, 5) in D_IleCp ? D_IleCp[p.id.slice(0, 5)] :  p.id.slice(0, 5))+ ")";
         }
+        
+        infoPIles.querySelector('span').textContent = D_ileP[p.id.slice(0, 5)]
+        infoSIles.querySelector('span').textContent = D_ileP[p.id.slice(0, 5)]
+
+
       }
 
       polygons.forEach((p) => {
@@ -20289,10 +20576,10 @@ svgIles.forEach((s) => {
             div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
             cadreContours.appendChild(div);
             if (id in D_ileLink) {
-              ileExpend.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" id="mqExpand" viewBox="0 0 24 24" width="512" height="512">
+              expandIle.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" id="mqExpand" viewBox="0 0 24 24" width="512" height="512">
                   <path  d="M22.978,9.022a1,1,0,0,0,1-1V3.978a4,4,0,0,0-4-4h-4a1,1,0,0,0,0,2h4a1.965,1.965,0,0,1,.545.085L12,10.586,3.478,2.064A1.981,1.981,0,0,1,3.955,2H8A1,1,0,0,0,8,0H3.955a4,4,0,0,0-4,4V8a1,1,0,0,0,2,0V4a1.978,1.978,0,0,1,.085-.546L10.586,12,2.035,20.551a1.962,1.962,0,0,1-.08-.529V15.978a1,1,0,0,0-2,0v4.044a4,4,0,0,0,4,4h4a1,1,0,0,0,0-2h-4a1.97,1.97,0,0,1-.494-.069L12,13.414l8.506,8.506a1.96,1.96,0,0,1-.528.08H15.933a1,1,0,0,0,0,2h4.045a4,4,0,0,0,4-4V16a1,1,0,0,0-2,0v4a1.964,1.964,0,0,1-.07.494L13.414,12l8.5-8.5a1.982,1.982,0,0,1,.064.478V8.022A1,1,0,0,0,22.978,9.022Z"/><path d="M23,9a1,1,0,0,0,1-1V3a3,3,0,0,0-3-3H16a1,1,0,0,0,0,2h4.586L12,10.586,3.414,2H8A1,1,0,0,0,8,0H3A3,3,0,0,0,0,3V8A1,1,0,0,0,2,8V3.414L10.586,12,2,20.586V16a1,1,0,0,0-2,0v5a3,3,0,0,0,3,3H8a1,1,0,0,0,0-2H3.414L12,13.414,20.586,22H16a1,1,0,0,0,0,2h5a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v4.586L13.414,12,22,3.414V8A1,1,0,0,0,23,9Z"/>
                 </svg>`;
-              cadreContours.appendChild(ileExpend);
+              cadreContours.appendChild(expandIle);
             }
 
             const svgEl = div.querySelector("svg");
