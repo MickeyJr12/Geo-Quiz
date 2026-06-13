@@ -10007,6 +10007,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         L_addMaps[1].style.zIndex = "20";
         L_addMaps[2].style.zIndex = "30";
         L_addMaps[3].style.zIndex = "50";
+
+        globe.style.filter = "";
+
         paths.forEach((p) => {
           if (L_reponse.includes(p.id)) {
             if (p.id === idBonneReponse) {
