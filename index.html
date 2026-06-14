@@ -9960,7 +9960,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
               const infoTxtClasser = document.createElement("div");
               infoTxtClasser.className = "infoTxtClasser";
-              infoTxtClasser.style.maxHeight = "1.2em"; // à retirer
               infoTxtClasser.textContent =  L_config.q === "superficieQ" ? `Superficie : ${L_q[p_id].s.toLocaleString("fr-FR")}km²` : `Population : ${L_q[p_id].p.toLocaleString("fr-FR")}`;
 
               classerDrapeauBox.append(img);
@@ -10597,6 +10596,27 @@ init();
       const cachePm = document.getElementById("cachePm");
       const btnReprendre = document.querySelector(".btnReprendre");
       const btnMenu = document.querySelector(".btnMenu");
+
+      //Const svg pm
+
+      const prop1 = document.createElement('div')
+      const prop2 = document.createElement('div')
+      const prop3 = document.createElement('div')
+      const prop4 = document.createElement('div')
+      const prop5 = document.createElement('div')
+
+
+      const rep1 = document.createElement('div')
+      const rep2 = document.createElement('div')
+      const rep3 = document.createElement('div')
+      const rep4 = document.createElement('div')
+      const rep5 = document.createElement('div')
+
+
+
+      
+
+
 
       function affichePm() {
         pauseChrono();
