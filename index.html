@@ -9932,100 +9932,107 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               document.querySelector(".elClasser").getBoundingClientRect()
                 .height * 0.15; // distance entre les items, en px
 
-            function init() {
-              const items = [...wrapperClasser.querySelectorAll(".elClasser")];
-              const itemHeight = items[0].getBoundingClientRect().height;
+           function init() {
+  const items = [...wrapperClasser.querySelectorAll(".elClasser")];
+  const itemHeight = items[0].getBoundingClientRect().height;
 
-              // Hauteur totale du wrapper = somme des hauteurs + gaps
-              wrapperClasser.style.height =
-                items.length * itemHeight + (items.length - 1) * GAP + "px";
+  wrapperClasser.style.height =
+    items.length * itemHeight + (items.length - 1) * GAP + "px";
 
-              burgersClasser.forEach((b, index) => {
-                const el = b.parentNode.parentNode;
-                el.style.left = "0px";
-                el.style.width = "100%";
-                el.dataset.order = index; // position logique actuelle (0 = en haut)
-                setTransform(el, index, itemHeight, true);
+  burgersClasser.forEach((b, index) => {
+    const el = b.parentNode.parentNode;
+    el.style.left = "0px";
+    el.style.width = "100%";
+    el.dataset.order = index;
+    setTransform(el, index, itemHeight, true);
 
-                let dragging = false;
-                let startY = 0; // position curseur au mousedown
-                let startTop = 0; // top de l'élément au mousedown
+    let dragging = false;
+    let startY = 0;
+    let startTop = 0;
 
-                b.addEventListener("mousedown", (e) => {
-                  itmsClasser.forEach((i) => {
-                    if (i !== el) {
-                      i.classList.add("waitClasser");
-                    }
-                  });
-                  el.style.transform = "scale(1.02)";
-                  dragging = true;
-                  el.style.zIndex = 10;
-                  el.style.transition = "background 0.2s ease"; // pas de transition pendant le drag = pas de téléportation
-                  startY = e.clientY;
-                  startTop = parseFloat(el.style.top);
-                  e.preventDefault();
-                });
+    function onStart(clientY) {
+      itmsClasser.forEach((i) => {
+        if (i !== el) i.classList.add("waitClasser");
+      });
+      el.style.transform = "scale(1.02)";
+      dragging = true;
+      el.style.zIndex = 10;
+      el.style.transition = "background 0.2s ease";
+      startY = clientY;
+      startTop = parseFloat(el.style.top);
+    }
 
-                document.addEventListener("mousemove", (e) => {
-                  if (!dragging) return;
-                  const dy = e.clientY - startY;
-                  let newTop = startTop + dy;
-                  el.style.top = newTop + "px";
+    function onMove(clientY) {
+      if (!dragging) return;
+      const dy = clientY - startY;
+      let newTop = startTop + dy;
+      el.style.top = newTop + "px";
 
-                  // Déterminer l'ordre logique correspondant à la position actuelle
-                  const currentOrder = parseInt(el.dataset.order);
-                  const newOrder = Math.round(newTop / (itemHeight + GAP));
-                  const clampedOrder = Math.max(
-                    0,
-                    Math.min(items.length - 1, newOrder),
-                  );
+      const currentOrder = parseInt(el.dataset.order);
+      const newOrder = Math.round(newTop / (itemHeight + GAP));
+      const clampedOrder = Math.max(0, Math.min(items.length - 1, newOrder));
 
-                  if (clampedOrder !== currentOrder) {
-                    // Échanger les positions logiques avec l'élément qui occupe clampedOrder
-                    const otherEl = items.find(
-                      (it) => parseInt(it.dataset.order) === clampedOrder,
-                    );
-                    if (otherEl) {
-                      otherEl.dataset.order = currentOrder;
-                      el.dataset.order = clampedOrder;
+      if (clampedOrder !== currentOrder) {
+        const otherEl = items.find(
+          (it) => parseInt(it.dataset.order) === clampedOrder
+        );
+        if (otherEl) {
+          otherEl.dataset.order = currentOrder;
+          el.dataset.order = clampedOrder;
+          otherEl.style.transition = "background 0.2s ease, top 0.2s ease";
+          setTransform(otherEl, currentOrder, itemHeight, false);
+        }
+      }
+    }
 
-                      // Réanimer l'autre élément vers sa nouvelle place (smooth)
-                      otherEl.style.transition =
-                        " background 0.2s ease,top 0.2s ease";
-                      setTransform(otherEl, currentOrder, itemHeight, false);
-                    }
-                  }
-                });
+    function onEnd() {
+      itmsClasser.forEach((i) => i.classList.remove("waitClasser"));
+      if (!dragging) return;
+      dragging = false;
+      el.style.transform = "";
+      el.style.zIndex = 1;
+      el.style.transition = "background 0.2s ease, top 0.2s ease";
+      const finalOrder = parseInt(el.dataset.order);
+      setTransform(el, finalOrder, itemHeight, false);
+    }
 
-                document.addEventListener("mouseup", () => {
-                  itmsClasser.forEach((i) => i.classList.remove("waitClasser"));
-                  if (!dragging) return;
-                  dragging = false;
-                  el.style.transform = "";
-                  el.style.zIndex = 1;
-                  el.style.transition = "background 0.2s ease,top 0.2s ease";
-                  // Snap l'élément déplacé sur sa position logique finale
-                  const finalOrder = parseInt(el.dataset.order);
-                  setTransform(el, finalOrder, itemHeight, false);
-                });
-              });
-            }
+    // Mouse
+    b.addEventListener("mousedown", (e) => {
+      onStart(e.clientY);
+      e.preventDefault();
+    });
+    document.addEventListener("mousemove", (e) => onMove(e.clientY));
+    document.addEventListener("mouseup", onEnd);
 
-            // Place un élément à la position verticale correspondant à son "order"
-            function setTransform(el, order, itemHeight, instant) {
-              const top = order * (itemHeight + GAP);
-              if (instant) {
-                el.style.transition = "background 0.2s ease,";
-              }
-              el.style.top = top + "px";
-              if (instant) {
-                // force reflow puis réactive les transitions futures
-                requestAnimationFrame(() => {
-                  el.style.transition = "background 0.2s ease,top 0.2s ease";
-                });
-              }
-            }
-            init();
+    // Touch
+    b.addEventListener("touchstart", (e) => {
+      onStart(e.touches[0].clientY);
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener("touchmove", (e) => {
+      onMove(e.touches[0].clientY);
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener("touchend", onEnd);
+  });
+}
+
+function setTransform(el, order, itemHeight, instant) {
+  const top = order * (itemHeight + GAP);
+  if (instant) {
+    el.style.transition = "background 0.2s ease,";
+  }
+  el.style.top = top + "px";
+  if (instant) {
+    requestAnimationFrame(() => {
+      el.style.transition = "background 0.2s ease, top 0.2s ease";
+    });
+  }
+}
+
+init();
             
             return;
           }
