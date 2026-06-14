@@ -11064,13 +11064,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         prPm.appendChild(icon);
         prPm.appendChild(reponse);
         contentPm.appendChild(prPm);
-        prPm.addEventListener(
-          "touchstart",
-          () => {
-            contentPm.focus();
-          },
-          { passive: true },
-        );
+        
         //Si on est dans mode Classer, on utilise plusieurs fois la fonction avant d'ajouter une ligne
         contentPm.appendChild(ligneIn);
       }
@@ -11159,13 +11153,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           prPm.appendChild(icon);
           prPm.appendChild(reponse);
           contentPm.appendChild(prPm);
-          prPm.addEventListener(
-          "touchstart",
-          () => {
-            contentPm.focus();
-          },
-          { passive: true },
-        );
+          
 
           [proposition, icon, reponse].forEach((el) => {
             el.style.pointerEvents = "none";
