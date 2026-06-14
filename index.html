@@ -11059,8 +11059,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               ")";
           }
           reponse.textContent = L_q[L_good[i]].n;
-          const svgClone =
-            nbr > 3 ? L_svg[i].cloneNode(true) : L_svgInf[i].cloneNode(true);
+
+          const svgClone = document.createElement('div')
+          svgClone.innerHTML = nbr > 3 ? L_svg[i].innerHTML : L_svgInf[i].innerHTML
+         
           svgClone.style.pointerEvents = "none";
           reponse.append(svgClone);
 
