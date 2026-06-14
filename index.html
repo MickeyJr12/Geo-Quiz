@@ -3288,7 +3288,7 @@
       }
       /*CSS 4 choix*/
 
-      #phone4Choix {
+      #phonePlay {
         display: none;
         position: fixed;
         flex-direction: column;
@@ -4614,9 +4614,7 @@
               </div>
               <div class="qr r" id="populationR" style="display: none">
                 Population
-              </div>
-              <div class="qr r" id="densiteR">Densité de population</div>
-              <div class="qr r" id="dateIndeR">Date d'indépendance</div>
+              </div>             
               <div class="qr r" id="nbrClass2" data-nbr="2">2</div>
               <div class="qr r" id="nbrClass3" data-nbr="3">3</div>
               <div class="qr r" id="nbrClass4" data-nbr="4">4</div>
@@ -5356,7 +5354,7 @@
     </div>
 
     <!--HTML 4 choix-->
-    <div id="phone4Choix">
+    <div id="phonePlay">
       <div id="cachePm"></div>
       <div id="pm4Choix">
         <div id="pmTitle">Menu pause</div>
@@ -9506,7 +9504,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         }),
       ); //Mettre à jour  le changement dans la config
 
-      const phone4Choix = document.getElementById("phone4Choix");
+      const phonePlay = document.getElementById("phonePlay");
 
       const cBoxs = document.querySelectorAll(".cBox");
       const c1 = document.getElementById("c1");
@@ -9755,10 +9753,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             //Afficher maps
             L_addMaps.forEach((m) => {
               if (m !== backMapsPlay)
-                document.getElementById("phone4Choix").appendChild(m);
+                document.getElementById("phonePlay").appendChild(m);
             });
 
-            document.getElementById("phone4Choix").append(zBox);
+            document.getElementById("phonePlay").append(zBox);
             zBox.classList.add("modeTrouver");
 
             setTimeout(() => {
@@ -10201,9 +10199,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       const arboConfig = {
         modeChoix: {
-          capitaleQ: ["nomR", "drapeauR"],
-          nomQ: ["capitaleR", "drapeauR", "contourR"],
           drapeauQ: ["nomR", "capitaleR", "contourR"],
+          nomQ: ["capitaleR", "drapeauR", "contourR"],
+          capitaleQ: ["nomR", "drapeauR"],
           contourQ: ["drapeauR", "nomR", "capitaleR"],
         },
         modeEcrire: {
@@ -10212,8 +10210,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           drapeauQ: ["nomR", "capitaleR"],
         },
         modeTrouver: {
-          drapeauQ: ["mapsR"],
           nomQ: ["mapsR"],
+          drapeauQ: ["mapsR"],
           capitaleQ: ["mapsR"],
         },
         modeClasser: {
@@ -10224,12 +10222,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       const cadreQ = document.getElementById("cadreQ");
       const cadreR = document.getElementById("cadreR");
-
+      let firstQ2 = true
+      let firstR = true;
       for (const [mode, QS] of Object.entries(arboConfig)) {
         document.getElementById(mode).addEventListener("click", () => {
           if (L_config.m === mode) {
             return;
           }
+          firstQ2= true
           L_config.m = mode;
           L_config.q = null;
           L_config.r = null;
@@ -10243,8 +10243,11 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           for (const [Q, RS] of Object.entries(QS)) {
             const Q2 = document.getElementById(Q);
             cadreQ.appendChild(Q2);
-            Q2.style.display = "flex";
+            Q2.style.display = "flex";            
+
             Q2.addEventListener("click", () => {
+              firstQ2= false;
+              firstR = true;
               if (L_config.q === Q2) {
                 return;
               }
@@ -10260,11 +10263,16 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
                 document.getElementById(R).style.display = "flex";
                 cadreR.appendChild(document.getElementById(R));
                 document.getElementById(R).addEventListener("click", () => {
+                  firstR = false;
                   L_config.r = R;
                   activePlay();
                 });
+            if (firstR) {document.getElementById(R).click()}
+
               });
-            });
+
+            });            
+            if (firstQ2) {Q2.click()}
           }
         });
       }
@@ -10522,8 +10530,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         startChrono(val);
         contentPm.innerHTML = ``;
         phoneConfig.style.display = "none";
-        phone4Choix.style.display = "flex";
-        currentPhone = phone4Choix;
+        phonePlay.style.display = "flex";
+        currentPhone = phonePlay;
 
         if (L_config.q === "drapeauQ") {
           document.getElementById("cadreQ4Choix").style.boxShadow =
@@ -10905,7 +10913,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           document.querySelector(".globe").style.opacity = "1";
         }, 10);
         L_addMaps.forEach((m) => {
-          document.getElementById("phone4Choix").appendChild(m);
+          document.getElementById("phonePlay").appendChild(m);
         });
         L_addMaps[0].style.zIndex = "10";
         L_addMaps[1].style.zIndex = "20";
@@ -11207,7 +11215,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
           D_circles[clef].style.visibility = "";
         }
 
-        phone4Choix.style.display = "none";
+        phonePlay.style.display = "none";
 
         // Sortie de phoneConfig
         phoneConfig.style.transition = "transform 0.5s ease, opacity 0.2s ease";
@@ -24503,11 +24511,11 @@ contentPm.style.webkitOverflowScrolling = "touch";
       //  loop()
 
       /*phoneHome.style.display="none"
-      phone4Choix.style.display="flex"*/
+      phonePlay.style.display="flex"*/
       /* setTimeout(() => {
-        phone4Choix.appendChild(svg)
-        phone4Choix.appendChild(mCadre)
-        phone4Choix.appendChild(cadre)
+        phonePlay.appendChild(svg)
+        phonePlay.appendChild(mCadre)
+        phonePlay.appendChild(cadre)
       }, 10000);*/
     </script>
   </body>
