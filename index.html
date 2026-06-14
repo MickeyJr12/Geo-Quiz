@@ -3934,7 +3934,7 @@
         text-align: center;
         margin : 0 auto;
         margin-bottom : 2em;
-        font-size : 1.1em;
+        font-size : 1.22em;
         color : white;
         font-weight: 500;
         max-width : 80%
@@ -5452,7 +5452,7 @@
         <div class="qBox"></div>
       </div>
 
-      <div id="titleModeClasser" class="modeClasser">Classer les pays par superficie décroissante</div>
+      <div id="titleModeClasser" class="modeClasser">Classer les pays par <span>superficie</span> décroissante</div>
 
       <div class="questionBox">
         Question <span style="margin-left: 0.5em" id="qNumber">0</span>/15
@@ -9864,11 +9864,16 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
         //Partie classer
         else if (L_config.m === "modeClasser") {
+
+          titleModeClasser.querySelector('span').textContent = "\u00A0" + (L_config.q === "superficieQ" ? "superficie" : "population") + "\u00A0";
           grid4Choix.classList.add("modifClasser");
           titleModeClasser.classList.add('modeClasser')
           bigWrapperClasser.classList.add('modeClasser')
           btns4Choix.forEach((b) => b.classList.add("modifClasser"));
-            cadreNext.className = "cadreNext none visible"
+          cadreNext.className = "cadreNext none visible"
+          spanNext.textContent = "Glisse pour classer ↕"
+          document.querySelector(".btn-suivant").textContent = "Valider ✓";
+
 
           if (cChooseTrouver || cChooseTrouver === null) {
             L_propClasser = [];
@@ -10103,11 +10108,13 @@ init();
               D_elClasser[clef].dataset.order
             ) {
                 wrapperNbrClasser.children[D_elClasser[clef].dataset.order].style.color = "rgb(15, 250, 93)"
+                
               D_elClasser[clef].classList.add("good");
               nbrGood += 1;
             } else {
-              wrapperNbrClasser.children[D_elClasser[clef].dataset.order].style.color = "rgb(220, 9, 9)"
+              wrapperNbrClasser.children[D_elClasser[clef].dataset.order].style.color = "rgb(233, 78, 78)"
               D_elClasser[clef].classList.add("bad");
+              
             }
           }
 
@@ -10115,13 +10122,17 @@ init();
           const nbr = parseInt(document.getElementById(L_config.r).dataset.nbr);
 
           if (nbrGood >= nbr / 2 && nbrGood != nbr) {
-            cadreNext.className = "cadreNext visible almost"            
+            cadreNext.className = "cadreNext visible almost"  
+            spanNext.textContent = "~ Presque !"          
           } else if (nbrGood < nbr / 2) {
+            spanNext.textContent = "✗ Mauvaise réponse"
             cadreNext.className = "cadreNext visible bad"
           } else {
+            spanNext.textContent = "✓ Bonne réponse !"
             cadreNext.className = "cadreNext visible good"
           }
 
+          document.querySelector(".btn-suivant").textContent = "Suivant →";
           cChooseTrouver = true;
         }
       }
