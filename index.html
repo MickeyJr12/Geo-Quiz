@@ -10167,6 +10167,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           } else {
             spanNext.textContent = "✓ Ordre Correct !";
             cadreNext.className = "cadreNext visible good";
+            score += 1;
           }
 
           document.querySelector(".btn-suivant").textContent = "Suivant →";
@@ -10190,6 +10191,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           fillContentPmClasser(L_order, L_goodOrder);
 
           if (parseInt(qNumber.textContent) >= 15) {
+            pause4Choix.style.opacity = "0";
+            pause4Choix.style.pointerEvents = "none";
             document.querySelector(".btn-suivant").textContent = "Fin";
             document.getElementById("cadreScorePm").style.display = "flex";
             btnReprendre.textContent = "Rejouer";
