@@ -10215,8 +10215,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           capitaleQ: ["mapsR"],
         },
         modeClasser: {
-          populationQ: ["nbrClass2", "nbrClass3", "nbrClass4", "nbrClass5"],
           superficieQ: ["nbrClass2", "nbrClass3", "nbrClass4", "nbrClass5"],
+          populationQ: ["nbrClass2", "nbrClass3", "nbrClass4", "nbrClass5"],
         },
       };
 
@@ -11075,8 +11075,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       }
       //Remplir content pm mode Classer
 
-      function fillContentPmClasser(L_prop, L_good) {
-        console.log(L_prop, L_good);
+      function fillContentPmClasser(L_prop, L_good) {        
         const L_svg = [rep1, rep2, rep3, rep4, rep5];
         const L_svgInf = [repInf1, repInf2, repInf3];
         const nbr = parseInt(document.getElementById(L_config.r).dataset.nbr);
@@ -11159,6 +11158,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           prPm.appendChild(icon);
           prPm.appendChild(reponse);
           contentPm.appendChild(prPm);
+          prPm.addEventListener(
+          "touchstart",
+          () => {
+            contentPm.focus();
+          },
+          { passive: true },
+        );
 
           [proposition, icon, reponse].forEach((el) => {
             el.style.pointerEvents = "none";
