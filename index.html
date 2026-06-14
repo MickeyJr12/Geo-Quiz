@@ -9539,6 +9539,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       let idBonneReponse;
       let idMauvaiseReponse;
       let idProps_m = new Map();
+
+      let nbrGood = 0; //Met la classe de cadre nexte en fonction du nombre de bonnes réponses
       let L_propClasser = [];
       let L_orderClasser = [];
       let L_elPropClasser = [];
@@ -10135,7 +10137,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             el.style.maxHeight = "1.2em";
           });
 
-          let nbrGood = 0; //Met la classe de cadre nexte en fonction du nombre de bonnes réponses
+          nbrGood = 0; //Met la classe de cadre nexte en fonction du nombre de bonnes réponses
           for (const clef in D_elClasser) {
             if (
               D_elClasser[clef].dataset.goodOrder ===
@@ -10361,7 +10363,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           }
           //Temps écoulé
           if (currentChrono <= 0) {
-            activerCarte();
+            L_config.m!=="modeClasser" ?activerCarte() : "";
             pauseChrono();
             barreChronoIn.style.width = "100%";
             //Changer les btnsChoix, afficher cadreNext
@@ -10397,13 +10399,45 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               });
               colorCountry();
             }
+            if(L_config.m==="modeClasser"){
+              document.querySelectorAll(".infoTxtClasser").forEach((el) => {
+            el.style.maxHeight = "1.2em";
+          });
+              document.querySelector(".btn-suivant").textContent = "Suivant →";
+              cChooseTrouver = true;
+               for (const clef in D_elClasser) {
+            if (
+              D_elClasser[clef].dataset.goodOrder ===
+              D_elClasser[clef].dataset.order
+            ) {
+              wrapperNbrClasser.children[
+                D_elClasser[clef].dataset.order
+              ].style.color = "rgb(15, 250, 93)";
+
+              D_elClasser[clef].classList.add("good");
+            } else {
+              wrapperNbrClasser.children[
+                D_elClasser[clef].dataset.order
+              ].style.color = "rgb(233, 78, 78)";
+              D_elClasser[clef].classList.add("bad");
+            }
+          }
+            }
             if (parseInt(qNumber.textContent) >= 15) {
               document.querySelector(".btn-suivant").textContent = "Fin";
               btnReprendre.textContent = "Rejouer";
             }
 
+            const L_goodOrder = [...L_propClasser].sort((a, b) =>
+            parseInt(
+              parseInt(
+                D_elClasser[a].dataset.goodOrder -
+                  D_elClasser[b].dataset.goodOrder,
+              ),
+            ),
+          );
             //Remplir contentPm dans le menu pause
-            fillContentPm("outTime", idBonneReponse);
+            L_config.m === "modeClasser" ? fillContentPmClasser("outTime", L_goodOrder) :fillContentPm("outTime", idBonneReponse);
             return;
           }
         }, 100);
@@ -11066,7 +11100,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           svgClone.style.pointerEvents = "none";
           reponse.append(svgClone);
 
-          if (
+          if (D_elClasser[L_prop[i]]  &&
             D_elClasser[L_prop[i]].dataset.order ===
             D_elClasser[L_prop[i]].dataset.goodOrder
           ) {
