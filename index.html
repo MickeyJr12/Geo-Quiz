@@ -3320,7 +3320,7 @@
         pointer-events: none;
         align-items: center;
         flex-direction: column;
-        overflow: visible;
+        overflow: hidden;
         touch-action: pan-y;
         z-index: 80;
         color: white;
@@ -10722,7 +10722,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         contentPm.scrollTop = 0; // force le focus scroll
         contentPm.focus();
         affichePm();
-        bigWrapperClasser.style.pointerEvents = "none";
       });
 
       //Voir sur la carte
@@ -11155,7 +11154,6 @@ contentPm.style.webkitOverflowScrolling = "touch";
 
       // Bouton Menu principal
       btnMenu.addEventListener("click", () => {
-         bigWrapperClasser.style.pointerEvents = "all";
         Maps.appendChild(globe);
         L_modeTrouver.forEach((m) => {
           m.classList.remove("modeTrouver");
@@ -11242,7 +11240,6 @@ contentPm.style.webkitOverflowScrolling = "touch";
       });
 
       btnReprendre.addEventListener("click", () => {
-         bigWrapperClasser.style.pointerEvents = "all";
         if (!cadreNext.classList.contains("visible") && !cChooseTrouver) {
           startChrono(currentChrono);
         }
