@@ -10613,6 +10613,15 @@ init();
       const btnReprendre = document.querySelector(".btnReprendre");
       const btnMenu = document.querySelector(".btnMenu");
 
+      contentPm.addEventListener("touchstart", (e) => {
+  const top = contentPm.scrollTop;
+  const totalScroll = contentPm.scrollHeight - contentPm.clientHeight;
+
+  // Empêche le blocage aux extrêmes
+  if (top <= 0) contentPm.scrollTop = 1;
+  if (top >= totalScroll) contentPm.scrollTop = totalScroll - 1;
+}, { passive: true });
+
       //Const svg pm
 
       const rep1 = document.createElement('div')
