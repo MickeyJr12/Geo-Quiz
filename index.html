@@ -5360,7 +5360,7 @@
       <div id="pm4Choix">
         <div id="pmTitle">Menu pause</div>
         <div id="cadreScorePm">
-          Score :<span style="margin-left: 0.4em" id="spnScore"></span>/15
+          Score :<span style="margin-left: 0.4em" id="spnScore"></span>/<span class="maxQ"></span>
           <div class="cadreStars">
             <svg
               id="star1"
@@ -5473,7 +5473,7 @@
       <div id="titleModeClasser" class="modeClasser"></div>
 
       <div class="questionBox">
-        Question <span style="margin-left: 0.5em" id="qNumber">0</span>/15
+        Question <span style="margin-left: 0.5em" id="qNumber">0</span>/<span class="maxQ"></span>
       </div>
       <div class="cadreChrono">
         <svg
@@ -9551,15 +9551,15 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       function fillPhonePlay() {
         spnScore.textContent = score;
         L_stars.forEach((s) => s.classList.remove("scored"));
-        L_stars.slice(0, Math.floor(score / 5)).forEach((s) =>
+        L_stars.slice(0, Math.floor(score / (Math.floor(maxQ)/3))).forEach((s) =>
           s.classList.add("scored"),
         );
 
         //Afficher le menu de fin si modeChoix, ou modeTrouver et cCooseTrouver
         if (
-          (parseInt(qNumber.textContent) >= 15 && L_config.m === "modeChoix") ||
+          (parseInt(qNumber.textContent) >= maxQ && L_config.m === "modeChoix") ||
           ((L_config.m === "modeTrouver" || L_config.m === "modeClasser") &&
-            parseInt(qNumber.textContent) >= 15 &&
+            parseInt(qNumber.textContent) >= maxQ &&
             cChooseTrouver)
         ) {
           affichePm();
@@ -9571,7 +9571,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         }
 
         if (
-          parseInt(qNumber.textContent) < 15 &&
+          parseInt(qNumber.textContent) < maxQ &&
           (L_config.m === "modeChoix" ||
             ((L_config.m === "modeTrouver" || L_config.m === "modeClasser") &&
               (cChooseTrouver || cChooseTrouver === null)))
@@ -9819,7 +9819,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               }
             }
 
-            if (parseInt(qNumber.textContent) >= 15) {
+            if (parseInt(qNumber.textContent) >= maxQ) {
               document.querySelector(".btn-suivant").textContent = "Fin";
               document.getElementById("cadreScorePm").style.display = "flex";
               btnReprendre.textContent = "Rejouer";
@@ -10194,7 +10194,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
           fillContentPmClasser(L_order, L_goodOrder);
 
-          if (parseInt(qNumber.textContent) >= 15) {
+          if (parseInt(qNumber.textContent) >= maxQ) {
             pause4Choix.style.opacity = "0";
             pause4Choix.style.pointerEvents = "none";
             document.querySelector(".btn-suivant").textContent = "Fin";
@@ -10439,7 +10439,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             }
           }
             }
-            if (parseInt(qNumber.textContent) >= 15) {
+            if (parseInt(qNumber.textContent) >= maxQ) {
               document.querySelector(".btn-suivant").textContent = "Fin";
               btnReprendre.textContent = "Rejouer";
             }
@@ -10602,7 +10602,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const star3 = document.getElementById("star3");
       let L_stars = [star1, star2, star3];
       let score = 0;
-
+      let maxQ = 15
+      document.querySelectorAll('.maxQ').forEach(spn=>spn.textContent =  maxQ) 
       const D_classBtn4Choix = { c1: null, c2: null, c3: null, c4: null };
 
       const qTrouver = document.getElementById("qTrouver");
@@ -10662,7 +10663,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             }
           });
 
-          if (parseInt(qNumber.textContent) >= 15) {
+          if (parseInt(qNumber.textContent) >= maxQ) {
             document.querySelector(".btn-suivant").textContent = "Fin";
             btnReprendre.textContent = "Rejouer";
             document.getElementById("pmTitle").textContent = "Fin de partie !";
@@ -11288,7 +11289,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
           startChrono(currentChrono);
         }
 
-        if (parseInt(qNumber.textContent) >= 15 && cChooseTrouver) {
+        if (parseInt(qNumber.textContent) >= maxQ && cChooseTrouver) {
           score = 0;
           spnScore.textContent = score;
 
