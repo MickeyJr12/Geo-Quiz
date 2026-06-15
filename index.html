@@ -2789,6 +2789,7 @@
         background-color: rgb(187, 21, 21);
       }
       #devises {
+        display : none;
         background-color: rgb(14, 156, 52);
       }
       #map {
@@ -25044,29 +25045,18 @@ contentPm.style.webkitOverflowScrolling = "touch";
         requestAnimationFrame(loop);
       }
 
-    let L_op = []
-    paths.forEach(p=>L_op.push(p.id))
-    console.log(L_op)
       //  loop()
+fetch("https://api.exchangerate.host/convert?from=EUR&to=USD&amount=100")
+  .then(response => response.json())
+  .then(data => {
+    console.log("mlqskdmflqkjsdmlkj")
 
-async function convertCurrency(amount, from, to) {
-  const response = await fetch(
-    `https://api.frankfurter.dev/v1/latest?from=${from}&to=${to}`
-  );
-  const data = await response.json();
-  const rate = data.rates[to];
-  const result = amount * rate;
+    console.log("Résultat :", data.result);
+  })
+  .catch(error => {
 
-  console.log(`${amount} ${from} = ${result.toFixed(2)} ${to}`);
-  return result;
-}
-
-// await obligatoire pour récupérer la valeur
-(async () => {
-  const result = await convertCurrency(1, "EUR", "BRL");
-  console.log(result);
-})();
-
+    console.error("Erreur :", error);
+  });
 
       /*phoneHome.style.display="none"
       phonePlay.style.display="flex"*/
