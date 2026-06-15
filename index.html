@@ -22214,9 +22214,9 @@ contentPm.style.webkitOverflowScrolling = "touch";
         //  itemBlason.src = viewState
         //       ? ""
         //       : `https://flagcdn.com/${id.toLowerCase()}.svg`;
-          itemBlason.src = viewState
-                        ? ""
-                        : `https://upload.wikimedia.org/wikipedia/fr/f/f7/Armoiries_de_l%27Afrique_du_Sud.svg`;
+          // itemBlason.src = viewState
+          //               ? ""
+          //               : `https://upload.wikimedia.org/wikipedia/fr/f/f7/Armoiries_de_l%27Afrique_du_Sud.svg`;
 
         
         fetch(
@@ -22303,7 +22303,8 @@ contentPm.style.webkitOverflowScrolling = "touch";
           L.style.display = "block";
         });
 
-        population.textContent = L_q[id].p.toLocaleString("fr-FR");
+        if(!viewUs){
+          population.textContent = L_q[id].p.toLocaleString("fr-FR");
         superficie.textContent = L_q[id].s.toLocaleString("fr-FR") + "km²"
         independance.textContent = P_info[id].independent === true ? "Indépendant" : "Dépendant";
         gouvernement.textContent = P_info[id].gouvernement;
@@ -22333,27 +22334,26 @@ contentPm.style.webkitOverflowScrolling = "touch";
                   " (USD/an)";
               }
 
+        }
 
 
-        fetch(url)
-          .then(function (reponse) {
-            return reponse.json(); // On convertit la réponse en objet JS
-          })
-          .then(function (data) {
-            loadingCadre.forEach((L) => {
-              if (!L.classList.contains("flagLoadingCadre")) {
-                L.style.display = "";
-              }
-            });
+        // fetch(url)
+        //   .then(function (reponse) {
+        //     return reponse.json(); // On convertit la réponse en objet JS
+        //   })
+        //   .then(function (data) {
+        //     loadingCadre.forEach((L) => {
+        //       if (!L.classList.contains("flagLoadingCadre")) {
+        //         L.style.display = "";
+        //       }
+        //     });
 
-            /*Faire descendre le nom (car pour le Niger, ça dépasse)*/
+        //     /*Faire descendre le nom (car pour le Niger, ça dépasse)*/
 
-            const info = data[0]; // L'API renvoie un tableau, on prend le 1er résultat
+        //     const info = data[0]; // L'API renvoie un tableau, on prend le 1er résultat
            
-          })
-          .catch((err) => {
-            console.error("Pays introuvable");
-          });
+        //   })
+        //   .catch((err) => {});
 
         if (viewState) {
           population.textContent = D_us[id.slice(-2)].p.toLocaleString();
