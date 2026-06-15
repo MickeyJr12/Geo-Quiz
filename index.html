@@ -9742,6 +9742,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               }
             }
           });
+          //Partie trouver
         } else if (L_config.m === "modeTrouver") {
           document.getElementById("phonePlay").append(zBox);
           zBox.classList.add("modeTrouver");
@@ -11322,8 +11323,8 @@ contentPm.style.webkitOverflowScrolling = "touch";
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("service-worker.js")
-          .then(() => console.log("PWA prête ✅"))
-          .catch((err) => console.error("SW error:", err));
+          .then(() => {/*console.log("PWA prête ✅")*/})
+          .catch((err) => {/*console.error("SW error:", err)*/});
       }
     </script>
 
@@ -11585,7 +11586,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
         "GU",
         "MT",
       ];
-      const D_circles = {};
+      const D_circles = {};      
       const L_antilles = [
         "MQ",
         "GP",
@@ -21774,6 +21775,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
             /*Faire descendre le nom (car pour le Niger, ça dépasse)*/
 
             const info = data[0]; // L'API renvoie un tableau, on prend le 1er résultat
+
             itemBlason.src = viewState
               ? ""
               : info.coatOfArms.svg || info.coatOfArms.png || "";
@@ -24505,11 +24507,29 @@ contentPm.style.webkitOverflowScrolling = "touch";
       }
 
       function loop() {
-        console.log(svg.getAttribute("viewBox").split(" ").map(Number));
+                console.log(D_circles["AW"].style.visibility)
 
         requestAnimationFrame(loop);
       }
       //  loop()
+
+async function convertCurrency(amount, from, to) {
+  const response = await fetch(
+    `https://api.frankfurter.dev/v1/latest?from=${from}&to=${to}`
+  );
+  const data = await response.json();
+  const rate = data.rates[to];
+  const result = amount * rate;
+
+  console.log(`${amount} ${from} = ${result.toFixed(2)} ${to}`);
+  return result;
+}
+
+// await obligatoire pour récupérer la valeur
+(async () => {
+  const result = await convertCurrency(1, "EUR", "BRL");
+  console.log(result);
+})();
 
       /*phoneHome.style.display="none"
       phonePlay.style.display="flex"*/
