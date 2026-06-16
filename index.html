@@ -12214,9 +12214,9 @@ contentPm.style.webkitOverflowScrolling = "touch";
             ")";
         }
 
-        infoPIles.querySelector("span").textContent = D_ileP[p.id.slice(0, 5)];
+        infoPIles.querySelector("span").textContent = D_ileP[p.id.slice(0, 5)].toLocaleString("fr-FR");
         infoSIles.querySelector("span").textContent =
-          D_ileS[p.id.slice(0, 5)] + "km²";
+          D_ileS[p.id.slice(0, 5)].toLocaleString("fr-FR") + "km²";
       }
 
       polygons.forEach((p) => {
@@ -22493,6 +22493,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
             const div = document.createElement("div");
             div.className = "itemContours";
             div.innerHTML = svg.replace(/fill="[^"]*"/g, 'fill="white"');
+            cadreContours.innerHTML = ``;
             cadreContours.appendChild(div);
             if (id in D_ileLink) {
               expandIle.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" id="mqExpand" viewBox="0 0 24 24" width="512" height="512">
