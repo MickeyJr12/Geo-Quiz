@@ -58,7 +58,12 @@
         position: fixed; /* ← clé du fix */
         inset: 0; /* top/right/bottom/left: 0 — fonctionne avec fixed */
         overflow: hidden;
-        background: linear-gradient(140deg, #0f23fa 0%, #103aad 41%, #0c5679 90%);
+        background: linear-gradient(
+          140deg,
+          #0f23fa 0%,
+          #103aad 41%,
+          #0c5679 90%
+        );
         background-repeat: no-repeat;
         background-size: cover;
         box-sizing: border-box;
@@ -1581,11 +1586,11 @@
         align-items: center;
         z-index: 10;
         cursor: pointer;
-        width: 2.4em;
+        width: 2.2em;
         aspect-ratio: 1/1;
         padding: 0.4em;
-        max-width: 2.4em;
-        max-height: 2.4em;
+        max-width: 2.2em;
+        max-height: 2.2em;
         backdrop-filter: blur(10px);
         border-radius: 0.6em;
         background: rgba(56, 140, 223, 0.674);
@@ -2138,6 +2143,7 @@
 
       #cadreBlason {
         display: none;
+        position: relative;
         justify-content: center;
         align-items: center;
         height: auto;
@@ -2197,7 +2203,7 @@
       }
       .txtCelCadre {
         font-size: 0.92em;
-        color : rgba(255,255,255,0.92);
+        color: rgba(255, 255, 255, 0.92);
         word-wrap: break-word;
       }
       .loadingCadre {
@@ -2786,7 +2792,7 @@
         background-color: rgb(187, 21, 21);
       }
       #devises {
-        display : none;
+        display: none;
         background-color: rgb(14, 156, 52);
       }
       #map {
@@ -4562,7 +4568,7 @@
                 <h4>Classer</h4>
               </div>
 
-              <div class="btnMode" style="display : none" id="modeEcrire">
+              <div class="btnMode" style="display: none" id="modeEcrire">
                 <svg
                   class="iconBtnMode"
                   height="1.5em"
@@ -4613,7 +4619,7 @@
               </div>
               <div class="qr r" id="populationR" style="display: none">
                 Population
-              </div>             
+              </div>
               <div class="qr r" id="nbrClass2" data-nbr="2">2</div>
               <div class="qr r" id="nbrClass3" data-nbr="3">3</div>
               <div class="qr r" id="nbrClass4" data-nbr="4">4</div>
@@ -5358,7 +5364,9 @@
       <div id="pm4Choix">
         <div id="pmTitle">Menu pause</div>
         <div id="cadreScorePm">
-          Score :<span style="margin-left: 0.4em" id="spnScore"></span>/<span class="maxQ"></span>
+          Score :<span style="margin-left: 0.4em" id="spnScore"></span>/<span
+            class="maxQ"
+          ></span>
           <div class="cadreStars">
             <svg
               id="star1"
@@ -5471,7 +5479,9 @@
       <div id="titleModeClasser" class="modeClasser"></div>
 
       <div class="questionBox">
-        Question <span style="margin-left: 0.5em" id="qNumber">0</span>/<span class="maxQ"></span>
+        Question <span style="margin-left: 0.5em" id="qNumber">0</span>/<span
+          class="maxQ"
+        ></span>
       </div>
       <div class="cadreChrono">
         <svg
@@ -7316,7 +7326,9 @@
           </div>
 
           <div id="cadreBlason">
-            <p style="display : none; color:white;opacity:0.6">Non disponible</p>
+            <p style="display: none; color: white; opacity: 0.6">
+              Non disponible
+            </p>
             <img src="" class="itemBlason" alt="" />
           </div>
 
@@ -9549,13 +9561,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       function fillPhonePlay() {
         spnScore.textContent = score;
         L_stars.forEach((s) => s.classList.remove("scored"));
-        L_stars.slice(0, Math.floor(score / (Math.floor(maxQ)/3))).forEach((s) =>
-          s.classList.add("scored"),
+        L_stars.slice(0, Math.floor(score / (Math.floor(maxQ) / 3))).forEach(
+          (s) => s.classList.add("scored"),
         );
 
         //Afficher le menu de fin si modeChoix, ou modeTrouver et cCooseTrouver
         if (
-          (parseInt(qNumber.textContent) >= maxQ && L_config.m === "modeChoix") ||
+          (parseInt(qNumber.textContent) >= maxQ &&
+            L_config.m === "modeChoix") ||
           ((L_config.m === "modeTrouver" || L_config.m === "modeClasser") &&
             parseInt(qNumber.textContent) >= maxQ &&
             cChooseTrouver)
@@ -9620,7 +9633,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             P_info[id].region !== null,
         );
 
-        
         const paysDisposTrouver = Object.keys(L_q).filter(
           (id) =>
             !["GO", "UM", "MF", "SJ"].includes(id) &&
@@ -9642,9 +9654,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
         const paysDispoAll = Object.keys(L_q).filter(
           (id) =>
-            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") &&            
+            (L_q[id].d.toLowerCase() === L_config.d || L_config.c !== "allC") &&
             !["GO", "UM", "MF", "SJ"].includes(id) &&
-            (P_info[id].region === L_config.c || L_config.c === "allC"));
+            (P_info[id].region === L_config.c || L_config.c === "allC"),
+        );
 
         for (const clef in D_circles) {
           if (paysDispoAll.includes(clef) || L_config.c === "allC") {
@@ -9653,10 +9666,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             D_circles[clef].style.visibility = "hidden";
           }
         }
-        //Partie Choix
+        // Partie Choix
         if (L_config.m === "modeChoix") {
-
-            //Rendre les pays qu'il faut visibles et blancs
+          //Remplir tout ça
           paths.forEach((p) => {
             pColor_m.set(p, { hover: "", current: colorPath });
             if (!paysDisposTrouver.includes(p.id)) {
@@ -9764,7 +9776,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         } else if (L_config.m === "modeTrouver") {
           document.getElementById("phonePlay").append(zBox);
           zBox.classList.add("modeTrouver");
-          
+
           if (cChooseTrouver === null) {
             idVisible_m = new Map(
               Array.from(tIdVisible_m, ([key, val]) => [key, { ...val }]),
@@ -9778,8 +9790,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               if (m !== backMapsPlay)
                 document.getElementById("phonePlay").appendChild(m);
             });
-
-            
 
             setTimeout(() => {
               animateViewBox(
@@ -10183,11 +10193,11 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             cadreNext.className = "cadreNext visible almost";
             spanNext.textContent = "~ Presque !";
           } else if (nbrGood < nbr / 2) {
-            playSound(badSound)
+            playSound(badSound);
             spanNext.textContent = "✗ Mauvais ordre";
             cadreNext.className = "cadreNext visible bad";
           } else {
-            playSound(goodSound)
+            playSound(goodSound);
             spanNext.textContent = "✓ Ordre Correct !";
             cadreNext.className = "cadreNext visible good";
             score += 1;
@@ -10249,14 +10259,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       const cadreQ = document.getElementById("cadreQ");
       const cadreR = document.getElementById("cadreR");
-      let firstQ2 = true
+      let firstQ2 = true;
       let firstR = true;
       for (const [mode, QS] of Object.entries(arboConfig)) {
         document.getElementById(mode).addEventListener("click", () => {
           if (L_config.m === mode) {
             return;
           }
-          firstQ2= true
+          firstQ2 = true;
           L_config.m = mode;
           L_config.q = null;
           L_config.r = null;
@@ -10270,10 +10280,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           for (const [Q, RS] of Object.entries(QS)) {
             const Q2 = document.getElementById(Q);
             cadreQ.appendChild(Q2);
-            Q2.style.display = "flex";            
+            Q2.style.display = "flex";
 
             Q2.addEventListener("click", () => {
-              firstQ2= false;
+              firstQ2 = false;
               firstR = true;
               if (L_config.q === Q2) {
                 return;
@@ -10294,12 +10304,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
                   L_config.r = R;
                   activePlay();
                 });
-            if (firstR) {document.getElementById(R).click()}
-
+                if (firstR) {
+                  document.getElementById(R).click();
+                }
               });
-
-            });            
-            if (firstQ2) {Q2.click()}
+            });
+            if (firstQ2) {
+              Q2.click();
+            }
           }
         });
       }
@@ -10398,7 +10410,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           }
           //Temps écoulé
           if (currentChrono <= 0) {
-            L_config.m!=="modeClasser" ?activerCarte() : "";
+            L_config.m !== "modeClasser" ? activerCarte() : "";
             pauseChrono();
             barreChronoIn.style.width = "100%";
             //Changer les btnsChoix, afficher cadreNext
@@ -10434,29 +10446,29 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               });
               colorCountry();
             }
-            if(L_config.m==="modeClasser"){
+            if (L_config.m === "modeClasser") {
               document.querySelectorAll(".infoTxtClasser").forEach((el) => {
-            el.style.maxHeight = "1.2em";
-          });
+                el.style.maxHeight = "1.2em";
+              });
               document.querySelector(".btn-suivant").textContent = "Suivant →";
               cChooseTrouver = true;
-               for (const clef in D_elClasser) {
-            if (
-              D_elClasser[clef].dataset.goodOrder ===
-              D_elClasser[clef].dataset.order
-            ) {
-              wrapperNbrClasser.children[
-                D_elClasser[clef].dataset.order
-              ].style.color = "rgb(15, 250, 93)";
+              for (const clef in D_elClasser) {
+                if (
+                  D_elClasser[clef].dataset.goodOrder ===
+                  D_elClasser[clef].dataset.order
+                ) {
+                  wrapperNbrClasser.children[
+                    D_elClasser[clef].dataset.order
+                  ].style.color = "rgb(15, 250, 93)";
 
-              D_elClasser[clef].classList.add("good");
-            } else {
-              wrapperNbrClasser.children[
-                D_elClasser[clef].dataset.order
-              ].style.color = "rgb(233, 78, 78)";
-              D_elClasser[clef].classList.add("bad");
-            }
-          }
+                  D_elClasser[clef].classList.add("good");
+                } else {
+                  wrapperNbrClasser.children[
+                    D_elClasser[clef].dataset.order
+                  ].style.color = "rgb(233, 78, 78)";
+                  D_elClasser[clef].classList.add("bad");
+                }
+              }
             }
             if (parseInt(qNumber.textContent) >= maxQ) {
               document.querySelector(".btn-suivant").textContent = "Fin";
@@ -10464,15 +10476,17 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             }
 
             const L_goodOrder = [...L_propClasser].sort((a, b) =>
-            parseInt(
               parseInt(
-                D_elClasser[a].dataset.goodOrder -
-                  D_elClasser[b].dataset.goodOrder,
+                parseInt(
+                  D_elClasser[a].dataset.goodOrder -
+                    D_elClasser[b].dataset.goodOrder,
+                ),
               ),
-            ),
-          );
+            );
             //Remplir contentPm dans le menu pause
-            L_config.m === "modeClasser" ? fillContentPmClasser("outTime", L_goodOrder) :fillContentPm("outTime", idBonneReponse);
+            L_config.m === "modeClasser"
+              ? fillContentPmClasser("outTime", L_goodOrder)
+              : fillContentPm("outTime", idBonneReponse);
             return;
           }
         }, 100);
@@ -10621,8 +10635,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const star3 = document.getElementById("star3");
       let L_stars = [star1, star2, star3];
       let score = 0;
-      let maxQ = 15
-      document.querySelectorAll('.maxQ').forEach(spn=>spn.textContent =  maxQ) 
+      let maxQ = 15;
+      document
+        .querySelectorAll(".maxQ")
+        .forEach((spn) => (spn.textContent = maxQ));
       const D_classBtn4Choix = { c1: null, c2: null, c3: null, c4: null };
 
       const qTrouver = document.getElementById("qTrouver");
@@ -11091,13 +11107,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         prPm.appendChild(icon);
         prPm.appendChild(reponse);
         contentPm.appendChild(prPm);
-        
+
         //Si on est dans mode Classer, on utilise plusieurs fois la fonction avant d'ajouter une ligne
         contentPm.appendChild(ligneIn);
       }
       //Remplir content pm mode Classer
 
-      function fillContentPmClasser(L_prop, L_good) {        
+      function fillContentPmClasser(L_prop, L_good) {
         const L_svg = [rep1, rep2, rep3, rep4, rep5];
         const L_svgInf = [repInf1, repInf2, repInf3];
         const nbr = parseInt(document.getElementById(L_config.r).dataset.nbr);
@@ -11125,13 +11141,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
           // const svgClone = document.createElement('div')
           // svgClone.innerHTML = nbr > 3 ? L_svg[i].innerHTML : L_svgInf[i].innerHTML
-         
+
           // svgClone.style.pointerEvents = "none";
           // reponse.append(svgClone);
 
-          if (D_elClasser[L_prop[i]]  &&
+          if (
+            D_elClasser[L_prop[i]] &&
             D_elClasser[L_prop[i]].dataset.order ===
-            D_elClasser[L_prop[i]].dataset.goodOrder
+              D_elClasser[L_prop[i]].dataset.goodOrder
           ) {
             icon.innerHTML = `<svg
               class="iconCorrectPrPm"
@@ -11180,14 +11197,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           prPm.appendChild(icon);
           prPm.appendChild(reponse);
           contentPm.appendChild(prPm);
-          
 
           [proposition, icon, reponse].forEach((el) => {
             el.style.pointerEvents = "none";
           });
           contentPm.style.touchAction = "pan-y";
-contentPm.style.overflowY = "auto";
-contentPm.style.webkitOverflowScrolling = "touch";
+          contentPm.style.overflowY = "auto";
+          contentPm.style.webkitOverflowScrolling = "touch";
           //Si on est dans mode Classer, on utilise plusieurs fois la fonction avant d'ajouter une ligne
           if (i === nbr - 1) {
             contentPm.appendChild(ligneIn);
@@ -11308,7 +11324,12 @@ contentPm.style.webkitOverflowScrolling = "touch";
           startChrono(currentChrono);
         }
 
-        if (parseInt(qNumber.textContent) >= maxQ && L_config.m !=="modeChoix" && cChooseTrouver || L_config.m ==="modeChoix" && parseInt(qNumber.textContent) >= maxQ ) {
+        if (
+          (parseInt(qNumber.textContent) >= maxQ &&
+            L_config.m !== "modeChoix" &&
+            cChooseTrouver) ||
+          (L_config.m === "modeChoix" && parseInt(qNumber.textContent) >= maxQ)
+        ) {
           score = 0;
           spnScore.textContent = score;
 
@@ -11344,8 +11365,12 @@ contentPm.style.webkitOverflowScrolling = "touch";
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("service-worker.js")
-          .then(() => {/*console.log("PWA prête ✅")*/})
-          .catch((err) => {/*console.error("SW error:", err)*/});
+          .then(() => {
+            /*console.log("PWA prête ✅")*/
+          })
+          .catch((err) => {
+            /*console.error("SW error:", err)*/
+          });
       }
     </script>
 
@@ -11559,6 +11584,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
       const paths = svg.querySelectorAll("path");
       const pathsUs = svgUs.querySelectorAll("path");
       const L_circles = [
+        "BV",
         "BM",
         "GP",
         "IM",
@@ -11607,7 +11633,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
         "GU",
         "MT",
       ];
-      const D_circles = {};      
+      const D_circles = {};
       const L_antilles = [
         "MQ",
         "GP",
@@ -11621,6 +11647,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
         "KN",
       ]; // mettre leur cercle invisibles
       const D_factorC = {
+        BV: 6.5,
         BM: 5,
         GP: 1.05,
         VC: 1.1,
@@ -12214,7 +12241,8 @@ contentPm.style.webkitOverflowScrolling = "touch";
             ")";
         }
 
-        infoPIles.querySelector("span").textContent = D_ileP[p.id.slice(0, 5)].toLocaleString("fr-FR");
+        infoPIles.querySelector("span").textContent =
+          D_ileP[p.id.slice(0, 5)].toLocaleString("fr-FR");
         infoSIles.querySelector("span").textContent =
           D_ileS[p.id.slice(0, 5)].toLocaleString("fr-FR") + "km²";
       }
@@ -15217,536 +15245,2680 @@ contentPm.style.webkitOverflowScrolling = "touch";
         },
       };
       const D_symbolesD = {
-  EUR: "€",
-  USD: "$",
-  AED: "د.إ",
-  AFN: "؋",
-  XCD: "$",
-  ALL: "L",
-  AMD: "֏",
-  AOA: "Kz",
-  ARS: "$",
-  AUD: "$",
-  AWG: "ƒ",
-  AZN: "₼",
+        EUR: "€",
+        USD: "$",
+        AED: "د.إ",
+        AFN: "؋",
+        XCD: "$",
+        ALL: "L",
+        AMD: "֏",
+        AOA: "Kz",
+        ARS: "$",
+        AUD: "$",
+        AWG: "ƒ",
+        AZN: "₼",
 
-  BAM: "KM",
-  BBD: "$",
-  BDT: "৳",
-  XOF: "CFA",
-  BGN: "лв",
-  BHD: ".د.ب",
-  BIF: "FBu",
-  BMD: "$",
-  BND: "$",
-  BOB: "Bs.",
-  BRL: "R$",
-  BSD: "$",
-  BTN: "Nu.",
-  NOK: "kr",
-  BWP: "P",
-  BYR: "Br",
-  BZD: "$",
+        BAM: "KM",
+        BBD: "$",
+        BDT: "৳",
+        XOF: "CFA",
+        BGN: "лв",
+        BHD: ".د.ب",
+        BIF: "FBu",
+        BMD: "$",
+        BND: "$",
+        BOB: "Bs.",
+        BRL: "R$",
+        BSD: "$",
+        BTN: "Nu.",
+        NOK: "kr",
+        BWP: "P",
+        BYR: "Br",
+        BZD: "$",
 
-  CAD: "$",
-  CDF: "FC",
-  XAF: "CFA",
-  CHF: "CHF",
-  NZD: "$",
-  CLP: "$",
-  CNY: "¥",
-  COP: "$",
-  CRC: "₡",
-  CUP: "$",
-  CVE: "$",
-  ANG: "ƒ",
-  CZK: "Kč",
+        CAD: "$",
+        CDF: "FC",
+        XAF: "CFA",
+        CHF: "CHF",
+        NZD: "$",
+        CLP: "$",
+        CNY: "¥",
+        COP: "$",
+        CRC: "₡",
+        CUP: "$",
+        CVE: "$",
+        ANG: "ƒ",
+        CZK: "Kč",
 
-  DJF: "Fdj",
-  DKK: "kr",
-  DOP: "$",
-  DZD: "د.ج",
+        DJF: "Fdj",
+        DKK: "kr",
+        DOP: "$",
+        DZD: "د.ج",
 
-  EGP: "£",
-  MAD: "د.م.",
-  ERN: "Nkf",
-  ETB: "Br",
+        EGP: "£",
+        MAD: "د.م.",
+        ERN: "Nkf",
+        ETB: "Br",
 
-  FJD: "$",
-  FKP: "£",
-  FOK: "kr",
+        FJD: "$",
+        FKP: "£",
+        FOK: "kr",
 
-  GBP: "£",
-  GEL: "₾",
-  GGP: "£",
-  GHS: "₵",
-  GIP: "£",
-  GMD: "D",
-  GNF: "FG",
-  GTQ: "Q",
-  GYD: "$",
+        GBP: "£",
+        GEL: "₾",
+        GGP: "£",
+        GHS: "₵",
+        GIP: "£",
+        GMD: "D",
+        GNF: "FG",
+        GTQ: "Q",
+        GYD: "$",
 
-  HKD: "$",
-  HNL: "L",
-  HRK: "€",
-  HTG: "G",
-  HUF: "Ft",
+        HKD: "$",
+        HNL: "L",
+        HRK: "€",
+        HTG: "G",
+        HUF: "Ft",
 
-  IDR: "Rp",
-  ILS: "₪",
-  IMP: "£",
-  INR: "₹",
-  IQD: "ع.د",
-  IRR: "﷼",
-  ISK: "kr",
+        IDR: "Rp",
+        ILS: "₪",
+        IMP: "£",
+        INR: "₹",
+        IQD: "ع.د",
+        IRR: "﷼",
+        ISK: "kr",
 
-  JEP: "£",
-  JMD: "$",
-  JOD: "د.أ",
-  JPY: "¥",
+        JEP: "£",
+        JMD: "$",
+        JOD: "د.أ",
+        JPY: "¥",
 
-  KES: "KSh",
-  KGS: "с",
-  KHR: "៛",
-  KMF: "CF",
-  KPW: "₩",
-  KRW: "₩",
-  KWD: "د.ك",
-  KYD: "$",
-  KZT: "₸",
+        KES: "KSh",
+        KGS: "с",
+        KHR: "៛",
+        KMF: "CF",
+        KPW: "₩",
+        KRW: "₩",
+        KWD: "د.ك",
+        KYD: "$",
+        KZT: "₸",
 
-  LAK: "₭",
-  LBP: "£",
-  LKR: "Rs",
-  LRD: "$",
-  LSL: "L",
-  LYD: "ل.د",
+        LAK: "₭",
+        LBP: "£",
+        LKR: "Rs",
+        LRD: "$",
+        LSL: "L",
+        LYD: "ل.د",
 
-  MDL: "L",
-  MGA: "Ar",
-  MKD: "ден",
-  MMK: "Ks",
-  MNT: "₮",
-  MOP: "P",
-  MRU: "UM",
-  MUR: "₨",
-  MVR: "Rf",
-  MWK: "MK",
-  MXN: "$",
-  MYR: "RM",
-  MZN: "MT",
+        MDL: "L",
+        MGA: "Ar",
+        MKD: "ден",
+        MMK: "Ks",
+        MNT: "₮",
+        MOP: "P",
+        MRU: "UM",
+        MUR: "₨",
+        MVR: "Rf",
+        MWK: "MK",
+        MXN: "$",
+        MYR: "RM",
+        MZN: "MT",
 
-  NAD: "$",
-  XPF: "CFP",
-  NGN: "₦",
-  NIO: "C$",
-  NPR: "₨",
+        NAD: "$",
+        XPF: "CFP",
+        NGN: "₦",
+        NIO: "C$",
+        NPR: "₨",
 
-  OMR: "﷼",
+        OMR: "﷼",
 
-  PAB: "B/.",
-  PEN: "S/",
-  PGK: "K",
-  PHP: "₱",
-  PKR: "₨",
-  PLN: "zł",
-  PYG: "₲",
+        PAB: "B/.",
+        PEN: "S/",
+        PGK: "K",
+        PHP: "₱",
+        PKR: "₨",
+        PLN: "zł",
+        PYG: "₲",
 
-  QAR: "﷼",
+        QAR: "﷼",
 
-  RON: "lei",
-  RSD: "дин",
-  RUB: "₽",
-  RWF: "RF",
+        RON: "lei",
+        RSD: "дин",
+        RUB: "₽",
+        RWF: "RF",
 
-  SAR: "﷼",
-  SBD: "$",
-  SCR: "₨",
-  SDG: "£",
-  SEK: "kr",
-  SGD: "$",
-  SHP: "£",
-  SLL: "Le",
-  SOS: "Sh",
-  SRD: "$",
-  SSP: "£",
-  STN: "Db",
-  SYP: "£",
-  SZL: "L",
+        SAR: "﷼",
+        SBD: "$",
+        SCR: "₨",
+        SDG: "£",
+        SEK: "kr",
+        SGD: "$",
+        SHP: "£",
+        SLL: "Le",
+        SOS: "Sh",
+        SRD: "$",
+        SSP: "£",
+        STN: "Db",
+        SYP: "£",
+        SZL: "L",
 
-  THB: "฿",
-  TJS: "ЅМ",
-  TMT: "T",
-  TND: "د.ت",
-  TOP: "T$",
-  TRY: "₺",
-  TTD: "$",
-  TWD: "NT$",
-  TZS: "Sh",
+        THB: "฿",
+        TJS: "ЅМ",
+        TMT: "T",
+        TND: "د.ت",
+        TOP: "T$",
+        TRY: "₺",
+        TTD: "$",
+        TWD: "NT$",
+        TZS: "Sh",
 
-  UAH: "₴",
-  UGX: "Sh",
-  UYU: "$",
-  UZS: "soʻm",
+        UAH: "₴",
+        UGX: "Sh",
+        UYU: "$",
+        UZS: "soʻm",
 
-  VES: "Bs.",
-  VND: "₫",
-  VUV: "Vt",
+        VES: "Bs.",
+        VND: "₫",
+        VUV: "Vt",
 
-  WST: "T",
+        WST: "T",
 
-  YER: "﷼",
+        YER: "﷼",
 
-  ZAR: "R",
-  ZMW: "ZK",
-  ZWL: "$",
+        ZAR: "R",
+        ZMW: "ZK",
+        ZWL: "$",
 
-  "ILS/JOD": "₪ / د.أ"
-}
-;
-
+        "ILS/JOD": "₪ / د.أ",
+      };
       const D_hl = {
+        AD: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+376"],
+          nomH: "Andorrans",
+        },
+        AE: {
+          devise: { n: "Dirham des Émirats arabes unis", s: "AED" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+971"],
+          nomH: "Émiratis",
+        },
+        AF: {
+          devise: { n: "Afghani", s: "AFN" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Samedi",
+          indT: ["+93"],
+          nomH: "Afghans",
+        },
+        AG: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-268"],
+          nomH: "Antiguais",
+        },
+        AI: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-264"],
+          nomH: "Anguillaniens",
+        },
+        AL: {
+          devise: { n: "Lek albanais", s: "ALL" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+355"],
+          nomH: "Albanais",
+        },
+        AM: {
+          devise: { n: "Dram arménien", s: "AMD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+374"],
+          nomH: "Arméniens",
+        },
+        AO: {
+          devise: { n: "Kwanza angolais", s: "AOA" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+244"],
+          nomH: "Angolais",
+        },
+        AR: {
+          devise: { n: "Peso argentin", s: "ARS" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+54"],
+          nomH: "Argentins",
+        },
+        AS: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-684"],
+          nomH: "Samoans américains",
+        },
+        AT: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+43"],
+          nomH: "Autrichiens",
+        },
+        AU: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+61"],
+          nomH: "Australiens",
+        },
+        AW: {
+          devise: { n: "Florin arubais", s: "AWG" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+297"],
+          nomH: "Arubiens",
+        },
+        AX: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+358-18"],
+          nomH: "Ålandais",
+        },
+        AZ: {
+          devise: { n: "Manat azerbaïdjanais", s: "AZN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+994"],
+          nomH: "Azerbaïdjanais",
+        },
 
-  AD: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+376"], nomH:"Andorrans" },
-  AE: { devise: {n:"Dirham des Émirats arabes unis",s:"AED"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+971"], nomH:"Émiratis" },
-  AF: { devise: {n:"Afghani",s:"AFN"}, carSide:"Droite", seaAccess:"Non", calendar:"Samedi", indT:["+93"], nomH:"Afghans" },
-  AG: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-268"], nomH:"Antiguais" },
-  AI: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-264"], nomH:"Anguillaniens" },
-  AL: { devise: {n:"Lek albanais",s:"ALL"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+355"], nomH:"Albanais" },
-  AM: { devise: {n:"Dram arménien",s:"AMD"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+374"], nomH:"Arméniens" },
-  AO: { devise: {n:"Kwanza angolais",s:"AOA"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+244"], nomH:"Angolais" },
-  AR: { devise: {n:"Peso argentin",s:"ARS"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+54"], nomH:"Argentins" },
-  AS: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-684"], nomH:"Samoans américains" },
-  AT: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+43"], nomH:"Autrichiens" },
-  AU: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+61"], nomH:"Australiens" },
-  AW: { devise: {n:"Florin arubais",s:"AWG"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+297"], nomH:"Arubiens" },
-  AX: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+358-18"], nomH:"Ålandais" },
-  AZ: { devise: {n:"Manat azerbaïdjanais",s:"AZN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+994"], nomH:"Azerbaïdjanais" },
+        BA: {
+          devise: { n: "Mark convertible", s: "BAM" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+387"],
+          nomH: "Bosniens",
+        },
+        BB: {
+          devise: { n: "Dollar de la Barbade", s: "BBD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-246"],
+          nomH: "Barbadiens",
+        },
+        BD: {
+          devise: { n: "Taka bangladais", s: "BDT" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+880"],
+          nomH: "Bangladais",
+        },
+        BE: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+32"],
+          nomH: "Belges",
+        },
+        BF: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+226"],
+          nomH: "Burkinabés",
+        },
+        BG: {
+          devise: { n: "Lev bulgare", s: "BGN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+359"],
+          nomH: "Bulgares",
+        },
+        BH: {
+          devise: { n: "Dinar bahreïni", s: "BHD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+973"],
+          nomH: "Bahreïniens",
+        },
+        BI: {
+          devise: { n: "Franc burundais", s: "BIF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+257"],
+          nomH: "Burundais",
+        },
+        BJ: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+229"],
+          nomH: "Béninois",
+        },
+        BL: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+590"],
+          nomH: "Saint-Barths",
+        },
+        BM: {
+          devise: { n: "Dollar des Bermudes", s: "BMD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-441"],
+          nomH: "Bermudiens",
+        },
+        BN: {
+          devise: { n: "Dollar de Brunei", s: "BND" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+673"],
+          nomH: "Brunéiens",
+        },
+        BO: {
+          devise: { n: "Boliviano", s: "BOB" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+591"],
+          nomH: "Boliviens",
+        },
+        BQ: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+599"],
+          nomH: "Habitants des Pays-Bas caribéens",
+        },
+        BR: {
+          devise: { n: "Réal brésilien", s: "BRL" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+55"],
+          nomH: "Brésiliens",
+        },
+        BS: {
+          devise: { n: "Dollar bahaméen", s: "BSD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-242"],
+          nomH: "Bahaméens",
+        },
+        BT: {
+          devise: { n: "Ngultrum bhoutanais", s: "BTN" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+975"],
+          nomH: "Bhoutanais",
+        },
+        BV: {
+          devise: { n: "Couronne norvégienne", s: "NOK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        },
+        BW: {
+          devise: { n: "Pula botswanais", s: "BWP" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+267"],
+          nomH: "Botswanais",
+        },
+        BY: {
+          devise: { n: "Rouble biélorusse", s: "BYR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+375"],
+          nomH: "Biélorusses",
+        },
+        BZ: {
+          devise: { n: "Dollar de Belize", s: "BZD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+501"],
+          nomH: "Béliziens",
+        },
 
-  BA: { devise: {n:"Mark convertible",s:"BAM"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+387"], nomH:"Bosniens" },
-  BB: { devise: {n:"Dollar de la Barbade",s:"BBD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-246"], nomH:"Barbadiens" },
-  BD: { devise: {n:"Taka bangladais",s:"BDT"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+880"], nomH:"Bangladais" },
-  BE: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+32"], nomH:"Belges" },
-  BF: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+226"], nomH:"Burkinabés" },
-  BG: { devise: {n:"Lev bulgare",s:"BGN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+359"], nomH:"Bulgares" },
-  BH: { devise: {n:"Dinar bahreïni",s:"BHD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+973"], nomH:"Bahreïniens" },
-  BI: { devise: {n:"Franc burundais",s:"BIF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+257"], nomH:"Burundais" },
-  BJ: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+229"], nomH:"Béninois" },
-  BL: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+590"], nomH:"Saint-Barths" },
-  BM: { devise: {n:"Dollar des Bermudes",s:"BMD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-441"], nomH:"Bermudiens" },
-  BN: { devise: {n:"Dollar de Brunei",s:"BND"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+673"], nomH:"Brunéiens" },
-  BO: { devise: {n:"Boliviano",s:"BOB"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+591"], nomH:"Boliviens" },
-  BQ: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+599"], nomH:"Habitants des Pays-Bas caribéens" },
-  BR: { devise: {n:"Réal brésilien",s:"BRL"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+55"], nomH:"Brésiliens" },
-  BS: { devise: {n:"Dollar bahaméen",s:"BSD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-242"], nomH:"Bahaméens" },
-  BT: { devise: {n:"Ngultrum bhoutanais",s:"BTN"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+975"], nomH:"Bhoutanais" },
-  BV: { devise: {n:"Couronne norvégienne",s:"NOK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["Non disponible"], nomH:"Non disponible" },
-  BW: { devise: {n:"Pula botswanais",s:"BWP"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+267"], nomH:"Botswanais" },
-  BY: { devise: {n:"Rouble biélorusse",s:"BYR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+375"], nomH:"Biélorusses" },
-  BZ: { devise: {n:"Dollar de Belize",s:"BZD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+501"], nomH:"Béliziens" },
+        CA: {
+          devise: { n: "Dollar canadien", s: "CAD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Canadiens",
+        },
+        CC: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+61-891"],
+          nomH: "Cocossiens",
+        },
+        CD: {
+          devise: { n: "Franc congolais", s: "CDF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+243"],
+          nomH: "Congolais (RDC)",
+        },
+        CF: {
+          devise: { n: "Franc CFA BEAC", s: "XAF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+236"],
+          nomH: "Centrafricains",
+        },
+        CG: {
+          devise: { n: "Franc CFA BEAC", s: "XAF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+242"],
+          nomH: "Congolais",
+        },
+        CH: {
+          devise: { n: "Franc suisse", s: "CHF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+41"],
+          nomH: "Suisses",
+        },
+        CI: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+225"],
+          nomH: "Ivoiriens",
+        },
+        CK: {
+          devise: { n: "Dollar néo-zélandais", s: "NZD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+682"],
+          nomH: "Cookiens",
+        },
+        CL: {
+          devise: { n: "Peso chilien", s: "CLP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+56"],
+          nomH: "Chiliens",
+        },
+        CM: {
+          devise: { n: "Franc CFA BEAC", s: "XAF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+237"],
+          nomH: "Camerounais",
+        },
+        CN: {
+          devise: { n: "Yuan renminbi", s: "CNY" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+86"],
+          nomH: "Chinois",
+        },
+        CO: {
+          devise: { n: "Peso colombien", s: "COP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+57"],
+          nomH: "Colombiens",
+        },
+        CR: {
+          devise: { n: "Colón costaricien", s: "CRC" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+506"],
+          nomH: "Costariciens",
+        },
+        CU: {
+          devise: { n: "Peso cubain", s: "CUP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+53"],
+          nomH: "Cubains",
+        },
+        CV: {
+          devise: { n: "Escudo cap-verdien", s: "CVE" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+238"],
+          nomH: "Cap-Verdiens",
+        },
+        CW: {
+          devise: { n: "Florin antillais néerlandais", s: "ANG" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+599"],
+          nomH: "Curassoens",
+        },
+        CX: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+61-891"],
+          nomH: "Christmasiens",
+        },
+        CY: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+357"],
+          nomH: "Chypriotes",
+        },
+        CZ: {
+          devise: { n: "Couronne tchèque", s: "CZK" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+420"],
+          nomH: "Tchèques",
+        },
 
-  CA: { devise: {n:"Dollar canadien",s:"CAD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Canadiens" },
-  CC: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+61-891"], nomH:"Cocossiens" },
-  CD: { devise: {n:"Franc congolais",s:"CDF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+243"], nomH:"Congolais (RDC)" },
-  CF: { devise: {n:"Franc CFA BEAC",s:"XAF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+236"], nomH:"Centrafricains" },
-  CG: { devise: {n:"Franc CFA BEAC",s:"XAF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+242"], nomH:"Congolais" },
-  CH: { devise: {n:"Franc suisse",s:"CHF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+41"], nomH:"Suisses" },
-  CI: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+225"], nomH:"Ivoiriens" },
-  CK: { devise: {n:"Dollar néo-zélandais",s:"NZD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+682"], nomH:"Cookiens" },
-  CL: { devise: {n:"Peso chilien",s:"CLP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+56"], nomH:"Chiliens" },
-  CM: { devise: {n:"Franc CFA BEAC",s:"XAF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+237"], nomH:"Camerounais" },
-  CN: { devise: {n:"Yuan renminbi",s:"CNY"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+86"], nomH:"Chinois" },
-  CO: { devise: {n:"Peso colombien",s:"COP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+57"], nomH:"Colombiens" },
-  CR: { devise: {n:"Colón costaricien",s:"CRC"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+506"], nomH:"Costariciens" },
-  CU: { devise: {n:"Peso cubain",s:"CUP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+53"], nomH:"Cubains" },
-  CV: { devise: {n:"Escudo cap-verdien",s:"CVE"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+238"], nomH:"Cap-Verdiens" },
-  CW: { devise: {n:"Florin antillais néerlandais",s:"ANG"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+599"], nomH:"Curassoens" },
-  CX: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+61-891"], nomH:"Christmasiens" },
-  CY: { devise: {n:"Euro",s:"EUR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+357"], nomH:"Chypriotes" },
-  CZ: { devise: {n:"Couronne tchèque",s:"CZK"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+420"], nomH:"Tchèques" },
+        DE: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+49"],
+          nomH: "Allemands",
+        },
+        DJ: {
+          devise: { n: "Franc djiboutien", s: "DJF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+253"],
+          nomH: "Djiboutiens",
+        },
+        DK: {
+          devise: { n: "Couronne danoise", s: "DKK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+45"],
+          nomH: "Danois",
+        },
+        DM: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-767"],
+          nomH: "Dominiquais",
+        },
+        DO: {
+          devise: { n: "Peso dominicain", s: "DOP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-809", "+1-829", "+1-849"],
+          nomH: "Dominicains",
+        },
+        DZ: {
+          devise: { n: "Dinar algérien", s: "DZD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+213"],
+          nomH: "Algériens",
+        },
 
-  DE: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+49"], nomH:"Allemands" },
-  DJ: { devise: {n:"Franc djiboutien",s:"DJF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+253"], nomH:"Djiboutiens" },
-  DK: { devise: {n:"Couronne danoise",s:"DKK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+45"], nomH:"Danois" },
-  DM: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-767"], nomH:"Dominiquais" },
-  DO: { devise: {n:"Peso dominicain",s:"DOP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-809","+1-829","+1-849"], nomH:"Dominicains" },
-  DZ: { devise: {n:"Dinar algérien",s:"DZD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+213"], nomH:"Algériens" },
+        EC: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+593"],
+          nomH: "Équatoriens",
+        },
+        EE: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+372"],
+          nomH: "Estoniens",
+        },
+        EG: {
+          devise: { n: "Livre égyptienne", s: "EGP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+20"],
+          nomH: "Égyptiens",
+        },
+        EH: {
+          devise: { n: "Dirham marocain", s: "MAD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+212"],
+          nomH: "Sahraouis",
+        },
+        ER: {
+          devise: { n: "Nakfa érythréen", s: "ERN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+291"],
+          nomH: "Érythréens",
+        },
+        ES: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+34"],
+          nomH: "Espagnols",
+        },
+        ET: {
+          devise: { n: "Birr éthiopien", s: "ETB" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+251"],
+          nomH: "Éthiopiens",
+        },
 
-  EC: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+593"], nomH:"Équatoriens" },
-  EE: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+372"], nomH:"Estoniens" },
-  EG: { devise: {n:"Livre égyptienne",s:"EGP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+20"], nomH:"Égyptiens" },
-  EH: { devise: {n:"Dirham marocain",s:"MAD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+212"], nomH:"Sahraouis" },
-  ER: { devise: {n:"Nakfa érythréen",s:"ERN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+291"], nomH:"Érythréens" },
-  ES: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+34"], nomH:"Espagnols" },
-  ET: { devise: {n:"Birr éthiopien",s:"ETB"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+251"], nomH:"Éthiopiens" },
+        FI: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+358"],
+          nomH: "Finlandais",
+        },
+        FJ: {
+          devise: { n: "Dollar fidjien", s: "FJD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+679"],
+          nomH: "Fidjiens",
+        },
+        FK: {
+          devise: { n: "Livre des Malouines", s: "FKP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+500"],
+          nomH: "Malouiniens",
+        },
+        FM: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+691"],
+          nomH: "Micronésiens",
+        },
+        FO: {
+          devise: { n: "Couronne féroïenne", s: "FOK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+298"],
+          nomH: "Féroïens",
+        },
+        FR: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+33"],
+          nomH: "Français",
+        },
 
-  FI: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+358"], nomH:"Finlandais" },
-  FJ: { devise: {n:"Dollar fidjien",s:"FJD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+679"], nomH:"Fidjiens" },
-  FK: { devise: {n:"Livre des Malouines",s:"FKP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+500"], nomH:"Malouiniens" },
-  FM: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+691"], nomH:"Micronésiens" },
-  FO: { devise: {n:"Couronne féroïenne",s:"FOK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+298"], nomH:"Féroïens" },
-  FR: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+33"], nomH:"Français" },
+        GA: {
+          devise: { n: "Franc CFA BEAC", s: "XAF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+241"],
+          nomH: "Gabonais",
+        },
+        GB: {
+          devise: { n: "Livre sterling", s: "GBP" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+44"],
+          nomH: "Britanniques",
+        },
+        GD: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-473"],
+          nomH: "Grenadins",
+        },
+        GE: {
+          devise: { n: "Lari géorgien", s: "GEL" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+995"],
+          nomH: "Géorgiens",
+        },
+        GF: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+594"],
+          nomH: "Guyanais",
+        },
+        GG: {
+          devise: { n: "Livre de Guernesey", s: "GGP" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+44-1481"],
+          nomH: "Guernesiais",
+        },
+        GH: {
+          devise: { n: "Cedi ghanéen", s: "GHS" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+233"],
+          nomH: "Ghanéens",
+        },
+        GI: {
+          devise: { n: "Livre de Gibraltar", s: "GIP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+350"],
+          nomH: "Gibraltariens",
+        },
+        GL: {
+          devise: { n: "Couronne danoise", s: "DKK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+299"],
+          nomH: "Groenlandais",
+        },
+        GM: {
+          devise: { n: "Dalasi gambien", s: "GMD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+220"],
+          nomH: "Gambiens",
+        },
+        GN: {
+          devise: { n: "Franc guinéen", s: "GNF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+224"],
+          nomH: "Guinéens",
+        },
+        GO: {
+          devise: { n: "Non disponible", s: "Non disponible" },
+          carSide: "Non disponible",
+          seaAccess: "Non disponible",
+          calendar: "Non disponible",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Code ISO non reconnu
+        GP: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+590"],
+          nomH: "Guadeloupéens",
+        },
+        GQ: {
+          devise: { n: "Franc CFA BEAC", s: "XAF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+240"],
+          nomH: "Équato-Guinéens",
+        },
+        GR: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+30"],
+          nomH: "Grecs",
+        },
+        GS: {
+          devise: { n: "Livre sterling", s: "GBP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        },
+        GT: {
+          devise: { n: "Quetzal guatémaltèque", s: "GTQ" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+502"],
+          nomH: "Guatémaltèques",
+        },
+        GU: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-671"],
+          nomH: "Guamaniens",
+        },
+        GW: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+245"],
+          nomH: "Guinéens-Bissaoiens",
+        },
+        GY: {
+          devise: { n: "Dollar guyanais", s: "GYD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+592"],
+          nomH: "Guyaniens",
+        },
 
-  GA: { devise: {n:"Franc CFA BEAC",s:"XAF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+241"], nomH:"Gabonais" },
-  GB: { devise: {n:"Livre sterling",s:"GBP"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+44"], nomH:"Britanniques" },
-  GD: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-473"], nomH:"Grenadins" },
-  GE: { devise: {n:"Lari géorgien",s:"GEL"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+995"], nomH:"Géorgiens" },
-  GF: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+594"], nomH:"Guyanais" },
-  GG: { devise: {n:"Livre de Guernesey",s:"GGP"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+44-1481"], nomH:"Guernesiais" },
-  GH: { devise: {n:"Cedi ghanéen",s:"GHS"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+233"], nomH:"Ghanéens" },
-  GI: { devise: {n:"Livre de Gibraltar",s:"GIP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+350"], nomH:"Gibraltariens" },
-  GL: { devise: {n:"Couronne danoise",s:"DKK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+299"], nomH:"Groenlandais" },
-  GM: { devise: {n:"Dalasi gambien",s:"GMD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+220"], nomH:"Gambiens" },
-  GN: { devise: {n:"Franc guinéen",s:"GNF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+224"], nomH:"Guinéens" },
-  GO: { devise: {n:"Non disponible",s:"Non disponible"}, carSide:"Non disponible", seaAccess:"Non disponible", calendar:"Non disponible", indT:["Non disponible"], nomH:"Non disponible" }, // Code ISO non reconnu
-  GP: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+590"], nomH:"Guadeloupéens" },
-  GQ: { devise: {n:"Franc CFA BEAC",s:"XAF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+240"], nomH:"Équato-Guinéens" },
-  GR: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+30"], nomH:"Grecs" },
-  GS: { devise: {n:"Livre sterling",s:"GBP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["Non disponible"], nomH:"Non disponible" },
-  GT: { devise: {n:"Quetzal guatémaltèque",s:"GTQ"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+502"], nomH:"Guatémaltèques" },
-  GU: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-671"], nomH:"Guamaniens" },
-  GW: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+245"], nomH:"Guinéens-Bissaoiens" },
-  GY: { devise: {n:"Dollar guyanais",s:"GYD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+592"], nomH:"Guyaniens" },
+        HK: {
+          devise: { n: "Dollar de Hong Kong", s: "HKD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+852"],
+          nomH: "Hongkongais",
+        },
+        HM: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        },
+        HN: {
+          devise: { n: "Lempira hondurien", s: "HNL" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+504"],
+          nomH: "Honduriens",
+        },
+        HR: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+385"],
+          nomH: "Croates",
+        },
+        HT: {
+          devise: { n: "Gourde haïtienne", s: "HTG" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+509"],
+          nomH: "Haïtiens",
+        },
+        HU: {
+          devise: { n: "Forint hongrois", s: "HUF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+36"],
+          nomH: "Hongrois",
+        },
 
-  HK: { devise: {n:"Dollar de Hong Kong",s:"HKD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+852"], nomH:"Hongkongais" },
-  HM: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["Non disponible"], nomH:"Non disponible" },
-  HN: { devise: {n:"Lempira hondurien",s:"HNL"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+504"], nomH:"Honduriens" },
-  HR: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+385"], nomH:"Croates" },
-  HT: { devise: {n:"Gourde haïtienne",s:"HTG"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+509"], nomH:"Haïtiens" },
-  HU: { devise: {n:"Forint hongrois",s:"HUF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+36"], nomH:"Hongrois" },
+        ID: {
+          devise: { n: "Roupie indonésienne", s: "IDR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+62"],
+          nomH: "Indonésiens",
+        },
+        IE: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+353"],
+          nomH: "Irlandais",
+        },
+        IL: {
+          devise: { n: "Nouveau shekel israélien", s: "ILS" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+972"],
+          nomH: "Israéliens",
+        },
+        IM: {
+          devise: { n: "Livre de l'île de Man", s: "IMP" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+44-1624"],
+          nomH: "Mannois",
+        },
+        IN: {
+          devise: { n: "Roupie indienne", s: "INR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+91"],
+          nomH: "Indiens",
+        },
+        IO: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+246"],
+          nomH: "Non disponible",
+        },
+        IQ: {
+          devise: { n: "Dinar irakien", s: "IQD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+964"],
+          nomH: "Irakiens",
+        },
+        IR: {
+          devise: { n: "Rial iranien", s: "IRR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+98"],
+          nomH: "Iraniens",
+        },
+        IS: {
+          devise: { n: "Couronne islandaise", s: "ISK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+354"],
+          nomH: "Islandais",
+        },
+        IT: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+39"],
+          nomH: "Italiens",
+        },
 
-  ID: { devise: {n:"Roupie indonésienne",s:"IDR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+62"], nomH:"Indonésiens" },
-  IE: { devise: {n:"Euro",s:"EUR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+353"], nomH:"Irlandais" },
-  IL: { devise: {n:"Nouveau shekel israélien",s:"ILS"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+972"], nomH:"Israéliens" },
-  IM: { devise: {n:"Livre de l'île de Man",s:"IMP"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+44-1624"], nomH:"Mannois" },
-  IN: { devise: {n:"Roupie indienne",s:"INR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+91"], nomH:"Indiens" },
-  IO: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+246"], nomH:"Non disponible" },
-  IQ: { devise: {n:"Dinar irakien",s:"IQD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+964"], nomH:"Irakiens" },
-  IR: { devise: {n:"Rial iranien",s:"IRR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+98"], nomH:"Iraniens" },
-  IS: { devise: {n:"Couronne islandaise",s:"ISK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+354"], nomH:"Islandais" },
-  IT: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+39"], nomH:"Italiens" },
+        JE: {
+          devise: { n: "Livre de Jersey", s: "JEP" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+44-1534"],
+          nomH: "Jersiais",
+        },
+        JM: {
+          devise: { n: "Dollar jamaïcain", s: "JMD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-876"],
+          nomH: "Jamaïcains",
+        },
+        JO: {
+          devise: { n: "Dinar jordanien", s: "JOD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+962"],
+          nomH: "Jordaniens",
+        },
+        JP: {
+          devise: { n: "Yen japonais", s: "JPY" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+81"],
+          nomH: "Japonais",
+        },
+        JU: {
+          devise: { n: "Non disponible", s: "Non disponible" },
+          carSide: "Non disponible",
+          seaAccess: "Non disponible",
+          calendar: "Non disponible",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Code ISO non reconnu
 
-  JE: { devise: {n:"Livre de Jersey",s:"JEP"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+44-1534"], nomH:"Jersiais" },
-  JM: { devise: {n:"Dollar jamaïcain",s:"JMD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-876"], nomH:"Jamaïcains" },
-  JO: { devise: {n:"Dinar jordanien",s:"JOD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+962"], nomH:"Jordaniens" },
-  JP: { devise: {n:"Yen japonais",s:"JPY"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+81"], nomH:"Japonais" },
-  JU: { devise: {n:"Non disponible",s:"Non disponible"}, carSide:"Non disponible", seaAccess:"Non disponible", calendar:"Non disponible", indT:["Non disponible"], nomH:"Non disponible" }, // Code ISO non reconnu
+        KE: {
+          devise: { n: "Shilling kényan", s: "KES" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+254"],
+          nomH: "Kényans",
+        },
+        KG: {
+          devise: { n: "Som kirghiz", s: "KGS" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+996"],
+          nomH: "Kirghizes",
+        },
+        KH: {
+          devise: { n: "Riel cambodgien", s: "KHR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+855"],
+          nomH: "Cambodgiens",
+        },
+        KI: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+686"],
+          nomH: "Kiribatiens",
+        },
+        KM: {
+          devise: { n: "Franc comorien", s: "KMF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+269"],
+          nomH: "Comoriens",
+        },
+        KN: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-869"],
+          nomH: "Kittitiens-et-Néviciens",
+        },
+        KP: {
+          devise: { n: "Won nord-coréen", s: "KPW" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+850"],
+          nomH: "Nord-Coréens",
+        },
+        KR: {
+          devise: { n: "Won sud-coréen", s: "KRW" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+82"],
+          nomH: "Sud-Coréens",
+        },
+        KW: {
+          devise: { n: "Dinar koweïtien", s: "KWD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+965"],
+          nomH: "Koweïtiens",
+        },
+        KY: {
+          devise: { n: "Dollar des îles Caïmans", s: "KYD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-345"],
+          nomH: "Caïmaniens",
+        },
+        KZ: {
+          devise: { n: "Tenge kazakh", s: "KZT" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+7-6", "+7-7"],
+          nomH: "Kazakhstanais",
+        },
+        XK: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+383"],
+          nomH: "Kosovars",
+        },
 
-  KE: { devise: {n:"Shilling kényan",s:"KES"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+254"], nomH:"Kényans" },
-  KG: { devise: {n:"Som kirghiz",s:"KGS"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+996"], nomH:"Kirghizes" },
-  KH: { devise: {n:"Riel cambodgien",s:"KHR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+855"], nomH:"Cambodgiens" },
-  KI: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+686"], nomH:"Kiribatiens" },
-  KM: { devise: {n:"Franc comorien",s:"KMF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+269"], nomH:"Comoriens" },
-  KN: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-869"], nomH:"Kittitiens-et-Néviciens" },
-  KP: { devise: {n:"Won nord-coréen",s:"KPW"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+850"], nomH:"Nord-Coréens" },
-  KR: { devise: {n:"Won sud-coréen",s:"KRW"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+82"], nomH:"Sud-Coréens" },
-  KW: { devise: {n:"Dinar koweïtien",s:"KWD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+965"], nomH:"Koweïtiens" },
-  KY: { devise: {n:"Dollar des îles Caïmans",s:"KYD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-345"], nomH:"Caïmaniens" },
-  KZ: { devise: {n:"Tenge kazakh",s:"KZT"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+7-6","+7-7"], nomH:"Kazakhstanais" },
-  XK: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+383"], nomH:"Kosovars" },
+        LA: {
+          devise: { n: "Kip laotien", s: "LAK" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+856"],
+          nomH: "Laotiens",
+        },
+        LB: {
+          devise: { n: "Livre libanaise", s: "LBP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+961"],
+          nomH: "Libanais",
+        },
+        LC: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-758"],
+          nomH: "Saint-Luciens",
+        },
+        LI: {
+          devise: { n: "Franc suisse", s: "CHF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+423"],
+          nomH: "Liechtensteinois",
+        },
+        LK: {
+          devise: { n: "Roupie srilankaise", s: "LKR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+94"],
+          nomH: "Srilankais",
+        },
+        LR: {
+          devise: { n: "Dollar libérien", s: "LRD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+231"],
+          nomH: "Libériens",
+        },
+        LS: {
+          devise: { n: "Loti lesothan", s: "LSL" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+266"],
+          nomH: "Basothos",
+        },
+        LT: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+370"],
+          nomH: "Lituaniens",
+        },
+        LU: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+352"],
+          nomH: "Luxembourgeois",
+        },
+        LV: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+371"],
+          nomH: "Lettons",
+        },
+        LY: {
+          devise: { n: "Dinar libyen", s: "LYD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+218"],
+          nomH: "Libyens",
+        },
 
-  LA: { devise: {n:"Kip laotien",s:"LAK"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+856"], nomH:"Laotiens" },
-  LB: { devise: {n:"Livre libanaise",s:"LBP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+961"], nomH:"Libanais" },
-  LC: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-758"], nomH:"Saint-Luciens" },
-  LI: { devise: {n:"Franc suisse",s:"CHF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+423"], nomH:"Liechtensteinois" },
-  LK: { devise: {n:"Roupie srilankaise",s:"LKR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+94"], nomH:"Srilankais" },
-  LR: { devise: {n:"Dollar libérien",s:"LRD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+231"], nomH:"Libériens" },
-  LS: { devise: {n:"Loti lesothan",s:"LSL"}, carSide:"Gauche", seaAccess:"Non", calendar:"Lundi", indT:["+266"], nomH:"Basothos" },
-  LT: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+370"], nomH:"Lituaniens" },
-  LU: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+352"], nomH:"Luxembourgeois" },
-  LV: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+371"], nomH:"Lettons" },
-  LY: { devise: {n:"Dinar libyen",s:"LYD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+218"], nomH:"Libyens" },
+        MA: {
+          devise: { n: "Dirham marocain", s: "MAD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+212"],
+          nomH: "Marocains",
+        },
+        MC: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+377"],
+          nomH: "Monégasques",
+        },
+        MD: {
+          devise: { n: "Leu moldave", s: "MDL" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+373"],
+          nomH: "Moldaves",
+        },
+        ME: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+382"],
+          nomH: "Monténégrins",
+        },
+        MF: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+590"],
+          nomH: "Saint-Martinois",
+        },
+        MG: {
+          devise: { n: "Ariary malgache", s: "MGA" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+261"],
+          nomH: "Malgaches",
+        },
+        MH: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+692"],
+          nomH: "Marshallais",
+        },
+        MK: {
+          devise: { n: "Denar macédonien", s: "MKD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+389"],
+          nomH: "Macédoniens",
+        },
+        ML: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+223"],
+          nomH: "Maliens",
+        },
+        MM: {
+          devise: { n: "Kyat birman", s: "MMK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+95"],
+          nomH: "Birmans",
+        },
+        MN: {
+          devise: { n: "Tögrög mongol", s: "MNT" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+976"],
+          nomH: "Mongols",
+        },
+        MO: {
+          devise: { n: "Pataca macanaise", s: "MOP" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+853"],
+          nomH: "Macanais",
+        },
+        MP: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-670"],
+          nomH: "Marianais du Nord",
+        },
+        MQ: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+596"],
+          nomH: "Martiniquais",
+        },
+        MR: {
+          devise: { n: "Ouguiya mauritanien", s: "MRU" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+222"],
+          nomH: "Mauritaniens",
+        },
+        MS: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+1-664"],
+          nomH: "Montserratiens",
+        },
+        MT: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+356"],
+          nomH: "Maltais",
+        },
+        MU: {
+          devise: { n: "Roupie mauricienne", s: "MUR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+230"],
+          nomH: "Mauriciens",
+        },
+        MV: {
+          devise: { n: "Rufiyaa maldivien", s: "MVR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Vendredi",
+          indT: ["+960"],
+          nomH: "Maldiviens",
+        },
+        MW: {
+          devise: { n: "Kwacha malawien", s: "MWK" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+265"],
+          nomH: "Malawiens",
+        },
+        MX: {
+          devise: { n: "Peso mexicain", s: "MXN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+52"],
+          nomH: "Mexicains",
+        },
+        MY: {
+          devise: { n: "Ringgit malaisien", s: "MYR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+60"],
+          nomH: "Malaisiens",
+        },
+        MZ: {
+          devise: { n: "Metical mozambicain", s: "MZN" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+258"],
+          nomH: "Mozambicains",
+        },
 
-  MA: { devise: {n:"Dirham marocain",s:"MAD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+212"], nomH:"Marocains" },
-  MC: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+377"], nomH:"Monégasques" },
-  MD: { devise: {n:"Leu moldave",s:"MDL"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+373"], nomH:"Moldaves" },
-  ME: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+382"], nomH:"Monténégrins" },
-  MF: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+590"], nomH:"Saint-Martinois" },
-  MG: { devise: {n:"Ariary malgache",s:"MGA"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+261"], nomH:"Malgaches" },
-  MH: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+692"], nomH:"Marshallais" },
-  MK: { devise: {n:"Denar macédonien",s:"MKD"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+389"], nomH:"Macédoniens" },
-  ML: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+223"], nomH:"Maliens" },
-  MM: { devise: {n:"Kyat birman",s:"MMK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+95"], nomH:"Birmans" },
-  MN: { devise: {n:"Tögrög mongol",s:"MNT"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+976"], nomH:"Mongols" },
-  MO: { devise: {n:"Pataca macanaise",s:"MOP"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+853"], nomH:"Macanais" },
-  MP: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-670"], nomH:"Marianais du Nord" },
-  MQ: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+596"], nomH:"Martiniquais" },
-  MR: { devise: {n:"Ouguiya mauritanien",s:"MRU"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+222"], nomH:"Mauritaniens" },
-  MS: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+1-664"], nomH:"Montserratiens" },
-  MT: { devise: {n:"Euro",s:"EUR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+356"], nomH:"Maltais" },
-  MU: { devise: {n:"Roupie mauricienne",s:"MUR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+230"], nomH:"Mauriciens" },
-  MV: { devise: {n:"Rufiyaa maldivien",s:"MVR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Vendredi", indT:["+960"], nomH:"Maldiviens" },
-  MW: { devise: {n:"Kwacha malawien",s:"MWK"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+265"], nomH:"Malawiens" },
-  MX: { devise: {n:"Peso mexicain",s:"MXN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+52"], nomH:"Mexicains" },
-  MY: { devise: {n:"Ringgit malaisien",s:"MYR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+60"], nomH:"Malaisiens" },
-  MZ: { devise: {n:"Metical mozambicain",s:"MZN"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+258"], nomH:"Mozambicains" },
+        NA: {
+          devise: { n: "Dollar namibien", s: "NAD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+264"],
+          nomH: "Namibiens",
+        },
+        NC: {
+          devise: { n: "Franc CFP", s: "XPF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+687"],
+          nomH: "Néo-Calédoniens",
+        },
+        NE: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+227"],
+          nomH: "Nigériens",
+        },
+        NF: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+672"],
+          nomH: "Norfolkiens",
+        },
+        NG: {
+          devise: { n: "Naira nigérian", s: "NGN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+234"],
+          nomH: "Nigérians",
+        },
+        NI: {
+          devise: { n: "Córdoba nicaraguayen", s: "NIO" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+505"],
+          nomH: "Nicaraguayens",
+        },
+        NL: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+31"],
+          nomH: "Néerlandais",
+        },
+        NO: {
+          devise: { n: "Couronne norvégienne", s: "NOK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+47"],
+          nomH: "Norvégiens",
+        },
+        NP: {
+          devise: { n: "Roupie népalaise", s: "NPR" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+977"],
+          nomH: "Népalais",
+        },
+        NR: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+674"],
+          nomH: "Nauruans",
+        },
+        NU: {
+          devise: { n: "Dollar néo-zélandais", s: "NZD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+683"],
+          nomH: "Niuéens",
+        },
+        NZ: {
+          devise: { n: "Dollar néo-zélandais", s: "NZD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+64"],
+          nomH: "Néo-Zélandais",
+        },
 
-  NA: { devise: {n:"Dollar namibien",s:"NAD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+264"], nomH:"Namibiens" },
-  NC: { devise: {n:"Franc CFP",s:"XPF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+687"], nomH:"Néo-Calédoniens" },
-  NE: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+227"], nomH:"Nigériens" },
-  NF: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+672"], nomH:"Norfolkiens" },
-  NG: { devise: {n:"Naira nigérian",s:"NGN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+234"], nomH:"Nigérians" },
-  NI: { devise: {n:"Córdoba nicaraguayen",s:"NIO"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+505"], nomH:"Nicaraguayens" },
-  NL: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+31"], nomH:"Néerlandais" },
-  NO: { devise: {n:"Couronne norvégienne",s:"NOK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+47"], nomH:"Norvégiens" },
-  NP: { devise: {n:"Roupie népalaise",s:"NPR"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+977"], nomH:"Népalais" },
-  NR: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+674"], nomH:"Nauruans" },
-  NU: { devise: {n:"Dollar néo-zélandais",s:"NZD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+683"], nomH:"Niuéens" },
-  NZ: { devise: {n:"Dollar néo-zélandais",s:"NZD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+64"], nomH:"Néo-Zélandais" },
+        OM: {
+          devise: { n: "Rial omanais", s: "OMR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+968"],
+          nomH: "Omanais",
+        },
 
-  OM: { devise: {n:"Rial omanais",s:"OMR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+968"], nomH:"Omanais" },
+        PA: {
+          devise: { n: "Balboa panaméen", s: "PAB" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+507"],
+          nomH: "Panaméens",
+        },
+        PE: {
+          devise: { n: "Sol péruvien", s: "PEN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+51"],
+          nomH: "Péruviens",
+        },
+        PF: {
+          devise: { n: "Franc CFP", s: "XPF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+689"],
+          nomH: "Polynésiens français",
+        },
+        PG: {
+          devise: { n: "Kina papouasien", s: "PGK" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+675"],
+          nomH: "Papouasiens-Néo-Guinéens",
+        },
+        PH: {
+          devise: { n: "Peso philippin", s: "PHP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+63"],
+          nomH: "Philippins",
+        },
+        PK: {
+          devise: { n: "Roupie pakistanaise", s: "PKR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+92"],
+          nomH: "Pakistanais",
+        },
+        PL: {
+          devise: { n: "Zloty polonais", s: "PLN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+48"],
+          nomH: "Polonais",
+        },
+        PM: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+508"],
+          nomH: "Saint-Pierrais et Miquelonnais",
+        },
+        PN: {
+          devise: { n: "Dollar néo-zélandais", s: "NZD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["Non disponible"],
+          nomH: "Pitcairnais",
+        },
+        PR: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-787", "+1-939"],
+          nomH: "Portoricains",
+        },
+        PS: {
+          devise: { n: "Shekel israélien / Dinar jordanien", s: "ILS/JOD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+970"],
+          nomH: "Palestiniens",
+        },
+        PT: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+351"],
+          nomH: "Portugais",
+        },
+        PW: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+680"],
+          nomH: "Palauans",
+        },
+        PY: {
+          devise: { n: "Guaraní paraguayen", s: "PYG" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+595"],
+          nomH: "Paraguayens",
+        },
 
-  PA: { devise: {n:"Balboa panaméen",s:"PAB"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+507"], nomH:"Panaméens" },
-  PE: { devise: {n:"Sol péruvien",s:"PEN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+51"], nomH:"Péruviens" },
-  PF: { devise: {n:"Franc CFP",s:"XPF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+689"], nomH:"Polynésiens français" },
-  PG: { devise: {n:"Kina papouasien",s:"PGK"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+675"], nomH:"Papouasiens-Néo-Guinéens" },
-  PH: { devise: {n:"Peso philippin",s:"PHP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+63"], nomH:"Philippins" },
-  PK: { devise: {n:"Roupie pakistanaise",s:"PKR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+92"], nomH:"Pakistanais" },
-  PL: { devise: {n:"Zloty polonais",s:"PLN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+48"], nomH:"Polonais" },
-  PM: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+508"], nomH:"Saint-Pierrais et Miquelonnais" },
-  PN: { devise: {n:"Dollar néo-zélandais",s:"NZD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["Non disponible"], nomH:"Pitcairnais" },
-  PR: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-787","+1-939"], nomH:"Portoricains" },
-  PS: { devise: {n:"Shekel israélien / Dinar jordanien",s:"ILS/JOD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+970"], nomH:"Palestiniens" },
-  PT: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+351"], nomH:"Portugais" },
-  PW: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+680"], nomH:"Palauans" },
-  PY: { devise: {n:"Guaraní paraguayen",s:"PYG"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+595"], nomH:"Paraguayens" },
+        QA: {
+          devise: { n: "Riyal qatarien", s: "QAR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+974"],
+          nomH: "Qatariens",
+        },
 
-  QA: { devise: {n:"Riyal qatarien",s:"QAR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+974"], nomH:"Qatariens" },
+        RE: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+262"],
+          nomH: "Réunionnais",
+        },
+        RO: {
+          devise: { n: "Leu roumain", s: "RON" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+40"],
+          nomH: "Roumains",
+        },
+        RS: {
+          devise: { n: "Dinar serbe", s: "RSD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+381"],
+          nomH: "Serbes",
+        },
+        RU: {
+          devise: { n: "Rouble russe", s: "RUB" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+7"],
+          nomH: "Russes",
+        },
+        RW: {
+          devise: { n: "Franc rwandais", s: "RWF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+250"],
+          nomH: "Rwandais",
+        },
 
-  RE: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+262"], nomH:"Réunionnais" },
-  RO: { devise: {n:"Leu roumain",s:"RON"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+40"], nomH:"Roumains" },
-  RS: { devise: {n:"Dinar serbe",s:"RSD"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+381"], nomH:"Serbes" },
-  RU: { devise: {n:"Rouble russe",s:"RUB"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+7"], nomH:"Russes" },
-  RW: { devise: {n:"Franc rwandais",s:"RWF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+250"], nomH:"Rwandais" },
+        SA: {
+          devise: { n: "Riyal saoudien", s: "SAR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+966"],
+          nomH: "Saoudiens",
+        },
+        SB: {
+          devise: { n: "Dollar des Îles Salomon", s: "SBD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+677"],
+          nomH: "Salomonais",
+        },
+        SC: {
+          devise: { n: "Roupie seychelloise", s: "SCR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+248"],
+          nomH: "Seychellois",
+        },
+        SD: {
+          devise: { n: "Livre soudanaise", s: "SDG" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+249"],
+          nomH: "Soudanais",
+        },
+        SE: {
+          devise: { n: "Couronne suédoise", s: "SEK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+46"],
+          nomH: "Suédois",
+        },
+        SG: {
+          devise: { n: "Dollar de Singapour", s: "SGD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+65"],
+          nomH: "Singapouriens",
+        },
+        SH: {
+          devise: { n: "Livre de Sainte-Hélène", s: "SHP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+290"],
+          nomH: "Sainte-Hélenois",
+        },
+        SI: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+386"],
+          nomH: "Slovènes",
+        },
+        SJ: {
+          devise: { n: "Couronne norvégienne", s: "NOK" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+47-79"],
+          nomH: "Non disponible",
+        }, // Svalbard+Jan Mayen, très peu habité
+        SK: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+421"],
+          nomH: "Slovaques",
+        },
+        SL: {
+          devise: { n: "Leone sierra-léonais", s: "SLL" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+232"],
+          nomH: "Sierra-Léonais",
+        },
+        SM: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+378"],
+          nomH: "Saint-Marinais",
+        },
+        SN: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+221"],
+          nomH: "Sénégalais",
+        },
+        SO: {
+          devise: { n: "Shilling somalien", s: "SOS" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+252"],
+          nomH: "Somaliens",
+        },
+        SR: {
+          devise: { n: "Dollar surinamais", s: "SRD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+597"],
+          nomH: "Surinamais",
+        },
+        SS: {
+          devise: { n: "Livre sud-soudanaise", s: "SSP" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+211"],
+          nomH: "Sud-Soudanais",
+        },
+        ST: {
+          devise: { n: "Dobra santoméen", s: "STN" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+239"],
+          nomH: "Santoméens",
+        },
+        SV: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+503"],
+          nomH: "Salvadoriens",
+        },
+        SX: {
+          devise: { n: "Florin antillais néerlandais", s: "ANG" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+1-721"],
+          nomH: "Saint-Martinois (partie néerlandaise)",
+        },
+        SY: {
+          devise: { n: "Livre syrienne", s: "SYP" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Samedi",
+          indT: ["+963"],
+          nomH: "Syriens",
+        },
+        SZ: {
+          devise: { n: "Lilangeni swazilandais", s: "SZL" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+268"],
+          nomH: "Swazis",
+        },
 
-  SA: { devise: {n:"Riyal saoudien",s:"SAR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+966"], nomH:"Saoudiens" },
-  SB: { devise: {n:"Dollar des Îles Salomon",s:"SBD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+677"], nomH:"Salomonais" },
-  SC: { devise: {n:"Roupie seychelloise",s:"SCR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+248"], nomH:"Seychellois" },
-  SD: { devise: {n:"Livre soudanaise",s:"SDG"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+249"], nomH:"Soudanais" },
-  SE: { devise: {n:"Couronne suédoise",s:"SEK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+46"], nomH:"Suédois" },
-  SG: { devise: {n:"Dollar de Singapour",s:"SGD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+65"], nomH:"Singapouriens" },
-  SH: { devise: {n:"Livre de Sainte-Hélène",s:"SHP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+290"], nomH:"Sainte-Hélenois" },
-  SI: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+386"], nomH:"Slovènes" },
-  SJ: { devise: {n:"Couronne norvégienne",s:"NOK"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+47-79"], nomH:"Non disponible" }, // Svalbard+Jan Mayen, très peu habité
-  SK: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+421"], nomH:"Slovaques" },
-  SL: { devise: {n:"Leone sierra-léonais",s:"SLL"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+232"], nomH:"Sierra-Léonais" },
-  SM: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+378"], nomH:"Saint-Marinais" },
-  SN: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+221"], nomH:"Sénégalais" },
-  SO: { devise: {n:"Shilling somalien",s:"SOS"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+252"], nomH:"Somaliens" },
-  SR: { devise: {n:"Dollar surinamais",s:"SRD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+597"], nomH:"Surinamais" },
-  SS: { devise: {n:"Livre sud-soudanaise",s:"SSP"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+211"], nomH:"Sud-Soudanais" },
-  ST: { devise: {n:"Dobra santoméen",s:"STN"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+239"], nomH:"Santoméens" },
-  SV: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+503"], nomH:"Salvadoriens" },
-  SX: { devise: {n:"Florin antillais néerlandais",s:"ANG"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+1-721"], nomH:"Saint-Martinois (partie néerlandaise)" },
-  SY: { devise: {n:"Livre syrienne",s:"SYP"}, carSide:"Droite", seaAccess:"Oui", calendar:"Samedi", indT:["+963"], nomH:"Syriens" },
-  SZ: { devise: {n:"Lilangeni swazilandais",s:"SZL"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+268"], nomH:"Swazis" },
+        TC: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-649"],
+          nomH: "Turques-et-Caïquiens",
+        },
+        TD: {
+          devise: { n: "Franc CFA BEAC", s: "XAF" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+235"],
+          nomH: "Tchadiens",
+        },
+        TF: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        },
+        TG: {
+          devise: { n: "Franc CFA BCEAO", s: "XOF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+228"],
+          nomH: "Togolais",
+        },
+        TH: {
+          devise: { n: "Baht thaïlandais", s: "THB" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+66"],
+          nomH: "Thaïlandais",
+        },
+        TJ: {
+          devise: { n: "Somoni tadjik", s: "TJS" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+992"],
+          nomH: "Tadjiks",
+        },
+        TK: {
+          devise: { n: "Dollar néo-zélandais", s: "NZD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["Non disponible"],
+          nomH: "Tokélaouans",
+        },
+        TL: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+670"],
+          nomH: "Timorais",
+        },
+        TM: {
+          devise: { n: "Manat turkmène", s: "TMT" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+993"],
+          nomH: "Turkmènes",
+        },
+        TN: {
+          devise: { n: "Dinar tunisien", s: "TND" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+216"],
+          nomH: "Tunisiens",
+        },
+        TO: {
+          devise: { n: "Paʻanga tongien", s: "TOP" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+676"],
+          nomH: "Tongiens",
+        },
+        TR: {
+          devise: { n: "Livre turque", s: "TRY" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+90"],
+          nomH: "Turcs",
+        },
+        TT: {
+          devise: { n: "Dollar de Trinité-et-Tobago", s: "TTD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-868"],
+          nomH: "Trinidadiens",
+        },
+        TV: {
+          devise: { n: "Dollar australien", s: "AUD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+688"],
+          nomH: "Tuvaluans",
+        },
+        TW: {
+          devise: { n: "Nouveau dollar de Taïwan", s: "TWD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+886"],
+          nomH: "Taïwanais",
+        },
+        TZ: {
+          devise: { n: "Shilling tanzanien", s: "TZS" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+255"],
+          nomH: "Tanzaniens",
+        },
 
-  TC: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-649"], nomH:"Turques-et-Caïquiens" },
-  TD: { devise: {n:"Franc CFA BEAC",s:"XAF"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+235"], nomH:"Tchadiens" },
-  TF: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["Non disponible"], nomH:"Non disponible" },
-  TG: { devise: {n:"Franc CFA BCEAO",s:"XOF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+228"], nomH:"Togolais" },
-  TH: { devise: {n:"Baht thaïlandais",s:"THB"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+66"], nomH:"Thaïlandais" },
-  TJ: { devise: {n:"Somoni tadjik",s:"TJS"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+992"], nomH:"Tadjiks" },
-  TK: { devise: {n:"Dollar néo-zélandais",s:"NZD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["Non disponible"], nomH:"Tokélaouans" },
-  TL: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+670"], nomH:"Timorais" },
-  TM: { devise: {n:"Manat turkmène",s:"TMT"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+993"], nomH:"Turkmènes" },
-  TN: { devise: {n:"Dinar tunisien",s:"TND"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+216"], nomH:"Tunisiens" },
-  TO: { devise: {n:"Paʻanga tongien",s:"TOP"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+676"], nomH:"Tongiens" },
-  TR: { devise: {n:"Livre turque",s:"TRY"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+90"], nomH:"Turcs" },
-  TT: { devise: {n:"Dollar de Trinité-et-Tobago",s:"TTD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-868"], nomH:"Trinidadiens" },
-  TV: { devise: {n:"Dollar australien",s:"AUD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+688"], nomH:"Tuvaluans" },
-  TW: { devise: {n:"Nouveau dollar de Taïwan",s:"TWD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+886"], nomH:"Taïwanais" },
-  TZ: { devise: {n:"Shilling tanzanien",s:"TZS"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Lundi", indT:["+255"], nomH:"Tanzaniens" },
+        UA: {
+          devise: { n: "Hryvnia ukrainienne", s: "UAH" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+380"],
+          nomH: "Ukrainiens",
+        },
+        UG: {
+          devise: { n: "Shilling ougandais", s: "UGX" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+256"],
+          nomH: "Ougandais",
+        },
+        "UM-DQ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Palmyra / Île Jarvis
+        "UM-FQ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Île Baker
+        "UM-HQ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Île Howland
+        "UM-JQ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Île Johnston
+        "UM-MQ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Île Midway
+        "UM-WQ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["Non disponible"],
+          nomH: "Non disponible",
+        }, // Île Wake
 
-  UA: { devise: {n:"Hryvnia ukrainienne",s:"UAH"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+380"], nomH:"Ukrainiens" },
-  UG: { devise: {n:"Shilling ougandais",s:"UGX"}, carSide:"Gauche", seaAccess:"Non", calendar:"Lundi", indT:["+256"], nomH:"Ougandais" },
-  "UM-DQ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["Non disponible"], nomH:"Non disponible" }, // Palmyra / Île Jarvis
-  "UM-FQ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["Non disponible"], nomH:"Non disponible" }, // Île Baker
-  "UM-HQ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["Non disponible"], nomH:"Non disponible" }, // Île Howland
-  "UM-JQ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["Non disponible"], nomH:"Non disponible" }, // Île Johnston
-  "UM-MQ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["Non disponible"], nomH:"Non disponible" }, // Île Midway
-  "UM-WQ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["Non disponible"], nomH:"Non disponible" }, // Île Wake
+        US: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Américains",
+        },
 
-  US: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Américains" },
+        // États américains — devise/carSide/seaAccess/calendar/indT identiques à US
+        "US-AK": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Alaskiens",
+        },
+        "US-AL": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Alabamiens",
+        },
+        "US-AR": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Arkansasiens",
+        },
+        "US-AZ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Arizoniens",
+        },
+        "US-CA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Californiens",
+        },
+        "US-CO": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Coloradiens",
+        },
+        "US-CT": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Connecticutiens",
+        },
+        "US-DC": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Washingtoniens (DC)",
+        },
+        "US-DE": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Delawariens",
+        },
+        "US-FL": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Floridiens",
+        },
+        "US-GA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Géorgiens (US)",
+        },
+        "US-HI": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Hawaïens",
+        },
+        "US-IA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Iowans",
+        },
+        "US-ID": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Idahans",
+        },
+        "US-IL": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Illinoisiens",
+        },
+        "US-IN": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Indianiens",
+        },
+        "US-KS": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Kansasiens",
+        },
+        "US-KY": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Kentuckiens",
+        },
+        "US-LA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Louisianais",
+        },
+        "US-MA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Massachusettiens",
+        },
+        "US-MD": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Marylandais",
+        },
+        "US-ME": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Mainiens",
+        },
+        "US-MI": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Michiganais",
+        },
+        "US-MN": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Minnesotans",
+        },
+        "US-MO": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Missouriens",
+        },
+        "US-MS": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Mississippiens",
+        },
+        "US-MT": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Montanais",
+        },
+        "US-NC": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Caroliniens du Nord",
+        },
+        "US-ND": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Dakotains du Nord",
+        },
+        "US-NE": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Nebraskans",
+        },
+        "US-NH": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "New-Hampshiriens",
+        },
+        "US-NJ": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "New-Jerseyens",
+        },
+        "US-NM": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Nouveau-Mexicains",
+        },
+        "US-NV": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Nevadiens",
+        },
+        "US-NY": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "New-Yorkais",
+        },
+        "US-OH": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Ohioans",
+        },
+        "US-OK": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Oklahomans",
+        },
+        "US-OR": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Oregoniens",
+        },
+        "US-PA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Pennsylvaniens",
+        },
+        "US-RI": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Rhode-Islandais",
+        },
+        "US-SC": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Caroliniens du Sud",
+        },
+        "US-SD": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Dakotains du Sud",
+        },
+        "US-TN": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Tennesseens",
+        },
+        "US-TX": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Texans",
+        },
+        "US-UT": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Utahns",
+        },
+        "US-VA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Virginiens",
+        },
+        "US-VT": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Vermontois",
+        },
+        "US-WA": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Washingtoniens",
+        },
+        "US-WI": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Wisconsinites",
+        },
+        "US-WV": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Virginiens de l'Ouest",
+        },
+        "US-WY": {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+1"],
+          nomH: "Wyomingites",
+        },
 
-  // États américains — devise/carSide/seaAccess/calendar/indT identiques à US
-  "US-AK": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Alaskiens" },
-  "US-AL": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Alabamiens" },
-  "US-AR": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Arkansasiens" },
-  "US-AZ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Arizoniens" },
-  "US-CA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Californiens" },
-  "US-CO": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Coloradiens" },
-  "US-CT": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Connecticutiens" },
-  "US-DC": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Washingtoniens (DC)" },
-  "US-DE": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Delawariens" },
-  "US-FL": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Floridiens" },
-  "US-GA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Géorgiens (US)" },
-  "US-HI": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Hawaïens" },
-  "US-IA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Iowans" },
-  "US-ID": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Idahans" },
-  "US-IL": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Illinoisiens" },
-  "US-IN": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Indianiens" },
-  "US-KS": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Kansasiens" },
-  "US-KY": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Kentuckiens" },
-  "US-LA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Louisianais" },
-  "US-MA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Massachusettiens" },
-  "US-MD": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Marylandais" },
-  "US-ME": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Mainiens" },
-  "US-MI": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Michiganais" },
-  "US-MN": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Minnesotans" },
-  "US-MO": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Missouriens" },
-  "US-MS": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Mississippiens" },
-  "US-MT": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Montanais" },
-  "US-NC": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Caroliniens du Nord" },
-  "US-ND": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Dakotains du Nord" },
-  "US-NE": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Nebraskans" },
-  "US-NH": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"New-Hampshiriens" },
-  "US-NJ": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"New-Jerseyens" },
-  "US-NM": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Nouveau-Mexicains" },
-  "US-NV": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Nevadiens" },
-  "US-NY": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"New-Yorkais" },
-  "US-OH": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Ohioans" },
-  "US-OK": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Oklahomans" },
-  "US-OR": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Oregoniens" },
-  "US-PA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Pennsylvaniens" },
-  "US-RI": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Rhode-Islandais" },
-  "US-SC": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Caroliniens du Sud" },
-  "US-SD": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Dakotains du Sud" },
-  "US-TN": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Tennesseens" },
-  "US-TX": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Texans" },
-  "US-UT": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Utahns" },
-  "US-VA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Virginiens" },
-  "US-VT": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Vermontois" },
-  "US-WA": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Washingtoniens" },
-  "US-WI": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+1"], nomH:"Wisconsinites" },
-  "US-WV": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Virginiens de l'Ouest" },
-  "US-WY": { devise: {n:"Dollar américain",s:"USD"}, carSide:"Droite", seaAccess:"Non", calendar:"Dimanche", indT:["+1"], nomH:"Wyomingites" },
+        UY: {
+          devise: { n: "Peso uruguayen", s: "UYU" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+598"],
+          nomH: "Uruguayens",
+        },
+        UZ: {
+          devise: { n: "Soum ouzbek", s: "UZS" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+998"],
+          nomH: "Ouzbeks",
+        },
 
-  UY: { devise: {n:"Peso uruguayen",s:"UYU"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+598"], nomH:"Uruguayens" },
-  UZ: { devise: {n:"Soum ouzbek",s:"UZS"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+998"], nomH:"Ouzbeks" },
+        VA: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Non",
+          calendar: "Lundi",
+          indT: ["+39-06"],
+          nomH: "Vaticans",
+        },
+        VC: {
+          devise: { n: "Dollar des Caraïbes orientales", s: "XCD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-784"],
+          nomH: "Vincentais",
+        },
+        VE: {
+          devise: { n: "Bolívar vénézuélien", s: "VES" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+58"],
+          nomH: "Vénézuéliens",
+        },
+        VG: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-284"],
+          nomH: "Viergeois britanniques",
+        },
+        VI: {
+          devise: { n: "Dollar américain", s: "USD" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+1-340"],
+          nomH: "Viergeois américains",
+        },
+        VN: {
+          devise: { n: "Đồng vietnamien", s: "VND" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+84"],
+          nomH: "Vietnamiens",
+        },
+        VU: {
+          devise: { n: "Vatu vanuatuan", s: "VUV" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+678"],
+          nomH: "Vanuatuans",
+        },
 
-  VA: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Non", calendar:"Lundi", indT:["+39-06"], nomH:"Vaticans" },
-  VC: { devise: {n:"Dollar des Caraïbes orientales",s:"XCD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-784"], nomH:"Vincentais" },
-  VE: { devise: {n:"Bolívar vénézuélien",s:"VES"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+58"], nomH:"Vénézuéliens" },
-  VG: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-284"], nomH:"Viergeois britanniques" },
-  VI: { devise: {n:"Dollar américain",s:"USD"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+1-340"], nomH:"Viergeois américains" },
-  VN: { devise: {n:"Đồng vietnamien",s:"VND"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+84"], nomH:"Vietnamiens" },
-  VU: { devise: {n:"Vatu vanuatuan",s:"VUV"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+678"], nomH:"Vanuatuans" },
+        WF: {
+          devise: { n: "Franc CFP", s: "XPF" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+681"],
+          nomH: "Wallisiens et Futuniens",
+        },
+        WS: {
+          devise: { n: "Tala samoan", s: "WST" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+685"],
+          nomH: "Samoans",
+        },
 
-  WF: { devise: {n:"Franc CFP",s:"XPF"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+681"], nomH:"Wallisiens et Futuniens" },
-  WS: { devise: {n:"Tala samoan",s:"WST"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+685"], nomH:"Samoans" },
+        YE: {
+          devise: { n: "Riyal yéménite", s: "YER" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+967"],
+          nomH: "Yéménites",
+        },
+        YT: {
+          devise: { n: "Euro", s: "EUR" },
+          carSide: "Droite",
+          seaAccess: "Oui",
+          calendar: "Lundi",
+          indT: ["+262"],
+          nomH: "Mahorais",
+        },
 
-  YE: { devise: {n:"Riyal yéménite",s:"YER"}, carSide:"Droite", seaAccess:"Oui", calendar:"Dimanche", indT:["+967"], nomH:"Yéménites" },
-  YT: { devise: {n:"Euro",s:"EUR"}, carSide:"Droite", seaAccess:"Oui", calendar:"Lundi", indT:["+262"], nomH:"Mahorais" },
-
-  ZA: { devise: {n:"Rand sud-africain",s:"ZAR"}, carSide:"Gauche", seaAccess:"Oui", calendar:"Dimanche", indT:["+27"], nomH:"Sud-Africains" },
-  ZM: { devise: {n:"Kwacha zambien",s:"ZMW"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+260"], nomH:"Zambiens" },
-  ZW: { devise: {n:"Dollar zimbabwéen",s:"ZWL"}, carSide:"Gauche", seaAccess:"Non", calendar:"Dimanche", indT:["+263"], nomH:"Zimbabwéens" },
-
-};
+        ZA: {
+          devise: { n: "Rand sud-africain", s: "ZAR" },
+          carSide: "Gauche",
+          seaAccess: "Oui",
+          calendar: "Dimanche",
+          indT: ["+27"],
+          nomH: "Sud-Africains",
+        },
+        ZM: {
+          devise: { n: "Kwacha zambien", s: "ZMW" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+260"],
+          nomH: "Zambiens",
+        },
+        ZW: {
+          devise: { n: "Dollar zimbabwéen", s: "ZWL" },
+          carSide: "Gauche",
+          seaAccess: "Non",
+          calendar: "Dimanche",
+          indT: ["+263"],
+          nomH: "Zimbabwéens",
+        },
+      };
 
       const D_blason = {
-      
         AD: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Coat_of_arms_of_Andorra.svg",
         AE: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Emblem_of_the_United_Arab_Emirates.svg",
         AF: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Arms_of_the_Islamic_Emirate_of_Afghanistan.svg",
@@ -15984,7 +18156,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
         ZA: "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_South_Africa.svg",
         ZM: "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Zambia.svg",
         ZW: "https://commons.wikimedia.org/wiki/Special:FilePath/Coat_of_arms_of_Zimbabwe.svg",
-      }
+      };
 
       const P_info = {
         AD: {
@@ -22454,7 +24626,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
         }
         //Élément déjà là : region, subregion, independant, population,pib,co2e,gouvernement,religion,fuseaux,dateInde
         // On construit l'URL de l'API avec le nom du pays
-        const url = `https://restcountries.com/v5/alpha/${id}`
+        const url = `https://restcountries.com/v5/alpha/${id}`;
         mDrapeauCadre.src = ``;
         drapeauCadre.src = ``;
         itemBlason.src = ``;
@@ -22469,15 +24641,40 @@ contentPm.style.webkitOverflowScrolling = "touch";
             "https://upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Guadeloupe_%28UPLG%29.svg";
         }
 
-        //  itemBlason.src = viewState
-        //       ? ""
-        //       : `https://flagcdn.com/${id.toLowerCase()}.svg`;
-        viewState ? "" : (D_blason[id] ? (itemBlason.src = D_blason[id],document.getElementById('cadreBlason').querySelector('p').style.display="none") : document.getElementById('cadreBlason').querySelector('p').style.display = "flex" )
-          itemBlason.src = viewState
-                        ? ""
-                        : (D_blason[id] ? D_blason[id] : "");
+        const loadingCadreBlason = document.createElement("div");
+        loadingCadreBlason.className = "loadingCadre";
+        loadingCadreBlason.style.position = "absolute";
+        loadingCadreBlason.style.margin = "auto";
+        loadingCadreBlason.style.inset = "0";
+        loadingCadreBlason.style.height = "8.2em";
+        loadingCadreBlason.style.maxWidth = "none";
+        loadingCadreBlason.style.width = "7.2em";
+        loadingCadreBlason.style.display = "flex";
+        document.getElementById("cadreBlason").append(loadingCadreBlason);
 
-        
+        itemBlason.onload = () => loadingCadreBlason.remove();
+        itemBlason.onerror = () => loadingCadreBlason.remove();
+
+        if (!viewState && D_blason[id]) {
+          itemBlason.src = D_blason[id];
+          document
+            .getElementById("cadreBlason")
+            .querySelector("p").style.display = "none";
+        } else {
+          loadingCadreBlason.remove(); // pas d'image à charger, on retire direct
+          document
+            .getElementById("cadreBlason")
+            .querySelector("p").style.display = viewState ? "none" : "flex";
+        }
+
+        const loadingCadreContours = document.createElement("div");
+        loadingCadreContours.className = "loadingCadre";
+        loadingCadreContours.style.height = "8em";
+        loadingCadreContours.style.maxWidth = "none";
+        loadingCadreContours.style.width = "11.5em";
+        loadingCadreContours.style.display = "flex";
+        cadreContours.append(loadingCadreContours);
+
         fetch(
           !viewState
             ? id in D_ileLink
@@ -22563,39 +24760,37 @@ contentPm.style.webkitOverflowScrolling = "touch";
           L.style.display = "block";
         });
 
-        if(!viewState){
+        if (!viewState) {
           population.textContent = L_q[id].p.toLocaleString("fr-FR");
-        superficie.textContent = L_q[id].s.toLocaleString("fr-FR") + "km²"
-        independance.textContent = P_info[id].independent === true ? "Indépendant" : "Dépendant";
-        gouvernement.textContent = P_info[id].gouvernement;
-        religion.textContent = P_info[id].religion;
-        fuseaux.textContent = P_info[id].fuseaux;
-        carSide.textContent = D_hl[id].carSide;
-        seaAccess.textContent = D_hl[id].seaAccess;
-        calendar.textContent = D_hl[id].calendar;
-         indT.textContent = D_hl[id].indT;
-        nomH.textContent = D_hl[id].nomH;
-        devise.textContent = D_hl[id].devise.n + " (" + D_symbolesD[D_hl[id].devise.s]+")"               
+          superficie.textContent = L_q[id].s.toLocaleString("fr-FR") + "km²";
+          independance.textContent =
+            P_info[id].independent === true ? "Indépendant" : "Dépendant";
+          gouvernement.textContent = P_info[id].gouvernement;
+          religion.textContent = P_info[id].religion;
+          fuseaux.textContent = P_info[id].fuseaux;
+          carSide.textContent = D_hl[id].carSide;
+          seaAccess.textContent = D_hl[id].seaAccess;
+          calendar.textContent = D_hl[id].calendar;
+          indT.textContent = D_hl[id].indT;
+          nomH.textContent = D_hl[id].nomH;
+          devise.textContent =
+            D_hl[id].devise.n + " (" + D_symbolesD[D_hl[id].devise.s] + ")";
 
-        if (P_info[id].co2e === undefined || P_info[id].co2e === null) {
-                co2e.textContent = "Non disponible";
-              } else {
-                co2e.style.whiteSpace = "pre-wrap";
-                co2e.textContent =
-                  Math.floor(P_info[id].co2e).toLocaleString("fr-FR") +
-                  " tCO₂e/an";
-              }
+          if (P_info[id].co2e === undefined || P_info[id].co2e === null) {
+            co2e.textContent = "Non disponible";
+          } else {
+            co2e.style.whiteSpace = "pre-wrap";
+            co2e.textContent =
+              Math.floor(P_info[id].co2e).toLocaleString("fr-FR") + " tCO₂e/an";
+          }
 
-         if (P_info[id].pib === null || P_info[id].pib === undefined) {
-                pibPh.textContent = "Non disponible";
-              } else {
-                pibPh.textContent =
-                  Math.floor(P_info[id].pib).toLocaleString("fr-FR") +
-                  " (USD/an)";
-              }
-
+          if (P_info[id].pib === null || P_info[id].pib === undefined) {
+            pibPh.textContent = "Non disponible";
+          } else {
+            pibPh.textContent =
+              Math.floor(P_info[id].pib).toLocaleString("fr-FR") + " (USD/an)";
+          }
         }
-
 
         // fetch(url)
         //   .then(function (reponse) {
@@ -22611,7 +24806,7 @@ contentPm.style.webkitOverflowScrolling = "touch";
         //     /*Faire descendre le nom (car pour le Niger, ça dépasse)*/
 
         //     const info = data[0]; // L'API renvoie un tableau, on prend le 1er résultat
-           
+
         //   })
         //   .catch((err) => {});
 
@@ -25285,25 +27480,22 @@ contentPm.style.webkitOverflowScrolling = "touch";
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/sw.js");
       }
-    
 
       function loop() {
-
         requestAnimationFrame(loop);
       }
 
-       loop()
-fetch("https://api.exchangerate.host/convert?from=EUR&to=USD&amount=100")
-  .then(response => response.json())
-  .then(data => {
-    console.log("mlqskdmflqkjsdmlkj")
+      loop();
+      fetch("https://api.exchangerate.host/convert?from=EUR&to=USD&amount=100")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("mlqskdmflqkjsdmlkj");
 
-    console.log("Résultat :", data.result);
-  })
-  .catch(error => {
-
-    console.error("Erreur :", error);
-  });
+          console.log("Résultat :", data.result);
+        })
+        .catch((error) => {
+          console.error("Erreur :", error);
+        });
 
       /*phoneHome.style.display="none"
       phonePlay.style.display="flex"*/
