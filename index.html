@@ -700,6 +700,7 @@
         margin-top: 0em;
         height: 100%;
         max-width: 600px;
+
         background: rgba(17, 23, 79, 0.95);
         backdrop-filter: blur(10px);
         border-radius: 10px;
@@ -761,13 +762,14 @@
         justify-content: center;
         align-items: center;
         padding: 0.5em 0.5em;
-        border: 1px solid rgba(255, 255, 255, 0.5);
         gap: 0.5em;
         font-size: 1em;
         border-radius: 5px;
+        outline: 0.8px solid rgba(255, 255, 255, 0);
         font-weight: bold;
         color: #b4c8ff;
         background: rgba(17, 17, 135, 0.5);
+        transition : outline 0.2s ease;
       }
       .titleCadreS:active {
         background: rgba(7, 7, 55, 0.5);
@@ -1305,13 +1307,24 @@
         width: 100%;
         height: 2em;
         max-height: 3em;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, background 0.2s ease;
       }
+
+        .itemC img {
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .itemC:active {
+        background: rgba(14, 20, 69, 0.9);
+      }
+
       .rank {
         position: absolute;
         width: auto;
         height: auto;
-        right: 2em;
+        right: 1.6em;
         color: rgba(186, 204, 244, 0.6);
         font-size: 1.2em;
       }
@@ -1338,18 +1351,10 @@
         align-items: center;
         min-width: 3em;
       }
-      .itemC img {
-        width: 2.5em;
-        height: 2.5em;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      .itemC:active {
-        filter: brightness(1.2);
-      }
+    
       .ligneInContent {
         width: 100%;
-        border: 1px solid rgba(255, 255, 255, 0.4);
+        border: 0.8px solid rgba(255, 255, 255, 0.1);
       }
       .boxItemC {
         display: flex;
@@ -1394,6 +1399,7 @@
           transform 0.4s ease,
           border 0.2s ease;
       }
+
       .celDrapeau:active {
         transform: scale(0.95);
         border: 1px solid rgba(255, 255, 255, 0.8);
@@ -1599,10 +1605,12 @@
         outline: 0.1em solid rgba(255, 255, 255, 0.3);
         box-shadow: 0px 0px 5px rgba(12, 50, 88, 0.674);
         transition:
+          background 0.2s ease,
           transform 0.2s ease,
           filter 0.3s ease;
       }
       .opensearch:active {
+        background: rgba(41, 110, 179, 0.674);
         transform: scale(0.96);
       }
       .opensearch svg {
@@ -2205,9 +2213,9 @@
         word-wrap: break-word;
       }
       .txtCelCadre {
-        display : flex;
+        display: flex;
         max-width: 100%;
-        flex-wrap : wrap;
+        flex-wrap: wrap;
         font-size: 0.92em;
         color: rgba(255, 255, 255, 0.92);
         word-wrap: break-word;
@@ -2382,9 +2390,9 @@
         justify-self: flex-start;
         width: 1.5em;
         height: 1.5em;
-        margin : 0.8em;
+        margin: 0.8em;
         z-index: 10;
-        margin-bottom : -1em;
+        margin-bottom: -1em;
         border-radius: 5px;
         transition: background 0.2s ease;
       }
@@ -2393,6 +2401,9 @@
       }
 
       .cross {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         all: unset; /* enlève TOUT le style natif */
         box-sizing: border-box; /* indispensable après all: unset */
         cursor: pointer;
@@ -2404,10 +2415,12 @@
         width: 1.5em;
         height: 1.5em;
         fill: white;
+        transition: background 0.2s ease;
       }
       .cross:active {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(0, 0, 0, 0.05);
       }
+
       .cadreVue-inner {
         width: 100%;
         height: fit-content;
@@ -2796,7 +2809,7 @@
         background-color: rgb(187, 21, 21);
       }
       #devises {
-        display: none;
+        display: flex;
         background-color: rgb(14, 156, 52);
       }
       #map {
@@ -2860,13 +2873,15 @@
         width: 3em;
         height: 3em;
       }
-      .back:active {
-        background: rgba(255, 255, 255, 0.2);
-      }
       #backMaps {
         background: rgba(56, 140, 223, 0.4);
         left: 0.75em;
       }
+      #backMaps:active{
+        background: rgba(41, 110, 179, 0.674);
+        transform: scale(0.96);
+      }
+
       #configTitle {
         display: flex;
         justify-content: center;
@@ -3974,6 +3989,7 @@
 
       #bigWrapperClasser {
         display: none;
+        align-items: center;
         gap: 0.4em;
         width: fit-content;
         margin: 0 auto;
@@ -3991,19 +4007,20 @@
         margin: 0 auto;
         flex: 1;
       }
-      #wrapperNbrClasser {
+      #cadreNbrClasser {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-around;
         box-sizing: border-box;
         flex-shrink: 0;
         color: white;
-        gap: calc(0.15 * 5em);
+        gap: calc(0.12 * 5em);
         padding: 0 0.8em;
         top: 0;
         bottom: 0;
         border-radius: 0.8em;
-        background: rgb(23, 77, 239);
+        background: rgb(16, 59, 188);
       }
       .nbrClasser {
         display: flex;
@@ -4017,6 +4034,7 @@
         position: absolute;
         align-items: center;
         justify-content: center;
+        outline : 0.8px solid rgba(255,255,255,0);
         width: 100%;
         height: 4em;
         background: #1659f7;
@@ -4024,7 +4042,11 @@
         color: white;
         font-family: sans-serif;
         box-sizing: border-box;
+        transition : outline 0.2s ease;
         /* position en absolu géré en JS, transition gérée en JS */
+      }
+      .elClasser.active{
+        outline :0.85px solid rgba(255,255,255,0.45)
       }
 
       .elClasser.good {
@@ -4140,7 +4162,6 @@
       }
 
       /*CSS Devises*/
-
       .inputD:focus {
         outline: none;
       }
@@ -4151,6 +4172,14 @@
         opacity: 1;
         visibility: visible;
       }
+      #inputSD{
+        width : 100%;
+        background : white;
+      }
+      #resetSD{
+        cursor : pointer;
+      }
+
       /* sizing svg icons */
 
       #phoneDevise {
@@ -4184,8 +4213,7 @@
         color: white;
         width: 100%;
         height: 18vh;
-        padding-top: calc(env(safe-area-inset-top) + 1em);
-        padding-bottom: 1em;
+        padding-top: env(safe-area-inset-top);
 
         background: linear-gradient(
           111deg,
@@ -4193,6 +4221,7 @@
           #04b916 50%,
           #018444 100%
         );
+        background: linear-gradient(55deg, #15d121 0%, #0d9c1b 50%, #036837 100%);
         margin-bottom: 5em;
       }
 
@@ -4202,8 +4231,7 @@
         justify-content: center;
         align-items: center;
         flex-wrap: nowrap;
-        width: 100%;
-        padding: 0 1em;
+        height: 100%;
         gap: 0.8em;
         font-size: 1.05em;
         font-weight: 700;
@@ -4220,26 +4248,28 @@
         flex-direction: column;
         align-items: center;
         touch-action: none;
-        z-index: 10;
+        z-index: 20;
         gap: 0.8em;
         bottom: 0;
         top: 105%;
         border-top-left-radius: 2em;
         border-top-right-radius: 2em;
         padding-top: 1em;
-        padding-bottom: env(safe-area-inset-bottom);
         background: rgb(255, 250, 250);
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.35);
         width: 100%;
-        transition: top 0.3s ease, border-radius 0.3s ease, padding-top 0.3s ease;
+        transition:
+          top 0.3s ease,
+          border-radius 0.3s ease,
+          padding-top 0.3s ease;
       }
       #cadreSD.active {
         top: calc(18vh + 1em);
       }
-      #cadreSD.fullScreen{
-        top : 0;
+      #cadreSD.fullScreen {
+        top: 0;
         border-radius: 0;
-        padding-top: calc(env(safe-area-inset-top) + 1em); 
+        padding-top: calc(env(safe-area-inset-top) + 1em);
       }
       #titleCadreSD {
         display: flex;
@@ -4261,22 +4291,22 @@
         width: 100%;
         height: 1em;
         box-sizing: border-box;
-        transition : opacity 0.2s ease;
+        transition: opacity 0.2s ease;
       }
       #lineCadreSD.fullScreen {
-        opacity : 0;
-      } 
+        opacity: 0;
+      }
       #lineCadreSD svg {
         width: 3.6em;
         fill: rgba(0, 0, 0, 0.2);
       }
       #alphabetD {
-        position: absolute;
         display: flex;
+        position: absolute;
         z-index: 10;
         cursor: pointer;
-        top: 1em;
-        transform: none;
+        top : 0;
+        transform : none;
       }
 
       .letterD {
@@ -4293,7 +4323,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        color: rgba(0, 34, 30, 0.5);
+        color: rgba(0, 78, 14, 0.6);
         width: 1.2em;
         height: auto;
         transition:
@@ -4302,15 +4332,25 @@
       }
 
       #crossCadreSD {
-        fill: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         align-self: flex-start;
-        margin-right: 0em;
+        cursor: pointer;
+        height: 2.5em;
+        width: 2.5em;
+        border-radius: 50%;
         margin-left: 1.5em;
-        margin-bottom : 1em;
+        margin-bottom: 1em;
+        transition: background 0.2s ease;
       }
       #crossCadreSD svg {
-        height: 2.8em;
-        width: 2.8em;
+        fill: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        height: 100%;
+      }
+      #crossCadreSD:active {
+        background: rgba(0, 0, 0, 0.05);
       }
 
       #wrapperContentSD {
@@ -4329,7 +4369,6 @@
         overscroll-behavior: contain; /* évite la propagation au parent */
         display: flex;
         position: relative;
-
         overflow-y: auto;
         flex-direction: column;
         align-items: center;
@@ -4337,8 +4376,8 @@
         width: 100%;
         flex: 1;
         min-height: 0;
-        scrollbar-width: thin;
         scrollbar-width: none;
+        padding-bottom: env(safe-area-inset-bottom);
         scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
       }
       .elD {
@@ -4348,6 +4387,7 @@
         box-sizing: border-box;
         justify-content: flex-start;
         align-items: center;
+        font-size: 0.92em;
         padding: 1em 0;
         width: 100%;
         gap: 1em;
@@ -4355,6 +4395,11 @@
       }
       .elD.active {
         background: rgba(0, 0, 0, 0.05);
+      }
+      .spnElD {
+        position: absolute;
+        font-size: 1.2em;
+        right: 1.5em;
       }
       .flagErrorD {
         display: flex;
@@ -4418,7 +4463,7 @@
         position: relative;
         align-items: center;
         border-radius: 0.4em;
-        outline: 1.6px solid rgba(240,240,240,0.2);
+        outline: 1.6px solid rgba(240, 240, 240, 0.2);
         box-shadow: 0 0 0.08em rgba(0, 0, 0, 0.4);
         width: 80%;
         height: 3.4em;
@@ -4488,12 +4533,12 @@
         cursor: pointer;
         box-sizing: border-box;
         border-top-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+        border-radius: inherit;
         background: rgba(60, 180, 120, 0.12);
-        background: rgba(0,0,0,0);
+        background: rgba(0, 0, 0, 0);
         background: rgb(255, 250, 250);
 
-
-        border-bottom-right-radius: inherit;
         font-weight: 540;
         height: 100%;
         width: 40%;
@@ -4520,7 +4565,7 @@
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
-        height: 1.2em; /* hauteur fixe */
+        height: 1.6em; /* hauteur fixe */
         aspect-ratio: 1/1;
       }
 
@@ -4552,8 +4597,38 @@
       #arrowChange svg {
         border-color: rgba(80, 160, 100, 0.5);
         color: rgba(80, 160, 100, 0.7);
-
         height: 2.2em;
+      }
+
+      /* HTML: <div class="loader"></div> */
+      .loader {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(50%);
+        height: 0.18em;
+        width: 100%;
+        --c: no-repeat linear-gradient(#003fee 0 0);
+        background: var(--c), var(--c), transparent;
+        background-size: 60% 100%;
+        animation: l16 3s infinite;
+      }
+      @keyframes l16 {
+        0% {
+          background-position:
+            -150% 0,
+            -150% 0;
+        }
+        66% {
+          background-position:
+            250% 0,
+            -150% 0;
+        }
+        100% {
+          background-position:
+            250% 0,
+            250% 0;
+        }
       }
 
       .txtPop {
@@ -4571,14 +4646,14 @@
       #txtLastUpdate {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
         max-width: calc(100% - 2em);
         position: absolute;
         left: 1.5em;
         bottom: calc(env(safe-area-inset-bottom) + 1em);
-        letter-spacing: 0.05em;
-        font-size: 0.85em;
+        letter-spacing: 0.02em;
+        font-size: 0.75em;
         font-weight: 400;
         color: rgba(0, 0, 0, 0.6);
         align-self: flex-start; /* aligné à gauche comme le reste du contenu */
@@ -4607,8 +4682,7 @@
         border-radius: 0.5em;
         outline: 1.6px solid rgba(43, 192, 127, 0.25);
         outline: 1.6px solid rgba(0, 184, 148, 0.25);
-        
-        
+
         transition:
           background 0.2s ease,
           outine 0.2s ease;
@@ -4777,7 +4851,7 @@
               style="height: 3em"
               alt=""
             />
-            Géo-Quiz
+            Géo Quiz
           </h2>
         </div>
         <h4 style="align-self: center; letter-spacing: 1px">
@@ -4887,7 +4961,7 @@
       </svg>
       <div class="btnHomeBox">
         <div class="btnPlay hoverable" id="play">
-          <svg
+          <!-- <svg
             class="iconPlay"
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1"
@@ -4897,7 +4971,10 @@
             <path
               d="M11.536,1.465C9.674-.475,6.326-.475,4.464,1.465c-.944,.944-1.464,2.199-1.464,3.535s.52,2.591,1.472,3.543l1.913,1.871c.89,.871,2.34,.871,3.23,0l1.921-1.879c.944-.944,1.464-2.199,1.464-3.535s-.52-2.591-1.464-3.535Zm-3.536,5.529c-1.105,0-2-.895-2-2s.895-2,2-2,2,.895,2,2-.895,2-2,2Zm16,.006s-2.007,4.037-2,4.5c.009,.575,0,1.5,0,2.5,0,.5-.34,.805-.55,1.17-.378,.657-1.004,1.39-1.355,2.059-.155,.301-.17,.741-.056,1.037,.257,.656,.58,1.265,.915,1.89,.14,.261,.251,.529,.309,.813,.109,.533-.295,1.032-.839,1.031h-.014c-.279,0-.537-.132-.7-.354-.345-.469-.711-1.141-.711-1.647,0-1-1.383-1-2-1-.419,0-.662,.175-.804,.379-.274,.394-.73,.621-1.21,.621h-.987c-.331,.24-.907,1.978-1.356,3-.325,.74-1.313,.877-1.828,.255-.324-.391-.635-1.355-.816-1.716-.169-.339-.731-.469-1.217-.517-.493-.049-.926-.35-1.157-.788-.041-.078-.084-.157-.127-.233-.508-.896-2.423-1.821-4-2-.286-.032-.561,.026-.815,.126-.442,.174-.945-.019-1.174-.436-.813-1.482-1.511-3.467-1.511-5.171v-1.256c0-1.356,.499-3.424,.792-4.52,.054-.202,.172-.371,.323-.499,.251,1.398,.918,2.689,1.958,3.729l1.913,1.871c1.59,1.62,4.438,1.621,6.027,0l1.937-1.895c1.035-1.035,1.7-2.339,1.942-3.752,.596,.14,1.235,.301,1.781,.445,.782,.205,1.327,.911,1.327,1.72v1.138c0,.5,.844,.201,1.125-.096,.35-.371,1.061-1.307,1.499-1.895,.198-.266,.465-.473,.775-.59,.365-.138,.568-.442,.601-.918,.015-.217-.006-.842-.013-1.35-.004-.361,.29-.654,.652-.647,.005,0,.009,0,.014,0,.232,.004,.443,.133,.552,.337,.344,.649,.795,1.78,.795,1.78v.88Z"
             />
-          </svg>
+          </svg> -->
+          <svg
+          class="iconPlay"
+           xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M15.091,15.997c6.571-.033,8.909-3.513,8.909-6.497,0-1.677-1.188-3.08-2.765-3.419,.136-.386,.254-.741,.333-1.01,.353-1.193,.125-2.453-.626-3.458-.766-1.024-1.937-1.612-3.214-1.612H6.271c-1.277,0-2.449,.588-3.215,1.612-.751,1.005-.979,2.266-.626,3.458,.08,.269,.197,.624,.334,1.011-1.577,.339-2.764,1.742-2.764,3.419,0,2.984,2.339,6.464,8.909,6.497,.056,.302,.091,.61,.091,.924v3.079c0,1.826-1.536,1.992-2,2h-1c-.553,0-1,.447-1,1s.447,1,1,1h12c.553,0,1-.447,1-1s-.447-1-1-1h-.992c-.472-.008-2.008-.174-2.008-2v-3.08c0-.313,.035-.621,.091-.923Zm5.361-8.007c.017,0,.031,.01,.048,.01,.827,0,1.5,.673,1.5,1.5,0,2.034-1.609,4.197-6.036,4.47,.221-.299,.474-.576,.762-.821,1.739-1.478,2.933-3.453,3.726-5.159ZM2,9.5c0-.827,.673-1.5,1.5-1.5,.017,0,.031-.009,.047-.01,.794,1.706,1.988,3.681,3.727,5.159,.288,.245,.541,.521,.762,.821-4.427-.273-6.036-2.436-6.036-4.47Zm7.792,.263c-.264-.182-.375-.518-.27-.822l.519-1.606-1.366-1c-.327-.24-.398-.699-.158-1.026,.138-.188,.358-.3,.591-.3h1.681l.511-1.593c.129-.387,.547-.595,.934-.466,.22,.073,.393,.246,.466,.466l.51,1.593h1.681c.405,0,.734,.328,.734,.734,0,.235-.112,.455-.301,.593l-1.366,1,.519,1.606c.124,.386-.088,.8-.475,.925-.224,.072-.469,.032-.659-.107l-1.343-.988-1.344,.987c-.256,.191-.606,.192-.864,.004Z"/></svg>
           <h2>Jouer</h2>
         </div>
         <div class="btnPlay hoverable" id="map">
@@ -4915,7 +4992,7 @@
           <h2>Carte</h2>
         </div>
 
-              <div class="btnPlay hoverable" id="devises">
+        <div class="btnPlay hoverable" id="devises">
           <svg
             class="iconPlay"
             xmlns="http://www.w3.org/2000/svg"
@@ -4929,8 +5006,6 @@
           </svg>
           <h2>Devises</h2>
         </div>
-
-        
       </div>
     </div>
 
@@ -5992,7 +6067,7 @@
       </div>
       <!--HTML ModeClasser-->
       <div id="bigWrapperClasser">
-        <div id="wrapperNbrClasser"></div>
+        <div id="cadreNbrClasser"></div>
         <div id="wrapperClasser"></div>
       </div>
 
@@ -6844,7 +6919,7 @@
 
           <div id="mInfoBox">
             <div class="titleCadre" id="mTitleCadre"></div>
-            <div class="txtCapitaleCadre txtCapitaleCadres" id="mCapitale">
+            <div class="txtCapitaleCadre txtCapitaleCadres">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 id="Filled"
@@ -6855,7 +6930,7 @@
                   d="M12,.042a9.992,9.992,0,0,0-9.981,9.98c0,2.57,1.99,6.592,5.915,11.954a5.034,5.034,0,0,0,8.132,0c3.925-5.362,5.915-9.384,5.915-11.954A9.992,9.992,0,0,0,12,.042ZM12,14a4,4,0,1,1,4-4A4,4,0,0,1,12,14Z"
                 />
               </svg>
-              <span class="capitaleLabel"></span>
+              <span class="capitaleLabel" id="mCapitale"></span>
             </div>
           </div>
 
@@ -7722,7 +7797,7 @@
             </div>
           </div>
           <div class="titleCadre" id="titleCadre"><h2>Russie (RU)</h2></div>
-          <div class="txtCapitaleCadre txtCapitaleCadres" id="capitale">
+          <div class="txtCapitaleCadre txtCapitaleCadres">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               id="Layer_1"
@@ -7735,7 +7810,7 @@
                 d="M12,12A4,4,0,1,0,8,8,4,4,0,0,0,12,12Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,12,6Zm8.66,3.157-.719-.239A8,8,0,0,0,12,0,7.993,7.993,0,0,0,4.086,9.092a5.045,5.045,0,0,0-2.548,1.3A4.946,4.946,0,0,0,0,14v4.075a5.013,5.013,0,0,0,3.6,4.8l2.87.9A4.981,4.981,0,0,0,7.959,24a5.076,5.076,0,0,0,1.355-.186l5.78-1.71a2.987,2.987,0,0,1,1.573,0l2.387.8A4,4,0,0,0,24,19.021V13.872A5.015,5.015,0,0,0,20.66,9.156ZM7.758,3.762a5.987,5.987,0,0,1,8.484,0,6.037,6.037,0,0,1,.011,8.5L12.7,15.717a.992.992,0,0,1-1.389,0L7.758,12.277A6.04,6.04,0,0,1,7.758,3.762ZM22,19.021a1.991,1.991,0,0,1-.764,1.572,1.969,1.969,0,0,1-1.626.395L17.265,20.2a5.023,5.023,0,0,0-2.717-.016L8.764,21.892a3,3,0,0,1-1.694-.029l-2.894-.9A3.013,3.013,0,0,1,2,18.075V14a2.964,2.964,0,0,1,.92-2.163,3.024,3.024,0,0,1,1.669-.806A8.021,8.021,0,0,0,6.354,13.7l3.567,3.453a2.983,2.983,0,0,0,4.174,0l3.563-3.463a7.962,7.962,0,0,0,1.813-2.821l.537.178A3.006,3.006,0,0,1,22,13.872Z"
               />
             </svg>
-            <span class="capitaleLabel"></span>
+            <span class="capitaleLabel" id="capitale"></span>
           </div>
 
           <!--Menu Cadre-->
@@ -9845,19 +9920,17 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             />
           </svg>
         </div>
-        <button class="cross" id="crossCadreSD" onclick="">
+        <div id="crossCadreSD">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Outline"
             viewBox="0 0 24 24"
-            width="100%"
-            height="100%"
           >
             <path
               d="M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z"
             />
           </svg>
-        </button>
+        </div>
         <div id="titleCadreSD">Sélectionnez une devise</div>
 
         <form class="form" style="width: 60%; max-width: 280px">
@@ -9882,7 +9955,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
           <input
             class="inputD"
-            id="inputD"
+            id="inputSD"
             placeholder="Rechercher"
             required=""
             autocomplete="off"
@@ -9891,7 +9964,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             spellcheck="false"
             type="text"
           />
-          <button class="reset" id="resetD" type="reset">
+          <button class="reset" id="resetSD" type="reset">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -9993,18 +10066,20 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         </div>
       </div>
       <div id="headerDevise">
-          <button class="back" id="backDevise">
-            <svg
-              fill="white"
-              xmlns="http://www.w3.org/2000/svg"
-              id="Bold"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M17.921,1.505a1.5,1.5,0,0,1-.44,1.06L9.809,10.237a2.5,2.5,0,0,0,0,3.536l7.662,7.662a1.5,1.5,0,0,1-2.121,2.121L7.688,15.9a5.506,5.506,0,0,1,0-7.779L15.36.444a1.5,1.5,0,0,1,2.561,1.061Z"
-              />
-            </svg>
-          </button>
+        <div class="loader" id="loaderD"></div>
+
+        <button class="back" id="backDevise">
+          <svg
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+            id="Bold"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M17.921,1.505a1.5,1.5,0,0,1-.44,1.06L9.809,10.237a2.5,2.5,0,0,0,0,3.536l7.662,7.662a1.5,1.5,0,0,1-2.121,2.121L7.688,15.9a5.506,5.506,0,0,1,0-7.779L15.36.444a1.5,1.5,0,0,1,2.561,1.061Z"
+            />
+          </svg>
+        </button>
         <div id="titleDevise">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -10131,10 +10206,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         <div class="celPopD" data-d="EUR" data-v="GBP">EUR/GBP</div>
       </div>
 
-      <div id="txtLastUpdate">
-        <span style="flex-wrap: nowrap">Dernière actualisation :</span>
-        <p style="letter-spacing: none"></p>
-      </div>
+    <div id="txtLastUpdate">
+      <p style="width: 100%">
+    Taux fournis par <a href="https://www.exchangerate-api.com">ExchangeRate-API</a>
+  </p>
+  <span style="flex-wrap: nowrap">Dernière actualisation :</span>
+  <p id="pLast" style="letter-spacing: none"></p>
+</div>
     </div>
 
     <!--Script Home-->
@@ -10739,7 +10817,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             cadreNext.classList.remove("good", "bad", "none", "visible");
             cadreNext.classList.add("none", "visible");
             wrapperClasser.innerHTML = ``;
-            wrapperNbrClasser.innerHTML = ``;
+            cadreNbrClasser.innerHTML = ``;
             cChooseTrouver = false;
             for (
               let i = 0;
@@ -10771,7 +10849,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               const jsp = document.createElement("div");
               jsp.textContent = i + 1;
               nbrClasser.append(jsp);
-              wrapperNbrClasser.append(nbrClasser);
+              cadreNbrClasser.append(nbrClasser);
 
               const elClasser = document.createElement("div");
               elClasser.className = "elClasser";
@@ -10866,6 +10944,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
                     if (i !== el) i.classList.add("waitClasser");
                   });
                   el.style.transform = "scale(1.03)";
+                  el.classList.add('active')
                   dragging = true;
                   el.style.zIndex = 10000;
                   el.style.transition = "background 0.2s ease";
@@ -10902,6 +10981,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
                 function onEnd() {
                   itmsClasser.forEach((i) => i.classList.remove("waitClasser"));
+                  el.classList.remove('active')
+
                   if (!dragging) return;
                   dragging = false;
                   el.style.transform = "";
@@ -10972,14 +11053,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               D_elClasser[clef].dataset.goodOrder ===
               D_elClasser[clef].dataset.order
             ) {
-              wrapperNbrClasser.children[
+              cadreNbrClasser.children[
                 D_elClasser[clef].dataset.order
               ].style.color = "rgb(15, 250, 93)";
 
               D_elClasser[clef].classList.add("good");
               nbrGood += 1;
             } else {
-              wrapperNbrClasser.children[
+              cadreNbrClasser.children[
                 D_elClasser[clef].dataset.order
               ].style.color = "rgb(233, 78, 78)";
               D_elClasser[clef].classList.add("bad");
@@ -11256,13 +11337,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
                   D_elClasser[clef].dataset.goodOrder ===
                   D_elClasser[clef].dataset.order
                 ) {
-                  wrapperNbrClasser.children[
+                  cadreNbrClasser.children[
                     D_elClasser[clef].dataset.order
                   ].style.color = "rgb(15, 250, 93)";
 
                   D_elClasser[clef].classList.add("good");
                 } else {
-                  wrapperNbrClasser.children[
+                  cadreNbrClasser.children[
                     D_elClasser[clef].dataset.order
                   ].style.color = "rgb(233, 78, 78)";
                   D_elClasser[clef].classList.add("bad");
@@ -11439,7 +11520,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const bigWrapperClasser = document.getElementById("bigWrapperClasser");
       const wrapperClasser = document.getElementById("wrapperClasser");
       const titleModeClasser = document.getElementById("titleModeClasser");
-      const wrapperNbrClasser = document.getElementById("wrapperNbrClasser");
+      const cadreNbrClasser = document.getElementById("cadreNbrClasser");
 
       const btns4Choix = document.querySelectorAll(".btn4Choix");
       const cadreNext = document.querySelector(".cadreNext");
@@ -12608,6 +12689,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const drapeauCadre = document.getElementById("drapeauCadre");
       const titleCadre = document.getElementById("titleCadre");
       const capitales = document.querySelectorAll(".capitaleLabel");
+      const capitale = document.getElementById('capitale')
       const itemBlason = document.querySelector(".itemBlason");
       const cadreContours = document.getElementById("cadreContours");
       const cadreBlason = document.getElementById("cadreBlason");
@@ -13459,7 +13541,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const backListBox = document.getElementById("backListBox");
 
       backListBox.addEventListener("click", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         listBox.innerHTML = ``;
         vuesBox.style.transform = "translateX(0%)";
         cadreVue.style.height = "";
@@ -22442,11 +22524,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           co2e: 6168401414.77,
           gouvernement: "République fédérale semi-présidentielle",
           religion: "Christianisme (orthodoxie)",
-          fuseaux: [
-            "UTC+2",
-            "UTC+3",
-            "...UTC+12",
-          ],
+          fuseaux: ["UTC+2", "UTC+3", "...UTC+12"],
           otan: false,
           ue: false,
           cop: true,
@@ -25570,10 +25648,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         });
         mTitleCadre.textContent = viewState ? D_us[id.slice(-2)].n : L_q[id].n;
 
-        capitales.forEach(
-          (cap) =>
-            (cap.textContent = viewState ? D_us[id.slice(-2)].c : L_q[id].c),
-        );
+        mCapitale.textContent = viewState ? D_us[id.slice(-2)].c : L_q[id].c
+        capitale.textContent = viewState ? ("Capitale : " + D_us[id.slice(-2)].c) : ("Capitale : " + L_q[id].c)
+        
 
         txtsCelCadre.forEach((t) => (t.textContent = ""));
         loadingCadre.forEach((L) => {
@@ -25774,7 +25851,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       let difY;
       let difX;
       cadreVue.addEventListener("mousedown", (e) => {
-        return
+        return;
         cadreVue.style.cursor = "grabbing";
         moveCV = true;
         const CX = e.clientX;
@@ -26988,7 +27065,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           if (r.key === "unMember") {
             onuTitle.textContent = "Pays non membre de l'ONU";
           } else {
-            onuTitle.textContent = "Pays dépendants";
+            onuTitle.textContent = "Territoires non indépendants";
           }
           onuTitle.style.textDecoration = "underline";
           onu.appendChild(onuTitle);
@@ -27991,7 +28068,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       backSearch.addEventListener("click", () => {
         setTimeout(() => {
           inputC.value = "";
-          fillContentC(LfInit)
+          fillContentC(LfInit);
         }, 100);
         cadreS.classList.remove("active");
       });
@@ -28001,6 +28078,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       //Header
       titleCadreS.addEventListener("click", (e) => {
         e.stopPropagation();
+        cadreFilterS.classList.contains("active")
+          ? burgerInput.click()
+          : 1 === 1;
         cadreClasser.classList.remove("active");
         cadreFilterS.classList.remove("active");
         cadreModeS.classList.toggle("active");
@@ -28016,13 +28096,11 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       optionModeS.forEach((option) => {
         option.addEventListener("click", () => {
           currentSearching = option.dataset.searching;
-          currentSearching === "pays"
-            ? fillContentC(Ls)
-            : fillContentFlag(LfInit);
 
           optionModeS.forEach((opt) => opt.classList.remove("active"));
           option.classList.add("active");
           cadreModeS.classList.remove("active");
+        document.getElementById("arrowTitle").classList.remove("active")
           if (option.id === "flagS") {
             // Logique pour afficher les drapeaux
             titleCadreS.querySelector("span").textContent = "Drapeaux";
@@ -28030,6 +28108,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             // Logique pour afficher les pays
             titleCadreS.querySelector("span").textContent = "Pays";
           }
+
+          requestAnimationFrame(()=>{
+             currentSearching === "pays"
+            ? fillContentC(Ls)
+            : fillContentFlag(LfInit);
+          })
         });
       });
 
@@ -28062,6 +28146,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       });
       worldFilter.addEventListener("click", (e) => {
         e.stopPropagation();
+        document.getElementById("arrowTitle").classList.remove("active")
         cadreClasser.classList.remove("active");
         cadreModeS.classList.remove("active");
         if (e.target.closest("label")) return; // le label gère déjà via change
@@ -28246,6 +28331,15 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       gridChoice.addEventListener("click", (e) => {
         e.stopImmediatePropagation();
+
+        cadreFilterS.classList.contains("active")
+          ? burgerInput.click()
+          : 1 === 1;
+        cadreFilterS.classList.remove("active");
+        cadreClasser.classList.remove("active");
+        cadreModeS.classList.remove("active");
+        document.getElementById("arrowTitle").classList.remove("active")
+        gridChoice.classList.remove("active");
         if (e.target.closest(".optionGrid")) return; // l'option gère déjà via click
         gridChoice.classList.remove("active");
       });
@@ -28261,9 +28355,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       classer.addEventListener("click", (e) => {
         e.stopPropagation();
+        cadreFilterS.classList.contains("active")
+          ? burgerInput.click()
+          : "";
+
+        document.getElementById("arrowTitle").classList.remove("active")
         cadreModeS.classList.remove("active");
         cadreFilterS.classList.remove("active");
-
         cadreClasser.classList.toggle("active");
       });
 
@@ -28303,6 +28401,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         cadreFilterS.classList.remove("active");
         cadreClasser.classList.remove("active");
         cadreModeS.classList.remove("active");
+        document.getElementById("arrowTitle").classList.remove("active")
         gridChoice.classList.remove("active");
         document.getElementById("arrowTitle").classList.remove("active");
       });
@@ -28401,11 +28500,15 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const inputD1 = document.getElementById("inputD1");
       const inputD2 = document.getElementById("inputD2");
       L_inputD = [inputD1, inputD2];
-      L_inputD.forEach(input=>{
-        input.addEventListener('keydown',(e)=>{
-          if(input.value === "" && (e.key ==="," ||e.key ==="." )){e.preventDefault()}
-        })
-      })
+      L_inputD.forEach((input) => {
+        input.addEventListener("keydown", (e) => {
+          if (input.value === "" && (e.key === "," || e.key === ".")) {
+            e.preventDefault();
+          }
+        });
+      });
+
+      const loaderD = document.getElementById("loaderD");
       const cadreD1 = document.getElementById("cadreD1");
       const cadreD2 = document.getElementById("cadreD2");
       const choiceD1 = document.getElementById("choiceD1");
@@ -28414,10 +28517,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const infoConvert = document.getElementById("infoConvert");
       const arrowChange = document.getElementById("arrowChange");
       const cadreSD = document.getElementById("cadreSD");
-      const lineCadreSD = document.getElementById('lineCadreSD')
+      const lineCadreSD = document.getElementById("lineCadreSD");
 
-      const inputD = document.getElementById("inputD");
-      const resetD = document.getElementById("resetD");
+      const inputSD = document.getElementById("inputSD");
+      const resetSD = document.getElementById("resetSD");
       const contentCadreSD = document.getElementById("contentCadreSD");
       contentCadreSD.addEventListener("pointerdown", (e) => {
         e.stopPropagation();
@@ -28490,14 +28593,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       crossCadreSD.addEventListener("click", (e) => {
         cadreSD.style.top = "";
         cadreSD.classList.remove("active");
-        cadreSD.classList.remove('fullScreen')
+        cadreSD.classList.remove("fullScreen");
         full = false;
-        lineCadreSD.classList.remove('fullScreen')
+        lineCadreSD.classList.remove("fullScreen");
       });
 
       [choiceD1, choiceD2].forEach((c) => {
         c.addEventListener("click", () => {
-          inputD.value = "";
+          inputSD.value = "";
           fillContentD(D_nDevises);
           currentChoiceD = c;
           cadreSD.style.top = "";
@@ -28525,12 +28628,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           let a = dataLatest.slice(13, 17);
           let h = dataLatest.slice(18, 26);
           let utc = dataLatest.slice(26);
-          document
-            .getElementById("txtLastUpdate")
-            .querySelector("p").textContent =
+         document.getElementById('pLast').textContent =
             "\u00A0" + D_semaine[s] + jr + D_mois[m] + " " + h + utc;
 
-          inputD1.value = 1.0 + "€";
+          inputD1.value = "1.00" + "€";
           inputD2.value =
             Math.round(dataConvert["USD"] * 100) / 100 + D_symbolesD[currentDV];
           infoConvert.textContent =
@@ -28575,8 +28676,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       inputD1.addEventListener("blur", () => {
         cadreD1.classList.remove("active");
-        if([",","."].includes(inputD1.value.slice(-1))){
-          inputD1.value = inputD1.value.slice(0,-1)
+        if ([",", "."].includes(inputD1.value.slice(-1))) {
+          inputD1.value = inputD1.value.slice(0, -1);
         }
         if (inputD1.value.length !== 0) {
           inputD1.value = inputD1.value + D_symbolesD[currentDD];
@@ -28584,9 +28685,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             inputD2.value = inputD2.value + D_symbolesD[currentDV];
           }
         } else {
-          inputD1.value = 1.00 + D_symbolesD[currentDD];
-          inputD2.value = Math.round(dataConvert[currentDV] * 100) / 100 + D_symbolesD[currentDV];
-
+          inputD1.value = 1.0 + D_symbolesD[currentDD];
+          inputD2.value =
+            Math.round(dataConvert[currentDV] * 100) / 100 +
+            D_symbolesD[currentDV];
         }
       });
 
@@ -28630,8 +28732,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       inputD2.addEventListener("blur", () => {
         cadreD2.classList.remove("active");
-        if([",","."].includes(inputD2.value.slice(-1))){
-          inputD2.value = inputD2.value.slice(0,-1)
+        if ([",", "."].includes(inputD2.value.slice(-1))) {
+          inputD2.value = inputD2.value.slice(0, -1);
         }
 
         if (inputD2.value.length !== 0) {
@@ -28640,8 +28742,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             inputD1.value = inputD1.value + D_symbolesD[currentDD];
           }
         } else {
-          inputD1.value = 1.00 + D_symbolesD[currentDD];
-          inputD2.value = Math.round(dataConvert[currentDV] * 100) / 100 + D_symbolesD[currentDV];
+          inputD1.value = 1.0 + D_symbolesD[currentDD];
+          inputD2.value =
+            Math.round(dataConvert[currentDV] * 100) / 100 +
+            D_symbolesD[currentDV];
         }
       });
 
@@ -28672,16 +28776,18 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
           currentChoiceD = choiceD2;
           changeD(choiceD2);
-          currentChoiceD = choiceD1;
-          changeD(choiceD1);
+          requestAnimationFrame(() => {
+            currentChoiceD = choiceD1;
+            changeD(choiceD1);
+          });
         });
       });
 
       // Aphabet
-
+      let cLD = "rgb(4, 77, 42)" // color lettre active
       let scrollLetterD = document.getElementById("caseDA");
       scrollLetterD.style.transform = "scale(1.1) translateX(-0.5em)";
-      scrollLetterD.style.color = "green";
+      scrollLetterD.style.color = cLD;
       contentCadreSD.addEventListener("pointerdown", (e) =>
         e.stopPropagation(),
       );
@@ -28738,7 +28844,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           });
           scrollLetterD = document.getElementById("caseD" + closestLetterD);
           scrollLetterD.style.transform = "scale(1.1) translateX(-0.5em)";
-          scrollLetterD.style.color = "green";
+          scrollLetterD.style.color = cLD;
         }
       });
 
@@ -28769,7 +28875,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         if (letter) {
           lettersD.forEach((L) => {
             L.querySelector(".caseLetterD").style.transform = "";
-            L.querySelector(".caseLetterD").style.color = "green";
+            L.querySelector(".caseLetterD").style.color = cLD;
           });
 
           letter.querySelector(".caseLetterD").style.transform =
@@ -28818,9 +28924,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         difYD = CY - parseInt(cadreSD.style.top);
         if (
           difYD >
-          inputD.getBoundingClientRect().bottom +
-            inputD.getBoundingClientRect().height -
-            parseInt(cadreSD.style.top) || full
+            inputSD.getBoundingClientRect().bottom +
+              inputSD.getBoundingClientRect().height -
+              parseInt(cadreSD.style.top) ||
+          full
         ) {
           moveSD = false;
         }
@@ -28837,9 +28944,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         cadreSD.style.transition = "";
         moveSD = false;
         if (cadreSD.getBoundingClientRect().top < window.innerHeight * 0.25) {
-          
           cadreSD.style.top = "";
-          cadreSD.getBoundingClientRect().top < window.innerHeight * 0.15 ? (cadreSD.classList.add("fullScreen"),full=true, lineCadreSD.classList.add('fullScreen')) : cadreSD.classList.add("active");
+          cadreSD.getBoundingClientRect().top < window.innerHeight * 0.15
+            ? (cadreSD.classList.add("fullScreen"),
+              (full = true),
+              lineCadreSD.classList.add("fullScreen"))
+            : cadreSD.classList.add("active");
         } else {
           crossCadreSD.click();
         }
@@ -29007,6 +29117,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         ZWL: "Dollar zimbabwéen",
       };
 
+      let L_detailed = ["EUR","USD","BRL","PAB","NIO","AUD","BND","HKD","SGD","FJD","NZD","AMD","PYG","ZMW","ALL","HNL","MDL","GIP","IMP","EGP","LSL","AZN","TMT","BAM","MZN","TWD","ARS","DOP","MXN","PHP","UYU","GTQ","OMR","MYR","BYN","INR","NPR","LKR","KES","UGX","PEN","CNY"]
+
       function createFlagD(clefD) {
         const flagErrorD = document.createElement("div");
         flagErrorD.className = "flagErrorD";
@@ -29061,21 +29173,25 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         if (oldFallback) oldFallback.remove(); // supprime le fallback si présent
 
         img.src = ``;
-        img.src = `https://wise.com/web-art/assets/flags/${d.toLowerCase()}-detailed.svg`;
-
-        img.onerror = () => {
+        if (L_detailed.includes(d)){
+          img.src = `https://wise.com/web-art/assets/flags/${d.toLowerCase()}-detailed.svg`;
+        }
+        else {
           img.src = `https://wise.com/web-art/assets/flags/${d.toLowerCase()}.svg`;
-
           img.onerror = () => {
             currentChoiceD.querySelector(".CadreDrapeauD").style.display =
               "none";
 
             const fallback = document.createElement("div");
             fallback.className = "flagFallbackD";
-            fallback.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g id="_01_align_center" data-name="01 align center"><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.647,7H17.426a19.676,19.676,0,0,0-2.821-4.644A10.031,10.031,0,0,1,20.647,7ZM16.5,12a10.211,10.211,0,0,1-.476,3H7.976A10.211,10.211,0,0,1,7.5,12a10.211,10.211,0,0,1,.476-3h8.048A10.211,10.211,0,0,1,16.5,12ZM8.778,17h6.444A19.614,19.614,0,0,1,12,21.588,19.57,19.57,0,0,1,8.778,17Zm0-10A19.614,19.614,0,0,1,12,2.412,19.57,19.57,0,0,1,15.222,7ZM9.4,2.356A19.676,19.676,0,0,0,6.574,7H3.353A10.031,10.031,0,0,1,9.4,2.356ZM2.461,9H5.9a12.016,12.016,0,0,0-.4,3,12.016,12.016,0,0,0,.4,3H2.461a9.992,9.992,0,0,1,0-6Zm.892,8H6.574A19.676,19.676,0,0,0,9.4,21.644,10.031,10.031,0,0,1,3.353,17Zm11.252,4.644A19.676,19.676,0,0,0,17.426,17h3.221A10.031,10.031,0,0,1,14.605,21.644ZM21.539,15H18.1a12.016,12.016,0,0,0,.4-3,12.016,12.016,0,0,0-.4-3h3.437a9.992,9.992,0,0,1,0,6Z"/></g></svg>`;
+            fallback.innerHTML = 
+            `
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 26 26"><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.657,7H17.431A19.675,19.675,0,0,0,14.6,2.342,10.041,10.041,0,0,1,20.657,7ZM16.5,12a10.209,10.209,0,0,1-.473,3H7.973A10.209,10.209,0,0,1,7.5,12a10.209,10.209,0,0,1,.473-3h8.054A10.209,10.209,0,0,1,16.5,12ZM8.774,17h6.452A19.562,19.562,0,0,1,12,21.588,19.562,19.562,0,0,1,8.774,17Zm0-10A19.562,19.562,0,0,1,12,2.412,19.562,19.562,0,0,1,15.226,7ZM9.4,2.342A19.7,19.7,0,0,0,6.569,7H3.343A10.041,10.041,0,0,1,9.4,2.342ZM2.46,9H5.892a11.676,11.676,0,0,0,0,6H2.46a10.013,10.013,0,0,1,0-6Zm.883,8H6.569A19.675,19.675,0,0,0,9.4,21.658,10.041,10.041,0,0,1,3.343,17ZM14.6,21.658A19.7,19.7,0,0,0,17.431,17h3.226A10.041,10.041,0,0,1,14.6,21.658ZM21.54,15H18.108a11.676,11.676,0,0,0,0-6H21.54a10.013,10.013,0,0,1,0,6Z"/></svg>`
+            
+
             currentChoiceD.querySelector(".CadreDrapeauD").before(fallback); // insère juste avant l'img
           };
-        };
+        }
         let tf = false;
 
         let CD1 = inputD1.value.slice(
@@ -29087,12 +29203,16 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           ? ((currentDD = d), (tf = true))
           : (currentDV = d);
 
+        tf
+          ? ((inputD2.value = "0"),
+            (inputD2.readOnly = true),
+            (inputD1.readOnly = true),
+            (loaderD.style.display = "flex"))
+          : "";
+
         infoConvert.textContent =
           currentChoiceD === choiceD1
-            ? "1.00 " +
-              currentDD +
-              " = ..." +
-              currentDV
+            ? "1.00 " + currentDD + " = ..." + currentDV
             : "1.00 " +
               currentDD +
               " = " +
@@ -29118,16 +29238,20 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               let h = dataLatest.slice(18, 26);
               let utc = dataLatest.slice(26);
 
-              document
-                .getElementById("txtLastUpdate")
-                .querySelector("p").textContent =
+              document.getElementById('pLast').textContent =
                 "\u00A0" + D_semaine[s] + jr + D_mois[m] + " " + h + utc;
 
               inputD1.value = CD1 + D_symbolesD[currentDD];
 
               inputD2.value =
-                Math.round(dataConvert[currentDV] * parseFloat(CD1) * 100) / 100 +
+                Math.round(dataConvert[currentDV] * parseFloat(CD1) * 100) /
+                  100 +
                 D_symbolesD[currentDV];
+
+              inputD2.readOnly = false;
+              inputD1.readOnly = false;
+              loaderD.style.display = "";
+
               infoConvert.textContent =
                 "1.00 " +
                 currentDD +
@@ -29156,7 +29280,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       }
 
       function fillContentD(Ld) {
-        if (Object.keys(Ld).length === 0 && inputD.value.length !== 0) {
+        if (Object.keys(Ld).length === 0 && inputSD.value.length !== 0) {
           contentCadreSD.innerHTML = `
         <p style="text-align : center;  margin-top : 4em; color: rgba(0,0,0,0.6); font-size = 1.2em">
               Aucun résultat
@@ -29164,18 +29288,18 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           return;
         }
 
-        if (inputD.value.length === 0) {
+        if (inputSD.value.length === 0) {
           Ld = D_nDevises;
         }
 
         contentCadreSD.scrollTop = 0;
-         casesLetterD.forEach((c) => {
-            c.style.transform = "";
-            c.style.color = "";
-          });
-          scrollLetterD = document.getElementById("caseDA");
-          scrollLetterD.style.transform = "scale(1.1) translateX(-0.5em)";
-          scrollLetterD.style.color = "green";
+        casesLetterD.forEach((c) => {
+          c.style.transform = "";
+          c.style.color = "";
+        });
+        scrollLetterD = document.getElementById("caseDA");
+        scrollLetterD.style.transform = "scale(1.1) translateX(-0.5em)";
+        scrollLetterD.style.color = cLD;
 
         Ld = Object.fromEntries(
           Object.entries(Ld).sort(([, a], [, b]) =>
@@ -29197,7 +29321,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           GBP: "Livre sterling",
           BRL: "Réal brésilien",
         };
-        if (inputD.value.length === 0) {
+        if (inputSD.value.length === 0) {
           const txtPopSD = document.createElement("div");
           txtPopSD.id = txtPopSD;
           txtPopSD.className = "txtPop";
@@ -29206,12 +29330,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         }
 
         delete Ld.KPW;
-        delete Ld[choiceD2.dataset.devise];
-        delete L_pop[choiceD2.dataset.devise];
-        delete Ld[choiceD1.dataset.devise];
-        delete L_pop[choiceD1.dataset.devise];
+        // delete Ld[choiceD2.dataset.devise];
+        // delete L_pop[choiceD2.dataset.devise];
+        // delete Ld[choiceD1.dataset.devise];
+        // delete L_pop[choiceD1.dataset.devise];
 
-        const L_LD = inputD.value.length === 0 ? [L_pop, Ld] : [Ld]; // parcourir les populaire et la liste normale, pouvoir avoir deux fois la même clef ( populaire et après)
+        const L_LD = inputSD.value.length === 0 ? [L_pop, Ld] : [Ld]; // parcourir les populaire et la liste normale, pouvoir avoir deux fois la même clef ( populaire et après)
 
         const D_clone = structuredClone(D_alphabet);
 
@@ -29222,8 +29346,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             for (const [baseLetter, accents] of Object.entries(D_clone)) {
               if (
                 accents.includes(firstChar) &&
-                ((inputD.value.length === 0 && L !== L_pop) ||
-                  inputD.value.length !== 0)
+                ((inputSD.value.length === 0 && L !== L_pop) ||
+                  inputSD.value.length !== 0)
               ) {
                 const bandeLetter = document.createElement("div");
                 bandeLetter.className = "bandeLetterSD";
@@ -29249,9 +29373,11 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             DrapeauBoxD.className = "DrapeauBoxD";
             let imgD = document.createElement("img");
             imgD.className = "DrapeauCadreD";
+            if(clefD)
+            
             imgD.src = `https://wise.com/web-art/assets/flags/${clefD.toLowerCase()}.svg`;
-
             imgD.onerror = () => {
+
               const newImgD = document.createElement("div");
               newImgD.className = "flagErrorD";
               const spnD = document.createElement("span");
@@ -29280,6 +29406,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             cadreDrapeauSD.append(DrapeauBoxD);
             contentTxtHeaderD.append(cadreDrapeauSD, txtElD);
             elD.append(contentTxtHeaderD);
+            if (clefD === currentDD || clefD === currentDV) {
+              const spnElD = document.createElement("span");
+              spnElD.textContent = "✓";
+              spnElD.className = "spnElD";
+              elD.append(spnElD);
+            }
             contentCadreSD.append(elD, ligneInSD);
 
             elD.style.transform = "translateY(-0.8em)";
@@ -29292,7 +29424,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
             elD.addEventListener("pointerdown", () => {
               elD.classList.add("active");
-            });
+            },{passive : true});
 
             document.addEventListener("pointerup", () => {
               elD.classList.remove("active");
@@ -29303,51 +29435,59 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             });
 
             elD.addEventListener("click", () => {
-              changeD(elD);
+              if (
+                (currentChoiceD === choiceD1 && clefD === currentDV) ||
+                (currentChoiceD === choiceD2 && clefD === currentDD)
+              ) {
+                crossCadreSD.click();
+                arrowChange.click();
+                return;
+              }
+              requestAnimationFrame(() => changeD(elD));
             });
           }
         });
         document.getElementById("wrapperContentSD").append(alphabetD);
       }
 
-      fillContentD(D_nDevises);
       document
         .querySelector(".form")
         .addEventListener("pointerdown", (e) => e.stopPropagation());
-      resetD.addEventListener("click", (e) => {
+      resetSD.addEventListener('pointerdown',(e)=>e.stopPropagation())
+      resetSD.addEventListener("click", (e) => {
         e.stopPropagation();
         setTimeout(() => {
           fillContentD({});
         }, 10);
       });
 
-      inputD.addEventListener("input", (e) => {
+      inputSD.addEventListener("input", (e) => {
         let Ld = {};
         for (const clefD of Object.keys(D_nDevises)) {
-          const val = inputD.value
+          const val = inputSD.value
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .toUpperCase();
           const nom =
-            clefD +
+            clefD + D_symbolesD[clefD] +
             D_nDevises[clefD]
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
               .toUpperCase();
 
-          const valL = inputD.value
+          const valL = inputSD.value
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase();
           const nomL =
-            clefD +
+            clefD + D_symbolesD[clefD] +
             D_nDevises[clefD]
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
               .toLowerCase();
           if (
             (nom.includes(val) || nomL.includes(valL)) &&
-            /*valL === nomL.slice(0, val.length)*/ inputD.value.length != 0
+            /*valL === nomL.slice(0, val.length)*/ inputSD.value.length != 0
           ) {
             Ld[clefD] = D_nDevises[clefD];
           }
@@ -29368,35 +29508,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         requestAnimationFrame(loop);
       }
       // loop()
-      // document.addEventListener(
-      //   "touchmove",
-      //   (e) => {
-      //     e.preventDefault();
-      //   },
-      //   { passive: false },
-      // );
-
-      // const inputs = document.querySelectorAll("input, textarea, select"); // Enlever le zooù automatique quand on focus un input
-
-      // inputs.forEach((el) => {
-      //   el.addEventListener("focus", () => {
-      //     document
-      //       .querySelector('meta[name="viewport"]')
-      //       .setAttribute(
-      //         "content",
-      //         "width=device-width, initial-scale=1, maximum-scale=1",
-      //       );
-      //   });
-
-      //   el.addEventListener("blur", () => {
-      //     document
-      //       .querySelector('meta[name="viewport"]')
-      //       .setAttribute("content", "width=device-width, initial-scale=1");
-      //   });
-      // });
-
-      // loop();
-
       /*phoneHome.style.display="none"
       phonePlay.style.display="flex"*/
       /* setTimeout(() => {

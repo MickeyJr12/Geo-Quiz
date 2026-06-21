@@ -16,7 +16,8 @@
           "scrollbar-color",
           "scrollbar-width: thin",
           "animation-timeline: view()",
-          "-webkit-overflow-scrolling"
+          "-webkit-overflow-scrolling",
+          "-moz-appearance"
         ]
       }
     ],
