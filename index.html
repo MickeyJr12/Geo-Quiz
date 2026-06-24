@@ -768,7 +768,7 @@
         font-weight: bold;
         color: #b4c8ff;
         background: rgba(17, 17, 135, 0.5);
-        transition : outline 0.2s ease;
+        transition: outline 0.2s ease;
       }
       .titleCadreS:active {
         background: rgba(7, 7, 55, 0.5);
@@ -1306,10 +1306,12 @@
         width: 100%;
         height: 2em;
         max-height: 3em;
-        transition: transform 0.3s ease, background 0.2s ease;
+        transition:
+          transform 0.3s ease,
+          background 0.2s ease;
       }
 
-        .itemC img {
+      .itemC img {
         width: 2.5em;
         height: 2.5em;
         border-radius: 50%;
@@ -1350,7 +1352,7 @@
         align-items: center;
         min-width: 3em;
       }
-    
+
       .ligneInContent {
         width: 100%;
         border: 0.8px solid rgba(255, 255, 255, 0.1);
@@ -2379,24 +2381,23 @@
         margin-top: 0.5em;
       }
       .perCountry {
-        display : flex;
+        display: flex;
         justify-content: flex-start;
         align-items: center;
         align-self: flex-start;
-        gap : 0.8em;
+        gap: 0.8em;
         margin: 0.4em;
       }
 
-
-       .CadreDrapeauPerC {
+      .CadreDrapeauPerC {
         display: flex;
         position: relative;
-        overflow : hidden;
+        overflow: hidden;
         border-radius: 50%;
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
-        max-height : 1.2em;
+        max-height: 1.2em;
         height: 1.2em; /* hauteur fixe */
         aspect-ratio: 1/1;
       }
@@ -2413,8 +2414,6 @@
         height: 100%;
         object-fit: contain;
       }
-
-
 
       #backListBox {
         display: flex;
@@ -2892,6 +2891,10 @@
       .chrono-wrapper {
         cursor: pointer;
       }
+
+      .btnMode:active{
+        background : rgba(218,37,37,0.05)
+      }
       .back {
         display: flex;
         align-items: center;
@@ -2910,7 +2913,7 @@
         background: rgba(56, 140, 223, 0.4);
         left: 0.75em;
       }
-      #backMaps:active{
+      #backMaps:active {
         background: rgba(41, 110, 179, 0.674);
         transform: scale(0.96);
       }
@@ -3071,7 +3074,7 @@
         transition: background 0.08s ease;
       }
       .qr:active {
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(218,37,37,0.05);
       }
 
       #cadreChoixRegion {
@@ -4067,7 +4070,7 @@
         position: absolute;
         align-items: center;
         justify-content: center;
-        outline : 0.8px solid rgba(255,255,255,0);
+        outline: 0.8px solid rgba(255, 255, 255, 0);
         width: 100%;
         height: 4em;
         background: #1659f7;
@@ -4075,11 +4078,11 @@
         color: white;
         font-family: sans-serif;
         box-sizing: border-box;
-        transition : outline 0.2s ease;
+        transition: outline 0.2s ease;
         /* position en absolu géré en JS, transition gérée en JS */
       }
-      .elClasser.active{
-        outline :0.85px solid rgba(255,255,255,0.45)
+      .elClasser.active {
+        outline: 0.85px solid rgba(255, 255, 255, 0.45);
       }
 
       .elClasser.good {
@@ -4205,12 +4208,12 @@
         opacity: 1;
         visibility: visible;
       }
-      #inputSD{
-        width : 100%;
-        background : white;
+      #inputSD {
+        width: 100%;
+        background: white;
       }
-      #resetSD{
-        cursor : pointer;
+      #resetSD {
+        cursor: pointer;
       }
 
       /* sizing svg icons */
@@ -4254,7 +4257,12 @@
           #04b916 50%,
           #018444 100%
         );
-        background: linear-gradient(55deg, #15d121 0%, #0d9c1b 50%, #036837 100%);
+        background: linear-gradient(
+          55deg,
+          #15d121 0%,
+          #0d9c1b 50%,
+          #036837 100%
+        );
         margin-bottom: 5em;
       }
 
@@ -4338,8 +4346,8 @@
         position: absolute;
         z-index: 10;
         cursor: pointer;
-        top : 0;
-        transform : none;
+        top: 0;
+        transform: none;
       }
 
       .letterD {
@@ -5006,8 +5014,16 @@
             />
           </svg> -->
           <svg
-          class="iconPlay"
-           xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M15.091,15.997c6.571-.033,8.909-3.513,8.909-6.497,0-1.677-1.188-3.08-2.765-3.419,.136-.386,.254-.741,.333-1.01,.353-1.193,.125-2.453-.626-3.458-.766-1.024-1.937-1.612-3.214-1.612H6.271c-1.277,0-2.449,.588-3.215,1.612-.751,1.005-.979,2.266-.626,3.458,.08,.269,.197,.624,.334,1.011-1.577,.339-2.764,1.742-2.764,3.419,0,2.984,2.339,6.464,8.909,6.497,.056,.302,.091,.61,.091,.924v3.079c0,1.826-1.536,1.992-2,2h-1c-.553,0-1,.447-1,1s.447,1,1,1h12c.553,0,1-.447,1-1s-.447-1-1-1h-.992c-.472-.008-2.008-.174-2.008-2v-3.08c0-.313,.035-.621,.091-.923Zm5.361-8.007c.017,0,.031,.01,.048,.01,.827,0,1.5,.673,1.5,1.5,0,2.034-1.609,4.197-6.036,4.47,.221-.299,.474-.576,.762-.821,1.739-1.478,2.933-3.453,3.726-5.159ZM2,9.5c0-.827,.673-1.5,1.5-1.5,.017,0,.031-.009,.047-.01,.794,1.706,1.988,3.681,3.727,5.159,.288,.245,.541,.521,.762,.821-4.427-.273-6.036-2.436-6.036-4.47Zm7.792,.263c-.264-.182-.375-.518-.27-.822l.519-1.606-1.366-1c-.327-.24-.398-.699-.158-1.026,.138-.188,.358-.3,.591-.3h1.681l.511-1.593c.129-.387,.547-.595,.934-.466,.22,.073,.393,.246,.466,.466l.51,1.593h1.681c.405,0,.734,.328,.734,.734,0,.235-.112,.455-.301,.593l-1.366,1,.519,1.606c.124,.386-.088,.8-.475,.925-.224,.072-.469,.032-.659-.107l-1.343-.988-1.344,.987c-.256,.191-.606,.192-.864,.004Z"/></svg>
+            class="iconPlay"
+            xmlns="http://www.w3.org/2000/svg"
+            id="Layer_1"
+            data-name="Layer 1"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.091,15.997c6.571-.033,8.909-3.513,8.909-6.497,0-1.677-1.188-3.08-2.765-3.419,.136-.386,.254-.741,.333-1.01,.353-1.193,.125-2.453-.626-3.458-.766-1.024-1.937-1.612-3.214-1.612H6.271c-1.277,0-2.449,.588-3.215,1.612-.751,1.005-.979,2.266-.626,3.458,.08,.269,.197,.624,.334,1.011-1.577,.339-2.764,1.742-2.764,3.419,0,2.984,2.339,6.464,8.909,6.497,.056,.302,.091,.61,.091,.924v3.079c0,1.826-1.536,1.992-2,2h-1c-.553,0-1,.447-1,1s.447,1,1,1h12c.553,0,1-.447,1-1s-.447-1-1-1h-.992c-.472-.008-2.008-.174-2.008-2v-3.08c0-.313,.035-.621,.091-.923Zm5.361-8.007c.017,0,.031,.01,.048,.01,.827,0,1.5,.673,1.5,1.5,0,2.034-1.609,4.197-6.036,4.47,.221-.299,.474-.576,.762-.821,1.739-1.478,2.933-3.453,3.726-5.159ZM2,9.5c0-.827,.673-1.5,1.5-1.5,.017,0,.031-.009,.047-.01,.794,1.706,1.988,3.681,3.727,5.159,.288,.245,.541,.521,.762,.821-4.427-.273-6.036-2.436-6.036-4.47Zm7.792,.263c-.264-.182-.375-.518-.27-.822l.519-1.606-1.366-1c-.327-.24-.398-.699-.158-1.026,.138-.188,.358-.3,.591-.3h1.681l.511-1.593c.129-.387,.547-.595,.934-.466,.22,.073,.393,.246,.466,.466l.51,1.593h1.681c.405,0,.734,.328,.734,.734,0,.235-.112,.455-.301,.593l-1.366,1,.519,1.606c.124,.386-.088,.8-.475,.925-.224,.072-.469,.032-.659-.107l-1.343-.988-1.344,.987c-.256,.191-.606,.192-.864,.004Z"
+            />
+          </svg>
           <h2>Jouer</h2>
         </div>
         <div class="btnPlay hoverable" id="map">
@@ -10239,13 +10255,14 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         <div class="celPopD" data-d="EUR" data-v="GBP">EUR/GBP</div>
       </div>
 
-    <div id="txtLastUpdate">
-      <p style="width: 100%">
-    Taux fournis par <a href="https://www.exchangerate-api.com">ExchangeRate-API</a>
-  </p>
-  <span style="flex-wrap: nowrap">Dernière actualisation :</span>
-  <p id="pLast" style="letter-spacing: none"></p>
-</div>
+      <div id="txtLastUpdate">
+        <p style="width: 100%">
+          Taux fournis par
+          <a href="https://www.exchangerate-api.com">ExchangeRate-API</a>
+        </p>
+        <span style="flex-wrap: nowrap">Dernière actualisation :</span>
+        <p id="pLast" style="letter-spacing: none"></p>
+      </div>
     </div>
 
     <!--Script Home-->
@@ -10977,7 +10994,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
                     if (i !== el) i.classList.add("waitClasser");
                   });
                   el.style.transform = "scale(1.03)";
-                  el.classList.add('active')
+                  el.classList.add("active");
                   dragging = true;
                   el.style.zIndex = 10000;
                   el.style.transition = "background 0.2s ease";
@@ -11014,7 +11031,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
                 function onEnd() {
                   itmsClasser.forEach((i) => i.classList.remove("waitClasser"));
-                  el.classList.remove('active')
+                  el.classList.remove("active");
 
                   if (!dragging) return;
                   dragging = false;
@@ -11360,8 +11377,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               colorCountry();
             }
             if (L_config.m === "modeClasser") {
-              document.dispatchEvent(new MouseEvent('mouseup', {bubbles:true, cancelable:true}))
-              document.dispatchEvent(new MouseEvent('touchend', {bubbles:true, cancelable:true}))
+              document.dispatchEvent(
+                new MouseEvent("mouseup", { bubbles: true, cancelable: true }),
+              );
+              document.dispatchEvent(
+                new MouseEvent("touchend", { bubbles: true, cancelable: true }),
+              );
 
               document.querySelectorAll(".infoTxtClasser").forEach((el) => {
                 el.style.maxHeight = "1.2em";
@@ -11391,7 +11412,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               btnReprendre.textContent = "Rejouer";
               pause4Choix.style.opacity = "0";
               pause4Choix.style.pointerEvents = "none";
-
             }
 
             const L_goodOrder = [...L_propClasser].sort((a, b) =>
@@ -11964,8 +11984,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         });
         L_replace.forEach((p) => {
           p.style.zIndex = "";
-          if(parseInt(qNumber.textContent) >= maxQ &&  p.id==="pause4Choix"){return}
-         
+          if (parseInt(qNumber.textContent) >= maxQ && p.id === "pause4Choix") {
+            return;
+          }
+
           p.style.opacity = "1";
           p.style.pointerEvents = "all";
         });
@@ -12259,7 +12281,11 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       });
 
       btnReprendre.addEventListener("click", () => {
-        if ((!cadreNext.classList.contains("visible") || L_config.m === "modeClasser") && !cChooseTrouver) {
+        if (
+          (!cadreNext.classList.contains("visible") ||
+            L_config.m === "modeClasser") &&
+          !cChooseTrouver
+        ) {
           startChrono(currentChrono);
         }
 
@@ -12431,7 +12457,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         colorCountry();
         globe.style.zIndex = "5";
 
-
         //***
         [...phoneHome.children].forEach((el) => {
           el.style.transition = "transform 0.5s ease, opacity 0.2s ease";
@@ -12577,7 +12602,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         "MT",
       ];
       const D_circles = {};
-      const L_antilles = [ // Cercles invisibles
+      const L_antilles = [
+        // Cercles invisibles
         "MQ",
         "GP",
         "LC",
@@ -12734,7 +12760,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const drapeauCadre = document.getElementById("drapeauCadre");
       const titleCadre = document.getElementById("titleCadre");
       const capitales = document.querySelectorAll(".capitaleLabel");
-      const capitale = document.getElementById('capitale')
+      const capitale = document.getElementById("capitale");
       const itemBlason = document.querySelector(".itemBlason");
       const cadreContours = document.getElementById("cadreContours");
       const cadreBlason = document.getElementById("cadreBlason");
@@ -25693,9 +25719,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         });
         mTitleCadre.textContent = viewState ? D_us[id.slice(-2)].n : L_q[id].n;
 
-        mCapitale.textContent = viewState ? D_us[id.slice(-2)].c : L_q[id].c
-        capitale.textContent = viewState ? ("Capitale : " + D_us[id.slice(-2)].c) : ("Capitale : " + L_q[id].c)
-        
+        mCapitale.textContent = viewState ? D_us[id.slice(-2)].c : L_q[id].c;
+        capitale.textContent = viewState
+          ? "Capitale : " + D_us[id.slice(-2)].c
+          : "Capitale : " + L_q[id].c;
 
         txtsCelCadre.forEach((t) => (t.textContent = ""));
         loadingCadre.forEach((L) => {
@@ -25849,8 +25876,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         }
       });
 
-      
-      let clLegend = "" //className de cadreLegend
+      let clLegend = ""; //className de cadreLegend
       function afficheVue() {
         if (!cadreVueTF) {
           cadreVue.style.opacity = "1";
@@ -25865,13 +25891,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             wrapperTool.style.filter = "blur(4px) brightness(0.65)";
             wrapperTool.style.pointerEvents = "none";
 
-            calque.classList.contains('active') ? calque.click() : ""
+            calque.classList.contains("active") ? calque.click() : "";
 
-            footerLegendClick()
+            footerLegendClick();
 
-            clLegend = cadreLegend.className
-            cadreLegend.className = ""
-          
+            clLegend = cadreLegend.className;
+            cadreLegend.className = "";
 
             if (isMobile) {
               opensearch.style.filter = "blur(4px) brightness(0.65)";
@@ -25889,14 +25914,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           wrapperTool.style.pointerEvents = "all";
 
           mCadre.style.filter = "";
-          mCadre.style.pointerEvents = "";   
+          mCadre.style.pointerEvents = "";
 
-
-          cadreLegend.className = clLegend
-
-          
-          
-
+          cadreLegend.className = clLegend;
 
           if (isMobile) {
             opensearch.style.filter = "";
@@ -27033,7 +27053,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
           r.subs.forEach((s) => {
             const L = [];
-            const D = {}
+            const D = {};
             const subI = document.createElement("div");
             subI.className = "perSub";
             const subTitle = document.createElement("h3");
@@ -27050,38 +27070,36 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
                 return;
               }
               L.push(L_q[path.id].n);
-              D[L_q[path.id].n] = path.id
+              D[L_q[path.id].n] = path.id;
             });
             L.sort();
             L.forEach((name) => {
               const countryI = document.createElement("div");
               countryI.className = "perCountry";
 
-            const CadreDrapeauPerC = document.createElement("div");
-            CadreDrapeauPerC.className = "CadreDrapeauPerC";
+              const CadreDrapeauPerC = document.createElement("div");
+              CadreDrapeauPerC.className = "CadreDrapeauPerC";
 
-            const DrapeauBoxPerC = document.createElement("div");
-            DrapeauBoxPerC.className = "DrapeauBoxPerC";
-            let imgPerC = document.createElement("img");
-            imgPerC.className = "DrapeauCadrePerC";
+              const DrapeauBoxPerC = document.createElement("div");
+              DrapeauBoxPerC.className = "DrapeauBoxPerC";
+              let imgPerC = document.createElement("img");
+              imgPerC.className = "DrapeauCadrePerC";
 
-            imgPerC.src = `https://flagcdn.com/${D[name].toLowerCase()}.svg`
-            imgPerC.onerror = ()=>{
-              const fallback = document.createElement("div");
-            fallback.className = "flagFallbackD";
-            fallback.style.height = "1.6em"
-            fallback.innerHTML = 
-            `
-            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 26 26"><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.657,7H17.431A19.675,19.675,0,0,0,14.6,2.342,10.041,10.041,0,0,1,20.657,7ZM16.5,12a10.209,10.209,0,0,1-.473,3H7.973A10.209,10.209,0,0,1,7.5,12a10.209,10.209,0,0,1,.473-3h8.054A10.209,10.209,0,0,1,16.5,12ZM8.774,17h6.452A19.562,19.562,0,0,1,12,21.588,19.562,19.562,0,0,1,8.774,17Zm0-10A19.562,19.562,0,0,1,12,2.412,19.562,19.562,0,0,1,15.226,7ZM9.4,2.342A19.7,19.7,0,0,0,6.569,7H3.343A10.041,10.041,0,0,1,9.4,2.342ZM2.46,9H5.892a11.676,11.676,0,0,0,0,6H2.46a10.013,10.013,0,0,1,0-6Zm.883,8H6.569A19.675,19.675,0,0,0,9.4,21.658,10.041,10.041,0,0,1,3.343,17ZM14.6,21.658A19.7,19.7,0,0,0,17.431,17h3.226A10.041,10.041,0,0,1,14.6,21.658ZM21.54,15H18.108a11.676,11.676,0,0,0,0-6H21.54a10.013,10.013,0,0,1,0,6Z"/></svg>`
-            fallback.querySelector('svg').style.fill = "white"
-            CadreDrapeauPerC.replaceWith(fallback)
-              
-            }
+              imgPerC.src = `https://flagcdn.com/${D[name].toLowerCase()}.svg`;
+              imgPerC.onerror = () => {
+                const fallback = document.createElement("div");
+                fallback.className = "flagFallbackD";
+                fallback.style.height = "1.6em";
+                fallback.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 26 26"><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.657,7H17.431A19.675,19.675,0,0,0,14.6,2.342,10.041,10.041,0,0,1,20.657,7ZM16.5,12a10.209,10.209,0,0,1-.473,3H7.973A10.209,10.209,0,0,1,7.5,12a10.209,10.209,0,0,1,.473-3h8.054A10.209,10.209,0,0,1,16.5,12ZM8.774,17h6.452A19.562,19.562,0,0,1,12,21.588,19.562,19.562,0,0,1,8.774,17Zm0-10A19.562,19.562,0,0,1,12,2.412,19.562,19.562,0,0,1,15.226,7ZM9.4,2.342A19.7,19.7,0,0,0,6.569,7H3.343A10.041,10.041,0,0,1,9.4,2.342ZM2.46,9H5.892a11.676,11.676,0,0,0,0,6H2.46a10.013,10.013,0,0,1,0-6Zm.883,8H6.569A19.675,19.675,0,0,0,9.4,21.658,10.041,10.041,0,0,1,3.343,17ZM14.6,21.658A19.7,19.7,0,0,0,17.431,17h3.226A10.041,10.041,0,0,1,14.6,21.658ZM21.54,15H18.108a11.676,11.676,0,0,0,0-6H21.54a10.013,10.013,0,0,1,0,6Z"/></svg>`;
+                fallback.querySelector("svg").style.fill = "white";
+                CadreDrapeauPerC.replaceWith(fallback);
+              };
 
-            DrapeauBoxPerC.append(imgPerC)
-            CadreDrapeauPerC.append(DrapeauBoxPerC)
-            countryI.append("•")
-            countryI.append(CadreDrapeauPerC)
+              DrapeauBoxPerC.append(imgPerC);
+              CadreDrapeauPerC.append(DrapeauBoxPerC);
+              countryI.append("•");
+              countryI.append(CadreDrapeauPerC);
 
               countryI.append(name);
               subI.appendChild(countryI);
@@ -27100,7 +27118,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           subI.appendChild(subTitle);
 
           const L = [];
-          const D = {}
+          const D = {};
 
           paths.forEach((path) => {
             if (!P_info[path.id]) {
@@ -27110,15 +27128,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               return;
             }
             L.push(L_q[path.id].n);
-            D[L_q[path.id].n] = path.id
-
+            D[L_q[path.id].n] = path.id;
           });
           L.sort();
           L.forEach((name) => {
-
-            
-              const countryI = document.createElement("div");
-              countryI.className = "perCountry";
+            const countryI = document.createElement("div");
+            countryI.className = "perCountry";
 
             const CadreDrapeauPerC = document.createElement("div");
             CadreDrapeauPerC.className = "CadreDrapeauPerC";
@@ -27128,16 +27143,15 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             let imgPerC = document.createElement("img");
             imgPerC.className = "DrapeauCadrePerC";
 
-            imgPerC.src = `https://flagcdn.com/${D[name].toLowerCase()}.svg`
+            imgPerC.src = `https://flagcdn.com/${D[name].toLowerCase()}.svg`;
 
-            DrapeauBoxPerC.append(imgPerC)
-            CadreDrapeauPerC.append(DrapeauBoxPerC)
-            countryI.append("•")
-            countryI.append(CadreDrapeauPerC)
+            DrapeauBoxPerC.append(imgPerC);
+            CadreDrapeauPerC.append(DrapeauBoxPerC);
+            countryI.append("•");
+            countryI.append(CadreDrapeauPerC);
 
-              countryI.append(name);
-              subI.appendChild(countryI);
-
+            countryI.append(name);
+            subI.appendChild(countryI);
           });
           listBox.appendChild(subI);
         } else if (subject === "organisations") {
@@ -27151,7 +27165,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           orgaI.appendChild(orgaTitle);
 
           const L = [];
-          const D = {}
+          const D = {};
           paths.forEach((path) => {
             if (!P_info[path.id]) {
               return;
@@ -27161,14 +27175,12 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             }
 
             L.push(L_q[path.id].n);
-            D[L_q[path.id].n] = path.id
-
+            D[L_q[path.id].n] = path.id;
           });
           L.sort();
           L.forEach((name) => {
-            
-              const countryI = document.createElement("div");
-              countryI.className = "perCountry";
+            const countryI = document.createElement("div");
+            countryI.className = "perCountry";
 
             const CadreDrapeauPerC = document.createElement("div");
             CadreDrapeauPerC.className = "CadreDrapeauPerC";
@@ -27178,13 +27190,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             let imgPerC = document.createElement("img");
             imgPerC.className = "DrapeauCadrePerC";
 
-            imgPerC.src = `https://flagcdn.com/${D[name].toLowerCase()}.svg`
+            imgPerC.src = `https://flagcdn.com/${D[name].toLowerCase()}.svg`;
 
-            DrapeauBoxPerC.append(imgPerC)
-            CadreDrapeauPerC.append(DrapeauBoxPerC)
-            countryI.append("•")
-            countryI.append(CadreDrapeauPerC)
-              countryI.append(name);
+            DrapeauBoxPerC.append(imgPerC);
+            CadreDrapeauPerC.append(DrapeauBoxPerC);
+            countryI.append("•");
+            countryI.append(CadreDrapeauPerC);
+            countryI.append(name);
 
             orgaI.appendChild(countryI);
           });
@@ -27987,108 +27999,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         }
       });
 
-      //Ancien drag plan
-      // let lastTouchDist = null;
-      // let lastTouchMid = null;
-
-      // function getTouchDist(touches) {
-      //   const dx = touches[0].clientX - touches[1].clientX;
-      //   const dy = touches[0].clientY - touches[1].clientY;
-      //   return Math.hypot(dx, dy);
-      // }
-
-      // function getTouchMid(touches) {
-      //   return {
-      //     x: (touches[0].clientX + touches[1].clientX) / 2,
-      //     y: (touches[0].clientY + touches[1].clientY) / 2,
-      //   };
-      // }
-
-      // // ── Touch start ──────────────────────────────────────────────
-      // svg.addEventListener(
-      //   "touchstart",
-      //   (e) => {
-      //     if (e.touches.length === 1) {
-      //       // Pan : même logique que mousedown
-      //       isDragging = true;
-      //       const vb = getVB();
-      //       startVBx = vb.x;
-      //       startVBy = vb.y;
-      //       startX = e.touches[0].clientX;
-      //       startY = e.touches[0].clientY;
-      //     } else if (e.touches.length === 2) {
-      //       // Pinch : init distance et point milieu
-      //       isDragging = false;
-      //       lastTouchDist = getTouchDist(e.touches);
-      //       lastTouchMid = getTouchMid(e.touches);
-      //     }
-      //   },
-      //   { passive: false },
-      // );
-
-      // // ── Touch move ───────────────────────────────────────────────
-      // svg.addEventListener(
-      //   "touchmove",
-      //   (e) => {
-      //     if (e.touches.length === 1 && isDragging) {
-      //       // Pan (même logique que mousemove)
-      //       const vb = getVB();
-      //       const rect = svg.getBoundingClientRect();
-      //       const scaleX = vb.w / rect.width;
-      //       const scaleY = vb.h / rect.height;
-
-      //       const dx = (e.touches[0].clientX - startX) * scaleX;
-      //       const dy = (e.touches[0].clientY - startY) * scaleY;
-
-      //       setVB({ x: startVBx - dx, y: startVBy - dy, w: vb.w, h: vb.h });
-      //     } else if (e.touches.length === 2) {
-      //       // Pinch zoom
-      //       const newDist = getTouchDist(e.touches);
-      //       const newMid = getTouchMid(e.touches);
-      //       const vb = getVB();
-      //       const rect = svg.getBoundingClientRect();
-
-      //       // Point milieu en unités viewBox
-      //       const midVBx = vb.x + (newMid.x - rect.left) * (vb.w / rect.width);
-      //       const midVBy = vb.y + (newMid.y - rect.top) * (vb.h / rect.height);
-
-      //       const zoomFactor = lastTouchDist / newDist; // pinch in = doigts rapprochés = newDist < last = zoom in
-      //       const newW = Math.min(
-      //         Math.max(vb.w * zoomFactor, MIN_SIZE),
-      //         MAX_SIZE,
-      //       );
-      //       const newH = Math.min(
-      //         Math.max(vb.h * zoomFactor, MIN_SIZE),
-      //         MAX_SIZE,
-      //       );
-
-      //       // Garder le point milieu fixe (même formule que wheel)
-      //       const newX = midVBx - (midVBx - vb.x) * (newW / vb.w);
-      //       const newY = midVBy - (midVBy - vb.y) * (newH / vb.h);
-
-      //       setVB({ x: newX, y: newY, w: newW, h: newH });
-
-      //       // Update pour le prochain frame
-      //       lastTouchDist = newDist;
-      //       lastTouchMid = newMid;
-      //     }
-      //   },
-      //   { passive: false },
-      // );
-
-      // // ── Touch end ────────────────────────────────────────────────
-      // svg.addEventListener("touchend", (e) => {
-      //   if (e.touches.length < 2) lastTouchDist = null;
-      //   if (e.touches.length === 0) isDragging = false;
-      // });
-
-      // // ── DONNÉES : noms lisibles des pays ──────────────────────────
-      // // On utilise l'attribut title du path SVG comme nom affiché
-      // function getCountryName(code) {
-      //   const path = svg.querySelector(`path[id="${code}"]`);
-      //   return path ? path.getAttribute("title") : code;
-      // }
-
       // ── STYLES listBox ────────────────────────────────────────────
       const listBoxStyle = document.createElement("style");
       listBoxStyle.textContent = `
@@ -28235,7 +28145,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           optionModeS.forEach((opt) => opt.classList.remove("active"));
           option.classList.add("active");
           cadreModeS.classList.remove("active");
-        document.getElementById("arrowTitle").classList.remove("active")
+          document.getElementById("arrowTitle").classList.remove("active");
           if (option.id === "flagS") {
             // Logique pour afficher les drapeaux
             titleCadreS.querySelector("span").textContent = "Drapeaux";
@@ -28244,11 +28154,11 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             titleCadreS.querySelector("span").textContent = "Pays";
           }
 
-          requestAnimationFrame(()=>{
-             currentSearching === "pays"
-            ? fillContentC(Ls)
-            : fillContentFlag(LfInit);
-          })
+          requestAnimationFrame(() => {
+            currentSearching === "pays"
+              ? fillContentC(Ls)
+              : fillContentFlag(LfInit);
+          });
         });
       });
 
@@ -28281,7 +28191,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       });
       worldFilter.addEventListener("click", (e) => {
         e.stopPropagation();
-        document.getElementById("arrowTitle").classList.remove("active")
+        document.getElementById("arrowTitle").classList.remove("active");
         cadreClasser.classList.remove("active");
         cadreModeS.classList.remove("active");
         if (e.target.closest("label")) return; // le label gère déjà via change
@@ -28473,7 +28383,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         cadreFilterS.classList.remove("active");
         cadreClasser.classList.remove("active");
         cadreModeS.classList.remove("active");
-        document.getElementById("arrowTitle").classList.remove("active")
+        document.getElementById("arrowTitle").classList.remove("active");
         gridChoice.classList.remove("active");
         if (e.target.closest(".optionGrid")) return; // l'option gère déjà via click
         gridChoice.classList.remove("active");
@@ -28490,11 +28400,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       classer.addEventListener("click", (e) => {
         e.stopPropagation();
-        cadreFilterS.classList.contains("active")
-          ? burgerInput.click()
-          : "";
+        cadreFilterS.classList.contains("active") ? burgerInput.click() : "";
 
-        document.getElementById("arrowTitle").classList.remove("active")
+        document.getElementById("arrowTitle").classList.remove("active");
         cadreModeS.classList.remove("active");
         cadreFilterS.classList.remove("active");
         cadreClasser.classList.toggle("active");
@@ -28536,7 +28444,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         cadreFilterS.classList.remove("active");
         cadreClasser.classList.remove("active");
         cadreModeS.classList.remove("active");
-        document.getElementById("arrowTitle").classList.remove("active")
+        document.getElementById("arrowTitle").classList.remove("active");
         gridChoice.classList.remove("active");
         document.getElementById("arrowTitle").classList.remove("active");
       });
@@ -28763,7 +28671,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           let a = dataLatest.slice(13, 17);
           let h = dataLatest.slice(18, 26);
           let utc = dataLatest.slice(26);
-         document.getElementById('pLast').textContent =
+          document.getElementById("pLast").textContent =
             "\u00A0" + D_semaine[s] + jr + D_mois[m] + " " + h + utc;
 
           inputD1.value = "1.00" + "€";
@@ -28774,8 +28682,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         })
         .catch((error) => console.error("Erreur fetch:", error));
 
-        //----------------------
-        let valD1 = "1.00"
+      //----------------------
+      let valD1 = "1.00";
       inputD1.addEventListener("focus", () => {
         cadreD1.classList.add("active");
         if (
@@ -28787,14 +28695,18 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             0,
             -parseInt(D_symbolesD[currentDD].length),
           );
-          valD1 = inputD1.value 
+          valD1 = inputD1.value;
         }
       });
       inputD1.addEventListener("input", (e) => {
         let value = e.target.value;
-        if (e.inputType === 'deleteContentBackward'&&(valD1==="1.00" || inputD2.value === "1.00" + D_symbolesD[currentDV])){
-          value = ""
-          inputD1.value = ""
+        if (
+          e.inputType === "deleteContentBackward" &&
+          (valD1 === "1.00" ||
+            inputD2.value === "1.00" + D_symbolesD[currentDV])
+        ) {
+          value = "";
+          inputD1.value = "";
         }
         value = value.replace(",", ".");
         value = value.replace(/[^0-9.]/g, ""); // enlève tout sauf chiffres et point
@@ -28813,7 +28725,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         if (inputD1.value === "") {
           inputD2.value = "";
         }
-        valD1 = inputD1.value
+        valD1 = inputD1.value;
       });
 
       inputD1.addEventListener("blur", () => {
@@ -28821,7 +28733,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         if ([",", "."].includes(inputD1.value.slice(-1))) {
           inputD1.value = inputD1.value.slice(0, -1);
         }
-        if (!["","1","1.0"].includes(inputD1.value)) {
+        if (!["", "1", "1.0"].includes(inputD1.value)) {
           inputD1.value = inputD1.value + D_symbolesD[currentDD];
           if (!isNaN(inputD2.value)) {
             inputD2.value = inputD2.value + D_symbolesD[currentDV];
@@ -28835,7 +28747,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       });
 
       //------------
-      let valD2= "1.00"
+      let valD2 = "1.00";
       inputD2.addEventListener("focus", () => {
         cadreD2.classList.add("active");
         if (
@@ -28849,16 +28761,18 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           );
         }
 
-          valD2 = inputD2.value 
-
+        valD2 = inputD2.value;
       });
-
 
       inputD2.addEventListener("input", (e) => {
         let value = e.target.value;
-         if (e.inputType === 'deleteContentBackward'&&(valD2==="1.00" || inputD1.value === "1.00" + D_symbolesD[currentDD])){
-          value = ""
-          inputD2.value = ""
+        if (
+          e.inputType === "deleteContentBackward" &&
+          (valD2 === "1.00" ||
+            inputD1.value === "1.00" + D_symbolesD[currentDD])
+        ) {
+          value = "";
+          inputD2.value = "";
         }
 
         value = value.replace(",", ".");
@@ -28879,8 +28793,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           inputD1.value = "";
         }
 
-        valD2 = inputD2.value
-
+        valD2 = inputD2.value;
       });
 
       inputD2.addEventListener("blur", () => {
@@ -28889,7 +28802,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
           inputD2.value = inputD2.value.slice(0, -1);
         }
 
-        if (!["","1","1.0"].includes(inputD2.value)) {
+        if (!["", "1", "1.0"].includes(inputD2.value)) {
           inputD2.value = inputD2.value + D_symbolesD[currentDV];
           if (!isNaN(inputD1.value)) {
             inputD1.value = inputD1.value + D_symbolesD[currentDD];
@@ -28937,7 +28850,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       });
 
       // Aphabet
-      let cLD = "rgb(4, 77, 42)" // color lettre active
+      let cLD = "rgb(4, 77, 42)"; // color lettre active
       let scrollLetterD = document.getElementById("caseDA");
       scrollLetterD.style.transform = "scale(1.1) translateX(-0.5em)";
       scrollLetterD.style.color = cLD;
@@ -29270,7 +29183,50 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         ZWL: "Dollar zimbabwéen",
       };
 
-      let L_detailed = ["EUR","USD","BRL","PAB","NIO","AUD","BND","HKD","SGD","FJD","NZD","AMD","PYG","ZMW","ALL","HNL","MDL","GIP","IMP","EGP","LSL","AZN","TMT","BAM","MZN","TWD","ARS","DOP","MXN","PHP","UYU","GTQ","OMR","MYR","BYN","INR","NPR","LKR","KES","UGX","PEN","CNY"]
+      let L_detailed = [
+        "EUR",
+        "USD",
+        "BRL",
+        "PAB",
+        "NIO",
+        "AUD",
+        "BND",
+        "HKD",
+        "SGD",
+        "FJD",
+        "NZD",
+        "AMD",
+        "PYG",
+        "ZMW",
+        "ALL",
+        "HNL",
+        "MDL",
+        "GIP",
+        "IMP",
+        "EGP",
+        "LSL",
+        "AZN",
+        "TMT",
+        "BAM",
+        "MZN",
+        "TWD",
+        "ARS",
+        "DOP",
+        "MXN",
+        "PHP",
+        "UYU",
+        "GTQ",
+        "OMR",
+        "MYR",
+        "BYN",
+        "INR",
+        "NPR",
+        "LKR",
+        "KES",
+        "UGX",
+        "PEN",
+        "CNY",
+      ];
 
       function createFlagD(clefD) {
         const flagErrorD = document.createElement("div");
@@ -29326,10 +29282,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         if (oldFallback) oldFallback.remove(); // supprime le fallback si présent
 
         img.src = ``;
-        if (L_detailed.includes(d)){
+        if (L_detailed.includes(d)) {
           img.src = `https://wise.com/web-art/assets/flags/${d.toLowerCase()}-detailed.svg`;
-        }
-        else {
+        } else {
           img.src = `https://wise.com/web-art/assets/flags/${d.toLowerCase()}.svg`;
           img.onerror = () => {
             currentChoiceD.querySelector(".CadreDrapeauD").style.display =
@@ -29337,10 +29292,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
             const fallback = document.createElement("div");
             fallback.className = "flagFallbackD";
-            fallback.innerHTML = 
-            `
-            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 26 26"><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.657,7H17.431A19.675,19.675,0,0,0,14.6,2.342,10.041,10.041,0,0,1,20.657,7ZM16.5,12a10.209,10.209,0,0,1-.473,3H7.973A10.209,10.209,0,0,1,7.5,12a10.209,10.209,0,0,1,.473-3h8.054A10.209,10.209,0,0,1,16.5,12ZM8.774,17h6.452A19.562,19.562,0,0,1,12,21.588,19.562,19.562,0,0,1,8.774,17Zm0-10A19.562,19.562,0,0,1,12,2.412,19.562,19.562,0,0,1,15.226,7ZM9.4,2.342A19.7,19.7,0,0,0,6.569,7H3.343A10.041,10.041,0,0,1,9.4,2.342ZM2.46,9H5.892a11.676,11.676,0,0,0,0,6H2.46a10.013,10.013,0,0,1,0-6Zm.883,8H6.569A19.675,19.675,0,0,0,9.4,21.658,10.041,10.041,0,0,1,3.343,17ZM14.6,21.658A19.7,19.7,0,0,0,17.431,17h3.226A10.041,10.041,0,0,1,14.6,21.658ZM21.54,15H18.108a11.676,11.676,0,0,0,0-6H21.54a10.013,10.013,0,0,1,0,6Z"/></svg>`
-            
+            fallback.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 26 26"><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm8.657,7H17.431A19.675,19.675,0,0,0,14.6,2.342,10.041,10.041,0,0,1,20.657,7ZM16.5,12a10.209,10.209,0,0,1-.473,3H7.973A10.209,10.209,0,0,1,7.5,12a10.209,10.209,0,0,1,.473-3h8.054A10.209,10.209,0,0,1,16.5,12ZM8.774,17h6.452A19.562,19.562,0,0,1,12,21.588,19.562,19.562,0,0,1,8.774,17Zm0-10A19.562,19.562,0,0,1,12,2.412,19.562,19.562,0,0,1,15.226,7ZM9.4,2.342A19.7,19.7,0,0,0,6.569,7H3.343A10.041,10.041,0,0,1,9.4,2.342ZM2.46,9H5.892a11.676,11.676,0,0,0,0,6H2.46a10.013,10.013,0,0,1,0-6Zm.883,8H6.569A19.675,19.675,0,0,0,9.4,21.658,10.041,10.041,0,0,1,3.343,17ZM14.6,21.658A19.7,19.7,0,0,0,17.431,17h3.226A10.041,10.041,0,0,1,14.6,21.658ZM21.54,15H18.108a11.676,11.676,0,0,0,0-6H21.54a10.013,10.013,0,0,1,0,6Z"/></svg>`;
 
             currentChoiceD.querySelector(".CadreDrapeauD").before(fallback); // insère juste avant l'img
           };
@@ -29391,7 +29344,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               let h = dataLatest.slice(18, 26);
               let utc = dataLatest.slice(26);
 
-              document.getElementById('pLast').textContent =
+              document.getElementById("pLast").textContent =
                 "\u00A0" + D_semaine[s] + jr + D_mois[m] + " " + h + utc;
 
               inputD1.value = CD1 + D_symbolesD[currentDD];
@@ -29483,10 +29436,6 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         }
 
         delete Ld.KPW;
-        // delete Ld[choiceD2.dataset.devise];
-        // delete L_pop[choiceD2.dataset.devise];
-        // delete Ld[choiceD1.dataset.devise];
-        // delete L_pop[choiceD1.dataset.devise];
 
         const L_LD = inputSD.value.length === 0 ? [L_pop, Ld] : [Ld]; // parcourir les populaire et la liste normale, pouvoir avoir deux fois la même clef ( populaire et après)
 
@@ -29526,11 +29475,9 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             DrapeauBoxD.className = "DrapeauBoxD";
             let imgD = document.createElement("img");
             imgD.className = "DrapeauCadreD";
-            if(clefD)
-            
-            imgD.src = `https://wise.com/web-art/assets/flags/${clefD.toLowerCase()}.svg`;
+            if (clefD)
+              imgD.src = `https://wise.com/web-art/assets/flags/${clefD.toLowerCase()}.svg`;
             imgD.onerror = () => {
-
               const newImgD = document.createElement("div");
               newImgD.className = "flagErrorD";
               const spnD = document.createElement("span");
@@ -29575,9 +29522,13 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
               elD.style.transform = "";
             }, 10);
 
-            elD.addEventListener("pointerdown", () => {
-              elD.classList.add("active");
-            },{passive : true});
+            elD.addEventListener(
+              "pointerdown",
+              () => {
+                elD.classList.add("active");
+              },
+              { passive: true },
+            );
 
             document.addEventListener("pointerup", () => {
               elD.classList.remove("active");
@@ -29606,7 +29557,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       document
         .querySelector(".form")
         .addEventListener("pointerdown", (e) => e.stopPropagation());
-      resetSD.addEventListener('pointerdown',(e)=>e.stopPropagation())
+      resetSD.addEventListener("pointerdown", (e) => e.stopPropagation());
       resetSD.addEventListener("click", (e) => {
         e.stopPropagation();
         setTimeout(() => {
@@ -29622,7 +29573,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             .replace(/[\u0300-\u036f]/g, "")
             .toUpperCase();
           const nom =
-            clefD + D_symbolesD[clefD] +
+            clefD +
+            D_symbolesD[clefD] +
             D_nDevises[clefD]
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
@@ -29633,7 +29585,8 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
             .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase();
           const nomL =
-            clefD + D_symbolesD[clefD] +
+            clefD +
+            D_symbolesD[clefD] +
             D_nDevises[clefD]
               .normalize("NFD")
               .replace(/[\u0300-\u036f]/g, "")
