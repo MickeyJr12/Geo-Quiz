@@ -500,7 +500,7 @@
         box-shadow: 0px 0px 4.5px rgba(0, 0, 0, 0.4);
         background: rgba(28, 23, 156, 0.8);
         transition:
-          max-width 0.4s ease,
+          max-width 0.25s ease,
           opacity 0.5s ease;
       }
       #cadreLegend.expend {
@@ -521,7 +521,7 @@
         width: 100%;
         height: fit-content;
         transition:
-          max-height 0.4s ease,
+          max-height 0.25s ease,
           opacity 0.4s ease;
       }
       .contentLegend.expend {
@@ -608,7 +608,7 @@
         background: rgba(41, 131, 241, 0.8);
         transition:
           opacity 0.35s ease,
-          width 0.4s ease,
+          width 0.25s ease,
           border-radius 0.3s ease;
       }
       .footerLegend.reduce {
@@ -12853,6 +12853,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       const paths = svg.querySelectorAll("path");
       const pathsUs = svgUs.querySelectorAll("path");
       const L_circles = [
+        "MO",
         "SG",
         "MV",
         "HK",
@@ -12922,9 +12923,10 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
         "KN",
       ]; // mettre leur cercle invisibles
       const D_factorC = {
-        SG : 2,
+        MO: 3,
+        SG: 2,
         MV: 1.05,
-        HK: 2,
+        HK: 1.6,
         BH: 1.5,
         BV: 6.5,
         BM: 5,
@@ -13094,6 +13096,7 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
       // Dominique (DM-xx) : Census 2011 (derniers chiffres officiels disponibles)
 
       const D_IleCp = {
+        //Clef : code INSEE ; valeur : Code Postal
         // ── MARTINIQUE (34 communes) ──────────────────────────────
         97201: 97216, // L'Ajoupa-Bouillon
         97202: 97217, // Les Anses-d'Arlet
@@ -28547,16 +28550,15 @@ M0.617653 1.9298C0.616677 1.93292 0.615309 1.9337 0.611403 1.93292C0.605544 1.93
 
       const arrowC = document.querySelector(".arrowC");
 
-
-      let onceS = true
+      let onceS = true;
       opensearch.addEventListener("click", () => {
-          if (onceS){
-            requestAnimationFrame(()=>{
-              inputC.value = "";
-          fillContentC(LfInit);
-          onceS = false
-            })          
-          }
+        if (onceS) {
+          requestAnimationFrame(() => {
+            inputC.value = "";
+            fillContentC(LfInit);
+            onceS = false;
+          });
+        }
         cadreS.classList.add("active");
       });
 
